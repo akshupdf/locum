@@ -1,5 +1,6 @@
 import HomePage from "../components/Homepage/Homepage";
 import { NavBar } from "../components/Navbar/NavBar";
+import { Signup } from "../components/signin/up/Signinpage";
 
 
 export const router = [
@@ -10,5 +11,9 @@ export const router = [
     {
         path: '/navbar',
         element: <NavBar />
+      },
+      {
+        path: '/signin',
+        element: <Signup />
       },
 ]  

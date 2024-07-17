@@ -9,6 +9,7 @@ import { Helmet } from 'react-helmet';
 import { getTitleFromRoute } from './utils/docTile';
 import { router } from './route';
 import { NavBar } from './components/Navbar/NavBar';
+import { Footer } from './components/Footer/Footer';
 
 export default function App() {
   const location = useLocation();
@@ -26,7 +27,7 @@ export default function App() {
               <Route key={route.path} path={route.path} element={route.element} />
             ))}
           </Routes>
-
+            <Footer />
       </Suspense>
     </PrimeReactProvider>
   );

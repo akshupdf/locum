@@ -1,0 +1,39 @@
+.signup{
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+
+    .signleft{
+        width: 50%;
+        display: flex;
+        background: #28328C;
+        border-radius: 37px, 0px, 0px, 37px;
+        justify-content: center;
+    
+
+        .img1{
+            width: 70%;
+            height: 70%;
+            margin-top: 6rem;
+
+        }
+
+        .img2{
+            width: 50%;
+            height: 90%;
+            margin-left: -8rem;
+        }
+    }
+
+    .signright{
+        width: 50%;
+        justify-content: center;
+        text-align: left;
+    }
+
+    h1{
+        font-size: 38px;
+    }
+}

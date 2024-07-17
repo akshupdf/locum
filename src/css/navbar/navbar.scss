@@ -8,6 +8,7 @@
         width: 20%;
         justify-content: center;
         display: flex;
+        padding-top: 15px;
     }
 
     .logo{
@@ -41,15 +42,31 @@
     }
 
     .nav-btn{
-        border-radius: 35px;
+        border-radius: 11px;
         height: 34px;
-        background: linear-gradient(to right, #FFCC21 0%, #EA4335 100%);
+        font-weight: 400;
+        font-size: 14px;
+        border: none;
+        padding: 2px 12px 5px 12px ;
+        margin: 10px;
+        cursor: pointer;
+
+        svg{
+            margin: 2px;
+        }
+    }
+
+    .nav-btn2{
+        border-radius: 11px;
+        height: 34px;
         font-weight: 400;
         font-size: 14px;
         border: none;
         padding: 5px 12px 5px 12px ;
         margin: 10px;
         cursor: pointer;
+        background: #033B61;
+        color: white;
     }
 
    
