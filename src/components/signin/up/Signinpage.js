@@ -96,6 +96,15 @@ export const Signup = () => {
                   }}
                   placeholder="Enter Your mobile number"
                 />
+                 <input type='text'
+                  className="input-background-color login-input"
+                  value={mobileNo}
+                  onChange={(e) => {
+                    setMobileNo(e.target.value);
+                    setError(validateMobileOrEmail(e.target.value));
+                  }}
+                  placeholder="Enter Your mobile number"
+                />
 </div>
 
     </div>
