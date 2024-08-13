@@ -6,34 +6,224 @@
 
 
     .signleft{
-        width: 50%;
-        display: flex;
+        width: 40%;
         background: #28328C;
-        border-radius: 37px, 0px, 0px, 37px;
+        text-align: center;
+        padding: 10px 40px 0px 40px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 100vh;
+    }
+
+    .svg-box{
+        bottom: 78%;
+        position: absolute;
         justify-content: center;
-    
+        display: flex;
+        width: 32%;
+    }
 
-        .img1{
-            width: 70%;
-            height: 70%;
-            margin-top: 6rem;
+    .img-box{
+        display: flex;
+        align-items: flex-end; 
+        position: relative;
+    }
 
-        }
+    .img1{
+        object-fit: contain;
+        position: relative;
+        width: 60%;
+        padding: 0;
+    }
 
-        .img2{
-            width: 50%;
-            height: 90%;
-            margin-left: -8rem;
-        }
+    .img2{
+        object-fit: contain;
+        width: 65%;
+        position: absolute;
+        top: 45%; 
+        left: 74%; 
+        transform: translate(-50%, -50%);
+        z-index: 1; 
     }
 
     .signright{
-        width: 50%;
+        width: 60%;
         justify-content: center;
         text-align: left;
+        padding: 60px 100px 104px 100px;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
     }
 
     h1{
         font-size: 38px;
+    }
+
+ 
+    .signright h1 {
+        margin: 0;
+        font-size: 30px;
+        color: #292731;
+        line-height: 45px;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+    
+    .signright p {
+        margin: 0 0 20px;
+        color: #666;
+    }
+
+    .signright h2{
+        font-size: 20px;
+        color: #404040;
+        line-height: 30px;
+        font-weight: 500;
+        margin-top: 1rem;
+    }
+
+    .reg-head{
+        font-family: 'Poppins', sans-serif;
+font-size: 38.67px;
+font-weight: 500;
+line-height: 28.01px;
+letter-spacing: -0.375px;
+text-align: left;
+color: #0866C6 !important;
+    }
+    
+    .login-input {
+        height: 50px;
+        background: #F8F7F7;
+        width: 80%;
+        font-family: 'Poppins', sans-serif;
+        border-radius: 14px;
+        border: 1px solid #DCD7D7;
+        margin-top: 0.2rem;
+        padding-left: 20px;
+      }
+     
+      .login-input::placeholder {
+        text-align: left;
+        color: #9A9A9A;
+        font-weight: 500;
+      
+    }
+
+    .p-multiselect-label-container{
+        margin: auto;
+    }
+
+    .p-multiselect {
+        text-align: left;
+        margin-top: 0.5rem;
+    }
+
+ 
+
+    .p-inputgroup-addon {
+        cursor: pointer;
+        padding: 10px;
+        background: none;
+        border: none;
+    }
+
+    .otp-box{
+
+        background: #F8F7F7;
+        display: flex;
+        border-radius: 14px;
+        border: 1px solid #DCD7D7;
+        width: 80%;
+        .login-input { 
+            border: none;
+            width: 90%;
+        }
+    }
+    
+    .p-inputgroup-addon svg {
+        font-size: 18px;
+    }
+      
+
+    .btn-box{
+        text-align: center;
+
+        p{
+font-size: 20px;
+font-weight: 600;
+line-height: 30px;  
+color: #292731;
+
+        }
+
+        span{
+            color: #B51B1B;
+            cursor: pointer;
+        }
+    }
+
+    .btn{
+        border-radius: 14px;
+        background: #1868DB;
+        font-weight: 500;
+        font-size: 20px;
+        border: none;
+        padding: 16px 100px 16px 100px ;
+        margin: 10px;
+        color: white;
+        cursor: pointer;
+        margin-bottom: 30px;
+        margin-top: 3rem;
+    }
+
+    .btn2{
+        border-radius: 14px;
+        border: 1px solid #1868DB;
+        font-weight: 500;
+        font-size: 14px;
+        padding: 16px;
+        margin: 10px;
+        background: none;
+        color: #1868DB;
+        cursor: pointer;
+    }
+
+    .btn:hover{
+        background: #1868DB;
+        color: white ;
+    }
+
+    .input-box{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        gap: 30px;
+    }
+
+    .input-text-box{
+        width: 50%;
+    }
+
+    .terms{
+        display: flex;
+        margin-top: 2rem;
+
+
+        .terms-tick{
+            margin-right: 1rem;
+        }
+    }
+
+    .p-inputnumber{
+        border: none;
+    }
+
+    .p-inputnumber::placeholder{
+        text-align: left;
+        color: #9A9A9A;
+        font-weight: 500;
     }
 }

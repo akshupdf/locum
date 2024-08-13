@@ -1,14 +1,17 @@
+import { LocumeLogo } from "../../reusable/Icons"
 
 
 
 export const Footer = () => { 
 
     return (
-<div className="Homepage">
+
 <div className="footer">
 
 
     <div className="foot1">
+        <div className="logo">
+            {/* <LocumeLogo /> */}
     <svg width="182" height="27" viewBox="0 0 182 27" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M21.875 18.5527L21.9263 26.9856H5.06055V26.0486L21.875 18.5527Z" fill="#292D32"/>
 <path d="M6.43598 25.4485L6.74631 0H0V26.9852H6.43598V25.4485Z" fill="white"/>
@@ -19,7 +22,9 @@ export const Footer = () => {
 <path d="M181.944 26.9852H165.135V0H181.944V5.46998H165.135V10.7576H182.001V15.9359H165.135V21.5152H181.944V26.9852Z" fill="white"/>
 </svg>
 
-        <p>Follow us in Social Media</p>
+</div>
+
+        <p>Follow us on Social Media</p>
 
 
         <svg width="152" height="35" viewBox="0 0 152 35" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -31,13 +36,16 @@ export const Footer = () => {
 </svg>
 
 
-<p>Terms & Conditions 
-Privacy Policy</p>
+<p>Terms & Conditions <span>Privacy Policy </span> </p>
     </div>
     
     <div className="foot2">
 
-        <p>About Us Blogs  Help</p>
+        <ul> 
+            <li  onClick={() => window.location.href = '/aboutus'}>About Us</li>
+            <li>Blogs</li>
+            <li>Help</li>
+        </ul>
 
         <p>Copyright © 2024, Locume. All rights reserved.</p>
         
@@ -46,11 +54,11 @@ Privacy Policy</p>
     <div className="foot3">
         <h1>Contact</h1>
 
-        <p>+91 8879881815 / +91 7738311925</p>
+        <p >+91 8879881815 / +91 7738311925</p>
 
-        <p>Shop No 2, Vishwakarma Opposite Om Surya apartment Sawarkar Nagar Thane West, Maharashtra ,400606</p>
+        <p >Shop No 2, Vishwakarma Opposite Om Surya apartment Sawarkar Nagar Thane West, Maharashtra ,400606</p>
     </div>
     </div>
-</div>
+
     )
 }

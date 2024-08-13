@@ -1,58 +1,94 @@
-.navbar {
+.navbarMain {
 
     display: flex;
-    font-family : Poppins;
+    font-family: "Poppins", sans-serif;
     width: 100%;
+    box-shadow: 0px 1px 1px 0px #0000001F;    
 
     .logo-box{
-        width: 20%;
-        justify-content: center;
-        display: flex;
-        padding-top: 15px;
+        width: 17%;
+        cursor: pointer;
+   
+        svg{
+            margin: 0;
+        }
     }
 
-    .logo{
-        width: 100px;
-        height: 60px;
-        cursor: pointer;
+    .list-box{
+        width: 60%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
     }
+
+    // .logo{
+    //     width: 100px;
+    //     height: 60px;
+        
+    // }
 
     .list{
-        width: 60%;
+       
         display: flex;
-        justify-content: space-between;
         list-style: none;
         align-items: center;
         cursor: pointer;
+        margin: auto;
         
         li{
             font-weight: 500;
-            font-family: 'Poppins';
+            font-family: "Poppins", sans-serif;
+            margin-left: 2rem;
+            font-size: 16px;
+            color: #292D32;
+            line-height: 20.05px;
+
+            span{
+                background: #3551B51F;
+                padding: 6px 12px 6px 12px;
+                border-radius: 10px;
+                display: flex;
+                margin-left: -1rem;
+
+                p{
+                    color: #033B61;
+                    margin-right: 0.5rem;
+                    margin-left: 0.5rem;
+                }
+            }
         }
 
-        li:hover{
-            color: red;
-        }
+
     }
 
     .nav-btn-box{
         width: 20%;
         justify-content: center;
         display: flex;
+        margin: auto;
     }
 
-    .nav-btn{
+    .nav-btn1{
         border-radius: 11px;
-        height: 34px;
         font-weight: 400;
         font-size: 14px;
-        border: none;
-        padding: 2px 12px 5px 12px ;
+        border: 1px solid #033B61;
+        padding: 0px 12px 0px 12px ;
         margin: 10px;
         cursor: pointer;
+        background: none;
+        display: flex;
+        height: 34px;
 
         svg{
-            margin: 2px;
+            margin: 0;
+            margin-right: 0.5rem;
+            margin-top: 0.4rem;
+        }
+
+        p{
+            margin-top: 0.3rem;
+            margin-bottom: 0;
         }
     }
 
@@ -62,12 +98,83 @@
         font-weight: 400;
         font-size: 14px;
         border: none;
-        padding: 5px 12px 5px 12px ;
+        padding: 6px 20px 6px 20px ;
         margin: 10px;
         cursor: pointer;
         background: #033B61;
         color: white;
     }
 
+    .hamburger {
+        display: none !important;
+    }
+
    
+}
+
+@media (max-width: 768px) {
+
+    .navbarMain {
+
+
+
+
+    .logo-box {
+        width: 50%;
+        margin-left: 10px;
+    }
+
+    .list-box {
+        display: none; 
+        width: 100%;
+        flex-direction: column;
+        background-color: #fff;
+        position: absolute;
+        top: 40px; 
+        right: 0;
+        z-index: 1000;
+        border: 1px solid #ddd;
+        
+    }
+
+    .list {
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+        align-items: start;
+        margin-left: 4.5vh;
+    }
+
+    .list li {
+        margin: 0;
+        padding: 10px;
+
+
+        span{
+            font-size: 12px;
+        }
+    }
+
+    .nav-btn-box {
+        display: none !important; 
+        width: 100%;
+        position: absolute;
+        margin-top: 32vh;
+        background: white;
+        justify-content: space-evenly;
+        box-shadow: 0px 1px 1px 0px #0000001F;  
+    }
+
+    .hamburger {
+        display: block !important;
+        cursor: pointer;
+    }
+
+    .hamburger-icon {
+        font-size: 24px;
+    }
+
+    .active  {
+        display: flex !important; 
+    } }
 }

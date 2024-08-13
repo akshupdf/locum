@@ -10,24 +10,50 @@ import { getTitleFromRoute } from './utils/docTile';
 import { router } from './route';
 import { NavBar } from './components/Navbar/NavBar';
 import { Footer } from './components/Footer/Footer';
+import ProtectedRoute from './route/ProtectedRoute';
+import SkeletonLoader from './reusable/Skeleton';
+import { Profile } from './components/Profile/Profile';
 
 export default function App() {
-  const location = useLocation();
 
+  const id = localStorage.getItem('userId');
+
+  const location = useLocation();
   return (
     <PrimeReactProvider>
       <Helmet>
         <title>{getTitleFromRoute(location.pathname)}</title>
       </Helmet>
       <Suspense fallback={<div>Loading...</div>}>
- 
-          <NavBar />
-          <Routes>
-            {router.map((route) => (
+    {
+
+(location?.pathname === "/signin" || location?.pathname === "/register")  ? "" :   <NavBar />
+    }
+           <Routes>
+          {router.map((route) => {
+            if (location?.pathname === '/profile') {
+              return (
+                <Route
+                  key={route.path}
+                  path={route.path}
+                  element={
+                    <Suspense fallback={<SkeletonLoader />}>
+                      <Profile />
+                    </Suspense>
+                  }
+                />
+              );
+            }
+
+            return (
               <Route key={route.path} path={route.path} element={route.element} />
-            ))}
-          </Routes>
-            <Footer />
+            );
+          })}
+        </Routes>
+          {
+            (location?.pathname === "/signin" || location?.pathname === "/register")  ? "" :      <Footer />
+          }
+         
       </Suspense>
     </PrimeReactProvider>
   );

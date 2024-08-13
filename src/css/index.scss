@@ -1,3 +1,33 @@
 @import url("./homepage/homepage.scss");
 @import url("./navbar/navbar.scss");
 @import url("./signup/signup.scss");
+@import url("./Footer/Footer.scss");
+@import url("./Profile/profile.scss");
+@import url("./About/about.scss");
+@import url("./Contact/contactus.scss");
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .mt{
+    margin-top: 2rem;
+  }
+
+  .ml{
+    margin-left: 2rem;
+  }
+
+  .mr{
+    margin-right: 2rem;
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+ 
