@@ -4,12 +4,15 @@ import { Leafimg, Stars } from "../reusable/Icons";
 import { RadioButton } from "primereact/radiobutton";
 import { InputText } from "primereact/inputtext";
 import { Checkbox } from "primereact/checkbox";
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 
 
-
-const SkeletonLoader = () => (
-
+const SkeletonLoader = () => {
+    
+    
+    return (
     <div className="profile">
 
       <div className='skeleton'>
@@ -19,67 +22,60 @@ const SkeletonLoader = () => (
       
             <div className="profile-left">
               <div className="logo-box">
-                <img src={profile} alt="profile"></img>
-    
-                <button className="btn">Upload Photo</button>
+              <Skeleton  />
               </div>
     
               <div className="name-box">
-                <h3> Your Name</h3>
+                <h3> <Skeleton /></h3>
                 <div className="name-text-box">
                   {" "}
-                  <p>Rajesh {""} Tiwari </p>
-                  <button className="btn"> Edit </button>{" "}
+                  <p> <Skeleton /> </p>
+                
                 </div>
     
-                <h3>Email</h3>
+                <h3> <Skeleton /></h3>
                 <div className="name-text-box">
-                  <p>akhilkumar@gmail.com</p>
-                  <button className="btn"> Edit </button>{" "}
+                  <p> <Skeleton /></p>
+        
                 </div>
     
-                <h3>Phone Number</h3>
+                <h3> <Skeleton /></h3>
                 <div className="name-text-box">
-                  <p>7777777777</p>
-                  <button className="btn"> Edit </button>{" "}
+                  <p> <Skeleton /></p>
+        
                 </div>
     
-                <h3>Location</h3>
+                <h3> <Skeleton /></h3>
                 <div className="name-text-box">
-                  <p>Mumbai</p>
-                  <button className="btn"> Edit </button>{" "}
+                  <p> <Skeleton /></p>
+         
                 </div>
     
-                <h3>Medical ID</h3>
-                <p>9123 1256 8988</p>
+                <h3> <Skeleton /></h3>
+                <p> <Skeleton /></p>
               </div>
     
               <div className="about-box">
                 <div className="head">
-                  <h1>About Sid</h1>
-                  <button className="btn">Edit</button>
+                  <h1> <Skeleton /></h1>
+             
                 </div>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur. Erat auctor a aliquam vel
-                  congue luctus. Leo diam cras neque mauris ac arcu elit ipsum dolor
-                  sit amet consectetur.
+                <Skeleton count={3} />
                 </p>
               </div>
             </div>
             <div className="profile-right">
-              <div className="detail-box">
+              {/* <div className="detail-box">
                 <div className="detail-text-box">
-                  <h2>Professional Details</h2>
-                  <p>
-                    This are the professional details shown to users in the app.
-                  </p>
+                <Skeleton  />
                 </div>
                 <div>
                   <Stars />
                 </div>
-              </div>
+              </div> */}
     
-              <div className="available-box">
+              {/* <div className="available-box">
                 <div className="d-flex">
                   {" "}
                   <h1>Your Availability </h1>
@@ -343,7 +339,9 @@ const SkeletonLoader = () => (
                     <span> Terms of Use</span>{" "}
                   </p>
                 </div>
-              </div>
+              </div> */}
+
+              <Skeleton count={20}/>
             </div>
           </div>
     
@@ -401,9 +399,17 @@ const SkeletonLoader = () => (
               <h1>Rebecca Dickerson</h1>
             </div>
           </div>
+
+
     </div>
-                 
+    {/* <div className="skeleton">
+
+Loading.....
+      </div> */}
+
         </div>
-);
+        
+    )
+}
 
 export default SkeletonLoader;

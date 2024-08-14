@@ -12,6 +12,8 @@ import { MultiSelect } from 'primereact/multiselect';
 import { Dropdown } from 'primereact/dropdown';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, generateOtp, verifyOtp } from '../../../redux/apiSlice';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 
 
@@ -41,7 +43,9 @@ export const Register = () => {
       const validationSchema = yup.object({
         firstName: yup.string().required('firstName is required'),
         lastName: yup.string().required('lastName is required'),
-        mobileNo: yup.string().required('mobileNo is required'),
+        mobileNo: yup.string().required('mobileNo is required') 
+        .min(10, "Mobile number must contain 10 digits")
+        .max(10, "Mobile number must contain 10 digits"),
         medicalId: yup.string().required('medicalId is required'),
         termsAccepted: yup.boolean().oneOf([true], 'You must accept the terms and conditions')
       });
@@ -63,6 +67,7 @@ export const Register = () => {
       const formik = useFormik({
         initialValues: initialValues,
         enableReinitialize: true,
+        validationSchema : validationSchema,
         onSubmit: async (values) => { 
 
           const data = {
@@ -105,6 +110,8 @@ export const Register = () => {
       }
 
       dispatch(verifyOtp(values));
+      
+      toast("Otp verified !")
 
 
         // try {
@@ -145,13 +152,17 @@ export const Register = () => {
 
   <h2>First Name</h2> 
 <InputText 
-    className=" login-input"
+    className={`login-input ${formik.touched.roomType && formik.errors.roomView ? 'p-invalid' : ''}`}
     name="firstName"
     value={formik.values.firstName}
     onChange={formik.handleChange}
     onBlur={formik.handleBlur}
     placeholder="Your First Name"
-  /> </div>
+  /> 
+   {formik.touched.firstName && formik.errors.firstName && (
+                    <small className="p-error">{formik.errors.firstName}</small>
+                  )}
+  </div>
 
   <div className="input-text-box">
 
@@ -172,17 +183,21 @@ export const Register = () => {
   <div className="input-text-box d-flex">
   <h2 className='col-6'>Mobile Number</h2>
 <InputText 
-    className=" login-input col-6"
+    className={`login-input col-6 ${formik.touched.roomType && formik.errors.roomView ? 'p-invalid' : ''}`}
     name="mobileNo"
     value={formik.values.mobileNo}
     onChange={formik.handleChange}
     onBlur={formik.handleBlur}
     placeholder="Enter Your mobile number"
   />  
-  
+   
   <button className='btn2 col-4' onClick={() => sendOtp(formik.values.mobileNo)} type="button">Send Otp</button>
+  {formik.touched.mobileNo && formik.errors.mobileNo && (
+                    <small className="p-error">{formik.errors.mobileNo}</small>
+   )}
    </div>
-
+   
+  
   </div>
   <div className='input-box'>
 
@@ -312,7 +327,7 @@ export const Register = () => {
 
   </form>
 
-
+     <ToastContainer />
 
 </div>
     </div>

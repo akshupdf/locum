@@ -11,8 +11,6 @@ import { router } from './route';
 import { NavBar } from './components/Navbar/NavBar';
 import { Footer } from './components/Footer/Footer';
 import ProtectedRoute from './route/ProtectedRoute';
-import SkeletonLoader from './reusable/Skeleton';
-import { Profile } from './components/Profile/Profile';
 
 export default function App() {
 
@@ -29,27 +27,16 @@ export default function App() {
 
 (location?.pathname === "/signin" || location?.pathname === "/register")  ? "" :   <NavBar />
     }
-           <Routes>
+          <Routes>
           {router.map((route) => {
-            if (location?.pathname === '/profile') {
-              return (
-                <Route
-                  key={route.path}
-                  path={route.path}
-                  element={
-                    <Suspense fallback={<SkeletonLoader />}>
-                      <Profile />
-                    </Suspense>
-                  }
-                />
-              );
-            }
 
-            return (
-              <Route key={route.path} path={route.path} element={route.element} />
-            );
-          })}
-        </Routes>
+            return(
+              <Route key={route.path} path={route.path} element={route.element} /> )
+           })}
+
+
+
+          </Routes>
           {
             (location?.pathname === "/signin" || location?.pathname === "/register")  ? "" :      <Footer />
           }
