@@ -382,3 +382,115 @@
     }
   }
 }
+
+
+@media only screen and (max-width: 1024px) and (min-width: 768px) {
+  .aboutmain {
+    .aboutbox {
+      flex-direction: column;
+    }
+
+    .aboutleft,
+    .aboutright {
+      width: 100%;
+      padding: 20px 40px;
+    }
+
+    .aboutbar {
+      padding: 60px 0px;
+    }
+
+    .vectorbox {
+      flex-direction: column;
+      padding: 0px 30px;
+    }
+
+    .vectorbox-left,
+    .vectorbox-right {
+      width: 100%;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    .vectorbox-left img {
+      width: 50%;
+    }
+
+    .peoplebox {
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .peoplebox-left,
+    .peoplebox-right {
+      width: 100%;
+      padding: 20px 30px;
+      text-align: center;
+    }
+
+    .leader-box {
+      // flex-direction: column;
+      width: 100%;
+      display: flex;
+      gap: 8px;
+      // padding: 20px;
+    }
+
+    .leader-box-small {
+      width: 100%;
+      margin: 1rem 0;
+    }
+
+    .join-box {
+      flex-direction: column;
+      // width: 100%;
+      text-align: center;
+    }
+
+    .join-box-left,
+    .join-box-right {
+      width: 100%;
+      padding: 20px;
+    }
+
+    .circle {
+      width: 15%;
+      margin-left: -10vh;
+    }
+
+    .text-box {
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+
+    .peoplebtn,
+    .signup-btn {
+      // width: 100%;
+      text-align: center;
+      padding: 15px;
+      margin-top: 1rem;
+    }
+
+    .regbtn{
+      margin-top: 0px;
+      width: 100%;
+    }
+
+    .us-box-main{
+      padding: 40px;
+    }
+
+    .praise-small-box{
+      h1{
+        font-size: 22px;
+      }
+    }
+    .leader-box-main{
+      height: auto;
+    }
+
+    .leader-box-small img{
+      height: 230px;
+    }
+  }
+}
