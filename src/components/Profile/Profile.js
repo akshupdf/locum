@@ -6,10 +6,12 @@ import { InputText } from "primereact/inputtext";
 import { Checkbox } from "primereact/checkbox";
 import { Button } from "primereact/button";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUserWithToken } from "../../redux/apiSlice";
+import { addUser, fetchUserWithToken } from "../../redux/apiSlice";
 import { useParams } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import SkeletonLoader from "../../reusable/Skeleton";
+import { useFormik } from "formik";
+import { toast, ToastContainer } from "react-toastify";
 
 
 const selectUserInfov2 = (state) => state.user.userInfov2;
@@ -17,6 +19,7 @@ const selectUserInfov2 = (state) => state.user.userInfov2;
 export const Profile = () => {
 
   const { id } = useParams();
+  const dispatch = useDispatch();
 
   const [timeSlot, setTimeSlot] = useState("");
   const [clinic , setClinic] = useState(true);
@@ -25,14 +28,43 @@ export const Profile = () => {
   const [visit, setVisit] = useState(true)
   const [checked, setChecked] = useState(true);
   const [isLoading, setLoading] = useState(true);
+  const user = useSelector(selectUserInfov2);
+  
+  const formik = useFormik({
+    initialValues: {
+      first_name: user?.first_name || "",
+      last_name: user?.last_name || "",
+      email: user?.email || "akhilkumar@gmail.com",
+      mobile_number: user?.mobile_number || "",
+      location: user?.location || "",
+      medical_id: user?.medical_id || "",
+    },
+    enableReinitialize: true,
+    onSubmit: async (values) => {
+
+        const data = {
+          ...values,
+        };
+  
+        const addUserResult = await dispatch(addUser(data)).unwrap();
+  
+        if (addUserResult.error) {
+          toast(addUserResult.error || "User Registration Failed");
+        } else {
+          toast("User Has been Updated");
+            window.location.href = `/profile`; 
+        }
+      
+    },
+  });
 
 
-  const section = [
-    "8:00 am - 2.00 pm",
-    "2:00 pm - 8.00 pm",
-    "8:00 pm - 2.00 am",
-    "2:00 am - 8.00 am",
-  ];
+  // const section = [
+  //   "8:00 am - 2.00 pm",
+  //   "2:00 pm - 8.00 pm",
+  //   "8:00 pm - 2.00 am",
+  //   "2:00 am - 8.00 am",
+  // ];
   const special = [
     "Emergency Med ",
     "Emergency Med ",
@@ -50,8 +82,6 @@ export const Profile = () => {
   };
 
 
-  const user = useSelector(selectUserInfov2);
-  const dispatch = useDispatch();
 
 
   useEffect(() => {
@@ -120,7 +150,7 @@ export const Profile = () => {
               </div>
   
               <h3>Medical ID</h3>
-              <p>9123 1256 8988</p>
+              <p>{data?.medical_id}</p>
             </div>
   
             <div className="about-box">
@@ -488,7 +518,7 @@ export const Profile = () => {
           
           } 
     
-
+    <ToastContainer />
     </div>
   );
 };

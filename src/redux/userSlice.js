@@ -9,6 +9,7 @@ const userSlice = createSlice({
     otp: null,
     loading: false,
     error: null,
+    verifyOtpError: null,
     mobileVerficationId: null,
     userInfo: null,
     userInfov2: null,
@@ -51,7 +52,7 @@ const userSlice = createSlice({
       })
       .addCase(verifyOtp.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.verifyOtpError = action.payload;
       })
       .addCase(getUserLogin.pending, (state) => {
         state.loading = true;

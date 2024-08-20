@@ -8,6 +8,7 @@ export const addUser = createAsyncThunk(
     try {
       const response = await axios.post('http://13.127.236.115:3000/api/users/addUsers', values);
       return response;
+      
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -26,7 +27,7 @@ export const generateOtp = createAsyncThunk(
      
       return response.data.result;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message || error.message);
     }
   }
 );
@@ -39,9 +40,9 @@ export const verifyOtp = createAsyncThunk(
         mobileNumber,
         otp
       });
-      return response.data.result.otpVerficationId;
+      return response.data
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message || error.message);
     }
   }
 );

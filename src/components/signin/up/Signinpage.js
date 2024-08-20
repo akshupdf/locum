@@ -4,12 +4,9 @@ import dr1 from '../../../assets/dr1.png'
 import { ClosedEye, Hand, Locume } from '../../../reusable/Icons';
 import { InputText } from 'primereact/inputtext';
 import 'primereact/resources/themes/saga-blue/theme.css';  
-import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { generateOtp, getUserLogin } from '../../../redux/apiSlice';
-
-
-
+import { ToastContainer, toast } from 'react-toastify';
 
 const validateMobileOrEmail = (value) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -20,7 +17,7 @@ const validateMobileOrEmail = (value) => {
     }
   
     if (!emailRegex.test(value) && !mobileRegex.test(value)) {
-      return 'Invalid email or mobile number';
+      return 'Invalid mobile number';
     }
   
     return null;
@@ -38,8 +35,7 @@ export const Signup = () => {
     const dispatch = useDispatch();
     const { otp } = useSelector((state) => state.user);
 
-    const id = localStorage.getItem("userId")
-    console.log(id)
+   
 
     const sendOtp = async (data) => {
 
@@ -48,19 +44,14 @@ export const Signup = () => {
         "otpType" : 1
     }
 
-    dispatch(generateOtp(values));
+    try {
+      await dispatch(generateOtp(values)).unwrap();
+      
+    } catch (error) {
+    
+      toast(error || "User Not found , Please Register");
+    }
 
-      // try {
-      //   const response = await axios.post('http://13.127.236.115:3000/api/users/generateOtp', values);
-      //   console.log('Response:', response.data.result);
-      //   // Optionally redirect or handle success
-      //   // window.location.href = '/signin';
-
-      //   setOtp(response.data.result)
-      // } catch (error) {
-      //   console.error('Error submitting form:', error);
-      //   // Handle error here
-      // }
     }
 
     const verifyOtp = async (data) => {
@@ -69,12 +60,23 @@ export const Signup = () => {
         "mobileNumber" : data,
         "otp" : otp
     }
+   try {
 
+   await dispatch(getUserLogin(values)).unwrap();
 
-    dispatch(getUserLogin(values));
-if(id){
-window.location.href = `/profile/${id}`
-}
+   const id = localStorage.getItem("userId")
+
+    if(id){
+      window.location.href = `/profile/${id}`
+      }
+      
+    } catch (error) {
+    
+      toast(error || "Otp Mismatched");
+    }
+
+  
+
 
 
       // try {
@@ -91,7 +93,7 @@ window.location.href = `/profile/${id}`
   return(
     <div className='signup'>
         <div className='signleft'>
-          <div className='svg-box'>
+          <div className='svg-box' onClick={() => window.location.href = '/'}>
           <Locume />
           </div>
    
@@ -111,8 +113,9 @@ window.location.href = `/profile/${id}`
 
           <div>
               <h2>Mobile Number</h2>
-          <InputText 
-                className=" login-input"
+              <div>
+              <InputText 
+                className=" login-input login-input2"
                 value={mobileNo}
                 onChange={(e) => {
                   setMobileNo(e.target.value);
@@ -120,6 +123,16 @@ window.location.href = `/profile/${id}`
                 }}
                 placeholder="Enter Your mobile number"
               /> 
+              </div>
+       <div className="p-error">
+       {error2 && (
+                    <small className="p-error">{error2}</small>
+                  )}
+       </div>
+
+
+
+
               <h2>OTP</h2>
               <div className='otp-box'>
               <InputText 
@@ -135,11 +148,11 @@ window.location.href = `/profile/${id}`
               
               <div className='btn-box'>
                 <div className='d-flex'>
-                <button className='btn2' onClick={() => sendOtp(mobileNo)}>Send Otp</button>
+                <button className='btn3' onClick={() => sendOtp(mobileNo)}>Send Otp</button>
                 <button className='btn' onClick={() => verifyOtp(mobileNo)}>Log in</button>
                 </div>
            
-                <p>Don't have an account? <span onClick={() => window.location.href = '/register'}>  Register Now</span></p>
+                <p className='reg'>Don't have an account? <span onClick={() => window.location.href = '/register'}>  Register Now</span></p>
               </div>
 
           </div>
@@ -148,7 +161,7 @@ window.location.href = `/profile/${id}`
         
 
      
-    
+    <ToastContainer />
 
     </div>
    )
