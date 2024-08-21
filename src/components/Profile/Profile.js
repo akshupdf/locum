@@ -113,10 +113,11 @@ export const Profile = () => {
   
     <div>
   
-        <div className="d-flex">
+        <div className="profile-box">
   
     
           <div className="profile-left">
+            <div className="tab-box">
             <div className="logo-box">
               <img src={profile} alt="profile"></img>
   
@@ -152,7 +153,7 @@ export const Profile = () => {
               <h3>Medical ID</h3>
               <p>{data?.medical_id}</p>
             </div>
-  
+    </div>
             <div className="about-box">
               <div className="head">
                 <h1>About Sid</h1>
@@ -293,7 +294,10 @@ export const Profile = () => {
   
                   <div className="d-flex  ">
                     <div className="btn d-flex">
-                      <RadioButton inputId="ingredient4" name="Clinic time" value={true} checked={clinictime === true} onChange={(e) => setClinictime(e.value)} />
+                      <RadioButton inputId="ingredient4" name="Clinic time" 
+                      value={true} 
+                      checked={clinictime === true}
+                       onChange={(e) => setClinictime(e.value)} />
                       <p htmlFor="ingredient4" className="ml-2">
                         Yes
                       </p>
