@@ -54,6 +54,7 @@
   }
 
   .regbtn {
+    border: none;
     height: 48px;
     padding: 10px 87.42px 16px 95.31px;
     gap: 0px;
@@ -264,8 +265,8 @@
   }
 
   .leader-box-main {
-    max-height: 150vh;
-    height: 115vh;
+    // max-height: 150vh;
+    // height: 115vh;
     padding: 4rem;
     background: #f8f8ff;
     overflow: hidden;
@@ -319,8 +320,6 @@
       margin-left: 0.5rem;
     }
   }
-
-
 
   .join-box-main {
     width: 100%;
@@ -383,20 +382,37 @@
   }
 }
 
-
 @media only screen and (max-width: 1024px) and (min-width: 768px) {
   .aboutmain {
     .aboutbox {
-      flex-direction: column;
+      // flex-direction: column;
     }
 
     .aboutleft,
     .aboutright {
-      width: 100%;
+      // width: 100%;
       padding: 20px 40px;
     }
 
+    .aboutleft {
+      padding-right: 0 !important;
+    }
+
+    .aboutleft p {
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 18px;
+    }
+
+    .aboutright img {
+      object-fit: cover;
+      width: 384px;
+    }
+
     .aboutbar {
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
       padding: 60px 0px;
     }
 
@@ -405,19 +421,27 @@
       padding: 0px 30px;
     }
 
-    .vectorbox-left,
+    .vectorbox-left {
+      height: 100px;
+    }
+
     .vectorbox-right {
       width: 100%;
       padding: 20px 0;
       text-align: center;
     }
 
-    .vectorbox-left img {
-      width: 50%;
+    // .vectorbox-left img {
+    //   width: 50%;
+    // }
+
+    .aboutreg {
+      display: flex;
+      margin-top: 1rem;
     }
 
     .peoplebox {
-      flex-direction: column;
+      // flex-direction: column;
       padding: 20px;
     }
 
@@ -427,6 +451,42 @@
       padding: 20px 30px;
       text-align: center;
     }
+
+    .peoplebox-left {
+      padding-right: 0 !important;
+    }
+
+    .peoplebox-left h1 {
+      font-size: 31px;
+      line-height: 32px;
+      text-align: left;
+    }
+
+    .peoplebox-left p {
+      text-align: left;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 14.63px;
+    }
+
+    .peoplebtn {
+      padding: 13px 50px !important;
+      margin-bottom: 0;
+    }
+
+    .peoplebox-right img {
+      width: 312px;
+      height: 286px;
+      object-fit: contain;
+    }
+
+    .us-box-out {
+      padding-top: 49px;
+    }
+    
+        .us-box-main h2{
+          font-size: 32px;
+        }
 
     .leader-box {
       // flex-direction: column;
@@ -442,15 +502,34 @@
     }
 
     .join-box {
-      flex-direction: column;
-      // width: 100%;
-      text-align: center;
+     
     }
 
-    .join-box-left,
-    .join-box-right {
+    .join-box-left{
       width: 100%;
       padding: 20px;
+    }
+
+    .join-box-right img{
+      width: 306px;
+      height: 212px;
+      object-fit: contain;
+    }
+
+    .join-box-left h2{
+                  font-family: "Montserrat", sans-serif;
+        font-size: 32px;
+        font-weight: 600;
+        line-height: 32px;
+        text-align: left;
+    }
+
+    .join-box p{
+      font-family: "Montserrat", sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 18px;
+        text-align: left;
     }
 
     .circle {
@@ -471,26 +550,182 @@
       margin-top: 1rem;
     }
 
-    .regbtn{
+    .regbtn {
       margin-top: 0px;
       width: 100%;
     }
 
-    .us-box-main{
+    .us-box-main {
       padding: 40px;
+      padding-right: 0;
     }
 
-    .praise-small-box{
-      h1{
-        font-size: 22px;
+    .praise-small-box {
+      h1 {
+          font-size: 18px;
+          font-weight: 600;
+          line-height: 20px;
+          letter-spacing: -0.5600000023841858px;
+          text-align: left;
       }
     }
-    .leader-box-main{
+
+    .leader-box-main h1{
+            font-family: "Montserrat", sans-serif;
+        font-size: 32px;
+        font-weight: 800;
+        line-height: 55px;
+        text-align: left;
+    }
+    
+        .leader-box-main{
+          padding: 1rem;
+        }
+
+    .praise-small-box p{
+        font-family: "Montserrat", sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 18px;
+        text-align: left;
+    }
+    
+        .praise-small-box{
+          margin: 0;
+        }
+
+                .us-box{
+                  gap: 15px;
+                }
+
+    .leader-box-main {
       height: auto;
     }
 
-    .leader-box-small img{
+    .leader-box-small span{
+            font-family: "Montserrat", sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        text-align: left;
+    }
+
+    .leader-box-small img {
       height: 230px;
+              object-fit: cover;
+    }
+  }
+}
+
+@media only screen and (max-width: 468px) {
+  .aboutmain {
+    .aboutbox {
+      flex-direction: column;
+      padding: 10px 20px;
+    }
+
+    .aboutleft,
+    .aboutright {
+      width: 100%;
+      padding: 10px 20px;
+      text-align: center;
+    }
+
+    .aboutbar {
+      padding: 40px 20px;
+    }
+
+    .vectorbox {
+      flex-direction: column;
+      padding: 0px 20px;
+    }
+
+    .vectorbox-left,
+    .vectorbox-right {
+      width: 100%;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    .vectorbox-left img {
+      width: 60%;
+    }
+
+    .peoplebox {
+      flex-direction: column;
+      padding: 10px 20px;
+    }
+
+    .peoplebox-left,
+    .peoplebox-right {
+      width: 100%;
+      padding: 10px 20px;
+      text-align: center;
+    }
+
+    .leader-box {
+      flex-direction: column;
+      width: 100%;
+      gap: 8px;
+    }
+
+    .leader-box-small {
+      width: 100%;
+      margin: 1rem 0;
+    }
+
+    .join-box {
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .join-box-left,
+    .join-box-right {
+      width: 100%;
+      padding: 20px;
+    }
+
+    .circle {
+      width: 20%;
+      margin-left: -8vh;
+    }
+
+    .text-box {
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+
+    .peoplebtn,
+    .signup-btn {
+      width: 100%;
+      text-align: center;
+      padding: 15px;
+      margin-top: 1rem;
+    }
+
+    .regbtn {
+      margin-top: 0px;
+      width: 100%;
+    }
+
+    .us-box-main {
+      padding: 20px;
+    }
+
+    .praise-small-box {
+      h1 {
+        font-size: 20px;
+      }
+    }
+
+    .leader-box-main {
+      height: auto;
+      padding: 20px;
+    }
+
+    .leader-box-small img {
+      height: 200px;
     }
   }
 }
