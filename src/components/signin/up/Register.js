@@ -67,21 +67,21 @@ export const Register = () => {
     enableReinitialize: true,
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      const valuesForVerification = {
-        mobileNumber: values.mobileNo,
-        otp: otp,
-      };
+      // const valuesForVerification = {
+      //   mobileNumber: values.mobileNo,
+      //   otp: otp,
+      // };
   
 
-      const verifyOtpResult = await dispatch(verifyOtp(valuesForVerification)).unwrap();
+      // const verifyOtpResult = await dispatch(verifyOtp(valuesForVerification)).unwrap();
   
-      if (verifyOtpResult.error) {
+      // if (verifyOtpResult.error) {
 
-        toast(verifyOtpResult.error || "Otp Mismatched");
-      } else {
+      //   toast(verifyOtpResult.error || "Otp Mismatched");
+      // } else {
    
   
-        const mobileVerficationId = verifyOtpResult.result.otpVerficationId;
+        // const mobileVerficationId = verifyOtpResult.result.otpVerficationId;
   
         const data = {
           ...values,
@@ -95,12 +95,9 @@ export const Register = () => {
           toast(addUserResult.error || "User Registration Failed");
         } else {
           toast("User Has been registered");
-  
-         
             window.location.href = `/signin`;
-      
         }
-      }
+      
     },
   });
 
@@ -127,27 +124,27 @@ export const Register = () => {
   }
   };
 
-  // const verifyOtp2 = async (data) => {
-  //   const values = {
-  //     mobileNumber: data,
-  //     otp: otp,
-  //   };
-  //   if(error){
-  //     toast(error || "Otp Mismatched");
-  //   }else{
+  const verifyOtp2 = async (data) => {
+    const values = {
+      mobileNumber: data,
+      otp: otp,
+    };
+    if(error){
+      toast(error || "Otp Mismatched");
+    }else{
    
-  //     dispatch(verifyOtp(values));
-  //     toast("Otp Verified");
-  //   }
+      dispatch(verifyOtp(values));
+      toast("Otp Verified");
+    }
      
 
-  // };
+  };
 
 
   return (
     <div className="signup">
-      <div className="signleft">
-        <div className="svg-box">
+      <div className="signleft signleft2">
+        <div className="svg-box" onClick={() => window.location.href = '/'}>
           <Locume />
         </div>
 
@@ -156,7 +153,7 @@ export const Register = () => {
           <img src={dr1} alt="locum" className="img2"></img>
         </div>
       </div>
-      <div className="signright">
+      <div className="signright signright2">
         <h1 className="reg-head">Register As Locum</h1>
 
         <form onSubmit={formik.handleSubmit}>
@@ -196,12 +193,12 @@ export const Register = () => {
           </div>
           <div className="input-box">
             <div className="input-text-box ">
-              <div>
-
+            <h2 className="col-6">Mobile Number</h2>
+            <div className='otp-box addon'>
          
-              <h2 className="col-6">Mobile Number</h2>
+       
               <InputText
-                className={`login-input col-6 ${
+                className={`login-input  ${
                   formik.touched.roomType && formik.errors.roomView
                     ? "p-invalid"
                     : ""
@@ -212,6 +209,10 @@ export const Register = () => {
                 onBlur={formik.handleBlur}
                 placeholder="Enter Your mobile number"
               />
+
+<span className="p-inputgroup-addon"       onClick={() => sendOtp(formik.values.mobileNo)}>
+                  Send OTP
+                  </span>
      </div>
               {/* <button
                 className="btn2 col-4"
@@ -226,14 +227,20 @@ export const Register = () => {
             </div>
             <div className="input-text-box ">
               <h2 className="col-6">OTP</h2>
+              <div className="otp-box addon">
               <InputText
-                className=" login-input col-6"
+                className=" login-input"
                 name="mobileVerficationId"
                 value={otp}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 placeholder="Enter OTP"
               />
+              <span className="p-inputgroup-addon"       onClick={() => verifyOtp2(formik.values.mobileNo)}>
+                  Verify OTP
+                  </span>
+              </div>
+            
               {/* <button
                 className="btn2 col-4"
                 onClick={() => verifyOtp2(formik.values.mobileNo)}
@@ -352,13 +359,13 @@ export const Register = () => {
           <div className='btn-box'>
           <div className='d-flex'>
 
-          <button
+          {/* <button
                 className="btn3"
                 onClick={() => sendOtp(formik.values.mobileNo)}
                 type="button"
               >
                 Send Otp
-              </button>
+              </button> */}
             <button className="btn" type="submit">
               Register
             </button>
@@ -371,3 +378,6 @@ export const Register = () => {
     </div>
   );
 };
+
+
+

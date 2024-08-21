@@ -17,6 +17,10 @@
         
     }
 
+    .signleft2{
+        height: 120vh;
+    }
+
     .svg-box{
         bottom: 78%;
         position: absolute;
@@ -27,6 +31,12 @@
     }
 
     .img-box{
+        display: flex;
+        align-items: flex-end; 
+        position: relative;
+    }
+
+    .img-box2{
         display: flex;
         align-items: flex-end; 
         position: relative;
@@ -56,6 +66,10 @@
         padding: 60px 100px 104px 100px;
         box-sizing: border-box;
         font-family: 'Poppins', sans-serif;
+    }
+
+    .signright2{
+        height: 120vh;
     }
 
     h1{
@@ -148,6 +162,8 @@ color: #0866C6 !important;
         padding: 10px;
         background: none;
         border: none;
+        color: #1868DB;
+        font-weight: 500;
     }
 
     .otp-box{
@@ -156,11 +172,27 @@ color: #0866C6 !important;
         display: flex;
         border-radius: 14px;
         border: 1px solid #DCD7D7;
-        width: 80%;
+        width: 100%;
         .login-input { 
             border: none;
             width: 90%;
         }
+    }
+
+    .addon{
+        .login-input { 
+            border: none;
+            width: 70%;
+            padding-left: 10px;
+        }
+
+        .p-inputgroup-addon {
+            padding: 4px;
+        }
+    }
+
+    .otp-box2{
+    width: 80% !important;
     }
     
     .p-inputgroup-addon svg {
@@ -197,6 +229,7 @@ color: #292731;
         color: white;
         cursor: pointer;
         margin-top: 3rem;
+        margin-left: 8rem;
     }
 
     .btn2{

@@ -39,6 +39,10 @@ export const Signup = () => {
 
     const sendOtp = async (data) => {
 
+      if(data.length <= 0){
+        toast( "Please Enter Mobile Number");
+      }else{
+
       const values = {
         "mobileNumber" : data,
         "otpType" : 1
@@ -51,7 +55,7 @@ export const Signup = () => {
     
       toast(error || "User Not found , Please Register");
     }
-
+  }
     }
 
     const verifyOtp = async (data) => {
@@ -113,7 +117,7 @@ export const Signup = () => {
 
           <div>
               <h2>Mobile Number</h2>
-              <div>
+              <div className='otp-box otp-box2'>
               <InputText 
                 className=" login-input login-input2"
                 value={mobileNo}
@@ -123,6 +127,10 @@ export const Signup = () => {
                 }}
                 placeholder="Enter Your mobile number"
               /> 
+                   <span className="p-inputgroup-addon" onClick={() => sendOtp(mobileNo)}>
+                  Send OTP
+                 
+                  </span>
               </div>
        <div className="p-error">
        {error2 && (
@@ -134,7 +142,7 @@ export const Signup = () => {
 
 
               <h2>OTP</h2>
-              <div className='otp-box'>
+              <div className='otp-box otp-box2'>
               <InputText 
                 className=" login-input"
                 value={otp}
@@ -148,7 +156,7 @@ export const Signup = () => {
               
               <div className='btn-box'>
                 <div className='d-flex'>
-                <button className='btn3' onClick={() => sendOtp(mobileNo)}>Send Otp</button>
+                {/* <button className='btn3' onClick={() => sendOtp(mobileNo)}>Send Otp</button> */}
                 <button className='btn' onClick={() => verifyOtp(mobileNo)}>Log in</button>
                 </div>
            
