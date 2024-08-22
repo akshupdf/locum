@@ -43,7 +43,7 @@
     .landing-box-right{
         width: 50%;
         // height: 70vh;
-        // justify-content: center;
+        justify-content: center;
         align-items: center;
         display: flex;
         // padding: 20px;
@@ -142,13 +142,15 @@
     }
 
     .para1{
-        font-family: "Roboto", sans-serif;
-        width: 100%;
-        font-size: 18px;
-        font-weight: 700;
-        color: #6B7094;
-        margin-top: 4rem;
-        line-height: 24px;
+        padding-top: 104px;
+        font-family: "Fira Sans";
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 16px;
+            letter-spacing: 1.5px;
+            text-align: center;
+        color: rgba(13, 111, 210, 1);
+        padding-bottom: 12px;
     }
 
     .soft{
@@ -418,12 +420,13 @@
         text-align: center;
 
         h1{
-            font-weight: 800;
-            font-size: 50px;
-            margin: 0;
-            font-family: "Fira Sans", sans-serif;
-            letter-spacing: -2px;
-            word-spacing: -2px;
+            font-family: "Montserrat";
+                font-size: 50px;
+                font-weight: 700;
+                line-height: 60px;
+                letter-spacing: -2px;
+                text-align: center;
+                color: rgba(50, 98, 149, 1);
         }
 
         h2{
@@ -456,20 +459,34 @@
 
     .compare-box-left{
         width: 40%;
+        height: 100%;
+
         align-items: center;
-        padding: 40px 30px 80px 50px;
+        padding: 40px 30px 51px 50px;
         text-align: left;
         margin-right: 30px;
         border: 1px solid #E4E6F1;
         border-radius: 16px;
 
         h2{
-            color: #30364D;
-            font-size: 38px;
+            color: rgba(48, 54, 77, 1);
+            font-family: "Montserrat";
+                font-size: 32px;
+                font-weight: 700;
+                line-height: 45.6px;
+                letter-spacing: -0.7599999904632568px;
+                text-align: left;
         }
 
         .para{
-            color: #30364D;
+            font-family: "Fira Sans";
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 19.2px;
+                letter-spacing: -0.3199999928474426px;
+                text-align: left;
+                color: rgba(48, 54, 77, 1);
+                margin-bottom: 39px;
         }
 
         ul{
@@ -480,9 +497,13 @@
             list-style: none;
             padding-left: 0;
             margin-top: 20px;
-            display: flex;
-            align-items: center;
-            font-family: "Roboto", sans-serif;
+            font-family: "Roboto";
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 32px;
+                letter-spacing: -0.3199999928474426px;
+                text-align: left;
+                color: rgba(48, 54, 77, 1);
 
             svg{
                 margin-right: 10px;
@@ -497,9 +518,9 @@
     .compare-box-right{
         width: 40%;
         align-items: center;
-        padding: 40px 30px 80px 50px;
+        padding: 40px 30px 51px 50px;
         text-align: left;
-        border: 1px solid #E4E6F1;
+        // border: 1px solid #E4E6F1;
         border-radius: 16px;
         background: #193498;
         color: white;
@@ -515,10 +536,15 @@
         li{
             list-style: none;
             padding-left: 0;
-            margin-top: 2rem;
+            margin-top: 20px;
             display: flex;
             align-items: center;
-            font-family: "Roboto", sans-serif;
+            font-family: "Roboto";
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 32px;
+                letter-spacing: -0.3199999928474426px;
+                text-align: left;
 
             svg{
                 margin-right: 10px;
@@ -541,6 +567,7 @@
             color: #FFFFFF;
             font-size: 16px;
             font-weight: 400;
+            margin-bottom: 54px;
         }
     }
 
@@ -553,11 +580,15 @@
         padding: 10px 40px 10px 40px;
 
         h1{
-            font-size: 28px;
-            font-weight: 600;
             margin: 0;
-            font-family: "Fira Sans", sans-serif;
             margin-top: 1rem;
+            font-family: "Montserrat";
+                font-size: 28px;
+                font-weight: 600;
+                line-height: 34px;
+                letter-spacing: -0.5600000023841858px;
+                text-align: left;
+                color: rgba(50, 98, 149, 1);
         }
 
     }
@@ -570,9 +601,9 @@
             color: #8E8E8E;
             font-weight: 400;
             font-size: 16px;
-            font-family: "Roboto", sans-serif;
             margin-top: 1rem;
             line-height: 32px;
+            font-family: "Fira Sans";
         }
     }
 
@@ -580,19 +611,20 @@
         h2{
             font-size: 38px;
             font-weight: 700;
-            font-family: "Fira Sans", sans-serif;
-            color: #1A1A1A;
+            color: rgba(50, 98, 149, 1);
             letter-spacing: -2px;
             word-spacing: -2px;
             margin: 0;
             margin-top: 0.5rem;
-            margin-bottom: 2rem;
+            font-family: "Montserrat";
+                line-height: 60px;
+                letter-spacing: -2px;
         }
 
         span{
             font-size: 38px;
             font-weight: 700;
-            font-family: "Fira Sans", sans-serif;
+            font-family: "Montserrat";
             color: #4067EA;
         }
 
@@ -605,12 +637,14 @@
         }
 
         h3{
-            font-size: 21px;
-            font-weight: 500;
-            font-family: "Fira Sans", sans-serif;
-            color: #30364D;
-            line-height: 28px;
             margin: 0;
+            font-family: "Montserrat";
+                font-size: 21px;
+                font-weight: 700;
+                line-height: 28px;
+                letter-spacing: -0.6299999952316284px;
+                text-align: left;
+                color: rgba(50, 98, 149, 1);
         }
 
 
@@ -621,13 +655,13 @@
       }
 
       .para-text{
-        font-family:  "Roboto", sans-serif;;
         font-size: 16px;
         font-weight: 400;
-        line-height: 25px;
-        letter-spacing: -0.32px;
         text-align: left;
         margin-bottom: 4rem;
+        font-family: "Fira Sans";
+            line-height: 22px;
+            letter-spacing: -0.3199999928474426px;
     }
 
       .wave-box-main{
@@ -641,26 +675,39 @@
             margin-top: 0;
         } 
 
+        .step-1{
+            display: flex;
+            padding-bottom: 0;
+        }
+
         .span{
-            font-size: 50px;
-            font-weight: 800;
-            font-family: "Fira Sans", sans-serif;
+            font-family: "Montserrat";
+                font-size: 50px;
+                font-weight: 700;
+                line-height: 60px;
+                letter-spacing: -2px;
             color: #4067EA;
         }
 
         .head{
         
-            line-height: 60px;
-            letter-spacing: -2px;
-            word-spacing: -2px;
-            font-size: 50px;
-            font-weight: 800;
-            font-family: "Fira Sans", sans-serif;
-            color: #061237;
+            font-family: "Montserrat";
+                font-size: 50px;
+                font-weight: 700;
+                line-height: 60px;
+                letter-spacing: -2px;
+                text-align: center;
+                color: rgba(50, 98, 149, 1)
         }
         
         .para{
-            color: #30364D;
+            font-family: "Fira Sans";
+                font-size: 21px;
+                font-weight: 400;
+                line-height: 24px;
+                letter-spacing: -0.41999998688697815px;
+                text-align: center;
+            color: rgba(48, 54, 77, 1);
         }
 
 
@@ -717,6 +764,11 @@
         margin: auto;
       }
 
+      .step-2{
+        display: flex;
+        padding-bottom: 0;
+      }
+
       .reg-box-main{
       
         width: 100%;
@@ -769,13 +821,14 @@
         }
 
         p{
-            font-family: "Inter", sans-serif;
+        font-family: "Fira Sans";
             font-size: 14px;
             font-weight: 400;
             line-height: 21px;
-            color: #798099;
+            text-align: left;
             margin-top: 0.5rem;
             margin-bottom: 1rem;
+            color: rgba(121, 128, 153, 1);
         }
 
         h3{
