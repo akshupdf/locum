@@ -311,7 +311,7 @@
         margin-top: 60px;
 
         h1{
-            font-family: "Fira", sans-serif;
+            font-family: "Fira Sans";
             font-size: 55px;
             font-weight: 600;
             line-height: 80px;
@@ -353,21 +353,18 @@
     }
 
     .tool-small-box{
-        
-        background: #FFFFFF;
-        box-shadow: 0px 15px 30px 0px #30364D1A;
         border-radius: 8px;
        text-align: center;
        margin: 10px;
-       padding: 2rem;
 
 
         h4{
             font-weight: 700;
             line-height: 28px;
             font-size: 20px;
-            font-family: "Fira", sans-serif;
+            font-family: "Montserrat", sans-serif;
             margin: 0;
+            color: #326295;
         }
 
         
@@ -375,26 +372,21 @@
             font-weight: 500;
             line-height: 24px;
             font-size: 18px;
-            font-family: "Fira", sans-serif;
+            font-family: "Fira Sans";
             margin: 0;
+            color: #326295;
         }
 
         img{
-            width: 75px;
-            height: 75px;
+            width: 250px;
+            height: 250px;
             padding: 10px;
             border-radius: 50%;
             padding-right: 0;
             //  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        p{
-            font-weight: 600;
-            font-size: 14px;
-            line-height: 20px;
-            margin: 4px;
-            padding-left: 4px;
-        }
+      
     }
 
     .tool-box-btn{

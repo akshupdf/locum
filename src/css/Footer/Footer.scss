@@ -81,7 +81,7 @@
   }
  
   .foot3{
-    width: 30%;
+    width: 40%;
     text-align: right;
 
     h1{
@@ -97,6 +97,10 @@
         font-weight: 500;
         line-height: 20.05px;
         margin-top: 2rem;
+    }
+
+    svg{
+      margin-top: 1rem;
     }
   }
 }

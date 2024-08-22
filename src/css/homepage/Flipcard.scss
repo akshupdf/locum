@@ -1,0 +1,75 @@
+.flipcard-slider {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.slider-arrow {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.swiper-container {
+    width: 100%;
+    overflow: hidden;
+    height: 60vh;
+}
+
+.swiper-wrapper {
+    display: flex;
+}
+
+.swiper-slide {
+    flex: 0 0 auto;
+    width: 300px; 
+}
+
+.tool-small-box {
+    perspective: 1000px;
+}
+
+.front, .back {
+    width: 100%;
+    backface-visibility: hidden;
+    background: white;
+    transition: transform 0.6s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    box-shadow: 0px 15px 30px 0px #30364D1A;
+    border: 3px solid #326295;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.front {
+    transform: rotateY(0deg);
+}
+
+.back {
+    transform: rotateY(180deg);
+}
+
+.tool-small-box:hover .front {
+    transform: rotateY(-180deg);
+}
+
+.tool-small-box:hover .back {
+    transform: rotateY(0deg);
+}
+
+.tool-small-box-text{
+
+    p{
+        font-family: "Fira Sans";
+font-size: 24px !important;
+font-weight: 400;
+line-height: 64px !important;
+text-align: left;
+color: #798099;
+    }
+}

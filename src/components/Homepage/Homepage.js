@@ -40,6 +40,7 @@ import {
 import { InputText } from "primereact/inputtext";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllDoctors } from "../../redux/apiSlice";
+import { Flipcard } from "./FlipCard";
 
 export default function HomePage() {
   const dispatch = useDispatch();
@@ -244,7 +245,7 @@ export default function HomePage() {
         </p>
         <p className="para"> looking for locum work.</p>
         <div className="tool-box">
-          {allUsers?.map((data) => (
+          {/* {allUsers?.map((data) => (
             <div key={data.id} className="tool-small-box">
               <img src={two} alt="logo"></img>
               <div className="tool-small-box-text">
@@ -255,15 +256,17 @@ export default function HomePage() {
                 </h4>
                 <h3>{data.specialization}</h3>
                 <p>{data.location}</p>
-                {/* <p>{data.specialization}</p> */}
-                {/* <p>{data.shift}</p> */}
+                <p>{data.specialization}</p>
+                <p>{data.shift}</p>
                 <p>{data.hourly_rate}</p>
               </div>
               <button className="tool-box-btn" onClick={() => (window.location.href = `/profile/${data.id}`)}>
                 VIEW PROFILE <LeftArrow />
               </button>
             </div>
-          ))}
+          ))} */}
+
+          <Flipcard />
         </div>
         <button className="btn">Explore More</button>
       </div>
