@@ -135,7 +135,7 @@ export default function HomePage() {
   useEffect(() => {
     dispatch(getAllDoctors());
   }, []);
-  
+
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -205,7 +205,7 @@ export default function HomePage() {
 
       <div className="explore-box-main">
         <h1>Explore Locum opportunities</h1>
-        <p className="para">
+        <p className="para Provide">
           Provide qualified recruitment especially across India
         </p>
         <div className="explore-box">
@@ -214,7 +214,7 @@ export default function HomePage() {
               <img src={data.logo} alt="logo"></img>
               <div className="explore-small-box-text">
                 <h4>{data.title}</h4>
-                <div style={{ display: "flex", marginTop: "10px" }}>
+                <div style={{ display: "flex", marginTop: "10px", alignItems: "center" }}>
                   <svg
                     width="16"
                     height="21"
@@ -259,7 +259,7 @@ export default function HomePage() {
                 {/* <p>{data.shift}</p> */}
                 <p>{data.hourly_rate}</p>
               </div>
-              <button className="tool-box-btn"  onClick={() => (window.location.href = `/profile/${data.id}`)}>
+              <button className="tool-box-btn" onClick={() => (window.location.href = `/profile/${data.id}`)}>
                 VIEW PROFILE <LeftArrow />
               </button>
             </div>
@@ -639,9 +639,9 @@ export default function HomePage() {
 
 </div> */}
 
-{/* <button onClick={scrollToTop} className="arrow"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" ><path d="M11 2.206l-6.235 7.528-.765-.645 7.521-9 7.479 9-.764.646-6.236-7.53v21.884h-1v-21.883z"/></svg> </button>
+        {/* <button onClick={scrollToTop} className="arrow"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" ><path d="M11 2.206l-6.235 7.528-.765-.645 7.521-9 7.479 9-.764.646-6.236-7.53v21.884h-1v-21.883z"/></svg> </button>
    */}
-  
+
       </div>
     </div>
   );
