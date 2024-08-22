@@ -18,7 +18,7 @@
     }
 
     .signleft2{
-        height: 120vh;
+        height: 122vh;
     }
 
     .svg-box{
@@ -63,7 +63,7 @@
         width: 60%;
         justify-content: center;
         text-align: left;
-        padding: 60px 100px 104px 100px;
+        padding: 20px 100px 104px 100px;
         box-sizing: border-box;
         font-family: 'Poppins', sans-serif;
     }
@@ -84,6 +84,7 @@
         line-height: 45px;
         font-weight: 700;
         margin-bottom: 1rem;
+        font-family: 'Montserrat';
     }
     
     .signright p {
@@ -165,6 +166,30 @@ color: #0866C6 !important;
         color: #1868DB;
         font-weight: 500;
     }
+
+    .p-inputtext:enabled:focus{
+        box-shadow: none;
+        border: none;
+      }
+      
+      .p-dropdown-panel:enabled:focus{
+        box-shadow: none;
+        border: none;
+      }
+      
+      .p-dropdown:not(.p-disabled).p-focus{
+        border: none;
+        box-shadow: none;
+      }
+      
+      .p-multiselect:not(.p-disabled).p-focus{
+        border: none;
+        box-shadow: none;
+      }
+      
+      :focus-visible {
+      outline: none;
+      }
 
     .otp-box{
 

@@ -29,6 +29,27 @@ export const Profile = () => {
   const [checked, setChecked] = useState(true);
   const [isLoading, setLoading] = useState(true);
   const user = useSelector(selectUserInfov2);
+  const [selectedSpecialties, setSelectedSpecialties] = useState([]);
+
+  const handleSpecialtyClick = (specialty) => {
+    setSelectedSpecialties((prevSelected) =>
+      prevSelected.includes(specialty)
+        ? prevSelected.filter((s) => s !== specialty)
+        : [...prevSelected, specialty]
+    );
+  };
+
+  const specialties = [
+    "Abdominal Radiology", "Abdominal Surgery", "Addiction Medicine", 
+    "Addiction Psychiatry", "Adolescent Medicine", "Adult Congenital Heart Disease",
+    "Adult Reconstructive Orthopedics", "Advanced Heart Failure and Transplant Cardiology",
+    "Aerospace Medicine", "Allergy", "Allergy/Immunology", "Anatomic Pathology",
+    "Anatomic/Clinical Pathology", "Anesthesiology", "Anesthesiology Critical Care Medicine",
+    "Behavioral and Cognitive Psychology", "Bloodbanking/Transfusion Medicine", 
+    "Brain Injury Medicine", "Burn Surgery", "Cardiac Electrophysiology", 
+    "Cardiothoracic Radiology", "Cardiothoracic Surgery", "Cardiovascular Diseases",
+    "Women's Imaging", "Wound Care"
+  ];
   
   const formik = useFormik({
     initialValues: {
@@ -65,18 +86,7 @@ export const Profile = () => {
   //   "8:00 pm - 2.00 am",
   //   "2:00 am - 8.00 am",
   // ];
-  const special = [
-    "Emergency Med ",
-    "Emergency Med ",
-    "Emergency Med ",
-    "Emergency Med ",
-    "Emergency Med ",
-    "Emergency Med ",
-    "Emergency Med ",
-    "Emergency Med ",
-    "Emergency Med ",
-    "Emergency Med ",
-  ];
+
   const handleTimeSelect = (data) => {
     setTimeSlot(data);
   };
@@ -334,12 +344,17 @@ export const Profile = () => {
                 </div>
               </div>
   
-              <div className=" mt-4">
-                <h1>Preferred Specialities</h1>
-                {special.map((data) => {
-                  return <button className="btn">{data}</button>;
-                })}
-              </div>
+              <div className="mt-4">
+      {specialties.map((specialty, index) => (
+        <button
+          key={index}
+          className={`btn ${selectedSpecialties.includes(specialty) ? 'selected' : ''}`}
+          onClick={() => handleSpecialtyClick(specialty)}
+        >
+          {specialty}
+        </button>
+      ))}
+    </div>
   
               <div className=" mt-4">
                 <h1>Medical ID</h1>

@@ -38,8 +38,8 @@ export const Register = () => {
   );
 
   const validationSchema = yup.object({
-    firstName: yup.string().required("first Name is required"),
-    lastName: yup.string().required("last Name is required"),
+    firstName: yup.string().required("First Name is required"),
+    lastName: yup.string().required("Last Name is required"),
     mobileNo: yup
       .string()
       .required("mobile No is required")
@@ -188,7 +188,12 @@ export const Register = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 placeholder="Your Last Name"
-              />{" "}
+              />
+                   <div>
+                {formik.touched.lastName && formik.errors.lastName && (
+                  <small className="p-error">{formik.errors.lastName}</small>
+                )}
+              </div>
             </div>
           </div>
           <div className="input-box">

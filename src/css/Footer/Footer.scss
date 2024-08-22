@@ -1,11 +1,49 @@
 .footer{
     width: 100%;
-    justify-content: space-between;
-    display: flex;
+ 
     background-color: #28328C;
     color: white;
-    font-family: "Poppins", sans-serif;
-    padding: 50px 120px  20px 120px;
+    font-family: "Fira Sans";
+
+
+
+    .footer1{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 4px solid #FFFFFF;
+      padding: 64px 100px  20px 100px;
+
+      ul{
+
+        padding-left: 0;
+        margin-right: 2rem;
+
+        li{
+          list-style: none;
+          text-align: left;
+          font-size: 14.38px;
+          font-weight: 300;
+          margin: 4px;
+          line-height: 30px;
+        }
+      }
+
+      h1{
+        margin: 0;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 20.05px;
+        margin-bottom: 1rem;
+    }
+
+    }
+    .footer2{
+      width: 100%;
+      display: flex; 
+      justify-content: space-between;
+      padding: 64px 100px  20px 100px;
+    }
 
 
   .foot1{
@@ -25,22 +63,12 @@
   
   .foot2{
     width: 30%;
-    text-align: center;
+    text-align: left;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
 
-    ul{
-        display: flex;
-        list-style: none;
-        justify-content: center;
-
-        li{
-            margin: 1rem;
-            cursor: pointer;
-        }
-
-    }
+  
 
     
     p{

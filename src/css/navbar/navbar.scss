@@ -3,19 +3,20 @@
     display: flex;
     font-family: "Poppins", sans-serif;
     width: 100%;
-    box-shadow: 0px 1px 1px 0px #0000001F;    
 
     .logo-box{
-        width: 17%;
+        width: 75%;
         cursor: pointer;
-   
+        
+        
         svg{
             margin: 0;
+            width: 20%;
         }
     }
 
     .list-box{
-        width: 60%;
+     
         text-align: center;
         display: flex;
         justify-content: center;
@@ -65,7 +66,7 @@
         width: 20%;
         justify-content: center;
         display: flex;
-        margin: auto;
+
     }
 
     .nav-btn1{
@@ -103,6 +104,10 @@
         cursor: pointer;
         background: #033B61;
         color: white;
+
+        svg{
+            margin-right: 4px;
+        }
     }
 
     .hamburger {
