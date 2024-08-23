@@ -31,6 +31,7 @@ export const About = () => {
       name2: "Deenu Patel",
       title: "CEO",
       intro: "Deenu Patel is Locum Chief Executive Officer and…",
+      founder: "CEO",
       description:
         "Deenu Patel is Locum Chief Executive Officer and has been leading the company with a focus on strategic growth and innovation. Under his leadership, Locum has expanded its market presence and developed new service offerings, ensuring the company remains competitive and forward-thinking.",
     },
@@ -40,6 +41,7 @@ export const About = () => {
       name: "David...",
       name2: "David Newton",
       title: "COO",
+      founder: "Managing Director",
       intro: "David Newton joined Locum some 15 years ago,…",
       description:
         "David Newton joined Locum some 15 years ago, bringing with him a wealth of experience in operations and management. His keen insights and strategic initiatives have significantly improved operational efficiency and client satisfaction.",
@@ -50,6 +52,7 @@ export const About = () => {
       name: "Jon...",
       name2: "Jon Doe",
       title: "Finance Director",
+      founder: "Finance Director",
       intro: "Jon joined Locum as Finance Director in 2019. His…",
       description:
         "Jon joined Locum as Finance Director in 2019. His financial acumen and dedication have been instrumental in steering the company towards sustainable growth and profitability.",
@@ -67,11 +70,13 @@ export const About = () => {
     post,
     imgSrc,
     name2,
+    founder
   }) => {
     return (
       <div className="leader-box-small">
         <img src={imgSrc} alt="Deenu Patel" />
         <h1> {isExpanded ? <span>{name2} </span> : <span>{name}</span>}</h1>
+        <div className="founder">{founder}</div>
         <h3>{post}</h3>
         <div className="text-box" onClick={() => toggleExpand(index)}>
           <p>
@@ -141,7 +146,7 @@ export const About = () => {
           </div>
         </div>
         <div className="aboutright">
-          <img src={about} alt="about"></img>
+          <img style={{ width: "100%" }} src={about} alt="about"></img>
         </div>
       </div>
 
@@ -254,6 +259,7 @@ export const About = () => {
               imgSrc={leader.imgSrc}
               name={leader.name}
               name2={leader.name2}
+              founder={leader.founder}
               title={leader.title}
               isExpanded={expandedStates[index]}
               intro={leader.intro}

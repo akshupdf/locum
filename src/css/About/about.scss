@@ -19,36 +19,36 @@
     margin: auto;
 
     h1 {
-      font-family: "Montserrat", sans-serif;
+      font-family: "Montserrat";
       font-size: 44px;
       font-weight: 800;
       line-height: 55px;
       color: #0866c6;
-      margin-bottom: 2rem;
+      margin-bottom: 25px;
     }
 
     h3 {
-      font-family: "Fira Sans", sans-serif;
+      font-family: "Fira Sans";
       font-size: 18px;
       font-weight: 400;
       line-height: 30px;
-      color: #0866c6;
+      color: rgba(50, 98, 149, 1);
     }
 
     p {
-      font-family: "Fira Sans", sans-serif;
+      font-family: "Fira Sans";
       font-size: 18px;
       font-weight: 400;
       line-height: 30px;
       color: #798099;
-      margin-bottom: 2rem;
+      margin-bottom: 23px;
     }
   }
 
   .aboutright {
     width: 50%;
     display: flex;
-    justify-content: center;
+    // justify-content: center;
     padding: 20px;
     padding-bottom: 0;
   }
@@ -83,9 +83,9 @@
     }
 
     p {
-      font-family: "Montserrat", sans-serif;
+      font-family: "Fira Sans";
       font-size: 18px;
-      font-weight: 500;
+      font-weight: 400;
       line-height: 28px;
       text-align: center;
       color: #ffffff;
@@ -128,11 +128,12 @@
     padding: 20px;
 
     p {
-      font-family: "Montserrat", sans-serif;
+      font-family: "Fira Sans";
       font-size: 24px;
       font-weight: 400;
       line-height: 32px;
       text-align: left;
+      color: rgba(50, 98, 149, 1);
 
       span {
         font-family: "Montserrat", sans-serif;
@@ -180,11 +181,11 @@
     padding: 20px 60px 20px 60px;
 
     p {
-      font-family: "Montserrat", sans-serif;
+      font-family: "Fira Sans";
       font-size: 16px;
       font-weight: 400;
       line-height: 24px;
-      color: #798099;
+      color: rgba(121, 128, 153, 1);
       margin-top: 1.5rem;
     }
   }
@@ -194,7 +195,7 @@
     padding: 10px 49.7px 14.54px 50px;
     background: #033b61;
     color: white;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Fira Sans";
     font-size: 18.1px;
     font-weight: 700;
     border: none;
@@ -226,7 +227,7 @@
     color: white;
 
     h1 {
-      font-family: "Fira Sans", sans-serif;
+    font-family: "Montserrat", sans-serif;
       font-size: 28px;
       font-weight: 600;
       line-height: 34px;
@@ -234,6 +235,15 @@
       color: white;
       margin-top: 1.5rem;
       margin-bottom: 1rem;
+    }
+
+    p{
+      font-family: "Fira Sans";
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 32px;
+        text-align: left;
+        color: rgba(255, 255, 255, 1);
     }
   }
 
@@ -283,6 +293,16 @@
       padding: 12px 24px 0px 24px;
     }
 
+    .founder{
+      padding-left: 24px;
+      font-family: "Fira Sans";
+        font-size: 18.1px;
+        font-weight: 500;
+        line-height: 20px;
+        text-align: left;
+        color: rgba(50, 98, 149, 1);
+    }
+
     h3 {
       font-family: "Montserrat", sans-serif;
       font-size: 18.1px;
@@ -292,7 +312,7 @@
     }
 
     p {
-      font-family: "Montserrat", sans-serif;
+      font-family: "Fira Sans";
       font-size: 14px;
       font-weight: 400;
       line-height: 20px;
@@ -348,9 +368,9 @@
     }
 
     p {
-      font-family: "Montserrat", sans-serif;
+      font-family: "Fira Sans";
       font-size: 18px;
-      font-weight: 300;
+      font-weight: 400;
       line-height: 32px;
       color: #ffffff;
       margin-top: 1rem;
@@ -375,6 +395,11 @@
     border-radius: 30px;
     color: #ffffff;
     border: none;
+    font-family: "Fira Sans";
+      font-size: 16.25px;
+      font-weight: 400;
+      line-height: 19.5px;
+      text-align: left;
 
     span {
       margin-left: 5rem;
