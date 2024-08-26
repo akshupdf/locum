@@ -13,8 +13,8 @@ export const Footer = () => {
 <div className="foot1">
    <h1>COMPANY</h1>
    <ul>
-    <li>Careers </li>
-    <li>Customers Review</li>
+    {/* <li>Careers </li>
+    <li>Customers Review</li> */}
     <li>Privacy Policy</li>
    </ul>
    <h1>CONTACT US</h1>
@@ -71,9 +71,16 @@ export const Footer = () => {
 </div>
 
 <div className="foot3">
-    <h1>Location</h1>
+    <h1>LOCATION</h1>
+<ul>
+<li>Mumbai, India</li>
+<li>Pune, India</li>
+<li>Thane, India</li>
+<li>Delhi, India</li>
+<li>Bangalore, India</li>
+<li>Nagpur, India</li>
+</ul>
 
-<p>Mumbai</p>
 </div>
 </div>
 <div className="footer2"> 

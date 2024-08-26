@@ -6,7 +6,7 @@ export const addUser = createAsyncThunk(
   'user/addUser',
   async (values, thunkAPI) => {
     try {
-      const response = await axios.post('http://13.127.236.115:3000/api/users/addUsers', values);
+      const response = await axios.post('http://localhost:5000/api/users/addUsers', values);
       return response;
       
     } catch (error) {
@@ -21,7 +21,7 @@ export const generateOtp = createAsyncThunk(
 
     try {
 
-      const response = await axios.post('http://13.127.236.115:3000/api/users/generateOtp', 
+      const response = await axios.post('http://localhost:5000/api/users/generateOtp', 
         values
       );
      
@@ -36,7 +36,7 @@ export const verifyOtp = createAsyncThunk(
   'otp/verifyOtp',
   async ({ mobileNumber, otp }, thunkAPI) => {
     try {
-      const response = await axios.post('http://13.127.236.115:3000/api/users/verifyOtp', {
+      const response = await axios.post('http://localhost:5000/api/users/verifyOtp', {
         mobileNumber,
         otp
       });
@@ -51,7 +51,7 @@ export const getUserLogin = createAsyncThunk(
   'user/userLogin',
   async ({ mobileNumber, otp }, thunkAPI) => {
     try {
-      const response = await axios.post('http://13.127.236.115:3000/api/users/userLogin', {
+      const response = await axios.post('http://localhost:5000/api/users/userLogin', {
         mobileNumber,
         otp
       });
@@ -82,7 +82,7 @@ export const fetchUserWithToken = createAsyncThunk(
   async ( id,thunkAPI) => {
  
     try {
-      const response = await axios.get(`http://13.127.236.115:3000/api/users/getSingleUserById/${id}`
+      const response = await axios.get(`http://localhost:5000/api/users/getSingleUserById/${id}`
      );
       return response.data.result;
 
@@ -96,7 +96,7 @@ export const getAllDoctors = createAsyncThunk(
   'user/getAllDoctors',
   async ( thunkAPI) => {
     try {
-      const response = await axios.get('http://13.127.236.115:3000/api/users/getAllDoctors');
+      const response = await axios.get('http://localhost:5000/api/users/getAllDoctors');
       return response.data.result;
       
     } catch (error) {

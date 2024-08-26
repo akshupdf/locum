@@ -1,5 +1,6 @@
 import { About } from "../components/AboutUs/aboutus";
 import { ContactUs } from "../components/ContactUs/Contact";
+import { Explore } from "../components/Explore/Explore";
 import HomePage from "../components/Homepage/Homepage";
 import { NavBar } from "../components/Navbar/NavBar";
 import { Profile } from "../components/Profile/Profile";
@@ -31,8 +32,13 @@ export const router = [
       {
         path: '/contactus',
         element: <ContactUs />
-      }, {
+      }, 
+      {
         path: '/register',
         element: <Register />
+      },
+      {
+        path: '/explore',
+        element: <Explore />
       },
 ]  

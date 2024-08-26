@@ -45,3 +45,8 @@
 .p-invalid {
   border: red !important;
 }
+
+.p-inputtext:focus{
+  box-shadow: none !important;
+  outline: none !important;
+}

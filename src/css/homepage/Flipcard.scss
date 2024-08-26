@@ -32,7 +32,7 @@
 }
 
 .front, .back {
-    width: 100%;
+    width: 80%;
     backface-visibility: hidden;
     background: white;
     transition: transform 0.6s;
@@ -73,3 +73,35 @@ text-align: left;
 color: #798099;
     }
 }
+
+.swiper-button-prev {
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50%;
+    color: #ffffff !important;
+    background: #033B61;
+    top: 40% !important;
+
+  }
+
+  .swiper-button-disabled {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid #ea4232;
+    color: #ea4232;
+    background: transparent;
+  }
+
+  .swiper-button-next {
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50%;
+    color: #ffffff !important;
+    background: #033B61;
+    top: 40% !important;
+  }
+
+  .swiper-button-next:after, .swiper-button-prev:after {
+    font-size: 24px !important;
+  }
