@@ -3,36 +3,41 @@ import { ContactUs } from "../components/ContactUs/Contact";
 import HomePage from "../components/Homepage/Homepage";
 import { NavBar } from "../components/Navbar/NavBar";
 import { Profile } from "../components/Profile/Profile";
+import Privacy from "../components/privacy/Privacy";
 import { Register } from "../components/signin/up/Register";
 import { Signup } from "../components/signin/up/Signinpage";
 
 
 export const router = [
-    {
-      path: '/',
-      element: <HomePage />
-    },
-    {
-        path: '/navbar',
-        element: <NavBar />
-      },
-      {
-        path: '/signin',
-        element: <Signup />
-      },
-      {
-        path: '/profile/:id',
-        element: <Profile />
-      },
-      {
-        path: '/aboutus',
-        element: <About />
-      },
-      {
-        path: '/contactus',
-        element: <ContactUs />
-      }, {
-        path: '/register',
-        element: <Register />
-      },
+  {
+    path: '/',
+    element: <HomePage />
+  },
+  {
+    path: '/navbar',
+    element: <NavBar />
+  },
+  {
+    path: '/signin',
+    element: <Signup />
+  },
+  {
+    path: '/profile/:id',
+    element: <Profile />
+  },
+  {
+    path: '/aboutus',
+    element: <About />
+  },
+  {
+    path: '/contactus',
+    element: <ContactUs />
+  }, {
+    path: '/register',
+    element: <Register />
+  },
+  {
+    path: '/privacy',
+    element: <Privacy />
+  },
 ]  
