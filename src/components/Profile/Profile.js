@@ -19,6 +19,8 @@ const selectUserInfov2 = (state) => state.user.userInfov2;
 export const Profile = () => {
 
   const { id } = useParams();
+
+  const userid = localStorage.getItem("userId")
   const dispatch = useDispatch();
 
   const { userData, otp, loading, error, mobileVerficationId ,verifyOtpError } = useSelector(
@@ -123,6 +125,13 @@ export const Profile = () => {
             <div className="tab-box">
             <div className="logo-box">
               <img src={profile} alt="profile"></img>
+          {
+
+userid === id && <button className="btn" onClick={ window.location.href = `/profilev2/${id}`}>  </button>
+          }
+              
+
+
           {/* <div className="logo-btn">
 
               <button className="btn">Upload Photo</button>
@@ -135,14 +144,20 @@ export const Profile = () => {
               <div className="name-text-box">
               <p>{data?.first_name}</p>
             </div>
-      
-  
-              <h3>Email</h3>
+  {
+data?.email && 
+  <div>
+ <h3>Email</h3>
               <div className="name-text-box">
-                <p>akhilkumar@gmail.com</p>
+                <p>{data?.email}</p>
                 {/* <button className="btn"> Edit </button>{" "} */}
             
               </div>
+  </div>
+
+  }    
+  
+             
   
               <h3>Phone Number</h3>
               <div className="name-text-box">
@@ -167,25 +182,29 @@ export const Profile = () => {
               <p>{data?.medical_id}</p>
             </div>
     </div>
-            <div className="about-box">
+
+    {data?.about  && <div className="about-box">
               <div className="head">
-                <h1>About Sid</h1>
+                <h1>About {data?.first_name}</h1>
                
               </div>
               <p>
-                Lorem ipsum dolor sit amet consectetur. Erat auctor a aliquam vel
-                congue luctus. Leo diam cras neque mauris ac arcu elit ipsum dolor
-                sit amet consectetur.
+              {data?.about}
               </p>
             </div>
+    
+    
+    
+    }
+            
           </div>
           <div className="profile-right">
             <div className="detail-box">
               <div className="detail-text-box">
                 <h2>Professional Details</h2>
-                <p>
+                {/* <p>
                   This are the professional details shown to users in the app.
-                </p>
+                </p> */}
               </div>
               <div>
                 <Stars />
@@ -217,7 +236,7 @@ export const Profile = () => {
               </div>
   
               <div className="row mt-4">
-                <div className="col-md-4 ">
+                {/* <div className="col-md-4 ">
                   <h1>Specialization</h1>
                   <InputText
                     className={`login-input  ${!isEditing ? '' : 'border_on'}`}
@@ -226,15 +245,17 @@ export const Profile = () => {
                     name="Specialization"
                     placeholder="Specialization"
                   />
-                </div>
-                <div className="col-md-4">
+                </div> */}
+                <div className="col-md-4 login-input">
                   <h1>Rate/Hourly </h1>
-                  <InputText
+
+                  <p className="">{data?.hourly_rate}</p>
+                  {/* <InputText
                    className={`login-input  ${!isEditing ? '' : 'border_on'}`}
                     value={data?.hourly_rate}
                     name="Rate/Hourly "
                     placeholder="Rate/Hourly "
-                  />
+                  /> */}
                 </div>
                 <div className="col-md-4">
                   <h1>Total Experience</h1>
@@ -273,82 +294,79 @@ export const Profile = () => {
               <div className=" mt-4 d-flex">
                 <div className="">
                   <h1>Do you have your own clinic</h1>
-                  <div className="d-flex align-items-center ">
-                    <div className="btn d-flex">
-                      <RadioButton
-                        inputId="ingredient4"
-                        name="clinic"
-                        value={true}
-                        onChange={(e) => setClinic(e.value)}
-                        checked={clinic === true}
-                      />
-                      <p htmlFor="ingredient4" className="ml-2">
-                        Yes
-                      </p>
-                    </div>
-                    <div className="btn  d-flex">
-                      <RadioButton
-                        inputId="ingredient4"
-                        name="clinic"
-                        value={false}
-                        onChange={(e) => setClinic(e.value)}
-                        checked={clinic === false}
-                      />
-                      <p htmlFor="ingredient4" className="ml-2">
-                        No
-                      </p>{" "}
-                    </div>
-                  </div>
+                      {
+                        data?.clinic
+                      }
                 </div>
-                <div className="ml">
-                  <div className="d-flex ">
-                    <h1>If do you have clinic</h1> <p>(Clinic time slot)</p>
-                  </div>
-  
-                  <div className="d-flex  ">
-                    <div className="btn d-flex">
-                      <RadioButton inputId="ingredient4" name="Clinic time" 
-                      value={true} 
-                      checked={clinictime === true}
-                       onChange={(e) => setClinictime(e.value)} />
-                      <p htmlFor="ingredient4" className="ml-2">
-                        Yes
-                      </p>
-                    </div>
-  
-                    <div className="btn d-flex">
-                      <RadioButton
-                        inputId="ingredient4"
-                        name="Clinic time"
-                        value={false}
-                        checked={clinictime === false} onChange={(e) => setClinictime(e.value)}
-                      />
-                      <p className="ml-2">No</p>
-                    </div>
-                  </div>
-                </div>
+
+                {
+                   data?.timeSlot &&    <div className="ml">
+                   <div className="d-flex ">
+                     <h1>If do you have clinic</h1> <p>(Clinic time slot)</p>
+                     {
+                     data.timeSlot?.map((data) => (
+                     <div className="d-flex align-items-center cols-md-3 btn">
+                       <RadioButton
+                         inputId="ingredient4"
+                         name={data}
+                         value={data}
+                         checked={data === timeSlot}
+                       />
+                       <p htmlFor="ingredient4" className="ml-2">
+                         {data}
+                       </p>
+                     </div>
+                   ))}
+                   </div>
+   
+                   {/* <div className="d-flex  ">
+                     <div className="btn d-flex">
+                       <RadioButton inputId="ingredient4" name="Clinic time" 
+                       value={true} 
+                       checked={clinictime === true}
+                        onChange={(e) => setClinictime(e.value)} />
+                       <p htmlFor="ingredient4" className="ml-2">
+                         Yes
+                       </p>
+                     </div>
+   
+                     <div className="btn d-flex">
+                       <RadioButton
+                         inputId="ingredient4"
+                         name="Clinic time"
+                         value={false}
+                         checked={clinictime === false} onChange={(e) => setClinictime(e.value)}
+                       />
+                       <p className="ml-2">No</p>
+                     </div>
+                   </div> */}
+                 </div>
+                }
+              
+
+
               </div>
               <div className="row mt-4">
                 <div className="col-md-4">
-                  <h1>Clinic Location</h1>
+                  <h1>Clinic Name</h1>
                   <InputText
                    className={`login-input  ${!isEditing ? '' : 'border_on'}`}
                     name="Location"
-                    placeholder="Clinic location"
+                    placeholder="Clinic Name"
                   />
                 </div>
                 <div className="col-md-8">
-                  <h1>Ideal number of shifts per month </h1>
+                  <h1>Clinic Location </h1>
                   <InputText
                       className={`login-input  ${!isEditing ? '' : 'border_on'}`}
                     name="shifts"
-                    placeholder="No. of shifts "
+                    placeholder="Clinic location"
                   />
                 </div>
               </div>
   
               <div className="mt-4">
-      {specialties.map((specialty, index) => (
+      {data.specialties?.map((specialty, index) => (
         <button
           key={index}
           className={`btn ${selectedSpecialties.includes(specialty) ? 'selected' : ''}`}
@@ -359,7 +377,7 @@ export const Profile = () => {
       ))}
     </div>
   
-              <div className=" mt-4">
+              {/* <div className=" mt-4">
                 <h1>Medical ID</h1>
   
                 <InputText
@@ -376,8 +394,8 @@ export const Profile = () => {
                   name="MobileNo"
                   placeholder="+91 1234567891"
                 />
-              </div>
-              <div className=" mt-4 d-flex">
+              </div> */}
+              {/* <div className=" mt-4 d-flex">
                 <div className="">
                   <h1>Do you Visit Any Hospital?</h1>
                   <div className="d-flex align-items-center ">
@@ -431,20 +449,27 @@ export const Profile = () => {
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="col-6 mt-4">
-                <div className="d-flex">
-                  <h1>Hospital Location</h1>
-                  <p>(if you have personal clinic)</p>
+              </div> */}
+              <div className="row mt-4">
+                <div className="col-md-4">
+                  <h1>Hospital Name</h1>
+                  <InputText
+                   className={`login-input  ${!isEditing ? '' : 'border_on'}`}
+                    name="Location"
+                    placeholder="Hospital Name"
+                  />
                 </div>
-                <InputText
-                  className=" login-input"
-                  name="cliniclocation"
-                  placeholder="Clinic location"
-                />
+                <div className="col-md-8">
+                  <h1>Hospital Location </h1>
+                  <InputText
+                      className={`login-input  ${!isEditing ? '' : 'border_on'}`}
+                    name="shifts"
+                    placeholder="Hospital location"
+                  />
+                </div>
               </div>
   
-              <div className="mt-4 d-flex">
+              {/* <div className="mt-4 d-flex">
                 <Checkbox
                   onChange={(e) => setChecked(e.checked)}
                   checked={checked}
@@ -452,7 +477,7 @@ export const Profile = () => {
                 ></Checkbox>
                 Send me useful monthly newsletters, alerts, and tips on applying
                 for jobs!
-              </div>
+              </div> */}
   
               <div className="mt-4 ">
                 {/* <h1>Are you a robot?*</h1> */}
@@ -465,7 +490,7 @@ export const Profile = () => {
                   <p>I'm not a robot</p>
                 </div> */}
               </div>
-              <div className="mt-4">
+              {/* <div className="mt-4">
                 <button className="reg-btn" >REGISTER </button>
               </div>
               <div className="mt-4">
@@ -473,21 +498,17 @@ export const Profile = () => {
                   By creating an account, you agree to our
                   <span> Terms of Use</span>{" "}
                 </p>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
   
-        <div className="text-box">
+        {/* <div className="text-box">
           <h1>Communication preferences</h1>
+
           <p>
-            Medrecruit and our partner Medworld will occasionally email you about
-            news and opportunities we think you'll be interested in Your profile
-            is currently being created, please check back in 15-30 minutes if you
-            would like to update your communication preferences. In the meantime,
-            let's get a running start on the next step in your career and <span>upload
-            your CV. </span>
-          </p>
+  Medrecruit and our partner Medworld will occasionally email you about news and opportunities we believe you'll find valuable. While your profile is being finalized, take the opportunity to review and prepare for the next step in your career. You can <span>download your resume</span> to ensure it's up-to-date and ready for any upcoming opportunities.
+</p>
           <h1>Deactivate your account</h1>
           <p>
             Deactivating your account will remove you from all alerts and mailing
@@ -497,7 +518,7 @@ export const Profile = () => {
           </p>
   
           <button>Deactivate your account</button>
-        </div>
+        </div> */}
   
         <div className="feedbox">
           <div className="feedbox-small">

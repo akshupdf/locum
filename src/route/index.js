@@ -4,6 +4,7 @@ import { Explore } from "../components/Explore/Explore";
 import HomePage from "../components/Homepage/Homepage";
 import { NavBar } from "../components/Navbar/NavBar";
 import { Profile } from "../components/Profile/Profile";
+import { ProfileEdit } from "../components/Profile/ProfileEdit";
 import { Register } from "../components/signin/up/Register";
 import { Signup } from "../components/signin/up/Signinpage";
 
@@ -40,5 +41,9 @@ export const router = [
       {
         path: '/explore',
         element: <Explore />
+      },
+      {
+        path: '/profilev2/:id',
+        element: <ProfileEdit />
       },
 ]  

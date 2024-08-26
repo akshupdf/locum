@@ -12,6 +12,8 @@ import Skeleton from "react-loading-skeleton";
 import SkeletonLoader from "../../reusable/Skeleton";
 import { useFormik } from "formik";
 import { toast, ToastContainer } from "react-toastify";
+import { MultiSelect } from "primereact/multiselect";
+import DeactivateAccountPopup from "./Deactivate";
 
 
 const selectUserInfov2 = (state) => state.user.userInfov2;
@@ -91,6 +93,16 @@ export const ProfileEdit = () => {
   //   "8:00 pm - 2.00 am",
   //   "2:00 am - 8.00 am",
   // ];
+
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const openPopup = () => {
+    setIsPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setIsPopupOpen(false);
+  };
 
   const handleTimeSelect = (data) => {
     setTimeSlot(data);
@@ -222,9 +234,9 @@ export const ProfileEdit = () => {
             <div className="detail-box">
               <div className="detail-text-box">
                 <h2>Professional Details</h2>
-                <p>
+                {/* <p>
                   This are the professional details shown to users in the app.
-                </p>
+                </p> */}
               </div>
               <div>
                 <Stars />
@@ -389,15 +401,16 @@ export const ProfileEdit = () => {
               </div>
   
               <div className="mt-4">
-      {specialties.map((specialty, index) => (
-        <button
-          key={index}
-          className={`btn ${selectedSpecialties.includes(specialty) ? 'selected' : ''}`}
-          onClick={() => handleSpecialtyClick(specialty)}
-        >
-          <p> {specialty} </p> 
-        </button>
-      ))}
+  
+        <MultiSelect
+        className="login-input"
+        name="specialties"
+        value={formik.values.specialties}
+        options={specialties}
+        onChange={(e) => formik.setFieldValue("specialties", e.value)}
+        placeholder="Select specialties"
+      />
+   
     </div>
   
               <div className=" mt-4">
@@ -519,17 +532,13 @@ export const ProfileEdit = () => {
           </div>
         </div>
   
-        <div className="text-box">
+       <div className="text-box">
           <h1>Communication preferences</h1>
+
           <p>
-            Medrecruit and our partner Medworld will occasionally email you about
-            news and opportunities we think you'll be interested in Your profile
-            is currently being created, please check back in 15-30 minutes if you
-            would like to update your communication preferences. In the meantime,
-            let's get a running start on the next step in your career and <span>upload
-            your CV. </span>
-          </p>
-          <h1>Deactivate your account</h1>
+  Medrecruit and our partner Medworld will occasionally email you about news and opportunities we believe you'll find valuable. While your profile is being finalized, take the opportunity to review and prepare for the next step in your career. You can <span>download your resume</span> to ensure it's up-to-date and ready for any upcoming opportunities.
+</p>
+          <h1 >Deactivate your account</h1>
           <p>
             Deactivating your account will remove you from all alerts and mailing
             lists immediately and deleted in accordance with our{" "}
@@ -537,7 +546,9 @@ export const ProfileEdit = () => {
             touch To finalise the deactivation of your account.
           </p>
   
-          <button>Deactivate your account</button>
+          <button onClick={openPopup}> Deactivate your account</button>
+
+          <DeactivateAccountPopup isOpen={isPopupOpen} onClose={closePopup} />
         </div>
   
         <div className="feedbox">

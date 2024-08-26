@@ -115,7 +115,7 @@ export const Flipcard = () => {
 <Swiper
                
                slidesPerView={'3'}
-               spaceBetween={9}
+               spaceBetween={50}
                loop={true}
                pagination={{
                    clickable: true
@@ -123,8 +123,13 @@ export const Flipcard = () => {
                navigation={true}
                modules={[Pagination, Navigation]}
                className="swiper-container">
+                 <div className='swiper-wrapper' >
+
                {drData.map((data, index) => (
-                   <SwiperSlide key={index}>
+               
+
+          
+                   <SwiperSlide key={index} className='swiper-slide'>
                       <div className="tool-small-box">
                                 <div className="front">
                                     <img src={data.logo} alt="logo" />
@@ -145,8 +150,10 @@ export const Flipcard = () => {
                                     </button>
                                 </div>
                             </div>
-                   </SwiperSlide>
+                   </SwiperSlide>      
                ))}
+               
+                </div>
            </Swiper>
         </div>
     );
