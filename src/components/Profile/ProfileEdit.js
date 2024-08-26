@@ -16,7 +16,7 @@ import { toast, ToastContainer } from "react-toastify";
 
 const selectUserInfov2 = (state) => state.user.userInfov2;
 
-export const Profile = () => {
+export const ProfileEdit = () => {
 
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -64,10 +64,12 @@ export const Profile = () => {
     initialValues: initialValues,
     enableReinitialize: true,
     onSubmit: async (values) => {
-
+     
+  
         const data = {
           ...values
         };
+  
 
         const addUserResult = await dispatch(addUser(data)).unwrap();
   
@@ -83,8 +85,20 @@ export const Profile = () => {
 
   
 
+  // const section = [
+  //   "8:00 am - 2.00 pm",
+  //   "2:00 pm - 8.00 pm",
+  //   "8:00 pm - 2.00 am",
+  //   "2:00 am - 8.00 am",
+  // ];
 
+  const handleTimeSelect = (data) => {
+    setTimeSlot(data);
+  };
 
+  const handleEdit = () => {
+    setIsEditing(!isEditing);
+  };
 
 
   useEffect(() => {
@@ -123,38 +137,63 @@ export const Profile = () => {
             <div className="tab-box">
             <div className="logo-box">
               <img src={profile} alt="profile"></img>
-          {/* <div className="logo-btn">
+          <div className="logo-btn">
 
               <button className="btn">Upload Photo</button>
               <button className="btn" onClick={handleEdit}>    {isEditing ? "Cancel" : "Edit"} </button>
-              </div> */}
+              </div>
             </div>
   
             <div className="name-box">
             <h3>First Name</h3>
               <div className="name-text-box">
-              <p>{data?.first_name}</p>
+         
+              
+              <InputText
+                className={`login-input ${
+                  formik.touched.firstName && formik.errors.firstName
+                    ? "p-invalid"
+                    : ""
+                }  ${!isEditing ? '' : 'border_on'}`}
+                name="firstName"
+                value={formik.values.first_name}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                placeholder="First Name"
+                disabled={!isEditing} 
+              />
+              <div>
+                {formik.touched.firstName && formik.errors.firstName && (
+                  <small className="p-error">{formik.errors.firstName}</small>
+                )}
+              </div>
             </div>
       
   
               <h3>Email</h3>
               <div className="name-text-box">
-                <p>akhilkumar@gmail.com</p>
+                {/* <p>akhilkumar@gmail.com</p> */}
                 {/* <button className="btn"> Edit </button>{" "} */}
-            
+                <InputText
+                      className={`login-input  ${!isEditing ? '' : 'border_on'}`}
+                    value={formik.values?.email || "akhilkumar@gmail.com"}
+                    disabled={!isEditing}
+                    name="email"
+                    placeholder="Enter Email"
+                  />
               </div>
   
               <h3>Phone Number</h3>
               <div className="name-text-box">
-                <p>{data?.mobile_number}</p>
+                {/* <p>{data?.mobile_number}</p> */}
               
-                {/* <InputText
+                <InputText
                    className={`login-input  ${!isEditing ? '' : 'border_on'}`}
                     value={formik.values?.mobile_number || "99999 99999"}
                     disabled={!isEditing}
                     name="mobile_number"
                     placeholder="Enter Mobile number"
-                  /> */}
+                  />
               </div>
   
               <h3>Location</h3>
@@ -206,6 +245,8 @@ export const Profile = () => {
                         inputId="ingredient4"
                         name={data}
                         value={data}
+                        disabled={!isEditing}
+                        onChange={(e) => handleTimeSelect(e.value)}
                         checked={data === timeSlot}
                       />
                       <p htmlFor="ingredient4" className="ml-2">

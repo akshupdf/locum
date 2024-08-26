@@ -162,7 +162,7 @@ export const Register = () => {
               <h2>First Name</h2>
               <InputText
                 className={`login-input ${
-                  formik.touched.roomType && formik.errors.roomView
+                  formik.touched.firstName && formik.errors.firstName
                     ? "p-invalid"
                     : ""
                 }`}
@@ -170,7 +170,7 @@ export const Register = () => {
                 value={formik.values.firstName}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                placeholder="Your First Name"
+                placeholder="First Name"
               />
               <div>
                 {formik.touched.firstName && formik.errors.firstName && (
@@ -187,7 +187,7 @@ export const Register = () => {
                 value={formik.values.lastName}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                placeholder="Your Last Name"
+                placeholder="Last Name"
               />
                    <div>
                 {formik.touched.lastName && formik.errors.lastName && (
@@ -204,7 +204,7 @@ export const Register = () => {
        
               <InputText
                 className={`login-input  ${
-                  formik.touched.roomType && formik.errors.roomView
+                  formik.touched.mobileNo && formik.errors.mobileNo
                     ? "p-invalid"
                     : ""
                 }`}
@@ -212,7 +212,7 @@ export const Register = () => {
                 value={formik.values.mobileNo}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                placeholder="Enter Your mobile number"
+                placeholder="Enter mobile number"
               />
 
 <span className="p-inputgroup-addon"       onClick={() => sendOtp(formik.values.mobileNo)}>
@@ -273,7 +273,7 @@ export const Register = () => {
                   "2:00 am - 8.00 am",
                 ]}
                 onChange={(e) => formik.setFieldValue("availability", e.value)}
-                placeholder="Confirm Your Availability"
+                placeholder="Confirm Availability"
               />{" "}
             </div>
 
