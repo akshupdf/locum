@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {  fetchUserWithToken } from "../../redux/apiSlice";
 import { useParams } from "react-router-dom";
 import SkeletonLoader from "../../reusable/Skeleton";
+import jsPDF from 'jspdf';
 
 const selectUserInfov2 = (state) => state.user.userInfov2;
 
@@ -44,6 +45,69 @@ export const Profile = () => {
     return <SkeletonLoader />;
   }
 
+  const data = user[0]
+
+  const generatePDF = () => {
+    const doc = new jsPDF();
+    doc.text('Resume', 14, 16);
+
+    doc.text(`First Name: ${data?.first_name}`, 14, 24);
+    doc.text(`Last Name: ${data?.last_name}`, 14, 32);
+    doc.text(`Email: ${data?.email}`, 14, 40);
+    doc.text(`Phone Number: ${data?.mobile_number}`, 14, 48);
+    doc.text(`Location: ${data?.location}`, 14, 56);
+    doc.text(`Medical ID: ${data?.medical_id}`, 14, 64);
+    
+    if (data?.about) {
+      doc.text(`About ${data?.first_name}: ${data?.about}`, 14, 72);
+    }
+
+    if (data?.availability) {
+      doc.text('Availability:', 14, 80);
+      data.availability.forEach((slot, index) => {
+        doc.text(`- ${slot}`, 14, 88 + (index * 8));
+      });
+    }
+
+    doc.text(`Rate/Hourly: ${data?.hourly_rate}`, 14, 100);
+    doc.text(`Total Experience: ${data?.otp_verification_id}`, 14, 108);
+    
+    if (data?.clinic) {
+      doc.text(`Do you have your own clinic: ${data?.clinic}`, 14, 116);
+    }
+
+    if (data?.timeSlot) {
+      doc.text('Clinic Time Slot:', 14, 124);
+      data.timeSlot.forEach((timeSlot, index) => {
+        doc.text(`- ${timeSlot}`, 14, 132 + (index * 8));
+      });
+    }
+
+    if (data?.clinic_name) {
+      doc.text(`Clinic Name: ${data?.clinic_name}`, 14, 140);
+    }
+
+    if (data?.clinic_location) {
+      doc.text(`Clinic Location: ${data?.clinic_location}`, 14, 148);
+    }
+
+    if (data.specialties) {
+      doc.text('Specialties:', 14, 156);
+      data.specialties.forEach((specialty, index) => {
+        doc.text(`- ${specialty}`, 14, 164 + (index * 8));
+      });
+    }
+
+    if (data?.hospital_name) {
+      doc.text(`Hospital Name: ${data?.hospital_name}`, 14, 180);
+    }
+
+    if (data?.hospital_location) {
+      doc.text(`Hospital Location: ${data?.hospital_location}`, 14, 188);
+    }
+
+    doc.save('resume.pdf');
+  };
 
   return (
     <div className="profile">
@@ -54,7 +118,7 @@ export const Profile = () => {
   
     <div>
   
-        <div className="profile-box">
+        <div className="profile-box d-flex">
   
     
           <div className="profile-left">
@@ -117,7 +181,9 @@ data?.email &&
     }
             
           </div>
+
           <div className="profile-right">
+            <div className="detail-main-box">
             <div className="detail-box">
               <div className="detail-text-box">
                 <h2>Professional Details</h2>
@@ -127,7 +193,15 @@ data?.email &&
                 <Stars />
               </div>
             </div>
-  
+            <div className="detail-box2">
+              <div className="detail-text-box">
+              <img width="50" height="50" src="https://img.icons8.com/ios/50/downloading-updates.png" alt="downloading-updates"/>
+               <button className="dwn-btn" onClick={generatePDF}> Download Resume</button>
+            
+              </div>
+             
+            </div>
+          </div>
             <div className="available-box">
               <div className="d-flex">
                 {" "}
@@ -148,20 +222,16 @@ data?.email &&
   
               <div className="row mt-4">
           
-                <div className="col-md-6 ">
+                <div className="col-md-4 ">
                   <h1>Rate/Hourly </h1>
 
                   <p className="">{data?.hourly_rate}</p>
                
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-4">
                   <h1>Total Experience</h1>
                   <div className="d-flex">
-                    <InputText
-                    className={`login-input  ${!isEditing ? '' : 'border_on'}`}
-                      name="Total experience"
-                      placeholder="Total experience"
-                    />
+                  <p className="">{data?.otp_verification_id}</p>
   
                     <span>
                       <svg
@@ -193,9 +263,7 @@ data?.email &&
                 {
                         data?.clinic && <div className="">
                         <h1>Do you have your own clinic</h1>
-                            {
-                              data?.clinic
-                            }
+                        <p className="">{data?.hourly_rate}</p>
                       </div>
                 }
                 
@@ -227,21 +295,13 @@ data?.email &&
 
               </div>
               <div className="row mt-4">
-                <div className="col-md-6">
+                <div className="col-md-4">
                   <h1>Clinic Name</h1>
-                  <InputText
-                   className={`login-input  ${!isEditing ? '' : 'border_on'}`}
-                    name="Location"
-                    placeholder="Clinic Name"
-                  />
+                  <p className="">{data?.clinic_name}</p> 
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-4">
                   <h1>Clinic Location </h1>
-                  <InputText
-                      className={`login-input  ${!isEditing ? '' : 'border_on'}`}
-                    name="shifts"
-                    placeholder="Clinic location"
-                  />
+                  <p className="">{data?.clinic_location}</p> 
                 </div>
               </div>
   
@@ -257,21 +317,13 @@ data?.email &&
     </div>
   
               <div className="row mt-4">
-                <div className="col-md-6">
+                <div className="col-md-4">
                   <h1>Hospital Name</h1>
-                  <InputText
-                   className={`login-input  ${!isEditing ? '' : 'border_on'}`}
-                    name="Location"
-                    placeholder="Hospital Name"
-                  />
+                  <p className="">{data?.hospital_name}</p> 
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-4">
                   <h1>Hospital Location </h1>
-                  <InputText
-                      className={`login-input  ${!isEditing ? '' : 'border_on'}`}
-                    name="shifts"
-                    placeholder="Hospital location"
-                  />
+                  <p className="">{data?.hospital_location}</p> 
                 </div>
               </div>
   

@@ -30,7 +30,9 @@ const SearchTable = () => {
     }));
 
     useEffect(() => {
+        
         dispatch(getAllDoctors());
+
       }, []);
 
 

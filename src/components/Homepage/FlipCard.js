@@ -146,7 +146,7 @@ export const Flipcard = () => {
                                         <p>🕓{data.medical_id}</p>
                                         <p>💰{data.hourly_rate}</p>
                                     </div>
-                                    <button className="tool-box-btn" onClick={() => (window.location.href = `/profile/${data.id}`)}>
+                                    <button className="tool-box-btn" onClick={() => (window.location.href = `/profile/${data.custom_id}`)}>
                                         VIEW PROFILE <LeftArrow />
                                     </button>
                                 </div>

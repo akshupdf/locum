@@ -14,7 +14,7 @@ import { useFormik } from "formik";
 import { toast, ToastContainer } from "react-toastify";
 import { MultiSelect } from "primereact/multiselect";
 import DeactivateAccountPopup from "./Deactivate";
-import { jwtDecode } from 'jwt-decode';
+import jwtDecode from "jwt-decode";
 
 
 const selectUserInfov2 = (state) => state.user.userInfov2;
@@ -29,8 +29,8 @@ export const ProfileEdit = () => {
   );
 
   const token = localStorage.getItem('jwtToken');
-  const decodedToken = jwtDecode(token);
-  const userId = decodedToken.id;
+  // const decodedToken = jwtDecode(token);
+  // const userId = decodedToken.id;
 
   const [timeSlot, setTimeSlot] = useState("");
   const [clinic , setClinic] = useState(true);
@@ -65,7 +65,7 @@ export const ProfileEdit = () => {
   ];
 
   const defaultValues = {
-    userId: userId,
+    userId: id,
     firstName: "",
     lastName: "",
     gender: "",
