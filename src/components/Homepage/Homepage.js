@@ -103,47 +103,12 @@ export default function HomePage() {
     },
   ];
 
-  const drData = [
-    {
-      title: "Dr Kiran S.",
-      role: "Consultant - Anaesthetics",
-      logo: one,
-      location: "📍   Mumbai",
-      available: "✅    Available Now",
-      shift: "🕓    20 shifts / month",
-      pay: "💰   $100 / hour",
-    },
-    {
-      title: "Dr Jamie M.",
-      role: "Registrar - Acute Medicine",
-      logo: two,
-      location: "📍   Mumbai",
-      available: "✅    Available Now",
-      shift: "🕓    20 shifts / month",
-      pay: "💰   $100 / hour",
-    },
-    {
-      title: "Dr Maria C.",
-      role: "SHO - Emergency Medicine",
-      logo: three,
-      location: "📍   Mumbai",
-      available: "✅    Available Now",
-      shift: "🕓    20 shifts / month",
-      pay: "💰   $100 / hour",
-    },
-  ];
 
   useEffect(() => {
     dispatch(getAllDoctors());
   }, []);
 
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-
-  // console.log(allUsers);
 
   return (
     <div className="Homepage">
@@ -234,7 +199,7 @@ export default function HomePage() {
             </div>
           ))}
         </div>
-        <button className="btn">More</button>
+        <button className="btn"  onClick={() => (window.location.href = "/explore")}>More</button>
       </div>
 
       <div className="tool-box-main">
@@ -268,7 +233,7 @@ export default function HomePage() {
 
           <Flipcard />
         </div>
-        <button className="btn">Explore More</button>
+        <button className="btn"  onClick={() => (window.location.href = "/explore")}>Explore More</button>
       </div>
 
       <div className="compare-box-main">

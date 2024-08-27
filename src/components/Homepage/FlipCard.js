@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import one from "../../assets/dr2.png";
-import two from "../../assets/2.png";
+import two from "../../assets/profile.png";
 import three from "../../assets/3.png";
 import { LeftArrow, LeftArrowv2, RightArrowv2 } from '../../reusable/Icons';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -8,11 +8,12 @@ import { Pagination, Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import { useSelector } from 'react-redux';
 
 
 export const Flipcard = () => {
 
-
+    const { allUsers } = useSelector((state) => state.user);
 
     const drData = [
         {
@@ -29,7 +30,7 @@ export const Flipcard = () => {
             id: 2,
             title: "Dr Jamie M.",
             role: "Registrar - Acute Medicine",
-            logo: one,
+            logo: two,
             location: "Mumbai",
             available: "Available Now",
             shift: "20 shifts / month",
@@ -49,7 +50,7 @@ export const Flipcard = () => {
             id: 4,
             title: "Dr Kiran S.",
             role: "Consultant - Anaesthetics",
-            logo: one,
+            logo: two,
             location: "Mumbai",
             available: "Available Now",
             shift: "20 shifts / month",
@@ -69,7 +70,7 @@ export const Flipcard = () => {
             id: 6,
             title: "Dr Maria C.",
             role: "SHO - Emergency Medicine",
-            logo: one,
+            logo: two,
             location: "Mumbai",
             available: "Available Now",
             shift: "20 shifts / month",
@@ -125,25 +126,25 @@ export const Flipcard = () => {
                className="swiper-container">
                  <div className='swiper-wrapper' >
 
-               {drData.map((data, index) => (
+               {allUsers?.map((data, index) => (
                
 
           
                    <SwiperSlide key={index} className='swiper-slide'>
                       <div className="tool-small-box">
                                 <div className="front">
-                                    <img src={data.logo} alt="logo" />
+                                    <img src={one} alt="logo" />
                                     <div className="tool-small-box-text">
-                                        <h4>{data.title}</h4>
-                                        <h3>{data.role}</h3>
+                                        <h4>{data.first_name}{" "} {data.last_name}</h4>
+                                        <h3>{data.specialization}</h3>
                                     </div>
                                 </div>
                                 <div className="back">
                                     <div className="tool-small-box-text">
                                         <p>📍{data.location}</p>
-                                        <p>✅{data.available}</p>
-                                        <p>🕓{data.shift}</p>
-                                        <p>💰{data.pay}</p>
+                                        <p>✅{data.availability}</p>
+                                        <p>🕓{data.medical_id}</p>
+                                        <p>💰{data.hourly_rate}</p>
                                     </div>
                                     <button className="tool-box-btn" onClick={() => (window.location.href = `/profile/${data.id}`)}>
                                         VIEW PROFILE <LeftArrow />

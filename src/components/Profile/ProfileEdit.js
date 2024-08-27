@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import profile from "../../assets/profile.png";
-import { Leafimg, Stars } from "../../reusable/Icons";
+import { Clock, Leafimg, Stars } from "../../reusable/Icons";
 import { RadioButton } from "primereact/radiobutton";
 import { InputText } from "primereact/inputtext";
 import { Checkbox } from "primereact/checkbox";
 import { Button } from "primereact/button";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser, fetchUserWithToken } from "../../redux/apiSlice";
+import { addUser, fetchUserWithToken, updateUser } from "../../redux/apiSlice";
 import { useParams } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import SkeletonLoader from "../../reusable/Skeleton";
@@ -14,6 +14,7 @@ import { useFormik } from "formik";
 import { toast, ToastContainer } from "react-toastify";
 import { MultiSelect } from "primereact/multiselect";
 import DeactivateAccountPopup from "./Deactivate";
+import { jwtDecode } from 'jwt-decode';
 
 
 const selectUserInfov2 = (state) => state.user.userInfov2;
@@ -27,6 +28,10 @@ export const ProfileEdit = () => {
     (state) => state.user
   );
 
+  const token = localStorage.getItem('jwtToken');
+  const decodedToken = jwtDecode(token);
+  const userId = decodedToken.id;
+
   const [timeSlot, setTimeSlot] = useState("");
   const [clinic , setClinic] = useState(true);
   const [clinictime, setClinictime] = useState(true);
@@ -35,6 +40,7 @@ export const ProfileEdit = () => {
   const [checked, setChecked] = useState(true);
   const [isLoading, setLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
+  const [image, setImage] = useState(null);
   const user = useSelector(selectUserInfov2);
   const [selectedSpecialties, setSelectedSpecialties] = useState([]);
 
@@ -58,41 +64,123 @@ export const ProfileEdit = () => {
     "Women's Imaging", "Wound Care"
   ];
 
+  const defaultValues = {
+    userId: userId,
+    firstName: "",
+    lastName: "",
+    gender: "",
+    availability: [],
+    medicalId: "",
+    location: "",
+    hourlyRate: "",
+    totalExp: "",
+    ownClinic: true,
+    clinicTimeSlot: [],
+    clinicLocation: "",
+    idealNumber: "",
+    preferredSpecialities: [],
+    visitHospital: true,
+    visitHospitalSlot: [],
+    hospitalLocation: "",
+    image:"",
+    aboutMe: "",
+    hospitalName :  "",
+    clinicName :  "",
+    emailId :  ""
+  };
 
-  let initialValues = {...user}
-
+  const [initialValues, setInitialValues] = useState(defaultValues);
   
+  const mapBackendDataToFormValues = (backendData) => {
+
+    return {
+      userId: id,
+      firstName: backendData?.first_name || "",
+      lastName: backendData?.last_name || "",
+      mobileNo: backendData?.mobile_number,
+      gender: backendData?.gender || "",
+      availability: backendData?.availability || [],
+      medicalId: backendData?.medical_id || "",
+      location: backendData?.location || "",
+      hourlyRate: backendData?.hourly_rate || "",
+      totalExp: backendData?.total_exp || "",
+      ownClinic: backendData?.own_clinic !== undefined ? backendData?.own_clinic : true,
+      clinicTimeSlot: backendData?.clinic_time_slot || [],
+      clinicLocation: backendData?.clinic_location || "",
+      idealNumber: backendData?.ideal_number || "",
+      preferredSpecialities: backendData?.preferred_specialities || [],
+      visitHospital: backendData?.visit_hospital !== undefined ? backendData?.visit_hospital : true,
+      visitHospitalSlot: backendData?.visit_hospital_slot || [],
+      hospitalLocation: backendData?.hospital_location || "",
+      aboutMe: backendData?.about_me || "",
+      image: backendData?.profile_image || "",
+      hospitalName :  backendData?.hospital_name || "",
+      clinicName : backendData?.clinic_name || "",
+      emailId :  backendData?.email_id || ""
+    };
+  };
+
+  useEffect(() => {
+    if (user && user.length > 0) {
+      const Values = user[0];
+      const mappedValues = mapBackendDataToFormValues(Values);
+      setInitialValues(mappedValues);
+    }
+  }, [user]);
+
+
+
   const formik = useFormik({
-    initialValues: initialValues,
-    enableReinitialize: true,
+    initialValues,
+    enableReinitialize: true, 
     onSubmit: async (values) => {
      
   
         const data = {
           ...values
         };
-  
+        console.log(data)
 
-        const addUserResult = await dispatch(addUser(data)).unwrap();
+        // const addUserResult = await dispatch(updateUser(data)).unwrap();
   
-        if (addUserResult.error) {
-          toast(addUserResult.error || "User Registration Failed");
-        } else {
-          toast("User Has been registered");
-            window.location.href = `/signin`;
-        }
+        // if (addUserResult.error) {
+        //   toast(addUserResult.error || "User Registration Failed");
+        // } else {
+        //   toast("User Has been registered");
+        //     window.location.href = `/signin`;
+        // }
       
     },
   });
 
   
-
   // const section = [
   //   "8:00 am - 2.00 pm",
   //   "2:00 pm - 8.00 pm",
   //   "8:00 pm - 2.00 am",
   //   "2:00 am - 8.00 am",
   // ];
+
+  const title = [
+    "Any",
+    "Physician",
+    "Assistant",
+    "CCP",
+    "CNM",
+    "CNS",
+    "CRNA",
+    "DNAP",
+    "DNP",
+    "DPM",
+    "LCSW",
+    "NP",
+    "Other",
+    "PA",
+    "PhD",
+    "PsyD",
+    "SFA",
+    "Student",
+  ];
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -112,6 +200,11 @@ export const ProfileEdit = () => {
     setIsEditing(!isEditing);
   };
 
+  const handleImageChange = (event) => {
+    const file = event.currentTarget.files[0];
+    setImage(file);
+  };
+
 
   useEffect(() => {
  
@@ -128,31 +221,47 @@ export const ProfileEdit = () => {
     }
   }, []);
 
-  if (isLoading) {
+  if (loading) {
     return <SkeletonLoader />;
   }
 
 
+
+
   return (
     <div className="profile">
-    {
-    user?.map((data) =>{
-  
-  return (
+
   
     <div>
   
         <div className="profile-box">
   
-    
+    <form onSubmit={formik.handleSubmit} className="d-flex">
           <div className="profile-left">
             <div className="tab-box">
             <div className="logo-box">
-              <img src={profile} alt="profile"></img>
+              <img src={formik.values?.image} alt="profile"></img>
           <div className="logo-btn">
 
-              <button className="btn">Upload Photo</button>
-              <button className="btn" onClick={handleEdit}>    {isEditing ? "Cancel" : "Edit"} </button>
+            
+              <button className="edit-btn" onClick={handleEdit}>   <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 50 50">
+<path d="M 43.125 2 C 41.878906 2 40.636719 2.488281 39.6875 3.4375 L 38.875 4.25 L 45.75 11.125 C 45.746094 11.128906 46.5625 10.3125 46.5625 10.3125 C 48.464844 8.410156 48.460938 5.335938 46.5625 3.4375 C 45.609375 2.488281 44.371094 2 43.125 2 Z M 37.34375 6.03125 C 37.117188 6.0625 36.90625 6.175781 36.75 6.34375 L 4.3125 38.8125 C 4.183594 38.929688 4.085938 39.082031 4.03125 39.25 L 2.03125 46.75 C 1.941406 47.09375 2.042969 47.457031 2.292969 47.707031 C 2.542969 47.957031 2.90625 48.058594 3.25 47.96875 L 10.75 45.96875 C 10.917969 45.914063 11.070313 45.816406 11.1875 45.6875 L 43.65625 13.25 C 44.054688 12.863281 44.058594 12.226563 43.671875 11.828125 C 43.285156 11.429688 42.648438 11.425781 42.25 11.8125 L 9.96875 44.09375 L 5.90625 40.03125 L 38.1875 7.75 C 38.488281 7.460938 38.578125 7.011719 38.410156 6.628906 C 38.242188 6.246094 37.855469 6.007813 37.4375 6.03125 C 37.40625 6.03125 37.375 6.03125 37.34375 6.03125 Z"></path>
+</svg> </button> 
+<input
+    type="file"
+    name="profileImage"
+    accept="image/*"
+    onChange={handleImageChange}
+    style={{ display: 'none' }}
+    id="fileInput"
+  />
+  <button
+    type="button"
+    className="btn"
+    onClick={() => document.getElementById('fileInput').click()}
+  >
+    Upload Photo
+  </button>
               </div>
             </div>
   
@@ -162,17 +271,12 @@ export const ProfileEdit = () => {
          
               
               <InputText
-                className={`login-input ${
-                  formik.touched.firstName && formik.errors.firstName
-                    ? "p-invalid"
-                    : ""
-                }  ${!isEditing ? '' : 'border_on'}`}
-                name="firstName"
-                value={formik.values.first_name}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                placeholder="First Name"
-                disabled={!isEditing} 
+                  className={`login-input ${formik.touched.firstName && formik.errors.firstName ? "p-invalid" : ""}`}
+                  name="first_name"
+                  value={formik.values?.firstName + " " + formik.values?.lastName }
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  placeholder="First Name"
               />
               <div>
                 {formik.touched.firstName && formik.errors.firstName && (
@@ -184,15 +288,13 @@ export const ProfileEdit = () => {
   
               <h3>Email</h3>
               <div className="name-text-box">
-                {/* <p>akhilkumar@gmail.com</p> */}
-                {/* <button className="btn"> Edit </button>{" "} */}
                 <InputText
-                      className={`login-input  ${!isEditing ? '' : 'border_on'}`}
-                    value={formik.values?.email || "akhilkumar@gmail.com"}
-                    disabled={!isEditing}
-                    name="email"
-                    placeholder="Enter Email"
-                  />
+            className={`login-input`}
+            value={formik.values?.emailId}
+            onChange={formik.handleChange}
+            name="emailId"
+            placeholder="Enter Email Id"
+          />
               </div>
   
               <h3>Phone Number</h3>
@@ -200,34 +302,49 @@ export const ProfileEdit = () => {
                 {/* <p>{data?.mobile_number}</p> */}
               
                 <InputText
-                   className={`login-input  ${!isEditing ? '' : 'border_on'}`}
-                    value={formik.values?.mobile_number || "99999 99999"}
-                    disabled={!isEditing}
-                    name="mobile_number"
-                    placeholder="Enter Mobile number"
-                  />
+            className={`login-input`}
+            value={formik.values?.mobileNo}
+            onChange={formik.handleChange}
+            name="mobileNo"
+            placeholder="Enter Mobile number"
+            disabled={true}
+          />
               </div>
   
               <h3>Location</h3>
               <div className="name-text-box">
-                <p>{data?.location}</p>
+              <InputText
+            className={`login-input`}
+            value={formik.values?.location}
+            onChange={formik.handleChange}
+            name="location"
+            placeholder="Enter Location"
+          />
                 {/* <button className="btn"> Edit </button>{" "} */}
               </div>
   
               <h3>Medical ID</h3>
-              <p>{data?.medical_id}</p>
+              <InputText
+          className={`login-input`}
+          value={formik.values?.medicalId}
+          onChange={formik.handleChange}
+          name="medicalId"
+          placeholder="Enter Medical Id"
+          disabled={true}
+        />
             </div>
     </div>
             <div className="about-box">
               <div className="head">
                 <h1>About Sid</h1>
-               
+                <InputText
+          className={`login-input`}
+          value={formik.values?.aboutMe}
+          onChange={formik.handleChange}
+          name="aboutMe"
+          placeholder="Enter About Yourself"
+        />
               </div>
-              <p>
-                Lorem ipsum dolor sit amet consectetur. Erat auctor a aliquam vel
-                congue luctus. Leo diam cras neque mauris ac arcu elit ipsum dolor
-                sit amet consectetur.
-              </p>
             </div>
           </div>
           <div className="profile-right">
@@ -251,73 +368,61 @@ export const ProfileEdit = () => {
               </div>
               <div className="">
                 <div className=" d-flex">
-                  {data.avilability?.map((data) => (
-                    <div className="d-flex align-items-center cols-md-3 btn">
-                      <RadioButton
-                        inputId="ingredient4"
-                        name={data}
-                        value={data}
-                        disabled={!isEditing}
-                        onChange={(e) => handleTimeSelect(e.value)}
-                        checked={data === timeSlot}
-                      />
-                      <p htmlFor="ingredient4" className="ml-2">
-                        {data}
-                      </p>
-                    </div>
+
+                  
+                  {/* {formik.values??.avilability?.map((timeSlot) => (
+                    <div className="d-flex align-items-center cols-md-3 btn" key={timeSlot}>
+                    <RadioButton
+                      inputId={`avilability-${timeSlot}`}
+                      name="avilability"
+                      value={timeSlot}
+                      onChange={formik.handleChange}
+                      checked={formik.values?.avilability === timeSlot}
+                    />
+                    <p htmlFor={`avilability-${timeSlot}`} className="ml-2">
+                      {timeSlot}
+                    </p>
+                  </div>
+                  ))} */}
+
+{user?.availability?.map((slot , index) => (
+                    <div key={index} className="d-flex align-items-center cols-md-3 ">
+                    <p className="ml-2 tuple">
+                      {slot}
+                    </p>
+                  </div>
                   ))}
                 </div>
               </div>
   
               <div className="row mt-4">
-                <div className="col-md-4 ">
-                  <h1>Specialization</h1>
-                  <InputText
-                    className={`login-input  ${!isEditing ? '' : 'border_on'}`}
-                    value={data?.specialization}
-                    disabled={!isEditing}
-                    name="Specialization"
-                    placeholder="Specialization"
-                  />
-                </div>
-                <div className="col-md-4">
+             
+                <div className="col-md-6">
                   <h1>Rate/Hourly </h1>
                   <InputText
-                   className={`login-input  ${!isEditing ? '' : 'border_on'}`}
-                    value={data?.hourly_rate}
-                    name="Rate/Hourly "
-                    placeholder="Rate/Hourly "
-                  />
+        className={`login-input`}
+        value={formik.values?.hourlyRate}
+        onChange={formik.handleChange}
+        name="hourlyRate"
+        placeholder="Rate/Hourly"
+      />
                 </div>
-                <div className="col-md-4">
-                  <h1>Total Experience</h1>
+                <div className="col-md-6">
+                <div className="d-flex ">
+                  <h1>Total Experience</h1><p>(In Years)</p>
+                  </div>
                   <div className="d-flex">
-                    <InputText
-                    className={`login-input  ${!isEditing ? '' : 'border_on'}`}
-                      name="Total experience"
-                      placeholder="Total experience"
-                    />
+                  <InputText
+        className={`login-input`}
+        value={formik.values?.totalExp}
+        onChange={formik.handleChange}
+        name="totalExp"
+        placeholder="Total experience"
+      />
+
   
                     <span>
-                      <svg
-                        width="27"
-                        height="30"
-                        viewBox="0 0 27 30"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          opacity="0.5"
-                          d="M14.7949 5H12.7949C10.9093 5 9.96649 5 9.38071 5.58579C8.79492 6.17157 8.79492 7.11438 8.79492 9V11V12.5H18.7949V11V9C18.7949 7.11438 18.7949 6.17157 18.2091 5.58579C17.6233 5 16.6805 5 14.7949 5Z"
-                          fill="white"
-                        />
-                        <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M15.2304 8.78311C14.3352 8.29495 13.2533 8.29495 12.358 8.78311L7.56381 11.3973C6.59982 11.9229 6 12.9332 6 14.0312V18.9688C6 20.0668 6.59982 21.0771 7.56381 21.6027L12.358 24.2169C13.2533 24.705 14.3352 24.705 15.2304 24.2169L20.0246 21.6027C20.9886 21.0771 21.5885 20.0668 21.5885 18.9688V14.0312C21.5885 12.9332 20.9886 11.9229 20.0246 11.3973L15.2304 8.78311ZM13.7944 13.5C13.5104 13.5 13.3204 13.8408 12.9404 14.5225L12.8421 14.6989C12.7341 14.8926 12.6801 14.9894 12.5959 15.0533C12.5117 15.1172 12.4069 15.141 12.1972 15.1884L12.0063 15.2316C11.2684 15.3986 10.8994 15.482 10.8117 15.7643C10.7239 16.0466 10.9754 16.3407 11.4785 16.929L11.6086 17.0812C11.7516 17.2483 11.823 17.3319 11.8552 17.4353C11.8873 17.5387 11.8765 17.6502 11.8549 17.8733L11.8353 18.0763C11.7592 18.8612 11.7212 19.2536 11.951 19.4281C12.1808 19.6025 12.5262 19.4435 13.2171 19.1254L13.3959 19.0431C13.5922 18.9527 13.6904 18.9075 13.7944 18.9075C13.8985 18.9075 13.9967 18.9527 14.193 19.0431L14.3717 19.1254C15.0626 19.4435 15.4081 19.6025 15.6379 19.4281C15.8677 19.2536 15.8297 18.8612 15.7536 18.0763L15.7339 17.8733C15.7123 17.6502 15.7015 17.5387 15.7337 17.4353C15.7658 17.3319 15.8373 17.2483 15.9802 17.0812L16.1104 16.929C16.6135 16.3407 16.865 16.0466 16.7772 15.7643C16.6894 15.482 16.3205 15.3986 15.5826 15.2316L15.3917 15.1884C15.182 15.141 15.0771 15.1172 14.993 15.0533C14.9088 14.9894 14.8548 14.8926 14.7468 14.6989L14.6485 14.5225C14.2685 13.8408 14.0785 13.5 13.7944 13.5Z"
-                          fill="white"
-                        />
-                      </svg>
+                     <Clock />
                     </span>
                   </div>
                 </div>
@@ -326,36 +431,35 @@ export const ProfileEdit = () => {
               <div className=" mt-4 d-flex">
                 <div className="">
                   <h1>Do you have your own clinic</h1>
-                  <div className="d-flex align-items-center ">
-                    <div className="btn d-flex">
-                      <RadioButton
-                        inputId="ingredient4"
-                        name="clinic"
-                        value={true}
-                        onChange={(e) => setClinic(e.value)}
-                        checked={clinic === true}
-                      />
-                      <p htmlFor="ingredient4" className="ml-2">
-                        Yes
-                      </p>
-                    </div>
-                    <div className="btn  d-flex">
-                      <RadioButton
-                        inputId="ingredient4"
-                        name="clinic"
-                        value={false}
-                        onChange={(e) => setClinic(e.value)}
-                        checked={clinic === false}
-                      />
-                      <p htmlFor="ingredient4" className="ml-2">
-                        No
-                      </p>{" "}
-                    </div>
-                  </div>
+                  <div className="d-flex ">
+  <div className="btn d-flex">
+    <RadioButton
+      inputId="ingredient4"
+      name="ownClinic"
+      value={true}
+      checked={formik.values.ownClinic === true}
+      onChange={formik.handleChange}
+    />
+    <p htmlFor="ingredient4" className="ml-2">
+      Yes
+    </p>
+  </div>
+
+  <div className="btn d-flex">
+    <RadioButton
+      inputId="ingredient5"
+      name="ownClinic"
+      value={false}
+      checked={formik.values.ownClinic === false}
+      onChange={formik.handleChange}
+    />
+    <p className="ml-2">No</p>
+  </div>
+</div>
                 </div>
                 <div className="ml">
                   <div className="d-flex ">
-                    <h1>If do you have clinic</h1> <p>(Clinic time slot)</p>
+                    <h1>If you have clinic</h1> <p>(Clinic time slot)</p>
                   </div>
   
                   <div className="d-flex  ">
@@ -365,7 +469,7 @@ export const ProfileEdit = () => {
                       checked={clinictime === true}
                        onChange={(e) => setClinictime(e.value)} />
                       <p htmlFor="ingredient4" className="ml-2">
-                        Yes
+                        8
                       </p>
                     </div>
   
@@ -376,89 +480,91 @@ export const ProfileEdit = () => {
                         value={false}
                         checked={clinictime === false} onChange={(e) => setClinictime(e.value)}
                       />
-                      <p className="ml-2">No</p>
+                      <p className="ml-2">2</p>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="row mt-4">
-                <div className="col-md-4">
+                <div className="col-md-6">
                   <h1>Clinic Location</h1>
                   <InputText
                    className={`login-input  ${!isEditing ? '' : 'border_on'}`}
-                    name="Location"
+                    name="clinicLocation"
+                    onChange={formik.handleChange}
+                    value={formik.values?.clinicLocation}
                     placeholder="Clinic location"
                   />
                 </div>
-                <div className="col-md-8">
-                  <h1>Ideal number of shifts per month </h1>
+                <div className="col-md-6">
+                  <h1>Clinic Name </h1>
                   <InputText
                       className={`login-input  ${!isEditing ? '' : 'border_on'}`}
-                    name="shifts"
-                    placeholder="No. of shifts "
+                    name="clinicName"
+                    onChange={formik.handleChange}
+                    value={formik.values?.clinicName}
+                    placeholder="Clinic Name"
                   />
                 </div>
               </div>
   
-              <div className="mt-4">
-  
+              <div className="mt-4 row">
+              <div className="col-md-6">
+              <h1>Preferred Specialities</h1>
         <MultiSelect
-        className="login-input"
-        name="specialties"
-        value={formik.values.specialties}
+        className="login-input-Speciality"
+        name="preferredSpecialities"
+        value={formik.values?.preferredSpecialities}
         options={specialties}
-        onChange={(e) => formik.setFieldValue("specialties", e.value)}
+        onChange={(e) => formik.setFieldValue("preferredSpecialities", e.value)}
         placeholder="Select specialties"
       />
+      </div>
+      <div className="col-md-6">
+              <h1> Specified category</h1>
+        <MultiSelect
+        className="login-input-Speciality"
+        name="preferredSpecialities"
+        value={formik.values?.title}
+        options={title}
+        onChange={(e) => formik.setFieldValue("title", e.value)}
+        placeholder="Select Title"
+      />
+      </div>
    
     </div>
   
-              <div className=" mt-4">
-                <h1>Medical ID</h1>
-  
-                <InputText
-                    className={`login-input  ${!isEditing ? '' : 'border_on'}`}
-                  name="MedicalID"
-                  placeholder="Add Medical ID (ex. 1234567890)"
-                />
-              </div>
-              <div className=" mt-4">
-                <h1>Mobile Number</h1>
-  
-                <InputText
-                    className={`login-input  ${!isEditing ? '' : 'border_on'}`}
-                  name="MobileNo"
-                  placeholder="+91 1234567891"
-                />
-              </div>
+          
               <div className=" mt-4 d-flex">
                 <div className="">
                   <h1>Do you Visit Any Hospital?</h1>
-                  <div className="d-flex align-items-center ">
-                    <div className="btn d-flex">
-                      <RadioButton
-                        inputId="ingredient4"
-                        name="Hospital visit"
-                        value={true}
-                        checked={visit === true} onChange={(e) => setVisit(e.value)}
-                      />
-                      <p htmlFor="ingredient4" className="ml-2">
-                        Yes
-                      </p>
-                    </div>
-                    <div className="btn  d-flex">
-                      <RadioButton
-                        inputId="ingredient4"
-                         name="Hospital visit"
-                         value={false}
-                         checked={visit === false} onChange={(e) => setVisit(e.value)}
-                      />
-                      <p htmlFor="ingredient4" className="ml-2">
-                        No
-                      </p>{" "}
-                    </div>
-                  </div>
+                  <div className="d-flex">
+  <div className="btn d-flex">
+    <RadioButton
+      inputId="ingredient4"
+      name="ownClinic"
+      value={true}
+      checked={formik.values.ownClinic === true}
+      onChange={formik.handleChange}
+    />
+    <p htmlFor="ingredient4" className="ml-2">
+      Yes
+    </p>
+  </div>
+
+  <div className="btn d-flex">
+    <RadioButton
+      inputId="ingredient5"
+      name="ownClinic"
+      value={false}
+      checked={formik.values.ownClinic === false}
+      onChange={formik.handleChange}
+    />
+    <p className="ml-2">No</p>
+  </div>
+</div>
                 </div>
+              
                 <div className="ml">
                   <div className="d-flex ">
                     <h1>If do you Visit Any Hospital?</h1>{" "}
@@ -469,7 +575,7 @@ export const ProfileEdit = () => {
                     <div className="btn d-flex">
                       <RadioButton inputId="ingredient4"  name="Hospital time" value={true} checked={hosp === true} onChange={(e) => setHosp(e.value)} />
                       <p htmlFor="ingredient4" className="ml-2">
-                        Yes
+                        8
                       </p>
                     </div>
   
@@ -481,23 +587,34 @@ export const ProfileEdit = () => {
                         checked={hosp === false} onChange={(e) => setHosp(e.value)}
                      
                       />
-                      <p className="ml-2">No</p>
+                      <p className="ml-2">10</p>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="col-6 mt-4">
-                <div className="d-flex">
+              <div className="row">
+                <div className="col-md-6">
                   <h1>Hospital Location</h1>
-                  <p>(if you have personal clinic)</p>
+                  <InputText
+                   className={`login-input  ${!isEditing ? '' : 'border_on'}`}
+                    name="hospitalLocation"
+                    value={formik.values?.hospitalLocation}
+                    onChange={formik.handleChange}
+                    placeholder="Hospital location"
+                  />
                 </div>
-                <InputText
-                  className=" login-input"
-                  name="cliniclocation"
-                  placeholder="Clinic location"
-                />
-              </div>
-  
+                <div className="col-md-6">
+                  <h1>Hospital Name </h1>
+                  <InputText
+                      className={`login-input  ${!isEditing ? '' : 'border_on'}`}
+                    name="Hospital Name"
+                    value={formik.values?.hospitalName}
+                    onChange={formik.handleChange}
+                    placeholder="Hospital Name "
+                  />
+                </div>
+                </div>
+             
               <div className="mt-4 d-flex">
                 <Checkbox
                   onChange={(e) => setChecked(e.checked)}
@@ -509,27 +626,20 @@ export const ProfileEdit = () => {
               </div>
   
               <div className="mt-4 ">
-                {/* <h1>Are you a robot?*</h1> */}
-                {/* <div className="robo-box d-flex">
-                  <Checkbox
-                    onChange={(e) => setChecked(e.checked)}
-                    checked={checked}
-                    className="mr"
-                  ></Checkbox>
-                  <p>I'm not a robot</p>
-                </div> */}
+               
               </div>
               <div className="mt-4">
-                <button className="reg-btn" >REGISTER </button>
+                <button className="reg-btn" type="submit" >APPLY CHANGES </button>
               </div>
               <div className="mt-4">
                 <p>
                   By creating an account, you agree to our
-                  <span> Terms of Use</span>{" "}
+                  <span  onClick={() => (window.location.href = "/privacy")}> Terms of Use</span>{" "}
                 </p>
               </div>
             </div>
           </div>
+  </form>
         </div>
   
        <div className="text-box">
@@ -587,10 +697,7 @@ export const ProfileEdit = () => {
   </div>
             
             
-          )}) 
-          
-          
-          } 
+       
     
     <ToastContainer />
     </div>

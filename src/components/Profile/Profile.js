@@ -3,16 +3,10 @@ import profile from "../../assets/profile.png";
 import { Leafimg, Stars } from "../../reusable/Icons";
 import { RadioButton } from "primereact/radiobutton";
 import { InputText } from "primereact/inputtext";
-import { Checkbox } from "primereact/checkbox";
-import { Button } from "primereact/button";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser, fetchUserWithToken } from "../../redux/apiSlice";
+import {  fetchUserWithToken } from "../../redux/apiSlice";
 import { useParams } from "react-router-dom";
-import Skeleton from "react-loading-skeleton";
 import SkeletonLoader from "../../reusable/Skeleton";
-import { useFormik } from "formik";
-import { toast, ToastContainer } from "react-toastify";
-
 
 const selectUserInfov2 = (state) => state.user.userInfov2;
 
@@ -23,71 +17,13 @@ export const Profile = () => {
   const userid = localStorage.getItem("userId")
   const dispatch = useDispatch();
 
-  const { userData, otp, loading, error, mobileVerficationId ,verifyOtpError } = useSelector(
-    (state) => state.user
-  );
 
   const [timeSlot, setTimeSlot] = useState("");
-  const [clinic , setClinic] = useState(true);
-  const [clinictime, setClinictime] = useState(true);
-  const [hosp, setHosp] = useState(true)
-  const [visit, setVisit] = useState(true)
-  const [checked, setChecked] = useState(true);
+
   const [isLoading, setLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
   const user = useSelector(selectUserInfov2);
   const [selectedSpecialties, setSelectedSpecialties] = useState([]);
-
-  const handleSpecialtyClick = (specialty) => {
-    setSelectedSpecialties((prevSelected) =>
-      prevSelected.includes(specialty)
-        ? prevSelected.filter((s) => s !== specialty)
-        : [...prevSelected, specialty]
-    );
-  };
-
-  const specialties = [
-    "Abdominal Radiology", "Abdominal Surgery", "Addiction Medicine", 
-    "Addiction Psychiatry", "Adolescent Medicine", "Adult Congenital Heart Disease",
-    "Adult Reconstructive Orthopedics", "Advanced Heart Failure and Transplant Cardiology",
-    "Aerospace Medicine", "Allergy", "Allergy/Immunology", "Anatomic Pathology",
-    "Anatomic/Clinical Pathology", "Anesthesiology", "Anesthesiology Critical Care Medicine",
-    "Behavioral and Cognitive Psychology", "Bloodbanking/Transfusion Medicine", 
-    "Brain Injury Medicine", "Burn Surgery", "Cardiac Electrophysiology", 
-    "Cardiothoracic Radiology", "Cardiothoracic Surgery", "Cardiovascular Diseases",
-    "Women's Imaging", "Wound Care"
-  ];
-
-
-  let initialValues = {...user}
-
-  
-  const formik = useFormik({
-    initialValues: initialValues,
-    enableReinitialize: true,
-    onSubmit: async (values) => {
-
-        const data = {
-          ...values
-        };
-
-        const addUserResult = await dispatch(addUser(data)).unwrap();
-  
-        if (addUserResult.error) {
-          toast(addUserResult.error || "User Registration Failed");
-        } else {
-          toast("User Has been registered");
-            window.location.href = `/signin`;
-        }
-      
-    },
-  });
-
-  
-
-
-
-
 
   useEffect(() => {
  
@@ -102,7 +38,7 @@ export const Profile = () => {
       setLoading(false);
     
     }
-  }, []);
+  }, [id,dispatch]);
 
   if (isLoading) {
     return <SkeletonLoader />;
@@ -130,52 +66,35 @@ export const Profile = () => {
 userid === id && <button className="btn" onClick={ window.location.href = `/profilev2/${id}`}>  </button>
           }
               
-
-
-          {/* <div className="logo-btn">
-
-              <button className="btn">Upload Photo</button>
-              <button className="btn" onClick={handleEdit}>    {isEditing ? "Cancel" : "Edit"} </button>
-              </div> */}
             </div>
   
             <div className="name-box">
             <h3>First Name</h3>
               <div className="name-text-box">
-              <p>{data?.first_name}</p>
+              <p>{data?.first_name}{" "}{data?.last_name}</p>
             </div>
   {
 data?.email && 
   <div>
  <h3>Email</h3>
               <div className="name-text-box">
-                <p>{data?.email}</p>
-                {/* <button className="btn"> Edit </button>{" "} */}
-            
+                <p>{data?.email}</p>     
               </div>
   </div>
 
   }    
   
-             
-  
               <h3>Phone Number</h3>
               <div className="name-text-box">
                 <p>{data?.mobile_number}</p>
               
-                {/* <InputText
-                   className={`login-input  ${!isEditing ? '' : 'border_on'}`}
-                    value={formik.values?.mobile_number || "99999 99999"}
-                    disabled={!isEditing}
-                    name="mobile_number"
-                    placeholder="Enter Mobile number"
-                  /> */}
+              
               </div>
   
               <h3>Location</h3>
               <div className="name-text-box">
                 <p>{data?.location}</p>
-                {/* <button className="btn"> Edit </button>{" "} */}
+        
               </div>
   
               <h3>Medical ID</h3>
@@ -202,9 +121,7 @@ data?.email &&
             <div className="detail-box">
               <div className="detail-text-box">
                 <h2>Professional Details</h2>
-                {/* <p>
-                  This are the professional details shown to users in the app.
-                </p> */}
+            
               </div>
               <div>
                 <Stars />
@@ -219,45 +136,25 @@ data?.email &&
               </div>
               <div className="">
                 <div className=" d-flex">
-                  {data.avilability?.map((data) => (
-                    <div className="d-flex align-items-center cols-md-3 btn">
-                      <RadioButton
-                        inputId="ingredient4"
-                        name={data}
-                        value={data}
-                        checked={data === timeSlot}
-                      />
-                      <p htmlFor="ingredient4" className="ml-2">
-                        {data}
-                      </p>
-                    </div>
+                  {data.availability?.map((slot , index) => (
+                    <div key={index} className="d-flex align-items-center cols-md-3 ">
+                    <p className="ml-2 tuple">
+                      {slot}
+                    </p>
+                  </div>
                   ))}
                 </div>
               </div>
   
               <div className="row mt-4">
-                {/* <div className="col-md-4 ">
-                  <h1>Specialization</h1>
-                  <InputText
-                    className={`login-input  ${!isEditing ? '' : 'border_on'}`}
-                    value={data?.specialization}
-                    disabled={!isEditing}
-                    name="Specialization"
-                    placeholder="Specialization"
-                  />
-                </div> */}
-                <div className="col-md-4 login-input">
+          
+                <div className="col-md-6 ">
                   <h1>Rate/Hourly </h1>
 
                   <p className="">{data?.hourly_rate}</p>
-                  {/* <InputText
-                   className={`login-input  ${!isEditing ? '' : 'border_on'}`}
-                    value={data?.hourly_rate}
-                    name="Rate/Hourly "
-                    placeholder="Rate/Hourly "
-                  /> */}
+               
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-6">
                   <h1>Total Experience</h1>
                   <div className="d-flex">
                     <InputText
@@ -292,12 +189,16 @@ data?.email &&
               </div>
   
               <div className=" mt-4 d-flex">
-                <div className="">
-                  <h1>Do you have your own clinic</h1>
-                      {
-                        data?.clinic
-                      }
-                </div>
+
+                {
+                        data?.clinic && <div className="">
+                        <h1>Do you have your own clinic</h1>
+                            {
+                              data?.clinic
+                            }
+                      </div>
+                }
+                
 
                 {
                    data?.timeSlot &&    <div className="ml">
@@ -319,27 +220,6 @@ data?.email &&
                    ))}
                    </div>
    
-                   {/* <div className="d-flex  ">
-                     <div className="btn d-flex">
-                       <RadioButton inputId="ingredient4" name="Clinic time" 
-                       value={true} 
-                       checked={clinictime === true}
-                        onChange={(e) => setClinictime(e.value)} />
-                       <p htmlFor="ingredient4" className="ml-2">
-                         Yes
-                       </p>
-                     </div>
-   
-                     <div className="btn d-flex">
-                       <RadioButton
-                         inputId="ingredient4"
-                         name="Clinic time"
-                         value={false}
-                         checked={clinictime === false} onChange={(e) => setClinictime(e.value)}
-                       />
-                       <p className="ml-2">No</p>
-                     </div>
-                   </div> */}
                  </div>
                 }
               
@@ -347,7 +227,7 @@ data?.email &&
 
               </div>
               <div className="row mt-4">
-                <div className="col-md-4">
+                <div className="col-md-6">
                   <h1>Clinic Name</h1>
                   <InputText
                    className={`login-input  ${!isEditing ? '' : 'border_on'}`}
@@ -355,7 +235,7 @@ data?.email &&
                     placeholder="Clinic Name"
                   />
                 </div>
-                <div className="col-md-8">
+                <div className="col-md-6">
                   <h1>Clinic Location </h1>
                   <InputText
                       className={`login-input  ${!isEditing ? '' : 'border_on'}`}
@@ -370,88 +250,14 @@ data?.email &&
         <button
           key={index}
           className={`btn ${selectedSpecialties.includes(specialty) ? 'selected' : ''}`}
-          onClick={() => handleSpecialtyClick(specialty)}
         >
           <p> {specialty} </p> 
         </button>
       ))}
     </div>
   
-              {/* <div className=" mt-4">
-                <h1>Medical ID</h1>
-  
-                <InputText
-                    className={`login-input  ${!isEditing ? '' : 'border_on'}`}
-                  name="MedicalID"
-                  placeholder="Add Medical ID (ex. 1234567890)"
-                />
-              </div>
-              <div className=" mt-4">
-                <h1>Mobile Number</h1>
-  
-                <InputText
-                    className={`login-input  ${!isEditing ? '' : 'border_on'}`}
-                  name="MobileNo"
-                  placeholder="+91 1234567891"
-                />
-              </div> */}
-              {/* <div className=" mt-4 d-flex">
-                <div className="">
-                  <h1>Do you Visit Any Hospital?</h1>
-                  <div className="d-flex align-items-center ">
-                    <div className="btn d-flex">
-                      <RadioButton
-                        inputId="ingredient4"
-                        name="Hospital visit"
-                        value={true}
-                        checked={visit === true} onChange={(e) => setVisit(e.value)}
-                      />
-                      <p htmlFor="ingredient4" className="ml-2">
-                        Yes
-                      </p>
-                    </div>
-                    <div className="btn  d-flex">
-                      <RadioButton
-                        inputId="ingredient4"
-                         name="Hospital visit"
-                         value={false}
-                         checked={visit === false} onChange={(e) => setVisit(e.value)}
-                      />
-                      <p htmlFor="ingredient4" className="ml-2">
-                        No
-                      </p>{" "}
-                    </div>
-                  </div>
-                </div>
-                <div className="ml">
-                  <div className="d-flex ">
-                    <h1>If do you Visit Any Hospital?</h1>{" "}
-                    <p>(Hospital time slot)</p>
-                  </div>
-  
-                  <div className="d-flex  ">
-                    <div className="btn d-flex">
-                      <RadioButton inputId="ingredient4"  name="Hospital time" value={true} checked={hosp === true} onChange={(e) => setHosp(e.value)} />
-                      <p htmlFor="ingredient4" className="ml-2">
-                        Yes
-                      </p>
-                    </div>
-  
-                    <div className="btn d-flex">
-                      <RadioButton
-                        inputId="ingredient4"
-                        name="Hospital time "
-                        value={false}
-                        checked={hosp === false} onChange={(e) => setHosp(e.value)}
-                     
-                      />
-                      <p className="ml-2">No</p>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
               <div className="row mt-4">
-                <div className="col-md-4">
+                <div className="col-md-6">
                   <h1>Hospital Name</h1>
                   <InputText
                    className={`login-input  ${!isEditing ? '' : 'border_on'}`}
@@ -459,7 +265,7 @@ data?.email &&
                     placeholder="Hospital Name"
                   />
                 </div>
-                <div className="col-md-8">
+                <div className="col-md-6">
                   <h1>Hospital Location </h1>
                   <InputText
                       className={`login-input  ${!isEditing ? '' : 'border_on'}`}
@@ -469,56 +275,17 @@ data?.email &&
                 </div>
               </div>
   
-              {/* <div className="mt-4 d-flex">
-                <Checkbox
-                  onChange={(e) => setChecked(e.checked)}
-                  checked={checked}
-                  className="mr"
-                ></Checkbox>
-                Send me useful monthly newsletters, alerts, and tips on applying
-                for jobs!
-              </div> */}
+           
   
               <div className="mt-4 ">
-                {/* <h1>Are you a robot?*</h1> */}
-                {/* <div className="robo-box d-flex">
-                  <Checkbox
-                    onChange={(e) => setChecked(e.checked)}
-                    checked={checked}
-                    className="mr"
-                  ></Checkbox>
-                  <p>I'm not a robot</p>
-                </div> */}
+                
               </div>
-              {/* <div className="mt-4">
-                <button className="reg-btn" >REGISTER </button>
-              </div>
-              <div className="mt-4">
-                <p>
-                  By creating an account, you agree to our
-                  <span> Terms of Use</span>{" "}
-                </p>
-              </div> */}
+          
             </div>
           </div>
         </div>
   
-        {/* <div className="text-box">
-          <h1>Communication preferences</h1>
 
-          <p>
-  Medrecruit and our partner Medworld will occasionally email you about news and opportunities we believe you'll find valuable. While your profile is being finalized, take the opportunity to review and prepare for the next step in your career. You can <span>download your resume</span> to ensure it's up-to-date and ready for any upcoming opportunities.
-</p>
-          <h1>Deactivate your account</h1>
-          <p>
-            Deactivating your account will remove you from all alerts and mailing
-            lists immediately and deleted in accordance with our{" "}
-            <span>PrivacyPolicy</span> . A member of our team will then be in
-            touch To finalise the deactivation of your account.
-          </p>
-  
-          <button>Deactivate your account</button>
-        </div> */}
   
         <div className="feedbox">
           <div className="feedbox-small">
@@ -561,7 +328,6 @@ data?.email &&
           
           } 
     
-    <ToastContainer />
     </div>
   );
 };

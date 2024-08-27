@@ -26,6 +26,7 @@
           font-weight: 300;
           margin: 4px;
           line-height: 30px;
+          cursor: pointer;
         }
       }
 
@@ -35,6 +36,7 @@
         font-weight: 700;
         line-height: 20.05px;
         margin-bottom: 1rem;
+        
     }
 
     }
@@ -50,10 +52,11 @@
     width: 30%;
 
     p{
-        margin-top: 2rem;
-        font-size: 12px;
+        margin-top: 3rem;
+        font-size: 16px;
         font-weight: 700;
-        
+        color: white;
+        cursor: pointer;
     }
 
     span{
@@ -97,6 +100,8 @@
         font-weight: 500;
         line-height: 20.05px;
         margin-top: 2rem;
+        color: white;
+        text-align: end;
     }
 
     li{

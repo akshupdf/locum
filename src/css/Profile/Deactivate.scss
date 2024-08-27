@@ -14,17 +14,24 @@
   
   .popup-content {
     background-color: #fff;
-    padding: 20px;
+    padding: 20px 40px;
     border-radius: 8px;
-    width: 400px;
+    width: 80vh;
     max-width: 90%;
     text-align: center;
+    height: fit-content;
   }
   
   h2 {
-    font-size: 24px;
-    color: #004A7C;
-    margin-bottom: 20px;
+    font-size: 31px !important;
+    color: #326295 !important;
+    margin-bottom: 1.5rem !important;
+    font-family: "Montserrat";
+    font-weight: 700 !important;
+
+    svg{
+        margin-right: 1rem;
+    }
   }
   
   .input-group {
@@ -35,7 +42,9 @@
     display: block;
     margin-bottom: 5px;
     text-align: left;
-    font-weight: bold;
+    color: #326295;
+    font-weight: 600;
+    font-family: "Montserrat";
   }
   
   .input-group input,
@@ -45,6 +54,7 @@
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+
   }
   
   .input-group button {
@@ -61,14 +71,15 @@
   }
   
   .delete-btn {
-    background-color: #004A7C;
-    color: white;
+    background-color: #0866C6 !important;
+    color: white !important;
     border: none;
     padding: 12px 20px;
-    font-size: 16px;
+    font-size: 20px !important;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 15px;
     margin-top: 10px;
+    width: 443px !important;
   }
   
   .delete-btn:hover {
@@ -76,18 +87,55 @@
   }
   
   p {
-    font-size: 14px;
-    color: #666;
+    font-size: 14px !important;
+    color: #0866C6 !important;
     margin-top: 10px;
     text-align: left;
   }
   
   .close-btn {
-    margin-top: 10px;
     background-color: transparent;
     color: #004A7C;
     border: none;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 20px !important;
+    margin-left: 4rem;
+  }
+
+  .login-input {
+    height: 50px;
+    background: #F8F7F7;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 14px;
+    border: 1px solid #DCD7D7;
+    margin-top: 0.2rem;
+    padding-left: 20px;
   }
   
+  .input-text-box{
+    width: 90%;
+}
+
+
+.p-inputgroup-addon {
+    cursor: pointer;
+    padding: 10px;
+    background: none;
+    border: none;
+    color: #1868DB;
+    font-weight: 500;
+}
+
+.otp-box{
+
+    background: #F8F7F7;
+    display: flex;
+    border-radius: 14px;
+    border: 1px solid #DCD7D7;
+    width: 100%;
+    .login-input { 
+        border: none;
+        width: 70%;
+    }
+}

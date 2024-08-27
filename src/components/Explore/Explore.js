@@ -98,7 +98,7 @@ export const Explore = () => {
 
   return (
     <div className="explore-main">
-      <div className="explore-search-main-parent">
+      {/* <div className="explore-search-main-parent">
         <div className="search-box">
           <div className="quick">Quick Locum search</div>
           <div className="drop-search">
@@ -142,14 +142,14 @@ export const Explore = () => {
               physicians, advanced practitioners, psychologists, and social
               workers.
             </div>
-            <button className="reg-exp">Register now</button>
+            <button className="reg-exp"  onClick={() => (window.location.href = "/register")}>Register now</button>
           </div>
           <div>
             {" "}
             <img src={team} alt="team" />
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="all-doc">
         <div className="head-1">More than a job board</div>
         <div className="head-2">We are a full-service locum’s agency</div>

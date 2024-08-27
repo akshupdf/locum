@@ -15,7 +15,7 @@ export const Footer = () => {
    <ul>
     {/* <li>Careers </li>
     <li>Customers Review</li> */}
-    <li>Privacy Policy</li>
+    <li onClick={() => (window.location.href = "/privacy")}>Privacy Policy</li>
    </ul>
    <h1>CONTACT US</h1>
    <ul>
@@ -88,7 +88,7 @@ export const Footer = () => {
   
   <Locume />
 
-<p>Terms & Conditions <span>Privacy Policy </span> </p>
+<p>Terms & Conditions  </p>
     </div>
     
     <div className="foot2">

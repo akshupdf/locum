@@ -65,8 +65,9 @@
         font-weight: 500;
         line-height: 15.12px;
         text-align: left;
-        color: #222222e5;
+        color: #222222e5 !important;
         margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
       }
 
       .name-text-box {
@@ -201,14 +202,27 @@
     margin-top: 1rem;
 
     p {
-      font-family: "Fira Sans";
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 12px;
+      font-family: "Fira sans", sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 15.12px;
       text-align: left;
-      color: #326295;
-      margin-top: 0.5rem;
+      color: #222222e5 !important;
+      margin-top: 0.2rem;
+      margin-bottom: 0.2rem;
     }
+  }
+
+  .tuple{
+    border: 1px solid black;
+    padding: 8px;
+    border-radius: 35px;
+    margin: 4px;
+  }
+
+  .edit-btn{
+    background: none;
+    width: 30px;
   }
 
   .login-input {
@@ -218,6 +232,7 @@
     margin-top: 0.2rem;
     font-weight: 500;
     border: 1px solid #ffffff ;
+    padding: 10px;
 
   }
 
@@ -327,7 +342,7 @@
   }
 
   .reg-btn {
-    width: 144.44px;
+    width: fit-content;
     height: 47.98px;
     padding: 11.5px 24.65px 12.48px 25px;
     border-radius: 100px;
@@ -342,9 +357,28 @@
     text-align: center;
   }
 
-  .profile-box {
+
+
+  .login-input-Speciality {
+    width: 50%;
+    height: 50px;
+    background: #F8F7F7;
+    border-radius: 14px;
+    border: 1px solid rgba(206, 212, 218, 1);
+    padding: 7px 13px;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .p-dropdown-trigger {
+      svg {
+        color: black;
+      }
+    }
+
+   
   }
+
 }
 
 @media (max-width: 768px) {
@@ -417,4 +451,6 @@
       }
     }
   }
+
+  
 }

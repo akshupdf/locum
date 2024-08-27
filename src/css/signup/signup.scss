@@ -93,7 +93,7 @@
     }
 
     .signright h2{
-        font-size: 20px;
+        font-size: 20px !important;
         color: #326295;
         line-height: 30px;
         font-weight: 500;
@@ -298,6 +298,24 @@ color: #292731;
         gap: 30px;
     }
 
+    .login-input-Speciality {
+        width: 100%;
+        height: 50px;
+        background: #F8F7F7;
+        border-radius: 14px;
+        border: 1px solid rgba(206, 212, 218, 1);
+        padding: 7px 13px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    
+        .p-dropdown-trigger {
+          svg {
+            color: black;
+          }
+        }
+      }
+
     .input-text-box{
         width: 50%;
     }
@@ -331,6 +349,30 @@ color: #292731;
         display: flex;
         margin-left: 5rem !important;
         margin-top: 1rem !important;
+    }
+
+    .term-condtion{
+
+        p{
+            font-family: Fira Sans;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 24px;
+            text-align: left;
+            color: #326295;
+        }
+    }
+
+    .back-btn{
+        background: none;
+        border: none;
+        color: white;
+        top: 20px;
+        position: fixed;
+    }
+
+    .back-btn::before{
+        color: white;
     }
 }
 

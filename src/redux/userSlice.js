@@ -1,6 +1,6 @@
 // userSlice.js
 import { createSlice } from '@reduxjs/toolkit';
-import { addUser, generateOtp, verifyOtp , getUserLogin, fetchUserWithToken, getAllDoctors } from './apiSlice';
+import { addUser, generateOtp, verifyOtp , getUserLogin, fetchUserWithToken, getAllDoctors, updateUser } from './apiSlice';
 
 const userSlice = createSlice({
   name: 'user',
@@ -87,6 +87,18 @@ const userSlice = createSlice({
         state.allUsers = action.payload;
       })
       .addCase(getAllDoctors.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(updateUser.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(updateUser.fulfilled, (state,action) => {
+        state.loading = false;
+        state.allUsers = action.payload;
+      })
+      .addCase(updateUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })
