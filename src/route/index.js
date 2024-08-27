@@ -8,6 +8,7 @@ import Privacy from "../components/privacy/Privacy";
 import { ProfileEdit } from "../components/Profile/ProfileEdit";
 import { Register } from "../components/signin/up/Register";
 import { Signup } from "../components/signin/up/Signinpage";
+import SearchTable from "../components/search-table/SearchTable";
 
 
 export const router = [
@@ -48,8 +49,12 @@ export const router = [
     path: '/privacy',
     element: <Privacy />
   },
-      {
-        path: '/profilev2/:id',
-        element: <ProfileEdit />
-      },
+  {
+    path: '/profilev2/:id',
+    element: <ProfileEdit />
+  },
+  {
+    path: '/search-page',
+    element: <SearchTable />
+  },
 ]  
