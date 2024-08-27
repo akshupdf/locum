@@ -9,6 +9,8 @@ import { createColumnHelper } from "@tanstack/react-table";
 import { Dropdown } from "primereact/dropdown";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllDoctors } from "../../redux/apiSlice";
+import boy from "../../assets/boy.png"
+import { ExitIcon } from "../../reusable/Icons";
 
 const SearchTable = () => {
     const columnHelper = createColumnHelper();
@@ -20,14 +22,14 @@ const SearchTable = () => {
     const data = allUsers?.map((user) => ({
         name: `${user.first_name} ${user.last_name}`,
         mobile: user.mobile_number,
-        rate: user.hourly_rate,
+        // rate: user.hourly_rate,
         shift: user.availability,
         location: user.location || user.location,
         clinicShift: "N/A"
     })) || [];
 
     useEffect(() => {
-        
+
         dispatch(getAllDoctors());
     }, [dispatch]);
 
@@ -111,12 +113,30 @@ const SearchTable = () => {
         "Thane",
     ];
 
+    const NameFormatter = ({ row }) => {
+        console.log(row, "rowrow")
+        return (
+            <div className="name-main">
+                <div className="img-border"><img src={boy} alt="boy" /></div>
+                <div className="name-data" style={{ overflow: "hidden", textOverflow: "ellipsis" }}>
+                    {row?.original?.name
+                        ? row?.original?.name?.length > 20
+                            ? row?.original?.name?.slice(0, 20) + "..."
+                            : row?.original?.name
+                        : "Not Available"}
+                </div>
+            </div>
+        )
+    }
 
 
     const columns = [
         columnHelper.accessor("name", {
             id: "name",
-            cell: (info) => info.getValue(),
+            // cell: (info) => info.getValue(),
+            cell: ({ row }) => {
+                return <NameFormatter row={row} />;
+            },
             header: () => "Name",
             minWidth: 300,
             enableSorting: false,
@@ -127,12 +147,12 @@ const SearchTable = () => {
             header: () => "Mobile No.",
             enableSorting: false,
         }),
-        columnHelper.accessor("rate", {
-            id: "rate",
-            cell: (info) => info.getValue(),
-            header: () => "Rate/Hrs",
-            enableSorting: false,
-        }),
+        // columnHelper.accessor("rate", {
+        //     id: "rate",
+        //     cell: (info) => info.getValue(),
+        //     header: () => "Rate/Hrs",
+        //     enableSorting: false,
+        // }),
         columnHelper.accessor("shift", {
             id: "shift",
             cell: (info) => info.getValue(),
@@ -198,6 +218,15 @@ const SearchTable = () => {
             </div>
             <div className="d-flex justify-content-center">
                 <div className="search-exp-table">
+                    <div className="list-head d-flex justify-content-between">
+                        <div>
+                            <div className="list-name">List of Dermatologists doctors</div>
+                            <div className="list-white">345 available doctors</div>
+                        </div>
+                        <div className="list-btn-search">
+                            Register now
+                        </div>
+                    </div>
                     <table>
                         <thead>
                             {getHeaderGroups().map((headerGroup) => (
@@ -231,6 +260,25 @@ const SearchTable = () => {
                             ))}
                         </tbody>
                     </table>
+                </div>
+            </div>
+
+            <div className="join-box-main-table">
+                <div className="circle"></div>
+                <div className="join-box">
+                    <div className="join-box-left">
+                        <h2>Join our talent</h2>
+                        <h2>community.</h2>
+                        <p>
+                            Join our global talent community to receive alerts when new
+                            life-changing opportunities become available.
+                        </p>
+                        <button className='signup-btn' onClick={() => window.location.href = '/register'}> <ExitIcon /> Sign In
+                        </button>
+                    </div>
+                    <div className="join-box-right">
+                        <img src="https://s3-alpha-sig.figma.com/img/e03b/1f57/be017111c9382d74d73ac1d1b55afa0c?Expires=1725840000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=LqkNy64DZprRoQW~Tw7fpA2s5~-fNegwfY508CBcZ6LHc4DRKbx8Bj0evpQs-s4u~jRTmeIspYgvIoQsddX3ZNtN8EhGXOmwjNwidGmH56SiK5q3AaH1avdG1foOvECiS7Rg~oTLgyMKukmJtut1y3vjMkafXvPJUy0cdoor9s0yj6rQYeolMTpnoS4t1uBGy1ZuPUuQh62-QeNQkY5QI2qgKfwTsqxTNjHck3RWD0nrj4pV3MQ8BGAkmcYzF7BBj7Nq0YgDzZwKwj1oKd~GYW576yVCg7WHtPBZlZ2qg0TVkyS4WRab3QhKkCkpA6K6WJccZqOcJsuKhEjFxLreFQ__" alt="hand"></img>
+                    </div>
                 </div>
             </div>
         </>

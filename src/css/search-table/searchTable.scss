@@ -45,6 +45,77 @@
 
   td{
     padding-bottom: 39px;
+    font-family: "Fira Sans";
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 15.6px;
+      text-align: left;
+      color: rgba(50, 98, 149, 1);
+  }
+
+  .img-border{
+    width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 0.5px solid rgba(42, 57, 83, 1);
+      background: rgba(243, 246, 249, 1);
+  }
+
+  .name-data{
+    font-family: "Fira Sans";
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 16.8px;
+      text-align: left;
+      color: rgba(42, 57, 83, 1);
+  }
+
+  .name-main{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .list-name{
+    font-family: "Montserrat";
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 21px;
+      text-align: left;
+      color: rgba(8, 102, 198, 1);
+      margin-bottom: 19px;
+  }
+
+  .list-white{
+    font-family: "Fira Sans";
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 21px;
+      text-align: left;
+      color: rgba(181, 181, 195, 1);
+  }
+
+  .list-head{
+    margin-bottom: 72px;
+  }
+
+  .list-btn-search{
+    width: 160px;
+      height: 48px;
+      padding: 16px 25px 16px 25px;
+      border-radius: 11px;
+      border: none;
+      font-family: "Poppins";
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 16px;
+        letter-spacing: 0.5px;
+        text-align: left;
+        color: rgba(255, 255, 255, 1);
+      background: rgba(8, 102, 198, 1);
   }
 }
 
@@ -123,3 +194,79 @@
     color: white;
   }
 }
+
+    .join-box-main-table {
+      width: 100%;
+      margin: auto;
+      justify-content: end;
+      display: flex;
+      padding: 100px 0px 100px 0px;
+  
+      .circle {
+        margin-right: -11vh !important;
+      }
+    
+  
+    .join-box {
+      display: flex;
+      background: #0866c6;
+      width: 80%;
+  
+      h2 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 37.02px !important;
+        font-weight: 600;
+        line-height: 46px;
+        color: #ffffff !important;
+        margin: 0;
+      }
+  
+      p {
+        font-family: "Fira Sans";
+        font-size: 18px !important;
+        font-weight: 400;
+        line-height: 32px;
+        color: #ffffff !important;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+    }
+  
+    .join-box-left {
+      justify-content: center;
+      margin: auto;
+      padding: 30px;
+    }
+  
+    .join-box-right {
+      width: 50%;
+    }
+  
+    .signup-btn {
+      background: #033b61;
+      height: 54px;
+      padding: 15px 19.8px 15px 20px;
+      border-radius: 11px;
+      color: #ffffff;
+      border: none;
+      font-family: "Fira Sans";
+      font-size: 16.25px;
+      font-weight: 400;
+      line-height: 19.5px;
+      text-align: left;
+  
+      span {
+        margin-left: 5rem;
+      }
+    }
+  
+    .circle {
+      width: 10%;
+      margin-left: -11vh;
+      right: 0;
+      border-radius: 70%;
+      z-index: -1;
+      background: #0866c6;
+    }
+
+  }

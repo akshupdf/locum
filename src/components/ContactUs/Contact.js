@@ -2,7 +2,7 @@ import { InputText } from 'primereact/inputtext'
 import React from 'react'
 import about from '../../assets/about.png'
 import hand from '../../assets/hand.png'
-import { Geo, Mail, Phone } from '../../reusable/Icons'
+import { ExitIcon, Geo, Mail, Phone } from '../../reusable/Icons'
 
 
 export const ContactUs = () => {
@@ -109,7 +109,9 @@ export const ContactUs = () => {
             <h2>community.</h2>
             <p>Join our global talent community to receive alerts when
               new life-changing opportunities become available.</p>
-            <button className='signup-btn' onClick={() => window.location.href = '/register'}>Sign Up <span>+</span></button>
+            <button className='signup-btn' onClick={() => window.location.href = '/register'}> <ExitIcon /> Sign In
+              {/* <span>+</span> */}
+            </button>
           </div>
           <div className='join-box-right'>
             <img src={hand} alt="hand"></img>

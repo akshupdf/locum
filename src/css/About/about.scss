@@ -56,9 +56,8 @@
   .regbtn {
     border: none;
     height: 48px;
-    padding: 10px 87.42px 16px 95.31px;
-    gap: 0px;
-    border-radius: 4px;
+    padding: 10px 24px 16px 24px;
+    border-radius: 11px;
     opacity: 0px;
     background: #033b61;
     color: white;
@@ -84,11 +83,11 @@
 
     p {
       font-family: "Fira Sans";
-      font-size: 18px;
+      font-size: 18px !important;
       font-weight: 400;
       line-height: 28px;
       text-align: center;
-      color: #ffffff;
+      color: #ffffff !important;
     }
   }
 
@@ -192,11 +191,13 @@
 
   .peoplebtn {
     height: 46.08px;
-    padding: 10px 49.7px 14.54px 50px;
+    padding: 10px 24px 14.54px 24px;
+    text-align: center !important;
     background: #033b61;
     color: white;
     font-family: "Fira Sans";
     font-size: 18.1px;
+    border-radius: 11px;
     font-weight: 700;
     border: none;
     margin-top: 2rem;
@@ -211,11 +212,11 @@
 
     h2 {
       font-family: "Montserrat", sans-serif;
-      font-size: 44px;
-      font-weight: 800;
+      font-size: 44px !important;
+      font-weight: 800 !important;
       line-height: 55px;
-      color: #ffffff;
-      margin-bottom: 2rem;
+      color: #ffffff !important;
+      margin-bottom: 2rem !important;
     }
   }
 
@@ -239,11 +240,11 @@
 
     p{
       font-family: "Fira Sans";
-        font-size: 16px;
+        font-size: 16px !important;
         font-weight: 400;
         line-height: 32px;
         text-align: left;
-        color: rgba(255, 255, 255, 1);
+        color: rgba(255, 255, 255, 1) !important;
     }
   }
 
@@ -360,21 +361,21 @@
 
     h2 {
       font-family: "Montserrat", sans-serif;
-      font-size: 37.02px;
-      font-weight: 600;
-      line-height: 46px;
-      color: #ffffff;
-      margin: 0;
+        font-size: 37.02px !important;
+        font-weight: 600 !important;
+        line-height: 46px;
+        color: #ffffff !important;
+        margin: 0;
     }
 
     p {
       font-family: "Fira Sans";
-      font-size: 18px;
-      font-weight: 400;
-      line-height: 32px;
-      color: #ffffff;
-      margin-top: 1rem;
-      margin-bottom: 1rem;
+        font-size: 18px !important;
+        font-weight: 300;
+        line-height: 32px;
+        color: #ffffff !important;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
     }
   }
 
@@ -392,7 +393,7 @@
     background: #033b61;
     height: 54px;
     padding: 15px 19.8px 15px 20px;
-    border-radius: 30px;
+    border-radius: 11px;
     color: #ffffff;
     border: none;
     font-family: "Fira Sans";

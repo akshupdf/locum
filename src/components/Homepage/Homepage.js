@@ -20,18 +20,24 @@ import wave from "../../assets/wave.png";
 import map from "../../assets/map.png";
 import reg from "../../assets/reg.png";
 import {
+  Ambulancev2,
   Choice,
   Eye,
   GreenHeart,
+  HandNBrain,
   Hassle,
+  HeartBeat,
   LeftArrow,
   Lock,
+  Nurse,
   People,
   Privacy,
   Profile,
+  Radiology,
   Resubmit,
   Review,
   RightTick,
+  Saline,
   StarProfile,
   Tick,
   Trust,
@@ -70,7 +76,7 @@ export default function HomePage() {
     },
   ];
 
-  const oppData = [
+  const Cardiology = [
     {
       title: "Cardiology",
       available: "3 Doctors Available",
@@ -108,6 +114,14 @@ export default function HomePage() {
     dispatch(getAllDoctors());
   }, []);
 
+  const specialtiesData = [
+    { id: 1, name: "Anesthesiology", icon: <Saline /> },
+    { id: 2, name: "Cardiology", icon: <HeartBeat /> },
+    { id: 3, name: "Clinical Social Work", icon: <HandNBrain /> },
+    { id: 4, name: "Dermatology", icon: <Nurse /> },
+    { id: 5, name: "Emergency medicine", icon: <Ambulancev2 /> },
+    { id: 6, name: "Endocrinology", icon: <Radiology /> },
+  ];
 
 
   return (
@@ -175,31 +189,20 @@ export default function HomePage() {
           Provide qualified recruitment especially across India
         </p>
         <div className="explore-box">
-          {oppData.map((data) => (
-            <div key={data.id} className="explore-small-box">
-              <img src={data.logo} alt="logo"></img>
-              <div className="explore-small-box-text">
-                <h4>{data.title}</h4>
-                <div style={{ display: "flex", marginTop: "10px", alignItems: "center" }}>
-                  <svg
-                    width="16"
-                    height="21"
-                    viewBox="0 0 16 21"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M4.44727 14.6797C4.95508 15.2266 5.69727 15.5 6.43945 15.5C6.94727 15.5 7.41602 15.3828 7.8457 15.1484L5.77539 20.1484C5.61914 20.5391 5.07227 20.6562 4.75977 20.3047L3.35352 18.8203L1.2832 18.8984C0.853516 18.9375 0.501953 18.4688 0.697266 18.0391L2.45508 13.7031C2.76758 13.9375 3.08008 14.1328 3.4707 14.2109C4.25195 14.4453 4.0957 14.3281 4.44727 14.6797ZM15.5801 18.0391C15.7754 18.4688 15.4238 18.9375 14.9941 18.8984L12.9238 18.8203L11.5176 20.3047C11.2051 20.6562 10.6582 20.5391 10.502 20.1484L8.43164 15.1484C8.86133 15.3828 9.33008 15.5 9.83789 15.5C10.5801 15.5 11.3223 15.2266 11.8301 14.6797C12.1816 14.3281 11.9863 14.4453 12.8457 14.2109C13.1973 14.1328 13.5098 13.9375 13.8223 13.7031L15.5801 18.0391ZM10.9316 13.7812C10.3848 14.3281 9.60352 14.4062 8.97852 14.0156C8.74414 13.8594 8.43164 13.7812 8.11914 13.7812C7.8457 13.7812 7.5332 13.8594 7.29883 14.0156C6.67383 14.4062 5.89258 14.3281 5.38477 13.7812C4.79883 13.1953 4.7207 13.2344 3.86133 13C3.31445 12.8828 2.88477 12.4531 2.72852 11.8672C2.45508 10.7734 2.5332 10.8906 1.71289 10.1094C1.32227 9.67969 1.16602 9.09375 1.32227 8.54688C1.5957 7.45312 1.5957 7.60938 1.32227 6.47656C1.16602 5.92969 1.32227 5.34375 1.71289 4.95312C2.5332 4.13281 2.45508 4.25 2.72852 3.15625C2.88477 2.60938 3.31445 2.17969 3.86133 2.02344C4.95508 1.71094 4.79883 1.78906 5.61914 0.96875C6.00977 0.578125 6.5957 0.421875 7.14258 0.578125C8.19727 0.851562 8.08008 0.851562 9.13477 0.578125C9.68164 0.421875 10.2676 0.578125 10.6582 0.96875C11.4785 1.78906 11.3223 1.71094 12.416 2.02344C12.9629 2.17969 13.3926 2.60938 13.5488 3.15625C13.8223 4.25 13.7441 4.13281 14.5645 4.95312C14.9551 5.34375 15.1113 5.92969 14.9551 6.47656C14.6816 7.60938 14.6816 7.45312 14.9551 8.54688C15.1113 9.09375 14.9551 9.67969 14.5645 10.1094C13.7441 10.8906 13.8223 10.7734 13.5488 11.8672C13.3926 12.4531 12.9629 12.8828 12.416 13C11.5957 13.2344 11.5176 13.1953 10.9316 13.7812ZM4.44727 7.375C4.44727 9.44531 6.08789 11.125 8.1582 11.125C10.1895 11.125 11.8301 9.44531 11.8301 7.375C11.8301 5.30469 10.1895 3.625 8.1582 3.625C6.08789 3.625 4.44727 5.30469 4.44727 7.375Z"
-                      fill="black"
-                    />
-                  </svg>
-                  <p>{data.available}</p>
-                </div>
+          <div className="specialties-container">
+            {specialtiesData.map((specialty) => (
+              <div
+                key={specialty.id}
+                id={`box-${specialty.id}`}
+                className="specialty-box"
+              >
+                <div className="specialty-icon">{specialty.icon}</div>
+                <div className="specialty-name">{specialty.name}</div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-        <button className="btn"  onClick={() => (window.location.href = "/explore")}>More</button>
+        <button className="btn" onClick={() => (window.location.href = "/explore")}>Explore More</button>
       </div>
 
       <div className="tool-box-main">
@@ -233,7 +236,7 @@ export default function HomePage() {
 
           <Flipcard />
         </div>
-        <button className="btn"  onClick={() => (window.location.href = "/explore")}>Explore More</button>
+        <button className="btn" onClick={() => (window.location.href = "/explore")}>Explore More</button>
       </div>
 
       <div className="compare-box-main">

@@ -1,7 +1,7 @@
 import React from "react";
 import team from "../../assets/team.png";
 import { Dropdown } from "primereact/dropdown";
-import { Ambulancev2, Behavioral, Emergency, ExpBehaviour, ExpDog, ExpNephrology, ExpPhysiatry, ExpPsychology, ExpRheumatology, Gastroenterology, HandNBrain, HeartBeat, Nephrology, Neurology, Nurse, Oncology, Ophthalmology, Otolaryngology, Physiatry, Primary, Psychology, Radiationv2, Radiology, Radiologyv2, Rheumatology, Saline, Surgeryv2, Urology } from "../../reusable/Icons";
+import { Ambulancev2, Behavioral, Emergency, ExitIcon, ExpBehaviour, ExpDog, ExpNephrology, ExpPhysiatry, ExpPsychology, ExpRheumatology, Gastroenterology, HandNBrain, HeartBeat, Nephrology, Neurology, Nurse, Oncology, Ophthalmology, Otolaryngology, Physiatry, Primary, Psychology, Radiationv2, Radiology, Radiologyv2, Rheumatology, Saline, Surgeryv2, Urology } from "../../reusable/Icons";
 
 export const Explore = () => {
   const specialties = [
@@ -198,11 +198,7 @@ export const Explore = () => {
               Join our global talent community to receive alerts when new
               life-changing opportunities become available.
             </p>
-            <button
-              className="signup-btn"
-              onClick={() => (window.location.href = "/register")}
-            >
-              Sign Up <span>+</span>
+            <button className='signup-btn' onClick={() => window.location.href = '/register'}> <ExitIcon /> Sign In
             </button>
           </div>
           <div className="join-box-right">

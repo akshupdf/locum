@@ -9,6 +9,7 @@ import vector from "../../assets/vector.png";
 import {
   Arrow,
   Choice,
+  ExitIcon,
   Hassle,
   StarProfile,
   Trust,
@@ -281,11 +282,7 @@ export const About = () => {
               Join our global talent community to receive alerts when new
               life-changing opportunities become available.
             </p>
-            <button
-              className="signup-btn"
-              onClick={() => (window.location.href = "/register")}
-            >
-              Sign Up <span>+</span>
+            <button className='signup-btn' onClick={() => window.location.href = '/register'}> <ExitIcon /> Sign In
             </button>
           </div>
           <div className="join-box-right">

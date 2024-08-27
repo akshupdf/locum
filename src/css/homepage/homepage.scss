@@ -223,18 +223,50 @@
 
     .explore-box{
         margin: auto;
-        width: 75%;
+        // width: 75%;
         justify-content: center;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr); 
-        gap: 30px;
-        align-items: center;
-        font-size: 16px;
-        text-align: center;
-        padding: 20px;
+        display: flex;
+        // grid-template-columns: repeat(3, 1fr); 
+        // gap: 30px;
+        // align-items: center;
+        // font-size: 16px;
+        // text-align: center;
+        // padding: 20px;
         margin-top: 40px;
         margin-bottom: 20px;
     }
+
+         .specialties-container {
+             display: flex;
+             flex-wrap: wrap;
+             gap: 24px;
+             // justify-content: center;
+             padding-left: 50px;
+             margin-bottom: 48px;
+         }
+    
+         .specialty-box {
+             justify-content: center;
+             display: flex;
+             align-items: center;
+             flex-direction: column;
+             width: 196px;
+             height: 180.58px;
+             padding: 16px 47.55px 32.59px 47.75px;
+             border-radius: 8px;
+             box-shadow: 0px 2px 4px 0px rgba(50, 98, 149, 0.15);
+             background: rgba(255, 255, 255, 1);
+         }
+    
+         .specialty-name {
+             font-family: "Montserrat";
+             font-size: 12.25px;
+             font-weight: 700;
+             line-height: 18.2px;
+             text-align: center;
+             color: rgba(50, 98, 149, 1);
+             margin-top: 15.4px;
+         }
 
     .explore-small-box{
         display: flex;

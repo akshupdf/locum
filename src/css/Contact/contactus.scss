@@ -58,12 +58,12 @@
 
   .regbtn {
     height: 48px;
-    padding: 10px 42px 16px 42px;
+    padding: 10px 42px 12px 42px;
     gap: 10px;
     border-radius: 4px;
     border: none;
     color: white;
-    background: #0866c6;
+    background: rgba(3, 59, 97, 1);
   }
 
   .join-box-main {
@@ -85,19 +85,19 @@
 
     h2 {
       font-family: "Montserrat", sans-serif;
-      font-size: 37.02px;
-      font-weight: 600;
+      font-size: 37.02px !important;
+      font-weight: 600 !important;
       line-height: 46px;
-      color: #ffffff;
+      color: #ffffff !important;
       margin: 0;
     }
 
     p {
       font-family: "Fira Sans";
-      font-size: 18px;
+      font-size: 18px !important;
       font-weight: 300;
       line-height: 32px;
-      color: #ffffff;
+      color: #ffffff !important;
       margin-top: 1rem;
       margin-bottom: 1rem;
     }
@@ -126,7 +126,7 @@
     background: #033b61;
     height: 54px;
     padding: 15px 19.8px 15px 20px;
-    border-radius: 30px;
+    border-radius: 11px;
     color: #ffffff;
     border: none;
 

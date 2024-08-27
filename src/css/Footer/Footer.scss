@@ -53,9 +53,9 @@
 
     p{
         margin-top: 3rem;
-        font-size: 16px;
+        font-size: 16px !important;
         font-weight: 700;
-        color: white;
+        color: white !important;
         cursor: pointer;
     }
 
@@ -96,11 +96,11 @@
 
     p{
         margin: 0;
-        font-size: 16px;
+        font-size: 16px !important;
         font-weight: 500;
         line-height: 20.05px;
         margin-top: 2rem;
-        color: white;
+        color: white !important;
         text-align: end;
     }
 
