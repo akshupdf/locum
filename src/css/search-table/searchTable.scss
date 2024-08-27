@@ -10,12 +10,12 @@
   .name {
     width: 206px;
     font-family: "Montserrat";
-        font-size: 16px;
-        font-weight: 600;
-        line-height: 19.5px;
-        text-align: left;
-        color: rgba(8, 102, 198, 1);
-        padding-bottom: 60px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 19.5px;
+    text-align: left;
+    color: rgba(8, 102, 198, 1);
+    padding-bottom: 60px;
   }
 
   .mobile,
@@ -24,102 +24,102 @@
   .clinicShift {
     width: 185px;
     font-family: "Montserrat";
-        font-size: 16px;
-        font-weight: 600;
-        line-height: 19.5px;
-        text-align: left;
-        color: rgba(8, 102, 198, 1);
-        padding-bottom: 60px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 19.5px;
+    text-align: left;
+    color: rgba(8, 102, 198, 1);
+    padding-bottom: 60px;
   }
 
-  .location{
+  .location {
     width: 250px;
     font-family: "Montserrat";
-        font-size: 16px;
-        font-weight: 600;
-        line-height: 19.5px;
-        text-align: left;
-        color: rgba(8, 102, 198, 1);
-        padding-bottom: 60px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 19.5px;
+    text-align: left;
+    color: rgba(8, 102, 198, 1);
+    padding-bottom: 60px;
   }
 
-  
+  td{
+    padding-bottom: 39px;
+  }
 }
 
- .explore-search-main-parent-table {
-     background: white;
-     padding-bottom: 56px;
- 
+.explore-search-main-parent-table {
+  background: white;
+  padding-bottom: 56px;
 
- .search-box {
-     padding: 16px 128px 20px 72px;
-     display: flex;
-     height: 74px;
-     background: rgba(8, 102, 198, 1);
- }
+  .search-box {
+    padding: 16px 128px 20px 72px;
+    display: flex;
+    height: 74px;
+    background: rgba(8, 102, 198, 1);
+  }
 
- .quick {
-     font-family: "Montserrat";
-     font-size: 22.46px;
-     font-weight: 700;
-     line-height: 32.51px;
-     text-align: left;
-     color: rgba(255, 255, 255, 1);
-     margin-right: 77px;
- }
+  .quick {
+    font-family: "Montserrat";
+    font-size: 22.46px;
+    font-weight: 700;
+    line-height: 32.51px;
+    text-align: left;
+    color: rgba(255, 255, 255, 1);
+    margin-right: 77px;
+  }
 
- .drop-search {
-     display: flex;
-     align-items: center;
-     gap: 24px;
- }
+  .drop-search {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
 
- .login-input {
-     width: 141px;
-     height: 38px;
-     border-radius: 4px;
-     border: 1px solid rgba(206, 212, 218, 1);
-     padding: 7px 13px;
-     display: flex;
-     align-items: center;
-     justify-content: space-between;
+  .login-input {
+    width: 141px;
+    height: 38px;
+    border-radius: 4px;
+    border: 1px solid rgba(206, 212, 218, 1);
+    padding: 7px 13px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-     .p-dropdown-trigger {
-         svg {
-             color: black;
-         }
-     }
- }
+    .p-dropdown-trigger {
+      svg {
+        color: black;
+      }
+    }
+  }
 
- .login-input-Speciality {
-     width: 306px;
-     height: 38px;
-     border-radius: 4px;
-     border: 1px solid rgba(206, 212, 218, 1);
-     padding: 7px 13px;
-     display: flex;
-     align-items: center;
-     justify-content: space-between;
+  .login-input-Speciality {
+    width: 306px;
+    height: 38px;
+    border-radius: 4px;
+    border: 1px solid rgba(206, 212, 218, 1);
+    padding: 7px 13px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-     .p-dropdown-trigger {
-         svg {
-             color: black;
-         }
-     }
- }
+    .p-dropdown-trigger {
+      svg {
+        color: black;
+      }
+    }
+  }
 
- .search-fil {
-     font-family: "Montserrat";
-     font-size: 14.25px;
-     font-weight: 700;
-     line-height: 24px;
-     text-align: center;
-     width: 85.09px;
-     height: 42px;
-     padding: 8.5px 16.8px 9.5px 17px;
-     border-radius: 4px;
-     border: 1px solid rgba(255, 255, 255, 1);
-     color: white;
- }
-
+  .search-fil {
+    font-family: "Montserrat";
+    font-size: 14.25px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: center;
+    width: 85.09px;
+    height: 42px;
+    padding: 8.5px 16.8px 9.5px 17px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 1);
+    color: white;
+  }
 }
