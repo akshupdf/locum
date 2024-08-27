@@ -135,11 +135,12 @@
     color: rgba(50, 98, 149, 1);
         margin-top: 20px;
         line-height: 30px;
-        text-align: center;
+        text-align: left;
     }
 
     .Provide{
         color: rgba(121, 128, 153, 1);
+        text-align: center;
     }
 
     .para1{
@@ -193,6 +194,7 @@
         display: flex;
         justify-content: left;
         width: 75%;
+        cursor: pointer;
 
         p{
             color: rgba(50, 98, 149, 1);

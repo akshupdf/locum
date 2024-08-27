@@ -55,7 +55,7 @@ const SearchTable = () => {
         "Adolescent Medicine",
         "Adult Congenital Heart Disease",
         "Adult Reconstructive Orthopedics",
-        "Advanced Heart Failure and Transplant Cardiology",
+        "Advanced Heart Failure ",
         "Aerospace Medicine",
         "Allergy",
         "Allergy/Immunology",
@@ -114,7 +114,6 @@ const SearchTable = () => {
     ];
 
     const NameFormatter = ({ row }) => {
-        console.log(row, "rowrow")
         return (
             <div className="name-main">
                 <div className="img-border"><img src={boy} alt="boy" /></div>
@@ -162,7 +161,7 @@ const SearchTable = () => {
         columnHelper.accessor("location", {
             id: "location",
             cell: (info) => info.getValue(),
-            header: () => "Clinic/Hospital Location",
+            header: () => "Location",
             enableSorting: false,
         }),
         columnHelper.accessor("clinicShift", {
@@ -223,7 +222,7 @@ const SearchTable = () => {
                             <div className="list-name">List of Dermatologists doctors</div>
                             <div className="list-white">345 available doctors</div>
                         </div>
-                        <div className="list-btn-search">
+                        <div className="list-btn-search" onClick={() => window.location.href = '/register'}>
                             Register now
                         </div>
                     </div>

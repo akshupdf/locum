@@ -22,7 +22,10 @@ const DeactivateAccountPopup = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="popup-container">
+<div className='deactivate'>
+
+
+    <div className="popup-container ">
  
       <div className="popup-content">
         <h2> <svg width="22" height="26" viewBox="0 0 22 26" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -82,6 +85,7 @@ const DeactivateAccountPopup = ({ isOpen, onClose }) => {
         </form>
  
       </div>
+    </div>
     </div>
   );
 };

@@ -69,7 +69,7 @@ export const getUserLogin = createAsyncThunk(
         otp
       });
       localStorage.setItem('jwtToken', response.data.token);
-      localStorage.setItem('userId', response.data.user.id);
+      localStorage.setItem('userId', response.data?.user.custom_id);
       return response.data.user;
       
 

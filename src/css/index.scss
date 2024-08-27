@@ -6,7 +6,7 @@
 @import url("./About/about.scss");
 @import url("./Contact/contactus.scss");
 @import url("./homepage/Flipcard.scss");
-@import url("./Profile/Deactivate.scss");
+@import url("./Profile/deactivate.scss");
 @import 'bootstrap/dist/css/bootstrap.min.css';
 @import url("./privacy/privacy.scss");
 @import url("./explore/explore.scss");
@@ -56,5 +56,47 @@
 }
 
 .p-multiselect-panel{
-  width: 25% !important;
+  border-radius: 14px !important;
+  margin-top: 5px;
+
+
+  ul{
+    padding: 10px !important;
+  }
+}
+
+.p-multiselect-header{
+  padding-left: 10px;
+}
+
+.p-dropdown-items-wrapper{
+
+ ul{
+   
+    padding: 10px;
+li{
+    font-family: "Fira Sans";
+font-size: 16px !important;
+font-weight: 400;
+text-align: left;
+color: #0866C6;
+}
+  }
+}
+
+.p-multiselect-item{
+  span{
+    font-family: "Fira Sans";
+font-size: 16px !important;
+font-weight: 400;
+text-align: left;
+color: #0866C6;
+margin-left: 10px;
+margin-top: 5px;
+}
+}
+
+.p-dropdown-panel {
+  margin-top: 6px !important;
+  border-radius: 14px !important;
 }

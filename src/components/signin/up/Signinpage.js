@@ -1,4 +1,4 @@
-import React, {  useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import dr from '../../../assets/dr.png'
 import dr1 from '../../../assets/dr1.png'
 import { ClosedEye, Hand, Locume } from '../../../reusable/Icons';
@@ -28,12 +28,15 @@ export const Signup = () => {
 
 
     const [mobileNo, setMobileNo] = useState('');
+    const [timer, setTimer] = useState(30);
+    const [isResendVisible, setIsResendVisible] = useState(false);
     const disable = validateMobileOrEmail(mobileNo) !== null;
     const [showOtp, setShowOtp] = useState(false);
     const [error2, setError] = useState('')
+    const [otpSent, setOtpSent] = useState(false);
 
     const dispatch = useDispatch();
-    const { otp } = useSelector((state) => state.user);
+    const [otp, setOtp] = useState('');
 
    
 
@@ -48,8 +51,13 @@ export const Signup = () => {
         "otpType" : 1
     }
 
+    toast( "OTP Has been sent on your Mobile Number !");
+
     try {
       await dispatch(generateOtp(values)).unwrap();
+      setOtpSent(true);
+      setIsResendVisible(false);
+      setTimer(30);
       
     } catch (error) {
     
@@ -94,6 +102,19 @@ export const Signup = () => {
       // }
     }
 
+    useEffect(() => {
+      let interval = null;
+      if (timer > 0) {
+        interval = setInterval(() => {
+          setTimer((prevTimer) => prevTimer - 1);
+        }, 1000);
+      } else {
+        setIsResendVisible(true);
+      }
+  
+      return () => clearInterval(interval);
+    }, [timer]);
+
   return(
     <div className='signup'>
         <div className='signleft'>
@@ -128,7 +149,8 @@ export const Signup = () => {
                 placeholder="Enter Your mobile number"
               /> 
                    <span className="p-inputgroup-addon" onClick={() => sendOtp(mobileNo)}>
-                  Send OTP
+
+                   {isResendVisible ? "Resend OTP" : otpSent ? ` (${timer}s)` : "Send OTP"}
                  
                   </span>
               </div>
@@ -146,6 +168,9 @@ export const Signup = () => {
               <InputText 
                 className=" login-input"
                 value={otp}
+                onChange={(e) => {
+                  setOtp(e.target.value);
+                }}
                 placeholder="Enter OTP"
                 type={showOtp ? 'text' : 'password'}
               />
@@ -154,14 +179,14 @@ export const Signup = () => {
                   </span>
               </div>
               
-              <div className='btn-box'>
-                <div className='d-flex'>
+              <div className=''>
+                <div className='btn-box2'>
                 {/* <button className='btn3' onClick={() => sendOtp(mobileNo)}>Send Otp</button> */}
                 <button className='btn' onClick={() => verifyOtp(mobileNo)}>Log in</button>
-                </div>
+              
            
                 <p className='reg'>Don't have an account? <span onClick={() => window.location.href = '/register'}>  Register Now</span></p>
-              </div>
+                </div> </div>
 
           </div>
     

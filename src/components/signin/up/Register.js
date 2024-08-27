@@ -33,7 +33,7 @@ const validateMobileOrEmail = (value) => {
 export const Register = () => {
   const dispatch = useDispatch();
 
-  const { userData, otp, loading, error, mobileVerficationId ,verifyOtpError } = useSelector(
+  const { userData, loading, error, mobileVerficationId ,verifyOtpError } = useSelector(
     (state) => state.user
   );
 
@@ -48,6 +48,7 @@ export const Register = () => {
     medicalId: yup.string().required("medical Id is required"),
   });
 
+  const [otp, setOtp] = useState('');
   const [initialValues, setInitialValues] = useState({
     firstName: "",
     lastName: "",
@@ -90,7 +91,6 @@ export const Register = () => {
   const sendOtp = async (data) => {
     const isValidMobileNumber = /^\d{10}$/.test(data);
 
-
     if(error){
       toast(error || "Mobile number Already verified")
     }else{
@@ -129,7 +129,7 @@ export const Register = () => {
   const specialties = [
     "Abdominal Radiology", "Abdominal Surgery", "Addiction Medicine", 
     "Addiction Psychiatry", "Adolescent Medicine", "Adult Congenital Heart Disease",
-    "Adult Reconstructive Orthopedics", "Advanced Heart Failure and Transplant Cardiology",
+    "Adult Reconstructive Orthopedics", "Advanced Heart Failure ",
     "Aerospace Medicine", "Allergy", "Allergy/Immunology", "Anatomic Pathology",
     "Anatomic/Clinical Pathology", "Anesthesiology", "Anesthesiology Critical Care Medicine",
     "Behavioral and Cognitive Psychology", "Bloodbanking/Transfusion Medicine", 
@@ -244,11 +244,14 @@ export const Register = () => {
                 className=" login-input"
                 name="mobileVerficationId"
                 value={otp}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
+                onChange={(e) => {
+                  setOtp(e.target.value);
+                }}
                 placeholder="Enter OTP"
+                type='password'
+
               />
-              <span className="p-inputgroup-addon"       onClick={() => verifyOtp2(formik.values.mobileNo)}>
+              <span className="p-inputgroup-addon"  onClick={() => verifyOtp2(formik.values.mobileNo)}>
                   Verify OTP
                   </span>
               </div>
@@ -350,7 +353,7 @@ export const Register = () => {
             </div>
           </div>
 
-          <div className="terms">
+          {/* <div className="terms">
             <div className="terms-tick">
               <input
                 type="checkbox"
@@ -366,7 +369,7 @@ export const Register = () => {
                <p> I accept all terms and condition </p>
               </div>
             </div>
-          </div>
+          </div> */}
 
           <div className='btn-box'>
           <div className='d-flex'>

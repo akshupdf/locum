@@ -152,7 +152,7 @@ export default function HomePage() {
               </button>
             </div>
             <div className="search-arrow">
-              <p>Search for Locum</p>
+              <p onClick={() => (window.location.href = "/search-page")}>Search for Locum</p>
               <svg
                 width="24"
                 height="24"
@@ -206,12 +206,12 @@ export default function HomePage() {
       </div>
 
       <div className="tool-box-main">
-        <p className="para1">OUR Locum’s</p>
+        <p className="para1 ">OUR Locum’s</p>
         <h1>Your best sourcing tool for doctors.</h1>
-        <p className="para">
+        <p className="para Provide">
           We've hand-picked the best doctors from our network who are actively{" "}
         </p>
-        <p className="para"> looking for locum work.</p>
+        <p className="para Provide"> looking for locum work.</p>
         <div className="tool-box">
           {/* {allUsers?.map((data) => (
             <div key={data.id} className="tool-small-box">

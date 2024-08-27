@@ -18,7 +18,7 @@
     }
 
     .signleft2{
-        height: 122vh;
+        height: 102vh;
     }
 
     .svg-box{
@@ -63,13 +63,13 @@
         width: 60%;
         justify-content: center;
         text-align: left;
-        padding: 20px 100px 104px 100px;
+        padding: 40px 100px 104px 100px;
         box-sizing: border-box;
         font-family: 'Poppins', sans-serif;
     }
 
     .signright2{
-        height: 120vh;
+        height: 100vh;
     }
 
     h1{
@@ -80,7 +80,7 @@
     .signright h1 {
         margin: 0;
         font-size: 30px;
-        color: #292731;
+        color: #0866C6;
         line-height: 45px;
         font-weight: 700;
         margin-bottom: 1rem;
@@ -89,22 +89,24 @@
     
     .signright p {
         margin: 0 0 20px;
-        color: #666;
+        color: #292731 !important;
+        font-size: 18px;
+        font-family: "Fira Sans";
     }
 
     .signright h2{
         font-size: 20px !important;
         color: #326295;
         line-height: 30px;
-        font-weight: 500;
+        font-weight: 500 !important;
         margin-top: 1rem;
         font-family: 'Fira Sans';
+        margin-bottom: 0.1rem !important;
     }
 
     .reg-head{
-        font-family: 'Poppins', sans-serif;
-font-size: 38.67px;
-font-weight: 500;
+font-size: 38.67px !important;
+font-weight: 600 !important;
 line-height: 28.01px;
 letter-spacing: -0.375px;
 text-align: left;
@@ -228,12 +230,36 @@ color: #0866C6 !important;
 
     .btn-box{
         text-align: center;
+        display: flex;
+        justify-content: center;
 
         p{
-font-size: 20px;
+font-size: 20px !important;
 font-weight: 600;
 line-height: 30px;  
 color: #292731;
+
+        }
+
+        span{
+            color: #B51B1B;
+            cursor: pointer;
+            margin-left: 1rem ;
+        }
+    }
+
+    .btn-box2{
+     
+
+        button{
+            margin-left: 8rem;
+        }
+
+        p{
+font-size: 20px !important;
+font-weight: 600;
+line-height: 30px;  
+color: #326295 !important;
 
         }
 
@@ -255,7 +281,6 @@ color: #292731;
         color: white;
         cursor: pointer;
         margin-top: 3rem;
-        margin-left: 8rem;
     }
 
     .btn2{
@@ -308,6 +333,7 @@ color: #292731;
         display: flex;
         align-items: center;
         justify-content: space-between;
+        margin-top: 4px;
     
         .p-dropdown-trigger {
           svg {

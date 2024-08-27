@@ -12,7 +12,7 @@ export const Explore = () => {
     "Adolescent Medicine",
     "Adult Congenital Heart Disease",
     "Adult Reconstructive Orthopedics",
-    "Advanced Heart Failure and Transplant Cardiology",
+    "Advanced Heart Failure",
     "Aerospace Medicine",
     "Allergy",
     "Allergy/Immunology",
@@ -165,8 +165,8 @@ export const Explore = () => {
           shortages.
         </div>
         <div className="head-5">
-          <button className="b-1">View all specialties</button>
-          <button className="b-2">Find a job</button>
+          <button className="b-1" onClick={() => window.location.href = '/search-page'}>View all specialties</button>
+          <button className="b-2" onClick={() => window.location.href = '/search-page'}>Find a job</button>
         </div>
       </div>
       <div className="all-opportunities">
@@ -186,7 +186,7 @@ export const Explore = () => {
             </div>
           ))}
         </div>
-        <button className="reg-exp">Register now</button>
+        <button className="reg-exp"  onClick={() => window.location.href = '/register'}>Register now</button>
       </div>
       <div className="join-box-main">
         <div className="circle"></div>
@@ -198,7 +198,7 @@ export const Explore = () => {
               Join our global talent community to receive alerts when new
               life-changing opportunities become available.
             </p>
-            <button className='signup-btn' onClick={() => window.location.href = '/register'}> <ExitIcon /> Sign In
+            <button className='signup-btn' onClick={() => window.location.href = '/signin'}> <ExitIcon /> Sign In
             </button>
           </div>
           <div className="join-box-right">

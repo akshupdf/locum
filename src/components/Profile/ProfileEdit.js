@@ -55,7 +55,7 @@ export const ProfileEdit = () => {
   const specialties = [
     "Abdominal Radiology", "Abdominal Surgery", "Addiction Medicine", 
     "Addiction Psychiatry", "Adolescent Medicine", "Adult Congenital Heart Disease",
-    "Adult Reconstructive Orthopedics", "Advanced Heart Failure and Transplant Cardiology",
+    "Adult Reconstructive Orthopedics", "Advanced Heart Failure ",
     "Aerospace Medicine", "Allergy", "Allergy/Immunology", "Anatomic Pathology",
     "Anatomic/Clinical Pathology", "Anesthesiology", "Anesthesiology Critical Care Medicine",
     "Behavioral and Cognitive Psychology", "Bloodbanking/Transfusion Medicine", 
@@ -429,7 +429,7 @@ export const ProfileEdit = () => {
               </div>
   
               <div className=" mt-4 d-flex">
-                <div className="">
+                <div className="col-md-6">
                   <h1>Do you have your own clinic</h1>
                   <div className="d-flex ">
   <div className="btn d-flex">
@@ -536,7 +536,7 @@ export const ProfileEdit = () => {
   
           
               <div className=" mt-4 d-flex">
-                <div className="">
+                <div className="col-md-6 ">
                   <h1>Do you Visit Any Hospital?</h1>
                   <div className="d-flex">
   <div className="btn d-flex">
@@ -567,7 +567,7 @@ export const ProfileEdit = () => {
               
                 <div className="ml">
                   <div className="d-flex ">
-                    <h1>If do you Visit Any Hospital?</h1>{" "}
+                    <h1>Do you Visit Any Hospital?</h1>{" "}
                     <p>(Hospital time slot)</p>
                   </div>
   
@@ -615,7 +615,7 @@ export const ProfileEdit = () => {
                 </div>
                 </div>
              
-              <div className="mt-4 d-flex">
+              {/* <div className="mt-4 d-flex">
                 <Checkbox
                   onChange={(e) => setChecked(e.checked)}
                   checked={checked}
@@ -623,7 +623,7 @@ export const ProfileEdit = () => {
                 ></Checkbox>
                 Send me useful monthly newsletters, alerts, and tips on applying
                 for jobs!
-              </div>
+              </div> */}
   
               <div className="mt-4 ">
                
@@ -631,12 +631,12 @@ export const ProfileEdit = () => {
               <div className="mt-4">
                 <button className="reg-btn" type="submit" >APPLY CHANGES </button>
               </div>
-              <div className="mt-4">
+              {/* <div className="mt-4">
                 <p>
                   By creating an account, you agree to our
                   <span  onClick={() => (window.location.href = "/privacy")}> Terms of Use</span>{" "}
                 </p>
-              </div>
+              </div> */}
             </div>
           </div>
   </form>

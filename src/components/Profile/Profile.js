@@ -195,9 +195,12 @@ data?.email &&
             </div>
             <div className="detail-box2">
               <div className="detail-text-box">
-              <img width="50" height="50" src="https://img.icons8.com/ios/50/downloading-updates.png" alt="downloading-updates"/>
+           
                <button className="dwn-btn" onClick={generatePDF}> Download Resume</button>
-            
+               <svg width="28" height="28" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12.75 12.75H12.7575M13.05 10.5H13.5C14.1989 10.5 14.5483 10.5 14.824 10.6142C15.1915 10.7664 15.4836 11.0585 15.6358 11.426C15.75 11.7017 15.75 12.0511 15.75 12.75C15.75 13.4489 15.75 13.7984 15.6358 14.0741C15.4836 14.4416 15.1915 14.7336 14.824 14.8859C14.5483 15 14.1989 15 13.5 15H4.5C3.80109 15 3.45164 15 3.17597 14.8859C2.80844 14.7336 2.51642 14.4416 2.36418 14.0741C2.25 13.7984 2.25 13.4489 2.25 12.75C2.25 12.0511 2.25 11.7017 2.36418 11.426C2.51642 11.0585 2.80844 10.7664 3.17597 10.6142C3.45164 10.5 3.80109 10.5 4.5 10.5H4.95M9 11.25V3M9 11.25L6.75 9M9 11.25L11.25 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
               </div>
              
             </div>
