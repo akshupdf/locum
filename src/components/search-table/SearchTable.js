@@ -14,26 +14,22 @@ const SearchTable = () => {
     const columnHelper = createColumnHelper();
     const dispatch = useDispatch();
 
-    const { allUsers } = useSelector((state) => state.user);
-  
-  
+    const { allUsers } = useSelector((state) => state?.user);
 
+    // Ensure `data` is always defined as an array, even if `allUsers` is undefined
     const data = allUsers?.map((user) => ({
-
         name: `${user.first_name} ${user.last_name}`,
         mobile: user.mobile_number,
         rate: user.hourly_rate,
-        shift: user.availability, 
-        location: user.location || user.location
-        // location: user.location || user.location,
-        // clinicShift: user.hospital_name || user.clinic_name, 
-    }));
+        shift: user.availability,
+        location: user.location || user.location,
+        clinicShift: "N/A"
+    })) || [];
 
     useEffect(() => {
         
         dispatch(getAllDoctors());
-
-      }, []);
+    }, [dispatch]);
 
 
 
