@@ -65,7 +65,7 @@ window.location.href = '/'
    
 
 {
-   id ? "" :  <button className='nav-btn2' onClick={() => window.location.href = '/register'}> <Reg /> Register</button>
+   id ? "" :  <button className='nav-btn2' onClick={() => window.location.href = '/register'}> Register Now</button>
 }
      
       </div>

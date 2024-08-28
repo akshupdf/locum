@@ -161,12 +161,12 @@ export const ProfileEdit = () => {
   
 
   
-  // const section = [
-  //   "8:00 am - 2.00 pm",
-  //   "2:00 pm - 8.00 pm",
-  //   "8:00 pm - 2.00 am",
-  //   "2:00 am - 8.00 am",
-  // ];
+  const section = [
+    "8:00 am - 2.00 pm",
+    "2:00 pm - 8.00 pm",
+    "8:00 pm - 2.00 am",
+    "2:00 am - 8.00 am",
+  ];
 
   const title = [
     "Any",
@@ -300,7 +300,7 @@ export const ProfileEdit = () => {
                </div>
              
             </div>
-            <div>
+            {/* <div>
               <h3>Last Name</h3>
               <div className="name-text-box">
          
@@ -314,7 +314,7 @@ export const ProfileEdit = () => {
                   placeholder="Last Name"
               />
                     </div>
-              </div>
+              </div> */}
               </div>
           
       
@@ -394,11 +394,22 @@ export const ProfileEdit = () => {
             </div>
   
             <div className="available-box">
+             
+              <div className="col-md-6">
               <div className="d-flex">
                 {" "}
                 <h1>Your Availability </h1>
-                <p>(Available time slot)</p>{" "}
+                <span className="top-p">(Available time slot)</span>{" "}
               </div>
+        <MultiSelect
+        className="login-input-Speciality"
+        name="availability"
+        value={formik.values?.availability}
+        options={section}
+        onChange={(e) => formik.setFieldValue("availability", e.value)}
+        placeholder="Select Availability"
+      />
+      </div>
               <div className="">
                 <div className=" d-flex">
 
@@ -418,13 +429,6 @@ export const ProfileEdit = () => {
                   </div>
                   ))} */}
 
-{user?.availability?.map((slot , index) => (
-                    <div key={index} className="d-flex align-items-center cols-md-3 ">
-                    <p className="ml-2 tuple">
-                      {slot}
-                    </p>
-                  </div>
-                  ))}
                 </div>
               </div>
   
@@ -442,7 +446,7 @@ export const ProfileEdit = () => {
                 </div>
                 <div className="col-md-6">
                 <div className="d-flex ">
-                  <h1>Total Experience</h1><p>(In Years)</p>
+                  <h1>Total Experience</h1><span className="top-p">(In Years)</span>
                   </div>
                   <div className="d-flex">
                   <InputText
@@ -465,7 +469,7 @@ export const ProfileEdit = () => {
                 <div className="col-md-6">
                   <h1>Do you have your own clinic</h1>
                   <div className="d-flex ">
-  <div className="btn d-flex">
+  <div className="tuple d-flex">
     <RadioButton
       inputId="ingredient4"
       name="ownClinic"
@@ -473,12 +477,12 @@ export const ProfileEdit = () => {
       checked={formik.values.ownClinic === true}
       onChange={formik.handleChange}
     />
-    <p htmlFor="ingredient4" className="ml-2">
+    <span htmlFor="ingredient4" className="ml-2">
       Yes
-    </p>
+    </span>
   </div>
 
-  <div className="btn d-flex">
+  <div className="tuple d-flex">
     <RadioButton
       inputId="ingredient5"
       name="ownClinic"
@@ -486,34 +490,34 @@ export const ProfileEdit = () => {
       checked={formik.values.ownClinic === false}
       onChange={formik.handleChange}
     />
-    <p className="ml-2">No</p>
+    <span className="ml-2">No</span>
   </div>
 </div>
                 </div>
-                <div className="ml">
+                <div className="">
                   <div className="d-flex ">
-                    <h1>If you have clinic</h1> <p>(Clinic time slot)</p>
+                    <h1>If you have clinic</h1> <span className="top-p">(Clinic time slot)</span>
                   </div>
   
                   <div className="d-flex  ">
-                    <div className="btn d-flex">
+                    <div className="tuple d-flex">
                       <RadioButton inputId="ingredient4" name="Clinic time" 
                       value={true} 
                       checked={clinictime === true}
                        onChange={(e) => setClinictime(e.value)} />
-                      <p htmlFor="ingredient4" className="ml-2">
+                      <span htmlFor="ingredient4" className="ml-2">
                       08.00 - 2.00
-                      </p>
+                      </span>
                     </div>
   
-                    <div className="btn d-flex">
+                    <div className="tuple d-flex">
                       <RadioButton
                         inputId="ingredient4"
                         name="Clinic time"
                         value={false}
                         checked={clinictime === false} onChange={(e) => setClinictime(e.value)}
                       />
-                      <p className="ml-2">10.00-2.00</p>
+                      <span className="ml-2">10.00-2.00</span>
                     </div>
                   </div>
                 </div>
@@ -521,7 +525,7 @@ export const ProfileEdit = () => {
               <div className="row mt-4">
                 <div className="col-md-6">
                   <div className="d-flex">
-                  <h1>Clinic Address </h1><p>((if you have personal clinic))</p>
+                  <h1>Clinic Address </h1><span className="top-p">(if you have personal clinic)</span>
                   </div>
      
                   <InputText
@@ -575,47 +579,47 @@ export const ProfileEdit = () => {
                 <div className="col-md-6 ">
                   <h1>Do you Visit Any Hospital?</h1>
                   <div className="d-flex">
-  <div className="btn d-flex">
+  <div className="tuple d-flex">
     <RadioButton
       inputId="ingredient4"
       name="ownClinic"
       value={true}
-      checked={formik.values.ownClinic === true}
+      checked={formik.values.ownHospital === true}
       onChange={formik.handleChange}
     />
-    <p htmlFor="ingredient4" className="ml-2">
+    <span htmlFor="ingredient4" className="ml-2">
       Yes
-    </p>
+    </span>
   </div>
 
-  <div className="btn d-flex">
+  <div className="tuple d-flex">
     <RadioButton
       inputId="ingredient5"
       name="ownClinic"
       value={false}
-      checked={formik.values.ownClinic === false}
+      checked={formik.values.ownHospital === false}
       onChange={formik.handleChange}
     />
-    <p className="ml-2">No</p>
+    <span className="ml-2">No</span>
   </div>
 </div>
                 </div>
               
-                <div className="ml">
+                <div className="">
                   <div className="d-flex ">
                     <h1>Do you Visit Any Hospital?</h1>{" "}
-                    <p>(Hospital time slot)</p>
+                    <span className="top-p">(Hospital time slot)</span>
                   </div>
   
                   <div className="d-flex  ">
-                    <div className="btn d-flex">
+                    <div className="tuple d-flex">
                       <RadioButton inputId="ingredient4"  name="Hospital time" value={true} checked={hosp === true} onChange={(e) => setHosp(e.value)} />
-                      <p htmlFor="ingredient4" className="ml-2">
+                      <span htmlFor="ingredient4" className="ml-2">
                         08.00 - 2.00
-                      </p>
+                      </span>
                     </div>
   
-                    <div className="btn d-flex">
+                    <div className="tuple d-flex">
                       <RadioButton
                         inputId="ingredient4"
                         name="Hospital time "
@@ -623,7 +627,7 @@ export const ProfileEdit = () => {
                         checked={hosp === false} onChange={(e) => setHosp(e.value)}
                      
                       />
-                      <p className="ml-2">10.00-2.00</p>
+                      <span className="ml-2">10.00-2.00</span>
                     </div>
                   </div>
                 </div>

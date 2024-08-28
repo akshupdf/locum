@@ -53,7 +53,7 @@ export const Profile = () => {
 
     doc.text(`First Name: ${data?.first_name}`, 14, 24);
     doc.text(`Last Name: ${data?.last_name}`, 14, 32);
-    doc.text(`Email: ${data?.email}`, 14, 40);
+    doc.text(`Email: ${data?.email_id}`, 14, 40);
     doc.text(`Phone Number: ${data?.mobile_number}`, 14, 48);
     doc.text(`Location: ${data?.location}`, 14, 56);
     doc.text(`Medical ID: ${data?.medical_id}`, 14, 64);
@@ -144,11 +144,11 @@ export const Profile = () => {
               <p>{data?.first_name}{" "}{data?.last_name}</p>
             </div>
   {
-data?.email && 
+data?.email_id && 
   <div>
  <h3>Email</h3>
               <div className="name-text-box">
-                <p>{data?.email}</p>     
+                <p>{data?.email_id}</p>     
               </div>
   </div>
 
@@ -172,13 +172,13 @@ data?.email &&
             </div>
     </div>
 
-    {data?.about  && <div className="about-box">
+    {data?.about_me  && <div className="about-box">
               <div className="head">
                 <h1>About {data?.first_name}</h1>
                
               </div>
               <p>
-              {data?.about}
+              {data?.about_me}
               </p>
             </div>
     
@@ -215,17 +215,25 @@ data?.email &&
               <div className="d-flex">
                 {" "}
                 <h1>Your Availability </h1>
-                <p>(Available time slot)</p>{" "}
+                <span className="top-p">(Available time slot)</span>{" "}
               </div>
               <div className="">
                 <div className=" d-flex">
-                  {data.availability?.map((slot , index) => (
+                  {/* {data.availability?.map((slot , index) => (
                     <div key={index} className="d-flex align-items-center cols-md-3 ">
-                    <p className="ml-2 tuple">
+                    <span className=" tuple">
                       {slot}
-                    </p>
+                    </span>
                   </div>
-                  ))}
+                  ))} */}
+                      {data.availability?.map((specialty, index) => (
+        <button
+          key={index}
+          className={` tuple ${selectedSpecialties.includes(specialty) ? 'selected' : ''}`}
+        >
+          <span> {specialty} </span> 
+        </button>
+      ))}
                 </div>
               </div>
   
@@ -237,12 +245,12 @@ data?.email &&
                   <p className="">{data?.hourly_rate}</p>
                
                 </div>
-                <div className="col-md-4">
-                  <h1>Total Experience</h1>
+                <div className="col-md-6">
+                  <h1>Total Experience  <span className="top-p">(Available time slot)</span></h1>
                   <div className="d-flex">
-                  <p className="">{data?.otp_verification_id}</p>
+                  <p className="">{data?.total_exp}</p>
   
-                    <span>
+                    {/* <span>
                       <svg
                         width="27"
                         height="30"
@@ -262,12 +270,12 @@ data?.email &&
                           fill="white"
                         />
                       </svg>
-                    </span>
+                    </span> */}
                   </div>
                 </div>
               </div>
   
-              <div className=" mt-4 d-flex">
+              {/* <div className=" mt-4 d-flex">
 
                 {
                         data?.clinic && <div className="">
@@ -302,37 +310,38 @@ data?.email &&
               
 
 
-              </div>
-              <div className="row mt-4">
+              </div> */}
+              <div className="row ">
                 <div className="col-md-4">
                   <h1>Clinic Name</h1>
                   <p className="">{data?.clinic_name}</p> 
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-6">
                   <h1>Clinic Location </h1>
-                  <p className="">{data?.clinic_location}</p> 
+                  <p className="" style={{width : "400px"}}>{data?.clinic_location}</p> 
                 </div>
               </div>
-  
-              <div className="mt-4">
-      {data.specialties?.map((specialty, index) => (
+                <div className="row mt-4">
+                  <h1>Preferred Specialities</h1>
+              <div className="">
+      {data.preferred_specialities?.map((specialty, index) => (
         <button
           key={index}
-          className={`btn ${selectedSpecialties.includes(specialty) ? 'selected' : ''}`}
+          className={` tuple ${selectedSpecialties.includes(specialty) ? 'selected' : ''}`}
         >
-          <p> {specialty} </p> 
+          <span> {specialty} </span> 
         </button>
       ))}
-    </div>
+    </div> </div>
   
               <div className="row mt-4">
                 <div className="col-md-4">
                   <h1>Hospital Name</h1>
-                  <p className="">{data?.hospital_name}</p> 
+                  <p className="" >{data?.hospital_name}</p> 
                 </div>
                 <div className="col-md-4">
                   <h1>Hospital Location </h1>
-                  <p className="">{data?.hospital_location}</p> 
+                  <p className="" style={{width : "400px"}}>{data?.hospital_location}</p> 
                 </div>
               </div>
   
@@ -346,6 +355,18 @@ data?.email &&
           </div>
         </div>
   
+        <div className="text-box">
+          <h1>Communication preferences</h1>
+
+          <p>
+          Medrecruit and our partner Medworld will occasionally email you about news and opportunities we think you'll be interested in Your profile is currently being created, please check back in 15-30 minutes if you would like to update your communication preferences. In the meantime, let's get a running start on the next step in your career
+ </p>
+          <h1 >Register your account</h1>
+        
+  <p>"Register your account to unlock a world of possibilities! Signing up is simple and fast, allowing you to personalize your experience and enjoy exclusive benefits. Don’t miss out—create your account today and start exploring all that we have to offer.". <span onClick={() => window.location.href = '/register'}>Register your account </span></p>
+  
+
+        </div>
 
   
         <div className="feedbox">

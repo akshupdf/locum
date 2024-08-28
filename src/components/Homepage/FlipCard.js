@@ -133,7 +133,7 @@ export const Flipcard = () => {
                    <SwiperSlide key={index} className='swiper-slide'>
                       <div className="tool-small-box">
                                 <div className="front">
-                                    <img src={one} alt="logo" />
+                                    <img src={two} alt="logo" />
                                     <div className="tool-small-box-text">
                                         <h4>{data.first_name}{" "} {data.last_name}</h4>
                                         <h3>{data.specialization}</h3>
@@ -142,9 +142,9 @@ export const Flipcard = () => {
                                 <div className="back">
                                     <div className="tool-small-box-text">
                                         <p>📍{data.location}</p>
-                                        <p>✅{data.availability}</p>
-                                        <p>🕓{data.medical_id}</p>
-                                        <p>💰{data.hourly_rate}</p>
+                                        <p>✅Available Now</p>
+                                        <p>🕓Morning Shift</p>
+                                        <p>💰₹{data.hourly_rate}</p>
                                     </div>
                                     <button className="tool-box-btn" onClick={() => (window.location.href = `/profile/${data.custom_id}`)}>
                                         VIEW PROFILE <LeftArrow />

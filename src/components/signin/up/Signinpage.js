@@ -129,7 +129,7 @@ export const Signup = () => {
       
         </div>
 
-          <div className='signright'>
+          <div className='signright signright2'>
 
           <Hand />
 

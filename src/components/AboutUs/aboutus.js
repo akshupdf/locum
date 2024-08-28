@@ -143,7 +143,7 @@ export const About = () => {
             >
               Register now
             </button>
-            <Arrow />
+            {/* <Arrow /> */}
           </div>
         </div>
         <div className="aboutright">
@@ -196,7 +196,7 @@ export const About = () => {
             with their patients in order to provide excellent patient care.{" "}
           </p>{" "}
           <p>And every single connection matters.</p>
-          <button className="peoplebtn">Find out more</button>
+          <button className="peoplebtn"  onClick={() => (window.location.href = "/explore")}>Find out more</button>
         </div>
         <div className="peoplebox-right">
           <img src={girl} alt="girl"></img>
@@ -282,7 +282,7 @@ export const About = () => {
               Join our global talent community to receive alerts when new
               life-changing opportunities become available.
             </p>
-            <button className='signup-btn' onClick={() => window.location.href = '/register'}> <ExitIcon /> Sign In
+            <button className='signup-btn' onClick={() => window.location.href = '/signin'}> <ExitIcon /> Sign In
             </button>
           </div>
           <div className="join-box-right">
