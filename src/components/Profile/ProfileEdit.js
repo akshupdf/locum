@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import profile from "../../assets/profile.png";
 import { Clock, Leafimg, Stars } from "../../reusable/Icons";
 import { RadioButton } from "primereact/radiobutton";
-import { InputText } from "primereact/inputtext";
+import { InputText  } from "primereact/inputtext";
+import { InputTextarea } from 'primereact/inputtextarea';
 import { Checkbox } from "primereact/checkbox";
 import { Button } from "primereact/button";
 import { useDispatch, useSelector } from "react-redux";
@@ -266,24 +267,42 @@ export const ProfileEdit = () => {
             </div>
   
             <div className="name-box">
-            <h3>First Name</h3>
+              <div className="d-flex">
+                <div>
+
+               
+              <h3>First Name</h3>
               <div className="name-text-box">
          
               
               <InputText
                   className={`login-input ${formik.touched.firstName && formik.errors.firstName ? "p-invalid" : ""}`}
-                  name="first_name"
-                  value={formik.values?.firstName + " " + formik.values?.lastName }
+                  name="firstName"
+                  value={formik.values?.firstName}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   placeholder="First Name"
               />
-              <div>
-                {formik.touched.firstName && formik.errors.firstName && (
-                  <small className="p-error">{formik.errors.firstName}</small>
-                )}
-              </div>
+               </div>
+             
             </div>
+            <div>
+              <h3>Last Name</h3>
+              <div className="name-text-box">
+         
+              
+              <InputText
+                  className={`login-input ${formik.touched.firstName && formik.errors.firstName ? "p-invalid" : ""}`}
+                  name="lastName"
+                  value={formik.values?.lastName}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  placeholder="Last Name"
+              />
+                    </div>
+              </div>
+              </div>
+          
       
   
               <h3>Email</h3>
@@ -337,7 +356,7 @@ export const ProfileEdit = () => {
             <div className="about-box">
               <div className="head">
                 <h1>About Sid</h1>
-                <InputText
+                <InputTextarea 
           className={`login-input`}
           value={formik.values?.aboutMe}
           onChange={formik.handleChange}
@@ -469,7 +488,7 @@ export const ProfileEdit = () => {
                       checked={clinictime === true}
                        onChange={(e) => setClinictime(e.value)} />
                       <p htmlFor="ingredient4" className="ml-2">
-                        8
+                      08.00 - 2.00
                       </p>
                     </div>
   
@@ -480,14 +499,17 @@ export const ProfileEdit = () => {
                         value={false}
                         checked={clinictime === false} onChange={(e) => setClinictime(e.value)}
                       />
-                      <p className="ml-2">2</p>
+                      <p className="ml-2">10.00-2.00</p>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="row mt-4">
                 <div className="col-md-6">
-                  <h1>Clinic Location</h1>
+                  <div className="d-flex">
+                  <h1>Clinic Address </h1><p>((if you have personal clinic))</p>
+                  </div>
+     
                   <InputText
                    className={`login-input  ${!isEditing ? '' : 'border_on'}`}
                     name="clinicLocation"
@@ -575,7 +597,7 @@ export const ProfileEdit = () => {
                     <div className="btn d-flex">
                       <RadioButton inputId="ingredient4"  name="Hospital time" value={true} checked={hosp === true} onChange={(e) => setHosp(e.value)} />
                       <p htmlFor="ingredient4" className="ml-2">
-                        8
+                        08.00 - 2.00
                       </p>
                     </div>
   
@@ -587,7 +609,7 @@ export const ProfileEdit = () => {
                         checked={hosp === false} onChange={(e) => setHosp(e.value)}
                      
                       />
-                      <p className="ml-2">10</p>
+                      <p className="ml-2">10.00-2.00</p>
                     </div>
                   </div>
                 </div>
@@ -607,7 +629,7 @@ export const ProfileEdit = () => {
                   <h1>Hospital Name </h1>
                   <InputText
                       className={`login-input  ${!isEditing ? '' : 'border_on'}`}
-                    name="Hospital Name"
+                    name="hospitalName"
                     value={formik.values?.hospitalName}
                     onChange={formik.handleChange}
                     placeholder="Hospital Name "
