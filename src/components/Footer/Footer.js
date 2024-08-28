@@ -56,7 +56,7 @@ export const Footer = () => {
 <li>Ambulance Service</li>
 <li>Medical Oncology</li>
 <li>Opthalmology</li>
-<li>Ent</li>
+<li>ENT</li>
 <li>Primary Care</li>
 <li>Behavioral Health</li>
 <li>Psychology</li>
@@ -70,15 +70,22 @@ export const Footer = () => {
   </div>
 </div>
 
-<div className="foot3">
+<div className="" style={{width: "300px"}}>
+<h1>ABOUT</h1>
+<ul>
+<li onClick={() => (window.location.href = "/aboutus")}>About US</li>
+<li onClick={() => (window.location.href = "/contactus")}>Contact US</li>
+</ul>
+</div>
+<div className="foot3" style={{width: "300px"}}>
     <h1>LOCATION</h1>
 <ul>
-<li>Mumbai, India</li>
-<li>Pune, India</li>
-<li>Thane, India</li>
-<li>Delhi, India</li>
-<li>Bangalore, India</li>
-<li>Nagpur, India</li>
+<li>Mumbai</li>
+<li>Pune</li>
+<li>Thane</li>
+<li>Delhi</li>
+<li>Bangalore</li>
+<li>Nagpur</li>
 </ul>
 
 </div>
