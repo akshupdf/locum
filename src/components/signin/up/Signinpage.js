@@ -79,7 +79,7 @@ export const Signup = () => {
    const id = localStorage.getItem("userId")
 
     if(id){
-      window.location.href = `/profilev2/${id}`
+      window.location.href = `/profile/${id}`
       }
       
     } catch (error) {

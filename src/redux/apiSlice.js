@@ -19,7 +19,15 @@ export const updateUser = createAsyncThunk(
   'user/updateUser',
   async (values, thunkAPI) => {
     try {
-      const response = await axios.post('https://19u1szcoq1.execute-api.ap-south-1.amazonaws.com/api/users/editProfile', values);
+      const token = localStorage.getItem('jwtToken');
+
+      const response = await axios.put('https://19u1szcoq1.execute-api.ap-south-1.amazonaws.com/api/users/editProfile', values ,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, 
+          },
+        }
+      );
       return response;
       
     } catch (error) {

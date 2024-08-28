@@ -124,11 +124,17 @@ export const Profile = () => {
           <div className="profile-left">
             <div className="tab-box">
             <div className="logo-box">
-              <img src={profile} alt="profile"></img>
-          {
-
-userid === id && <button className="btn" onClick={ window.location.href = `/profilev2/${id}`}>  </button>
-          }
+              {
+                user.profile_image ?  <img src={user.profile_image} alt="profile"></img> :  <img src={Profile} alt="profile"></img>
+              }
+              
+              {
+  userid === id && (
+    <button className="btn" onClick={() => window.location.href = `/profilev2/${id}`}>
+      Edit
+    </button>
+  )
+}
               
             </div>
   
