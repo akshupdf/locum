@@ -113,25 +113,25 @@ export const Flipcard = () => {
             </div>
             <button className="slider-arrow right-arrow"  onClick={scrollRight}><RightArrowv2 /></button> */}
 
-<Swiper
-               
-               slidesPerView={'3'}
-               spaceBetween={50}
-               loop={true}
-               pagination={{
-                   clickable: true
-               }}
-               navigation={true}
-               modules={[Pagination, Navigation]}
-               className="swiper-container">
-                 <div className='swiper-wrapper' >
+            <Swiper
 
-               {allUsers?.map((data, index) => (
-               
+                slidesPerView={'3'}
+                spaceBetween={50}
+                loop={true}
+                pagination={{
+                    clickable: true
+                }}
+                navigation={true}
+                modules={[Pagination, Navigation]}
+                className="swiper-container">
+                <div className='swiper-wrapper' >
 
-          
-                   <SwiperSlide key={index} className='swiper-slide'>
-                      <div className="tool-small-box">
+                    {allUsers?.map((data, index) => (
+
+
+
+                        <SwiperSlide key={index} className='swiper-slide'>
+                            <div className="tool-small-box">
                                 <div className="front">
                                     <img src={two} alt="logo" />
                                     <div className="tool-small-box-text">
@@ -141,21 +141,21 @@ export const Flipcard = () => {
                                 </div>
                                 <div className="back">
                                     <div className="tool-small-box-text">
-                                        <p>📍{data.location}</p>
-                                        <p>✅Available Now</p>
-                                        <p>🕓Morning Shift</p>
-                                        <p>💰₹{data.hourly_rate}</p>
+                                        <p><span>📍</span>{data.location || "N/A"}</p>
+                                        <p><span>✅</span>{data.isAvailable ? "Available Now" : "N/A"}</p>
+                                        <p><span>🕓</span>{data.shift || "N/A"}</p>
+                                        <p><span>💰</span>{data.hourly_rate && data.hourly_rate > 0 ? `₹${data.hourly_rate}` : "N/A"}</p>
                                     </div>
                                     <button className="tool-box-btn" onClick={() => (window.location.href = `/profile/${data.custom_id}`)}>
                                         VIEW PROFILE <LeftArrow />
                                     </button>
                                 </div>
                             </div>
-                   </SwiperSlide>      
-               ))}
-               
+                        </SwiperSlide>
+                    ))}
+
                 </div>
-           </Swiper>
+            </Swiper>
         </div>
     );
 };

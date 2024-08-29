@@ -18,7 +18,7 @@
     height: 60vh;
 }
 
-.swiper-slide-active {
+.swiper-slide-active { 
     
   margin-left: 68px;
   }
@@ -66,9 +66,13 @@
 
 .tool-small-box-text{
 
+  span{
+    margin-right: 6px;
+  }
+
     p{
         font-family: "Fira Sans";
-font-size: 24px !important;
+font-size: 18px !important;
 font-weight: 400;
 line-height: 64px !important;
 text-align: left;

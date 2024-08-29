@@ -395,7 +395,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <h3>Your Personalised Profile</h3>
-                    <hr></hr>
+                    <hr style={{ marginTop: "0px" }}></hr>
                     <p>
                       Your profile on Messly includes your minimum hourly rate,
                       how far you'll travel, your start date, preferred
@@ -410,7 +410,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <h3>Stay Anonymous</h3>
-                    <hr></hr>
+                    <hr style={{ marginTop: "0px" }}></hr>
                     <p>
                       We only include your first name on your profile. Only
                       share your full name, GMC number or any contact details
@@ -424,7 +424,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <h3>Privacy First</h3>
-                    <hr></hr>
+                    <hr style={{ marginTop: "0px" }}></hr>
 
                     <p>
                       Only recruiters from agencies that are vetted and approved

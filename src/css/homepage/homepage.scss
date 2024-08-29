@@ -415,6 +415,7 @@
         }
 
         img{
+            object-fit: cover;
             width: 250px;
             height: 250px;
             padding: 10px;
@@ -512,7 +513,7 @@
                 font-weight: 400;
                 line-height: 19.2px;
                 letter-spacing: -0.3199999928474426px;
-                text-align: left;
+                text-align: left !important;
                 color: rgba(48, 54, 77, 1);
                 margin-bottom: 39px;
                 text-align: center;
@@ -596,7 +597,8 @@
             color: #FFFFFF;
             font-size: 16px;
             font-weight: 400;
-            margin-bottom: 54px;
+            line-height: 19.2px;
+            margin-bottom: 39px;
         }
     }
 
@@ -612,7 +614,7 @@
             margin: 0;
             margin-top: 1rem;
             font-family: "Montserrat";
-                font-size: 28px;
+                font-size: 26px;
                 font-weight: 600;
                 line-height: 34px;
                 letter-spacing: -0.5600000023841858px;
@@ -638,7 +640,7 @@
 
     .box-group{
         h2{
-            font-size: 38px;
+            font-size: 35px;
             font-weight: 700;
             color: rgba(50, 98, 149, 1);
             letter-spacing: -2px;
@@ -868,7 +870,8 @@
       }
 
       .img-box{
-        margin: auto;
+        // margin: auto;
+        margin-top: 15px;
       }
 
 
