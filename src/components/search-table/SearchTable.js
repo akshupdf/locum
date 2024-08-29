@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllDoctors } from "../../redux/apiSlice";
 import boy from "../../assets/boy.png"
 import { ExitIcon } from "../../reusable/Icons";
+import { useLocation, useParams } from "react-router-dom";
 
 const SearchTable = () => {
     const columnHelper = createColumnHelper();
@@ -33,6 +34,18 @@ const SearchTable = () => {
         dispatch(getAllDoctors());
     }, [dispatch]);
 
+    const path = window.location.pathname;
+  
+
+  const specialty = path.split("/").pop();
+
+    const location2 = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location2]);
+
+    
 
 
     // const data = [
@@ -219,7 +232,7 @@ const SearchTable = () => {
                 <div className="search-exp-table">
                     <div className="list-head d-flex justify-content-between">
                         <div>
-                            <div className="list-name">List of Dermatologists doctors</div>
+                            <div className="list-name">List of {specialty?.charAt(0).toUpperCase() + specialty?.slice(1)} doctors</div>
                             <div className="list-white">345 available doctors</div>
                         </div>
                         <div className="list-btn-search" onClick={() => window.location.href = '/register'}>
@@ -272,7 +285,7 @@ const SearchTable = () => {
                             Join our global talent community to receive alerts when new
                             life-changing opportunities become available.
                         </p>
-                        <button className='signup-btn' onClick={() => window.location.href = '/register'}> <ExitIcon /> Sign In
+                        <button className='signup-btn' onClick={() => window.location.href = '/register'}> Sign In
                         </button>
                     </div>
                     <div className="join-box-right">

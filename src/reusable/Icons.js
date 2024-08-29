@@ -973,8 +973,8 @@ export const Hassle = () => {
 export const Stars = () => {
   return (
     <svg
-      width="54"
-      height="54"
+      width="44"
+      height="44"
       viewBox="0 0 54 54"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

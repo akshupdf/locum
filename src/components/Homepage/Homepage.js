@@ -47,6 +47,7 @@ import { InputText } from "primereact/inputtext";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllDoctors } from "../../redux/apiSlice";
 import { Flipcard } from "./FlipCard";
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
   const dispatch = useDispatch();
@@ -115,12 +116,12 @@ export default function HomePage() {
   }, []);
 
   const specialtiesData = [
-    { id: 1, name: "Anesthesiology", icon: <Saline /> },
-    { id: 2, name: "Cardiology", icon: <HeartBeat /> },
-    { id: 3, name: "Clinical Social Work", icon: <HandNBrain /> },
-    { id: 4, name: "Dermatology", icon: <Nurse /> },
-    { id: 5, name: "Emergency medicine", icon: <Ambulancev2 /> },
-    { id: 6, name: "Endocrinology", icon: <Radiology /> },
+    { id: 1, name: "Anesthesiology", icon: <Saline />, url: "anesthesiology" },
+    { id: 2, name: "Cardiology", icon: <HeartBeat />, url: "cardiology" },
+    { id: 3, name: "Clinical Social Work", icon: <HandNBrain />, url: "clinical-social-work" },
+    { id: 4, name: "Dermatology", icon: <Nurse />, url: "dermatology" },
+    { id: 5, name: "Emergency medicine", icon: <Ambulancev2 />, url: "emergency-medicine" },
+    { id: 6, name: "Endocrinology", icon: <Radiology />, url: "endocrinology" },
   ];
 
 
@@ -196,7 +197,9 @@ export default function HomePage() {
                 id={`box-${specialty.id}`}
                 className="specialty-box"
               >
-                <div className="specialty-icon">{specialty.icon}</div>
+              <Link to={`/${specialty.url}`} className="specialty-link">
+      <div className="specialty-icon">{specialty.icon}</div>
+    </Link>
                 <div className="specialty-name">{specialty.name}</div>
               </div>
             ))}

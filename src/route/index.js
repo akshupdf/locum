@@ -57,4 +57,96 @@ export const router = [
     path: '/search-page',
     element: <SearchTable />
   },
+  {
+    path: '/anesthesiology',
+    element: <SearchTable />
+  },
+  {
+    path: '/cardiology',
+    element: <SearchTable />
+  },
+  {
+    path: '/clinical-social-work',
+    element: <SearchTable />
+  },
+  {
+    path: '/dermatology',
+    element: <SearchTable />
+  },
+  {
+    path: '/emergency-medicine',
+    element: <SearchTable />
+  },
+  {
+    path: '/endocrinology',
+    element: <SearchTable />
+  },
+  {
+    path: '/gastroenterology',
+    element: <SearchTable />
+  },
+  {
+    path: '/hospital-medicine',
+    element: <SearchTable />
+  },
+  {
+    path: '/medical-oncology',
+    element: <SearchTable />
+  },
+  {
+    path: '/nephrology',
+    element: <SearchTable />
+  },
+  {
+    path: '/neurology',
+    element: <SearchTable />
+  },
+  {
+    path: '/womens-health',
+    element: <SearchTable />
+  },
+  {
+    path: '/ophthalmology',
+    element: <SearchTable />
+  },
+  {
+    path: '/otolaryngology-ent',
+    element: <SearchTable />
+  },
+  {
+    path: '/primary-care',
+    element: <SearchTable />
+  },
+  {
+    path: '/physiatry',
+    element: <SearchTable />
+  },
+  {
+    path: '/behavioral-health',
+    element: <SearchTable />
+  },
+  {
+    path: '/psychology',
+    element: <SearchTable />
+  },
+  {
+    path: '/radiology',
+    element: <SearchTable />
+  },
+  {
+    path: '/radiation-oncology',
+    element: <SearchTable />
+  },
+  {
+    path: '/rheumatology',
+    element: <SearchTable />
+  },
+  {
+    path: '/surgery',
+    element: <SearchTable />
+  },
+  {
+    path: '/urology',
+    element: <SearchTable />
+  },
 ]  

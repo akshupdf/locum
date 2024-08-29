@@ -133,16 +133,16 @@ export const Flipcard = () => {
                         <SwiperSlide key={index} className='swiper-slide'>
                             <div className="tool-small-box">
                                 <div className="front">
-                                    <img src={two} alt="logo" />
+                                    <img src={data?.profile_image ? data?.profile_image : two} alt="logo" />
                                     <div className="tool-small-box-text">
-                                        <h4>{data.first_name}{" "} {data.last_name}</h4>
-                                        <h3>{data.specialization}</h3>
+                                        <h4>{data?.first_name}{" "} {data?.last_name}</h4>
+                                        <h3>{data?.specialization}</h3>
                                     </div>
                                 </div>
                                 <div className="back">
                                     <div className="tool-small-box-text">
                                         <p><span>📍</span>{data.location || "N/A"}</p>
-                                        <p><span>✅</span>{data.isAvailable ? "Available Now" : "N/A"}</p>
+                                        <p className='tuple-box'><span>✅</span>{data.availability ? data.availability : "N/A"}</p>
                                         <p><span>🕓</span>{data.shift || "N/A"}</p>
                                         <p><span>💰</span>{data.hourly_rate && data.hourly_rate > 0 ? `₹${data.hourly_rate}` : "N/A"}</p>
                                     </div>

@@ -67,7 +67,6 @@ export const ProfileEdit = () => {
   ];
 
   const defaultValues = {
-    userId: id,
     firstName: "",
     lastName: "",
     gender: "",
@@ -76,12 +75,13 @@ export const ProfileEdit = () => {
     location: "",
     hourlyRate: "",
     totalExp: "",
-    ownClinic: true,
+    ownClinic: "",
+    ownHospital:"",
     clinicTimeSlot: [],
     clinicLocation: "",
     idealNumber: "",
     preferredSpecialities: [],
-    visitHospital: true,
+    visitHospital: "",
     visitHospitalSlot: [],
     hospitalLocation: "",
     image:"",
@@ -96,7 +96,6 @@ export const ProfileEdit = () => {
   const mapBackendDataToFormValues = (backendData) => {
 
     return {
-      userId: id,
       firstName: backendData?.first_name || "",
       lastName: backendData?.last_name || "",
       mobileNo: backendData?.mobile_number,
@@ -137,15 +136,31 @@ export const ProfileEdit = () => {
     enableReinitialize: true, 
     onSubmit: async (values) => {
 
+
+      const formData = new FormData();
+
+      for (const key in values) {
+
+        if (Array.isArray(values[key])) {
+          console.log("array",values[key])
+          values[key].forEach(value => {
+            formData.append(key, value || "NA");
+          });
+        } else {
+          const value = values[key] || "NA";
+          formData.append(key, value);
+        }
+      }
+      if(image){
+        formData.append('image' , values.image)
+      }
+
+      
      
-      const data = {
-        ...values,
-        image: image, 
-      };
       
       try {
 
-        const addUserResult = await dispatch(updateUser(data)).unwrap();
+        const addUserResult = await dispatch(updateUser(formData)).unwrap();
   
         if (addUserResult.error) {
           toast(addUserResult.error || "User Registration Failed");
@@ -162,10 +177,17 @@ export const ProfileEdit = () => {
 
   
   const section = [
-    "8:00 am - 2.00 pm",
-    "2:00 pm - 8.00 pm",
-    "8:00 pm - 2.00 am",
-    "2:00 am - 8.00 am",
+    "Morning",
+    "Afternoon",
+    "Evening",
+    "Night"
+  ];
+
+  const slot = [
+    "8.00 AM - 2.00 PM",
+    "4.00 PM - 8.00 PM",
+    "8.00 PM - 12.00 AM",
+    "6.00 AM - 12.00 AM"
   ];
 
   const title = [
@@ -210,13 +232,7 @@ export const ProfileEdit = () => {
   const handleImageChange = (event) => {
     const file = event.currentTarget.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        formik.setFieldValue("image", reader.result); 
-      };
-      reader.readAsDataURL(file); 
-
-      setImage(file);
+      formik.setFieldValue("image", file); 
     }
   };
 
@@ -254,7 +270,7 @@ export const ProfileEdit = () => {
           <div className="profile-left">
             <div className="tab-box">
             <div className="logo-box">
-              <img src={formik.values?.image} alt="profile"></img>
+              <img src={image ? image : formik.values?.image} alt="profile"></img>
           <div className="logo-btn">
 
           <button className="btn" onClick={() => window.location.href = `/profilev2/${id}`}>
@@ -399,7 +415,7 @@ export const ProfileEdit = () => {
               <div className="d-flex">
                 {" "}
                 <h1>Your Availability </h1>
-                <span className="top-p">(Available time slot)</span>{" "}
+                <span className="top-p">(Available Shift)</span>{" "}
               </div>
         <MultiSelect
         className="login-input-Speciality"
@@ -410,28 +426,7 @@ export const ProfileEdit = () => {
         placeholder="Select Availability"
       />
       </div>
-              <div className="">
-                <div className=" d-flex">
-
-                  
-                  {/* {formik.values??.avilability?.map((timeSlot) => (
-                    <div className="d-flex align-items-center cols-md-3 btn" key={timeSlot}>
-                    <RadioButton
-                      inputId={`avilability-${timeSlot}`}
-                      name="avilability"
-                      value={timeSlot}
-                      onChange={formik.handleChange}
-                      checked={formik.values?.avilability === timeSlot}
-                    />
-                    <p htmlFor={`avilability-${timeSlot}`} className="ml-2">
-                      {timeSlot}
-                    </p>
-                  </div>
-                  ))} */}
-
-                </div>
-              </div>
-  
+               
               <div className="row mt-4">
              
                 <div className="col-md-6">
@@ -465,9 +460,9 @@ export const ProfileEdit = () => {
                 </div>
               </div>
   
-              <div className=" mt-4 d-flex">
+              <div className="row mt-4">
                 <div className="col-md-6">
-                  <h1>Do you have your own clinic</h1>
+                  <h1>Do you have your own clinic ?</h1>
                   <div className="d-flex ">
   <div className="tuple d-flex">
     <RadioButton
@@ -475,7 +470,9 @@ export const ProfileEdit = () => {
       name="ownClinic"
       value={true}
       checked={formik.values.ownClinic === true}
-      onChange={formik.handleChange}
+      onChange={(e) => {
+        formik.setFieldValue("ownClinic", true); 
+      }}
     />
     <span htmlFor="ingredient4" className="ml-2">
       Yes
@@ -494,59 +491,59 @@ export const ProfileEdit = () => {
   </div>
 </div>
                 </div>
-                <div className="">
-                  <div className="d-flex ">
-                    <h1>If you have clinic</h1> <span className="top-p">(Clinic time slot)</span>
-                  </div>
-  
-                  <div className="d-flex  ">
-                    <div className="tuple d-flex">
-                      <RadioButton inputId="ingredient4" name="Clinic time" 
-                      value={true} 
-                      checked={clinictime === true}
-                       onChange={(e) => setClinictime(e.value)} />
-                      <span htmlFor="ingredient4" className="ml-2">
-                      08.00 - 2.00
-                      </span>
-                    </div>
-  
-                    <div className="tuple d-flex">
-                      <RadioButton
-                        inputId="ingredient4"
-                        name="Clinic time"
-                        value={false}
-                        checked={clinictime === false} onChange={(e) => setClinictime(e.value)}
-                      />
-                      <span className="ml-2">10.00-2.00</span>
-                    </div>
-                  </div>
-                </div>
+
+                {
+
+formik.values.ownClinic === true && <div className="col-md-6">
+<div className="d-flex ">
+  <h1>If you have clinic</h1> <span className="top-p">(Clinic time slot)</span>
+</div>
+<div className="">
+<MultiSelect
+className="login-input-Speciality"
+name="clinicTimeSlot"
+value={formik.values?.clinicTimeSlot}
+options={slot}
+onChange={(e) => formik.setFieldValue("clinicTimeSlot", e.value)}
+placeholder="Select Clinic Timing"
+/>
+</div>
+
+</div>
+                }
+                
               </div>
-              <div className="row mt-4">
-                <div className="col-md-6">
-                  <div className="d-flex">
-                  <h1>Clinic Address </h1><span className="top-p">(if you have personal clinic)</span>
-                  </div>
-     
-                  <InputText
-                   className={`login-input  ${!isEditing ? '' : 'border_on'}`}
-                    name="clinicLocation"
-                    onChange={formik.handleChange}
-                    value={formik.values?.clinicLocation}
-                    placeholder="Clinic location"
-                  />
-                </div>
-                <div className="col-md-6">
-                  <h1>Clinic Name </h1>
-                  <InputText
-                      className={`login-input  ${!isEditing ? '' : 'border_on'}`}
-                    name="clinicName"
-                    onChange={formik.handleChange}
-                    value={formik.values?.clinicName}
-                    placeholder="Clinic Name"
-                  />
-                </div>
-              </div>
+
+     {
+
+formik.values.ownClinic === true &&    <div className="row mt-4">
+<div className="col-md-6">
+  <div className="d-flex">
+  <h1>Clinic Address </h1><span className="top-p">(if you have personal clinic)</span>
+  </div>
+
+  <InputText
+   className={`login-input  ${!isEditing ? '' : 'border_on'}`}
+    name="clinicLocation"
+    onChange={formik.handleChange}
+    value={formik.values?.clinicLocation}
+    placeholder="Clinic location"
+  />
+</div>
+<div className="col-md-6">
+  <h1>Clinic Name </h1>
+  <InputText
+      className={`login-input  ${!isEditing ? '' : 'border_on'}`}
+    name="clinicName"
+    onChange={formik.handleChange}
+    value={formik.values?.clinicName}
+    placeholder="Clinic Name"
+  />
+</div>
+</div>
+     }      
+
+           
   
               <div className="mt-4 row">
               <div className="col-md-6">
@@ -585,7 +582,9 @@ export const ProfileEdit = () => {
       name="ownClinic"
       value={true}
       checked={formik.values.ownHospital === true}
-      onChange={formik.handleChange}
+      onChange={(e) => {
+        formik.setFieldValue("ownHospital", true); 
+      }}
     />
     <span htmlFor="ingredient4" className="ml-2">
       Yes
@@ -598,62 +597,61 @@ export const ProfileEdit = () => {
       name="ownClinic"
       value={false}
       checked={formik.values.ownHospital === false}
-      onChange={formik.handleChange}
+      onChange={(e) => {
+        formik.setFieldValue("ownHospital", false); 
+      }}
     />
     <span className="ml-2">No</span>
   </div>
 </div>
                 </div>
-              
-                <div className="">
-                  <div className="d-flex ">
-                    <h1>Do you Visit Any Hospital?</h1>{" "}
-                    <span className="top-p">(Hospital time slot)</span>
-                  </div>
-  
-                  <div className="d-flex  ">
-                    <div className="tuple d-flex">
-                      <RadioButton inputId="ingredient4"  name="Hospital time" value={true} checked={hosp === true} onChange={(e) => setHosp(e.value)} />
-                      <span htmlFor="ingredient4" className="ml-2">
-                        08.00 - 2.00
-                      </span>
-                    </div>
-  
-                    <div className="tuple d-flex">
-                      <RadioButton
-                        inputId="ingredient4"
-                        name="Hospital time "
-                        value={false}
-                        checked={hosp === false} onChange={(e) => setHosp(e.value)}
-                     
-                      />
-                      <span className="ml-2">10.00-2.00</span>
-                    </div>
-                  </div>
-                </div>
+              {
+
+formik.values.ownHospital === true &&  <div className="col-md-6">
+<div className="d-flex ">
+  <h1>If you have clinic</h1> <span className="top-p">(Clinic time slot)</span>
+</div>
+<div className="">
+<MultiSelect
+className="login-input-Speciality"
+name="visitHospitalSlot"
+value={formik.values?.visitHospitalSlot}
+options={slot}
+onChange={(e) => formik.setFieldValue("visitHospitalSlot", e.value)}
+placeholder="Select Hospital Timing"
+/>
+</div>
+
+</div>
+              }
+               
+
               </div>
-              <div className="row">
-                <div className="col-md-6">
-                  <h1>Hospital Location</h1>
-                  <InputText
-                   className={`login-input  ${!isEditing ? '' : 'border_on'}`}
-                    name="hospitalLocation"
-                    value={formik.values?.hospitalLocation}
-                    onChange={formik.handleChange}
-                    placeholder="Hospital location"
-                  />
-                </div>
-                <div className="col-md-6">
-                  <h1>Hospital Name </h1>
-                  <InputText
-                      className={`login-input  ${!isEditing ? '' : 'border_on'}`}
-                    name="hospitalName"
-                    value={formik.values?.hospitalName}
-                    onChange={formik.handleChange}
-                    placeholder="Hospital Name "
-                  />
-                </div>
-                </div>
+{
+  formik.values.ownHospital === true && <div className="row">
+  <div className="col-md-6">
+    <h1>Hospital Location</h1>
+    <InputText
+     className={`login-input  ${!isEditing ? '' : 'border_on'}`}
+      name="hospitalLocation"
+      value={formik.values?.hospitalLocation}
+      onChange={formik.handleChange}
+      placeholder="Hospital location"
+    />
+  </div>
+  <div className="col-md-6">
+    <h1>Hospital Name </h1>
+    <InputText
+        className={`login-input  ${!isEditing ? '' : 'border_on'}`}
+      name="hospitalName"
+      value={formik.values?.hospitalName}
+      onChange={formik.handleChange}
+      placeholder="Hospital Name "
+    />
+  </div>
+  </div>
+}
+              
              
               {/* <div className="mt-4 d-flex">
                 <Checkbox

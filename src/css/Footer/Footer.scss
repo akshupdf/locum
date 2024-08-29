@@ -65,13 +65,15 @@
   }
   
   .foot2{
-    width: 30%;
+    width: 40%;
     text-align: left;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
 
-  
+  li{
+    text-wrap: nowrap;
+  }
 
     
     p{
@@ -80,6 +82,17 @@
         font-weight: 700;
         
     }
+
+  }
+
+  .foot4{
+    width: 40%;
+    text-align: right;
+
+    p{
+      
+      text-align: end;
+  }
 
   }
  

@@ -109,7 +109,7 @@ export const ContactUs = () => {
             <h2>community.</h2>
             <p>Join our global talent community to receive alerts when
               new life-changing opportunities become available.</p>
-            <button className='signup-btn' onClick={() => window.location.href = '/register'}> <ExitIcon /> Sign In
+            <button className='signup-btn' onClick={() => window.location.href = '/register'}>  Sign In
               {/* <span>+</span> */}
             </button>
           </div>

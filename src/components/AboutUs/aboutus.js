@@ -282,7 +282,7 @@ export const About = () => {
               Join our global talent community to receive alerts when new
               life-changing opportunities become available.
             </p>
-            <button className='signup-btn' onClick={() => window.location.href = '/signin'}> <ExitIcon /> Sign In
+            <button className='signup-btn' onClick={() => window.location.href = '/signin'}> Sign In
             </button>
           </div>
           <div className="join-box-right">

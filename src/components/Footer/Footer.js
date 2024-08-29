@@ -15,16 +15,16 @@ export const Footer = () => {
                     <ul>
                         {/* <li>Careers </li>
     <li>Customers Review</li> */}
+                   
+                        <li onClick={() => (window.location.href = "/aboutus")}>About US</li>
+                        <li onClick={() => (window.location.href = "/contactus")}>Contact US</li>
                         <li onClick={() => (window.location.href = "/privacy")}>Privacy Policy</li>
                     </ul>
                     <h1>CONTACT US</h1>
                     <ul>
-                        <li>+91 8879881815 / +91 7738311925 </li>
-                        <li>info@coder.com</li>
-                        <li>Shop No 2, Vishwakarma Opposite Om Surya</li>
-                        <li>apartment Sawarkar Nagar Thane West,</li>
-                        <li>Maharashtra ,400606</li>
-                        <li>Open hours: 8.00-18.00 Mon-Fri</li>
+                      <li>Mobile No. : +91 9117569519 </li>
+                        <li>Email Id : info@locum.com</li>
+                        
                     </ul>
                 </div>
 
@@ -41,15 +41,22 @@ export const Footer = () => {
                                 <li>Nursing </li>
                                 <li>Critical Care </li>
                                 <li>Dermatology </li>
-                                <li>Gastroenterology </li>
-                                <li>Nephrology </li>
-                                <li>Otolaryngology </li>
-                                <li>Surgery </li>
-                                <li>Anesthesiology </li>
-                                <li>Physiatry </li>
                             </ul>
                         </div>
                         <div>
+
+<ul>
+  
+
+    <li>Gastroenterology </li>
+    <li>Nephrology </li>
+    <li>Otolaryngology </li>
+    <li>Surgery </li>
+    <li>Anesthesiology </li>
+    <li>Physiatry </li>
+</ul>
+</div>
+                        <div style={{width : "350px"}}>
                             <ul>
 
                                 <li>  Clinical Social Work</li>
@@ -59,6 +66,12 @@ export const Footer = () => {
                                 <li>ENT</li>
                                 <li>Primary Care</li>
                                 <li>Behavioral Health</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+
+                            
                                 <li>Psychology</li>
                                 <li>Radiation Oncology</li>
                                 <li>Otolaryngology</li>
@@ -70,14 +83,14 @@ export const Footer = () => {
                     </div>
                 </div>
 
-                <div className="" style={{ width: "300px" }}>
+                {/* <div className="" style={{ width: "300px" }}>
                     <h1>ABOUT</h1>
                     <ul>
                         <li onClick={() => (window.location.href = "/aboutus")}>About US</li>
                         <li onClick={() => (window.location.href = "/contactus")}>Contact US</li>
                     </ul>
-                </div>
-                <div className="foot3" style={{ width: "300px" }}>
+                </div> */}
+                <div className="foot3" >
                     <h1>LOCATION - India</h1>
                     <ul>
                         <li>Mumbai</li>

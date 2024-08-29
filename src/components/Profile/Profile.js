@@ -109,6 +109,8 @@ export const Profile = () => {
     doc.save('resume.pdf');
   };
 
+
+
   return (
     <div className="profile">
     {
@@ -125,7 +127,7 @@ export const Profile = () => {
             <div className="tab-box">
             <div className="logo-box">
               {
-                user.profile_image ?  <img src={user.profile_image} alt="profile"></img> :  <img src={Profile} alt="profile"></img>
+                data.profile_image ?  <img src={data.profile_image} alt="profile"></img> :  <img src={Profile} alt="profile"></img>
               }
               
               {
@@ -218,14 +220,8 @@ data?.email_id &&
                 <span className="top-p">(Available time slot)</span>{" "}
               </div>
               <div className="">
-                <div className=" d-flex">
-                  {/* {data.availability?.map((slot , index) => (
-                    <div key={index} className="d-flex align-items-center cols-md-3 ">
-                    <span className=" tuple">
-                      {slot}
-                    </span>
-                  </div>
-                  ))} */}
+                <div className=" tuple-box">
+              
                       {data.availability?.map((specialty, index) => (
         <button
           key={index}
@@ -323,7 +319,7 @@ data?.email_id &&
               </div>
                 <div className="row mt-4">
                   <h1>Preferred Specialities</h1>
-              <div className="">
+              <div className="tuple-box">
       {data.preferred_specialities?.map((specialty, index) => (
         <button
           key={index}

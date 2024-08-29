@@ -190,21 +190,21 @@ margin-right: 10px;
   .detail-box2{
     background: #0866C6;
     border-radius: 11px;
-    height: 60px;
     position: absolute;
     right: 6rem;
-    padding: 14px 18px;
+    padding: 2px 10px;
 
-    img{
-      width: 30px;
-      height: 30px;
+    svg{
+      width: 25px;
+      height: 25px;
       margin-right: 4px;
+      margin-bottom: 0.5rem;
     }
   }
 
   .detail-box {
     display: flex;
-    padding: 15px;
+    padding: 0px 10px;
     box-shadow: 0px 0px 2px 0px #0000001a;
     border: 1px solid #00000026;
     width: fit-content;
@@ -265,6 +265,11 @@ margin-right: 10px;
     text-align: left;
     color: #9A9A9A !important;
     margin: 0.4rem;
+  }
+
+  .tuple-box{
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .tuple{

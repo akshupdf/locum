@@ -59,7 +59,7 @@ window.location.href = '/'
       <div className="nav-btn-box" > 
         {
 
-          id ? <button className='nav-btn1' onClick={Logout}> <LogIn /> <p> Logout</p> </button> : <button className='nav-btn1' onClick={() => window.location.href = '/signin' }>  <p> Sign In</p> </button>
+          id ? <button className='nav-btn1' onClick={Logout}> <p> Logout</p> </button> : <button className='nav-btn1' onClick={() => window.location.href = '/signin' }>  <p> Sign In</p> </button>
         }
 
    

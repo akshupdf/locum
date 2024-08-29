@@ -2,6 +2,7 @@ import React from "react";
 import team from "../../assets/team.png";
 import { Dropdown } from "primereact/dropdown";
 import { Ambulancev2, Behavioral, Emergency, ExitIcon, ExpBehaviour, ExpDog, ExpNephrology, ExpPhysiatry, ExpPsychology, ExpRheumatology, Gastroenterology, HandNBrain, HeartBeat, Nephrology, Neurology, Nurse, Oncology, Ophthalmology, Otolaryngology, Physiatry, Primary, Psychology, Radiationv2, Radiology, Radiologyv2, Rheumatology, Saline, Surgeryv2, Urology } from "../../reusable/Icons";
+import { Link } from "react-router-dom";
 
 export const Explore = () => {
   const specialties = [
@@ -71,29 +72,29 @@ export const Explore = () => {
   ];
 
   const specialtiesData = [
-    { id: 1, name: "Anesthesiology", icon: <Saline /> },
-    { id: 2, name: "Cardiology", icon: <HeartBeat /> },
-    { id: 3, name: "Clinical Social Work", icon: <HandNBrain /> },
-    { id: 4, name: "Dermatology", icon: <Nurse /> },
-    { id: 5, name: "Emergency medicine", icon: <Ambulancev2 /> },
-    { id: 6, name: "Endocrinology", icon: <Radiology /> },
-    { id: 7, name: "Gastroenterology", icon: <Gastroenterology /> },
-    { id: 8, name: "Hospital medicine", icon: <Emergency /> },
-    { id: 9, name: "Medical oncology", icon: <Oncology /> },
-    { id: 10, name: "Nephrology", icon: <ExpNephrology /> },
-    { id: 11, name: "Neurology", icon: <Nephrology /> },
-    { id: 12, name: "Women's Health", icon: <Neurology /> },
-    { id: 13, name: "Ophthalmology", icon: <Ophthalmology /> },
-    { id: 14, name: "Otolaryngology/ENT", icon: <Otolaryngology /> },
-    { id: 15, name: "Primary care", icon: <Primary /> },
-    { id: 16, name: "Physiatry", icon: <ExpPhysiatry /> },
-    { id: 17, name: "Behavioral Health", icon: <ExpBehaviour /> },
-    { id: 18, name: "Psychology", icon: <ExpPsychology /> },
-    { id: 19, name: "Radiology", icon: <ExpDog /> },
-    { id: 20, name: "Radiation oncology", icon: <Radiationv2 /> },
-    { id: 21, name: "Rheumatology", icon: <ExpRheumatology /> },
-    { id: 22, name: "Surgery", icon: <Rheumatology /> },
-    { id: 23, name: "Urology", icon: <Urology /> },
+    { id: 1, name: "Anesthesiology", icon: <Saline />, url: "anesthesiology" },
+    { id: 2, name: "Cardiology", icon: <HeartBeat />, url: "cardiology" },
+    { id: 3, name: "Clinical Social Work", icon: <HandNBrain />, url: "clinical-social-work" },
+    { id: 4, name: "Dermatology", icon: <Nurse />, url: "dermatology" },
+    { id: 5, name: "Emergency medicine", icon: <Ambulancev2 />, url: "emergency-medicine" },
+    { id: 6, name: "Endocrinology", icon: <Radiology />, url: "endocrinology" },
+    { id: 7, name: "Gastroenterology", icon: <Gastroenterology />, url: "gastroenterology" },
+    { id: 8, name: "Hospital medicine", icon: <Emergency />, url: "hospital-medicine" },
+    { id: 9, name: "Medical oncology", icon: <Oncology />, url: "medical-oncology" },
+    { id: 10, name: "Nephrology", icon: <ExpNephrology />, url: "nephrology" },
+    { id: 11, name: "Neurology", icon: <Nephrology />, url: "neurology" },
+    { id: 12, name: "Women's Health", icon: <Neurology />, url: "womens-health" },
+    { id: 13, name: "Ophthalmology", icon: <Ophthalmology />, url: "ophthalmology" },
+    { id: 14, name: "Otolaryngology/ENT", icon: <Otolaryngology />, url: "otolaryngology-ent" },
+    { id: 15, name: "Primary care", icon: <Primary />, url: "primary-care" },
+    { id: 16, name: "Physiatry", icon: <ExpPhysiatry />, url: "physiatry" },
+    { id: 17, name: "Behavioral Health", icon: <ExpBehaviour />, url: "behavioral-health" },
+    { id: 18, name: "Psychology", icon: <ExpPsychology />, url: "psychology" },
+    { id: 19, name: "Radiology", icon: <ExpDog />, url: "radiology" },
+    { id: 20, name: "Radiation oncology", icon: <Radiationv2 />, url: "radiation-oncology" },
+    { id: 21, name: "Rheumatology", icon: <ExpRheumatology />, url: "rheumatology" },
+    { id: 22, name: "Surgery", icon: <Rheumatology />, url: "surgery" },
+    { id: 23, name: "Urology", icon: <Urology />, url: "urology" },
   ];
 
   return (
@@ -181,7 +182,9 @@ export const Explore = () => {
               id={`box-${specialty.id}`}
               className="specialty-box"
             >
-              <div className="specialty-icon">{specialty.icon}</div>
+             <Link to={`/${specialty.url}`} className="specialty-link">
+      <div className="specialty-icon">{specialty.icon}</div>
+    </Link>
               <div className="specialty-name">{specialty.name}</div>
             </div>
           ))}
@@ -198,7 +201,7 @@ export const Explore = () => {
               Join our global talent community to receive alerts when new
               life-changing opportunities become available.
             </p>
-            <button className='signup-btn' onClick={() => window.location.href = '/signin'}> <ExitIcon /> Sign In
+            <button className='signup-btn' onClick={() => window.location.href = '/signin'}> Sign In
             </button>
           </div>
           <div className="join-box-right">

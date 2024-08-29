@@ -48,6 +48,8 @@ export const Register = () => {
     medicalId: yup.string().required("medical Id is required"),
   });
 
+  const verifyId = mobileVerficationId?.result?.otpVerficationId
+
   const [otp, setOtp] = useState('');
   const [initialValues, setInitialValues] = useState({
     firstName: "",
@@ -60,7 +62,8 @@ export const Register = () => {
     specialization: "",
     hourlyRate: "",
     termsAccepted: false,
-    preferredSpecialities:""
+    preferredSpecialities:[],
+    mobileVerficationId: verifyId
   });
   
 
@@ -70,13 +73,7 @@ export const Register = () => {
     validationSchema: validationSchema,
     onSubmit: async (values) => {
      
-        const data = {
-          ...values,
-          mobileVerficationId,
-        };
-  
-
-        const addUserResult = await dispatch(addUser(data)).unwrap();
+          const addUserResult = await dispatch(addUser(values)).unwrap();
   
         if (addUserResult.error) {
           toast(addUserResult.error || "User Registration Failed");
@@ -175,7 +172,14 @@ export const Register = () => {
                 }`}
                 name="firstName"
                 value={formik.values.firstName}
-                onChange={formik.handleChange}
+                onChange={(e) => {
+                  let value = e.target.value;
+                  if (!value.startsWith("Dr. ")) {
+                    value = "Dr. " + value;
+                  }
+                  
+                  formik.setFieldValue("firstName", value);
+                }}
                 onBlur={formik.handleBlur}
                 placeholder="First Name"
               />
@@ -277,10 +281,10 @@ export const Register = () => {
                 name="availability"
                 value={formik.values.availability}
                 options={[
-                  "8:00 am - 2.00 pm",
-                  "2:00 pm - 8.00 pm",
-                  "8:00 pm - 2.00 am",
-                  "2:00 am - 8.00 am",
+                  "Morning",
+                  "Afternoon",
+                  "Evening",
+                  "Night"
                 ]}
                 onChange={(e) => formik.setFieldValue("availability", e.value)}
                 placeholder="Confirm Availability"
