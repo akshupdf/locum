@@ -168,7 +168,9 @@ const SearchTable = () => {
 
     const ActionFormatter = ({ row }) => {
         return (
-            <div>
+            <div style={{ cursor: "pointer" }}
+            // onClick={() => window.location.href = `/profile/${id}`}
+            >
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="0.5" y="0.5" width="31" height="31" rx="5.5" fill="#FAFAFA" stroke="#0866C6" />
                     <rect opacity="0.3" x="9.43555" y="16.8206" width="1.64102" height="7.38461" rx="0.820512" transform="rotate(-90 9.43555 16.8206)" fill="#0866C6" />
