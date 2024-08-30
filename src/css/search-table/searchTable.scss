@@ -1,9 +1,9 @@
 .search-exp-table {
   // width: 1310px;
   // height: 1102px;
-  border-radius: 10px;
-  border: 2px solid rgba(235, 235, 238, 1);
-  box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.15);
+  // border-radius: 10px;
+  // border: 2px solid rgba(235, 235, 238, 1);
+  // box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.15);
   padding: 31px 46px 32px 50px;
   margin-bottom: 50px;
 
@@ -21,7 +21,9 @@
   .mobile,
   .rate,
   .shift,
-  .clinicShift {
+  .clinicShift,
+    .medical,
+    .actions {
     width: 185px;
     font-family: "Montserrat";
     font-size: 16px;
@@ -33,7 +35,7 @@
   }
 
   .location {
-    width: 250px;
+    width: 150px;
     font-family: "Montserrat";
     font-size: 16px;
     font-weight: 600;
@@ -79,6 +81,15 @@
     gap: 15px;
   }
 
+  .sm-data-name{
+    font-family: "Fira Sans";
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 15.6px;
+      text-align: left;
+      color: rgba(181, 181, 195, 1);
+  }
+
   .list-name{
     font-family: "Montserrat";
       font-size: 32px;
@@ -119,7 +130,7 @@
       background: rgba(8, 102, 198, 1);
   }
 }
-
+ 
 .explore-search-main-parent-table {
   background: white;
   padding-bottom: 56px;
