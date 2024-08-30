@@ -142,7 +142,6 @@ export const ProfileEdit = () => {
       for (const key in values) {
 
         if (Array.isArray(values[key])) {
-          console.log("array",values[key])
           values[key].forEach(value => {
             formData.append(key, value || "NA");
           });
@@ -154,10 +153,6 @@ export const ProfileEdit = () => {
       if(image){
         formData.append('image' , values.image)
       }
-
-      
-     
-      
       try {
 
         const addUserResult = await dispatch(updateUser(formData)).unwrap();

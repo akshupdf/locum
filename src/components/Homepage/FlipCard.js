@@ -136,7 +136,7 @@ export const Flipcard = () => {
                                     <img src={data?.profile_image ? data?.profile_image : two} alt="logo" />
                                     <div className="tool-small-box-text">
                                         <h4>{data?.first_name}{" "} {data?.last_name}</h4>
-                                        <h3>{data?.specialization}</h3>
+                                        <h3>{data?.preferred_specialities}</h3>
                                     </div>
                                 </div>
                                 <div className="back">

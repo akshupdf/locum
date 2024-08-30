@@ -48,7 +48,7 @@ export const generateOtp = createAsyncThunk(
      
       return response.data.result;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data.message || error.message);
+      return thunkAPI.rejectWithValue(error.response.data);
     }
   }
 );

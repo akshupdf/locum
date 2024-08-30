@@ -33,10 +33,10 @@
       h1{
         margin: 0;
         font-size: 16px;
-        font-weight: 700;
+        font-weight: 600;
         line-height: 20.05px;
         margin-bottom: 1rem;
-        
+        font-family: "Montserrat";
     }
 
     }
@@ -86,8 +86,8 @@
   }
 
   .foot4{
-    width: 40%;
-    text-align: right;
+    width: 20%;
+    text-align: left;
 
     p{
       
@@ -97,7 +97,7 @@
   }
  
   .foot3{
-    width: 40%;
+    width: 30%;
     text-align: right;
 
     h1{
@@ -115,6 +115,7 @@
         margin-top: 2rem;
         color: white !important;
         text-align: end;
+        text-wrap: nowrap;
     }
 
     li{

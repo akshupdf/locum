@@ -48,7 +48,7 @@ export const Register = () => {
     medicalId: yup.string().required("medical Id is required"),
   });
 
-  const verifyId = mobileVerficationId?.result?.otpVerficationId
+  const verifyId = error?.result?.otpVerficationId
 
   const [otp, setOtp] = useState('');
   const [initialValues, setInitialValues] = useState({
@@ -65,7 +65,7 @@ export const Register = () => {
     preferredSpecialities:[],
     mobileVerficationId: verifyId
   });
-  
+
 
   const formik = useFormik({
     initialValues: initialValues,
@@ -88,22 +88,29 @@ export const Register = () => {
   const sendOtp = async (data) => {
     const isValidMobileNumber = /^\d{10}$/.test(data);
 
-    if(error){
-      toast(error || "Mobile number Already verified")
-    }else{
 
     if (isValidMobileNumber) {
       const values = {
         mobileNumber: data,
         otpType: 2,
       };
+  
+      try {
+          
 
-      dispatch(generateOtp(values));
-      toast("Otp Sent Successfully");
+        if (error) {
+      
+          toast("Mobile number already verified");
+  
+        } else {
+          dispatch(generateOtp(values));
+          toast("Otp Sent Successfully");
+        }
+      } catch (error) {
+        toast(error.message || "An error occurred while sending the OTP");
+      }
     } else {
       toast("Invalid mobile number. It must be exactly 10 digits.");
-    }
-
   }
   };
 
@@ -336,7 +343,7 @@ export const Register = () => {
               <h2>Specialization</h2>
               <MultiSelect
                 className="login-input-Speciality"
-                name="availability"
+                name="preferredSpecialities"
                 value={formik.values.preferredSpecialities}
                 options={specialties}
                 onChange={(e) => formik.setFieldValue("preferredSpecialities", e.value)}

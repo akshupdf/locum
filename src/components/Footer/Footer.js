@@ -34,52 +34,41 @@ export const Footer = () => {
                         <div>
 
                             <ul>
-                                <li> Cardiology </li>
-                                <li>Neurology </li>
-                                <li>Gynaecology </li>
-                                <li>Radiology </li>
-                                <li>Nursing </li>
-                                <li>Critical Care </li>
-                                <li>Dermatology </li>
+                            <li onClick={() => window.location.href = "/cardiology"}>Cardiology</li>
+        <li onClick={() => window.location.href = "/neurology"}>Neurology</li>
+        <li onClick={() => window.location.href = "/gynaecology"}>Gynaecology</li>
+        <li onClick={() => window.location.href = "/radiology"}>Radiology</li>
+        <li onClick={() => window.location.href = "/nursing"}>Nursing</li>
+        <li onClick={() => window.location.href = "/critical-care"}>Critical Care</li>
+        <li onClick={() => window.location.href = "/dermatology"}>Dermatology</li>
+        <li onClick={() => window.location.href = "/gastroenterology"}>Gastroenterology</li>
+        <li onClick={() => window.location.href = "/nephrology"}>Nephrology</li>
+        <li onClick={() => window.location.href = "/otolaryngology"}>Otolaryngology</li>
+        <li onClick={() => window.location.href = "/surgery"}>Surgery</li>
+        <li onClick={() => window.location.href = "/anesthesiology"}>Anesthesiology</li>
+        <li onClick={() => window.location.href = "/physiatry"}>Physiatry</li>
                             </ul>
                         </div>
-                        <div>
-
-<ul>
-  
-
-    <li>Gastroenterology </li>
-    <li>Nephrology </li>
-    <li>Otolaryngology </li>
-    <li>Surgery </li>
-    <li>Anesthesiology </li>
-    <li>Physiatry </li>
-</ul>
-</div>
-                        <div style={{width : "350px"}}>
+                  
+                        <div >
                             <ul>
 
-                                <li>  Clinical Social Work</li>
-                                <li>Ambulance Service</li>
-                                <li>Medical Oncology</li>
-                                <li>Opthalmology</li>
-                                <li>ENT</li>
-                                <li>Primary Care</li>
-                                <li>Behavioral Health</li>
+                            <li onClick={() => window.location.href = "/clinical-social-work"}>Clinical Social Work</li>
+        <li onClick={() => window.location.href = "/ambulance-service"}>Ambulance Service</li>
+        <li onClick={() => window.location.href = "/medical-oncology"}>Medical Oncology</li>
+        <li onClick={() => window.location.href = "/opthalmology"}>Opthalmology</li>
+        <li onClick={() => window.location.href = "/ent"}>ENT</li>
+        <li onClick={() => window.location.href = "/primary-care"}>Primary Care</li>
+        <li onClick={() => window.location.href = "/behavioral-health"}>Behavioral Health</li>
+        <li onClick={() => window.location.href = "/psychology"}>Psychology</li>
+        <li onClick={() => window.location.href = "/radiation-oncology"}>Radiation Oncology</li>
+        <li onClick={() => window.location.href = "/otolaryngology"}>Otolaryngology</li>
+        <li onClick={() => window.location.href = "/rheumatology"}>Rheumatology</li>
+        <li onClick={() => window.location.href = "/urology"}>Urology</li>
+        <li onClick={() => window.location.href = "/womens-health"}>Women’s Health</li>
                             </ul>
                         </div>
-                        <div>
-                            <ul>
-
-                            
-                                <li>Psychology</li>
-                                <li>Radiation Oncology</li>
-                                <li>Otolaryngology</li>
-                                <li>Rheumatology</li>
-                                <li>Urology</li>
-                                <li>Women’s Health</li>
-                            </ul>
-                        </div>
+                     
                     </div>
                 </div>
 
@@ -90,8 +79,8 @@ export const Footer = () => {
                         <li onClick={() => (window.location.href = "/contactus")}>Contact US</li>
                     </ul>
                 </div> */}
-                <div className="foot3" >
-                    <h1>LOCATION - India</h1>
+                <div className="foot4" >
+                    <h1>LOCATION (INDIA)</h1>
                     <ul>
                         <li>Mumbai</li>
                         <li>Pune</li>
