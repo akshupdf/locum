@@ -61,7 +61,11 @@ export const verifyOtp = createAsyncThunk(
         mobileNumber,
         otp
       });
+      localStorage.setItem('otpId', response.data?.result?.otpVerficationId);
+
       return response.data
+
+      
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.message || error.message);
     }

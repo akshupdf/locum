@@ -48,7 +48,19 @@ export const Register = () => {
     medicalId: yup.string().required("medical Id is required"),
   });
 
-  const verifyId = error?.result?.otpVerficationId
+  const [otpSent, setOtpSent] = useState(false);
+  const [timer, setTimer] = useState(30);
+  const [isResendVisible, setIsResendVisible] = useState(false);
+
+  let verifyId
+
+  const otpId = localStorage.getItem('otpId');
+  
+  if(otpId){  
+  verifyId = otpId
+  }else{
+    verifyId = error?.result?.otpVerficationId
+  }
 
   const [otp, setOtp] = useState('');
   const [initialValues, setInitialValues] = useState({
@@ -63,25 +75,31 @@ export const Register = () => {
     hourlyRate: "",
     termsAccepted: false,
     preferredSpecialities:[],
-    mobileVerficationId: verifyId
+    mobileVerficationId: "" 
   });
-
 
   const formik = useFormik({
     initialValues: initialValues,
     enableReinitialize: true,
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-     
-          const addUserResult = await dispatch(addUser(values)).unwrap();
-  
-        if (addUserResult.error) {
-          toast(addUserResult.error || "User Registration Failed");
-        } else {
-          toast("User Has been registered");
-            window.location.href = `/signin`;
+      try {
+
+        const data = {
+          ...values,
+          mobileVerficationId : verifyId
         }
-      
+
+        const addUserResult = await dispatch(addUser(data)).unwrap();
+  
+        toast(addUserResult.error ? addUserResult.error : "User Has been registered");
+  
+        if (!addUserResult.error) {
+          window.location.href = `/signin`;
+        }
+      } catch (error) {
+        toast(error.message || "User Registration Failed");
+      }
     },
   });
 
@@ -98,12 +116,13 @@ export const Register = () => {
       try {
           
 
-        if (error) {
-      
+        if (error) {  
           toast("Mobile number already verified");
-  
         } else {
           dispatch(generateOtp(values));
+          setOtpSent(true);
+          setIsResendVisible(false);
+          setTimer(30);
           toast("Otp Sent Successfully");
         }
       } catch (error) {
@@ -121,13 +140,11 @@ export const Register = () => {
     };
     if(error){
       toast(error || "Otp Mismatched");
-    }else{
-   
+    }else{   
       dispatch(verifyOtp(values));
       toast("Otp Verified");
     }
      
-
   };
 
   const specialties = [
@@ -141,6 +158,19 @@ export const Register = () => {
     "Cardiothoracic Radiology", "Cardiothoracic Surgery", "Cardiovascular Diseases",
     "Women's Imaging", "Wound Care"
   ];
+
+  useEffect(() => {
+    let interval = null;
+    if (timer > 0) {
+      interval = setInterval(() => {
+        setTimer((prevTimer) => prevTimer - 1);
+      }, 1000);
+    } else {
+      setIsResendVisible(true);
+    }
+
+    return () => clearInterval(interval);
+  }, [timer]);
 
 
 
@@ -233,9 +263,11 @@ export const Register = () => {
                 placeholder="Enter mobile number"
               />
 
-<span className="p-inputgroup-addon"       onClick={() => sendOtp(formik.values.mobileNo)}>
-                  Send OTP
-                  </span>
+                  <span className="p-inputgroup-addon" onClick={() => sendOtp(formik.values.mobileNo)}>
+
+{isResendVisible ? "Resend OTP" : otpSent ? ` (${timer}s)` : "Send OTP"}
+
+</span>
      </div>
               {/* <button
                 className="btn2 col-4"
