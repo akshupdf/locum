@@ -17,6 +17,7 @@ const SearchTable = () => {
     const columnHelper = createColumnHelper();
     const dispatch = useDispatch();
 
+
     const { allUsers } = useSelector((state) => state?.user);
 
     // Ensure `data` is always defined as an array, even if `allUsers` is undefined
@@ -28,7 +29,7 @@ const SearchTable = () => {
             medical: user.medical_id,
             shift: user.availability,
             location: user.location || user.location,
-            clinicShift: "N/A",
+            clinicShift: user.hospital_name,
             preferred_specialities: user.preferred_specialities,
         })) || [];
 
