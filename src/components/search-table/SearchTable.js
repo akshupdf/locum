@@ -18,7 +18,6 @@ const SearchTable = () => {
     const dispatch = useDispatch();
 
     const { allUsers } = useSelector((state) => state?.user);
-    console.log(allUsers, "allUsers");
 
     // Ensure `data` is always defined as an array, even if `allUsers` is undefined
     const data =
