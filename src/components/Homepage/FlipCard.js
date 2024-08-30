@@ -142,7 +142,7 @@ export const Flipcard = () => {
                                 <div className="back">
                                     <div className="tool-small-box-text">
                                         <p><span>📍</span>{data.location || "N/A"}</p>
-                                        <p className='tuple-box'><span>✅</span>{data.availability ? data.availability : "N/A"}</p>
+                                        <p className='tuple-boxv2'><span>✅</span>{data.availability ? data.availability?.join(' , ') : "N/A"}</p>
                                         <p><span>🕓</span>{data.shift || "N/A"}</p>
                                         <p><span>💰</span>{data.hourly_rate && data.hourly_rate > 0 ? `₹${data.hourly_rate}` : "N/A"}</p>
                                     </div>

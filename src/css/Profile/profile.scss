@@ -267,6 +267,16 @@ margin-right: 10px;
     margin: 0.4rem;
   }
 
+  .tuple-boxv2{
+    display: flex;
+    flex-wrap: wrap;
+    text-wrap: nowrap;
+    white-space: nowrap;
+    text-overflow: ellipsis !important;
+    max-width: 100px !important;
+    overflow: hidden;
+  }
+
   .tuple-box{
     display: flex;
     flex-wrap: wrap;

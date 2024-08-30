@@ -81,6 +81,9 @@ line-height: 45px !important;
 text-align: left;
 color: #798099;
 text-wrap: nowrap;
+white-space: nowrap;
+text-overflow: ellipsis;
+overflow: hidden;
     }
 
     h3{
