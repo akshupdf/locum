@@ -242,7 +242,7 @@ data?.email_id &&
                
                 </div>
                 <div className="col-md-6">
-                  <h1>Total Experience  <span className="top-p">(Available time slot)</span></h1>
+                  <h1>Total Experience  <span className="top-p">(In Years)</span></h1>
                   <div className="d-flex">
                   <p className="">{data?.total_exp}</p>
   
