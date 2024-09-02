@@ -115,11 +115,23 @@ export const Flipcard = () => {
 
             <Swiper
 
-                slidesPerView={'3'}
-                spaceBetween={50}
+                slidesPerView={3}
+                spaceBetween={30}
                 loop={true}
                 pagination={{
                     clickable: true
+                }}
+                breakpoints={{
+                    // when window width is >= 640px
+                    390: {
+                        slidesPerView: 1,
+                        spaceBetween: 100,
+                    },
+                    1440: {
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                    },
+
                 }}
                 navigation={true}
                 modules={[Pagination, Navigation]}

@@ -23,24 +23,26 @@ export default function App() {
         <title>{getTitleFromRoute(location.pathname)}</title>
       </Helmet>
       <Suspense fallback={<div>Loading...</div>}>
-    {
+        {
 
-(location?.pathname === "/signin" || location?.pathname === "/register")  ? "" :   <NavBar />
-    }
-          <Routes>
+          (location?.pathname === "/signin" || location?.pathname === "/register") ? "" : <NavBar />
+        }
+        <Routes>
           {router.map((route) => {
 
-            return(
-              <Route key={route.path} path={route.path} element={route.element} /> )
-           })}
+            return (
+              <Route key={route.path} path={route.path} element={route.element} />)
+          })}
 
 
 
-          </Routes>
-          {
-            (location?.pathname === "/signin" || location?.pathname === "/register")  ? "" :      <Footer />
-          }
-         
+        </Routes>
+        {
+          (location?.pathname === "/signin" || location?.pathname === "/register") ? "" :
+            // <Footer /> 
+            ""
+        }
+
       </Suspense>
     </PrimeReactProvider>
   );
