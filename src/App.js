@@ -39,8 +39,7 @@ export default function App() {
         </Routes>
         {
           (location?.pathname === "/signin" || location?.pathname === "/register") ? "" :
-            // <Footer /> 
-            ""
+            <Footer />
         }
 
       </Suspense>
