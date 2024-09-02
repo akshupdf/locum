@@ -1361,12 +1361,18 @@
                 margin-bottom: 27px;
         }
 
+        .svg-box{
+            width: 100% !important;
+        }
+
                 .svg-box svg{
                     width: 40px;
                     height: 40px;
                 }
 
-                .svg-box p {
+                .svg-box
+                
+                p {
                     margin-top: 0;
                         font-size: 12px;
                         font-weight: 400;
