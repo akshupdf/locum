@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import {
     flexRender,
     getCoreRowModel,
@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllDoctors } from "../../redux/apiSlice";
 import boy from "../../assets/boy.png";
 import { ExitIcon } from "../../reusable/Icons";
-import { useLocation, useNavigate  } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 const SearchTable = () => {
@@ -28,7 +28,7 @@ const SearchTable = () => {
             name: `${user.first_name} ${user.last_name}`,
             // mobile: user.mobile_number,
             // rate: user.hourly_rate,
-            id : user.custom_id,
+            id: user.custom_id,
             medical: user.medical_id,
             shift: user.availability,
             location: user.location || user.location,
@@ -36,11 +36,11 @@ const SearchTable = () => {
             preferred_specialities: user.preferred_specialities,
         })) || [];
 
-        useEffect(() => {
-            if (!allUsers?.length) { 
-              dispatch(getAllDoctors());
-            }
-          }, [dispatch, allUsers]);
+    useEffect(() => {
+        if (!allUsers?.length) {
+            dispatch(getAllDoctors());
+        }
+    }, [dispatch, allUsers]);
 
     const path = window.location.pathname;
 
@@ -51,18 +51,6 @@ const SearchTable = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [location2]);
-
-    // const data = [
-    //     {
-    //         name: "Dr. Abhishek Saha ",
-    //         mobile: "9284578666 ",
-    //         rate: " $100 / hr",
-    //         shift: "Morning Shift",
-    //         location: "Thane",
-    //         clinicShift: "Morning Shift",
-    //     },
-
-    // ];
 
     const specialties = [
         "Abdominal Radiology",
@@ -178,8 +166,8 @@ const SearchTable = () => {
         // console.log("Row data:", row.original); 
         return (
             <div style={{ cursor: "pointer" }}
-            onClick={() => navigate(`/profile/${userId}`)} >
-            
+                onClick={() => navigate(`/profile/${userId}`)} >
+
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" >
                     <rect x="0.5" y="0.5" width="31" height="31" rx="5.5" fill="#FAFAFA" stroke="#0866C6" />
                     <rect opacity="0.3" x="9.43555" y="16.8206" width="1.64102" height="7.38461" rx="0.820512" transform="rotate(-90 9.43555 16.8206)" fill="#0866C6" />
@@ -190,35 +178,78 @@ const SearchTable = () => {
         );
     };
 
-    const columns = [
+    // const columns = [
+    //     columnHelper.accessor("name", {
+    //         id: "name",
+    //         // cell: (info) => info.getValue(),
+    //         cell: ({ row }) => {
+    //             return <NameFormatter row={row} />;
+    //         },
+    //         header: () => "Name",
+    //         minWidth: 300,
+    //         enableSorting: false,
+    //     }),
+    //     // columnHelper.accessor("mobile", {
+    //     //     id: "mobile",
+    //     //     cell: (info) => info.getValue(),
+    //     //     header: () => "Mobile No.",
+    //     //     enableSorting: false,
+    //     // }),
+    //     // columnHelper.accessor("rate", {
+    //     //     id: "rate",
+    //     //     cell: (info) => info.getValue(),
+    //     //     header: () => "Rate/Hrs",
+    //     //     enableSorting: false,
+    //     // }),
+    //     columnHelper.accessor("shift", {
+    //         id: "shift",
+    //         // cell: (info) => info.getValue(),
+    //         cell: ({ row }) => {
+    //             return <ShiftFormatter row={row} />;
+    //         },
+    //         header: () => "Shift",
+    //         enableSorting: false,
+    //     }),
+    //     columnHelper.accessor("medical", {
+    //         id: "medical",
+    //         cell: (info) => info.getValue(),
+    //         header: () => "Medical Id",
+    //         enableSorting: false,
+    //     }),
+    //     columnHelper.accessor("location", {
+    //         id: "location",
+    //         cell: (info) => info.getValue(),
+    //         header: () => "Location",
+    //         enableSorting: false,
+    //     }),
+    //     columnHelper.accessor("clinicShift", {
+    //         id: "clinicShift",
+    //         cell: (info) => info.getValue(),
+    //         header: () => "Hospital Name",
+    //         enableSorting: false,
+    //     }),
+    //     columnHelper.accessor("actions", {
+    //         id: "actions",
+    //         // cell: (info) => info.getValue(),
+    //         cell: ({ row }) => {
+    //             return <ActionFormatter row={row} />;
+    //         },
+    //         header: () => "",
+    //         enableSorting: false,
+    //     }),
+    // ];
+
+    const columns = useMemo(() => [
         columnHelper.accessor("name", {
             id: "name",
-            // cell: (info) => info.getValue(),
-            cell: ({ row }) => {
-                return <NameFormatter row={row} />;
-            },
+            cell: ({ row }) => <NameFormatter row={row} />,
             header: () => "Name",
             minWidth: 300,
             enableSorting: false,
         }),
-        // columnHelper.accessor("mobile", {
-        //     id: "mobile",
-        //     cell: (info) => info.getValue(),
-        //     header: () => "Mobile No.",
-        //     enableSorting: false,
-        // }),
-        // columnHelper.accessor("rate", {
-        //     id: "rate",
-        //     cell: (info) => info.getValue(),
-        //     header: () => "Rate/Hrs",
-        //     enableSorting: false,
-        // }),
         columnHelper.accessor("shift", {
             id: "shift",
-            // cell: (info) => info.getValue(),
-            cell: ({ row }) => {
-                return <ShiftFormatter row={row} />;
-            },
+            cell: ({ row }) => <ShiftFormatter row={row} />,
             header: () => "Shift",
             enableSorting: false,
         }),
@@ -242,18 +273,26 @@ const SearchTable = () => {
         }),
         columnHelper.accessor("actions", {
             id: "actions",
-            // cell: (info) => info.getValue(),
-            cell: ({ row }) => {
-                return <ActionFormatter row={row} />;
-            },
+            cell: ({ row }) => <ActionFormatter row={row} />,
             header: () => "",
             enableSorting: false,
         }),
-    ];
+    ], []);
 
+
+    // const tableInstance = useReactTable({
+    //     columns,
+    //     data,
+    //     getCoreRowModel: getCoreRowModel(),
+    //     getSortedRowModel: getSortedRowModel(),
+    // });
+
+    const memoizedData = useMemo(() => data, [data]);
+
+    // Now call useReactTable directly
     const tableInstance = useReactTable({
         columns,
-        data,
+        data: memoizedData,
         getCoreRowModel: getCoreRowModel(),
         getSortedRowModel: getSortedRowModel(),
     });
