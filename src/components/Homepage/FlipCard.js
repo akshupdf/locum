@@ -121,6 +121,7 @@ export const Flipcard = () => {
                 pagination={{
                     clickable: true
                 }}
+              
                 navigation={true}
                 modules={[Pagination, Navigation]}
                 className="swiper-container">

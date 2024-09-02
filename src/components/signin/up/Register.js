@@ -148,15 +148,29 @@ export const Register = () => {
   };
 
   const specialties = [
-    "Abdominal Radiology", "Abdominal Surgery", "Addiction Medicine", 
-    "Addiction Psychiatry", "Adolescent Medicine", "Adult Congenital Heart Disease",
-    "Adult Reconstructive Orthopedics", "Advanced Heart Failure ",
-    "Aerospace Medicine", "Allergy", "Allergy/Immunology", "Anatomic Pathology",
-    "Anatomic/Clinical Pathology", "Anesthesiology", "Anesthesiology Critical Care Medicine",
-    "Behavioral and Cognitive Psychology", "Bloodbanking/Transfusion Medicine", 
-    "Brain Injury Medicine", "Burn Surgery", "Cardiac Electrophysiology", 
-    "Cardiothoracic Radiology", "Cardiothoracic Surgery", "Cardiovascular Diseases",
-    "Women's Imaging", "Wound Care"
+    "Anesthesiology",
+    "Cardiology",
+    "Clinical Social Work",
+    "Dermatology",
+    "Emergency medicine",
+    "Endocrinology",
+    "Gastroenterology",
+    "Hospital medicine",
+    "Medical oncology",
+    "Nephrology",
+    "Neurology",
+    "Women's Health",
+    "Ophthalmology",
+    "Otolaryngology/ENT",
+    "Primary care",
+    "Physiatry",
+    "Behavioral Health",
+    "Psychology",
+    "Radiology",
+    "Radiation oncology",
+    "Rheumatology",
+    "Surgery",
+    "Urology"
   ];
 
   useEffect(() => {

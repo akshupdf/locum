@@ -21,26 +21,26 @@ window.location.href = '/'
 
   } 
 
-  // const toggleMenu = () => {
-  //   setIsMenuOpen(prevState => !prevState);
-  // };
+  const toggleMenu = () => {
+    setIsMenuOpen(prevState => !prevState);
+  };
 
 
   return(
     <div className='navbarMain'>
-    <div className='hamburger' >
+    {/* <div className='hamburger' onClick={toggleMenu}>
     <svg viewBox="0 0 100 80" width="30" height="30">
   <rect width="100" height="20" rx="10"></rect>
   <rect y="30" width="100" height="20" rx="10"></rect>
   <rect y="60" width="100" height="20" rx="10"></rect>
 </svg>
-      </div>
+      </div> */}
 
 
 
       
 
-      <div className='logo-box'  onClick={() => window.location.href = '/' }>
+      <div className='logo-box'   onClick={toggleMenu}>
   <LocumeLogo />
 
       </div>
@@ -56,7 +56,7 @@ window.location.href = '/'
       </ul>
       </div> */}
 
-      <div className="nav-btn-box" > 
+      <div className={`nav-btn-box ${isMenuOpen ? 'active' : ''} `} > 
         {
 
           id ? <button className='nav-btn1' onClick={Logout}> <p> Logout</p> </button> : <button className='nav-btn1' onClick={() => window.location.href = '/signin' }>  <p> Sign In</p> </button>

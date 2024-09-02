@@ -95,6 +95,10 @@
   }
 
   }
+
+  .ul-box{
+    display: flex;
+  }
  
   .foot3{
     width: 30%;
@@ -109,7 +113,7 @@
 
     p{
         margin: 0;
-        font-size: 16px !important;
+        font-size: 16px ;
         font-weight: 500;
         line-height: 20.05px;
         margin-top: 2rem;
@@ -142,14 +146,42 @@
 
 @media (max-width: 480px) { 
 
-  .footer{
+  .footer1{
     flex-direction: column;
-    padding: 10px;
+    padding: 10px !important;
+    overflow: hidden;
+
+    ul{
+      display: flex;
+      flex-wrap: wrap;
+
+      li{
+        line-height: 15px !important;
+        margin: 8px !important;
+      }
+    }
+  }
+  .footer2{
+    flex-direction: column;
+    padding: 10px !important;
+    overflow: hidden;
   }
 
 
   .foot1{
     width: 100% !important;
+
+    svg{
+      width: 30vh !important;
+    }
+
+    p{
+      margin-bottom: 1rem;
+      margin-top: 1rem !important;
+      font-size: 12px !important;
+      font-weight: 400 !important;
+      position: absolute;
+    }
   }
 
   .foot2{
@@ -158,5 +190,33 @@
 
   .foot3{
     width: 100% !important;
+    text-align: start !important;
+    padding-top: 20px;
+
+    p{
+      text-wrap: wrap !important;
+      text-align: center !important;
+      font-size: 12px !important;
+    }
+
+    h1{
+      text-align: end !important;
+      font-weight: 400 !important;
+    }
+  }
+
+  .svg-box{
+    display: flex;
+    justify-content: end !important;
+  }
+
+  .ul-box{
+    display: inline !important;
+  }
+
+  .foot4{
+    width: 100% !important;
+
+
   }
 }
