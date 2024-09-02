@@ -7,7 +7,8 @@ import { MultiSelect } from "primereact/multiselect";
 export const Search = () => {
 
     const [availability, setAvailability] = useState([]);
-
+    const [titlev2, setTitle] = useState([]);
+    const [locationv2, setLocation] = useState([]);
 
     const specialties = [
         "Anesthesiology",
@@ -77,6 +78,14 @@ export const Search = () => {
         setAvailability(e.value); 
     };
 
+    const handleTitleChange = (e) => {
+        setTitle(e.value); 
+    };
+
+    const handleLocationChange = (e) => {
+        setLocation(e.value); 
+    };
+
 
   return(
    <div className="explore-search-main-parent-table">
@@ -85,20 +94,20 @@ export const Search = () => {
                     <div className="quick">Quick Locum search</div>
                     <div className="drop-search">
                         <div>
-                            <Dropdown
+                            {/* <Dropdown
                                 className="login-input"
                                 name="title"
                                 options={title}
                                 placeholder="Category"
-                            />
-                                 {/* <MultiSelect
+                            /> */}
+                                 <MultiSelect
                 className="login-input-Speciality"
-                name="availability"
-                value={title}
-                options={specialties}
-                onChange={handleAvailabilityChange}
-                placeholder="Speciality..."
-              /> */}
+                name="title"
+                value={titlev2}
+                options={title}
+                onChange={handleTitleChange}
+                placeholder="Title..."
+              />
                         </div>
                         <div>
                           
@@ -113,12 +122,22 @@ export const Search = () => {
                             
                         </div>
                         <div>
-                            <Dropdown
+                            {/* <Dropdown
                                 className="login-input-Speciality"
                                 name="speciality"
                                 options={location}
                                 placeholder="Location..."
-                            />
+                            /> */}
+
+                            
+<MultiSelect
+                className="login-input-Speciality"
+                name="location"
+                value={locationv2}
+                options={location}
+                onChange={handleLocationChange}
+                placeholder="location..."
+              />
                         </div>
                         <div className="search-fil">Search</div>
                     </div>

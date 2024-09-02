@@ -220,7 +220,7 @@ color: #0866C6 !important;
     }
 
     .otp-box2{
-    width: 80% !important;
+    width: 80% ;
     }
     
     .p-inputgroup-addon svg {
@@ -256,7 +256,7 @@ color: #292731;
         }
 
         p{
-font-size: 20px !important;
+font-size: 20px ;
 font-weight: 600;
 line-height: 30px;  
 color: #326295 !important;
@@ -433,7 +433,7 @@ color: #326295 !important;
     }
 
     .signright{
-        width: 80% !important;
+        width: 80% ;
         padding: 20px !important;
         margin: auto;
         box-shadow: 0px 25px 50px -12px #0D102D1A;
@@ -446,4 +446,51 @@ color: #326295 !important;
     .login-input{
         width: 100% !important;
     }
+}
+
+@media (max-width: 468px){
+    .btn-box2{
+     
+
+        button{
+            margin-left: 0 !important;
+        }
+
+        p{
+            font-size: 15px !important;
+        }
+    }
+
+    .signup{
+
+        .reg{
+            margin-left: 0 !important;
+        }
+    }
+
+    .otp-box2{
+        width: 100% !important;
+        }
+
+        .signright{
+            width: 90% !important;
+        }
+
+         .signleft{
+            height: 40vh !important;
+         } 
+
+         .img1{
+            margin-left: 7vh !important;
+         }
+
+       .svg-box{
+            bottom: 90% !important;
+            left: 30% !important ;
+            width: 50% !important;
+
+            .p-inputgroup-addon{
+                font-size: 12px !important;
+            }
+         }
 }
