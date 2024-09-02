@@ -11,6 +11,7 @@ export const Footer = () => {
 
 
                 <div className="foot1">
+                    <div>
                     <h1>COMPANY</h1>
                     <ul>
                         {/* <li>Careers </li>
@@ -20,52 +21,53 @@ export const Footer = () => {
                         <li onClick={() => (window.location.href = "/contactus")}>Contact US</li>
                         <li onClick={() => (window.location.href = "/privacy")}>Privacy Policy</li>
                     </ul>
+                    </div>
+                   <div>
+
+                
                     <h1>CONTACT US</h1>
                     <ul>
                       <li>Mobile No. : +91 9117569519 </li>
                         <li>Email Id : info@locum.com</li>
                         
                     </ul>
+                    </div>
                 </div>
 
                 <div className="foot2">
                     <h1>CATEGORIES</h1>
-                    <div className="d-flex">
+                    <div className="ul-box">
                         <div>
 
                             <ul>
-                            <li onClick={() => window.location.href = "/cardiology"}>Cardiology</li>
-        <li onClick={() => window.location.href = "/neurology"}>Neurology</li>
-        <li onClick={() => window.location.href = "/gynaecology"}>Gynaecology</li>
-        <li onClick={() => window.location.href = "/radiology"}>Radiology</li>
-        <li onClick={() => window.location.href = "/nursing"}>Nursing</li>
-        <li onClick={() => window.location.href = "/critical-care"}>Critical Care</li>
-        <li onClick={() => window.location.href = "/dermatology"}>Dermatology</li>
-        <li onClick={() => window.location.href = "/gastroenterology"}>Gastroenterology</li>
-        <li onClick={() => window.location.href = "/nephrology"}>Nephrology</li>
-        <li onClick={() => window.location.href = "/otolaryngology"}>Otolaryngology</li>
-        <li onClick={() => window.location.href = "/surgery"}>Surgery</li>
-        <li onClick={() => window.location.href = "/anesthesiology"}>Anesthesiology</li>
-        <li onClick={() => window.location.href = "/physiatry"}>Physiatry</li>
+                            <li onClick={() => window.location.href = "/anesthesiology"}>Anesthesiology</li>
+  <li onClick={() => window.location.href = "/cardiology"}>Cardiology</li>
+  <li onClick={() => window.location.href = "/dermatology"}>Dermatology</li>
+  <li onClick={() => window.location.href = "/clinical-social-work"}>Clinical Social Work</li>
+  <li onClick={() => window.location.href = "/emergency-medicine"}>Emergency medicine</li>
+  <li onClick={() => window.location.href = "/endocrinology"}>Endocrinology</li>
+  <li onClick={() => window.location.href = "/gastroenterology"}>Gastroenterology</li>
+  <li onClick={() => window.location.href = "/hospital-medicine"}>Hospital medicine</li>
+  <li onClick={() => window.location.href = "/medical-oncology"}>Medical Oncology</li>
+  <li onClick={() => window.location.href = "/nephrology"}>Nephrology</li>
+  <li onClick={() => window.location.href = "/neurology"}>Neurology</li>
+  <li onClick={() => window.location.href = "/womens-health"}>Women's Health</li>
+  <li onClick={() => window.location.href = "/ophthalmology"}>Ophthalmology</li>
                             </ul>
                         </div>
                   
                         <div >
                             <ul>
-
-                            <li onClick={() => window.location.href = "/clinical-social-work"}>Clinical Social Work</li>
-        <li onClick={() => window.location.href = "/ambulance-service"}>Ambulance Service</li>
-        <li onClick={() => window.location.href = "/medical-oncology"}>Medical Oncology</li>
-        <li onClick={() => window.location.href = "/opthalmology"}>Opthalmology</li>
-        <li onClick={() => window.location.href = "/ent"}>ENT</li>
-        <li onClick={() => window.location.href = "/primary-care"}>Primary Care</li>
-        <li onClick={() => window.location.href = "/behavioral-health"}>Behavioral Health</li>
-        <li onClick={() => window.location.href = "/psychology"}>Psychology</li>
-        <li onClick={() => window.location.href = "/radiation-oncology"}>Radiation Oncology</li>
-        <li onClick={() => window.location.href = "/otolaryngology"}>Otolaryngology</li>
-        <li onClick={() => window.location.href = "/rheumatology"}>Rheumatology</li>
-        <li onClick={() => window.location.href = "/urology"}>Urology</li>
-        <li onClick={() => window.location.href = "/womens-health"}>Women’s Health</li>
+                            <li onClick={() => window.location.href = "/otolaryngology-ent"}>Otolaryngology/ENT</li>
+  <li onClick={() => window.location.href = "/primary-care"}>Primary care</li>
+  <li onClick={() => window.location.href = "/physiatry"}>Physiatry</li>
+  <li onClick={() => window.location.href = "/behavioral-health"}>Behavioral Health</li>
+  <li onClick={() => window.location.href = "/psychology"}>Psychology</li>
+  <li onClick={() => window.location.href = "/radiology"}>Radiology</li>
+  <li onClick={() => window.location.href = "/radiation-oncology"}>Radiation Oncology</li>
+  <li onClick={() => window.location.href = "/rheumatology"}>Rheumatology</li>
+  <li onClick={() => window.location.href = "/surgery"}>Surgery</li>
+  <li onClick={() => window.location.href = "/urology"}>Urology</li>
                             </ul>
                         </div>
                      
@@ -115,7 +117,7 @@ export const Footer = () => {
                 <div className="foot3">
                     <h1>Connect</h1>
 
-                    <div>
+                    <div className="svg-box">
                         <svg width="203" height="28" viewBox="0 0 203 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <mask id="mask0_664_1322" maskUnits="userSpaceOnUse" x="0" y="2" width="24" height="24">
                                 <path d="M24 2H0V26H24V2Z" fill="white" />

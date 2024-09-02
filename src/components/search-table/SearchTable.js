@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
     flexRender,
     getCoreRowModel,
@@ -12,17 +12,18 @@ import { getAllDoctors } from "../../redux/apiSlice";
 import boy from "../../assets/boy.png";
 import { ExitIcon } from "../../reusable/Icons";
 import { useLocation, useNavigate } from "react-router-dom";
+import { MultiSelect } from "primereact/multiselect";
 
 
 const SearchTable = () => {
     const columnHelper = createColumnHelper();
     const dispatch = useDispatch();
     const navigate = useNavigate();
+ 
 
 
     const { allUsers } = useSelector((state) => state?.user);
 
-    // Ensure `data` is always defined as an array, even if `allUsers` is undefined
     const data =
         allUsers?.map((user) => ({
             name: `${user.first_name} ${user.last_name}`,
@@ -36,11 +37,11 @@ const SearchTable = () => {
             preferred_specialities: user.preferred_specialities,
         })) || [];
 
-    useEffect(() => {
-        if (!allUsers?.length) {
-            dispatch(getAllDoctors());
-        }
-    }, [dispatch, allUsers]);
+        useEffect(() => {
+            if (!allUsers?.length) {
+                dispatch(getAllDoctors());
+            }
+        }, [dispatch, allUsers]);
 
     const path = window.location.pathname;
 
@@ -52,71 +53,7 @@ const SearchTable = () => {
         window.scrollTo(0, 0);
     }, [location2]);
 
-    const specialties = [
-        "Abdominal Radiology",
-        "Abdominal Surgery",
-        "Addiction Medicine",
-        "Addiction Psychiatry",
-        "Adolescent Medicine",
-        "Adult Congenital Heart Disease",
-        "Adult Reconstructive Orthopedics",
-        "Advanced Heart Failure ",
-        "Aerospace Medicine",
-        "Allergy",
-        "Allergy/Immunology",
-        "Anatomic Pathology",
-        "Anatomic/Clinical Pathology",
-        "Anesthesiology",
-        "Anesthesiology Critical Care Medicine",
-        "Behavioral and Cognitive Psychology",
-        "Bloodbanking/Transfusion Medicine",
-        "Brain Injury Medicine",
-        "Burn Surgery",
-        "Cardiac Electrophysiology",
-        "Cardiothoracic Radiology",
-        "Cardiothoracic Surgery",
-        "Cardiovascular Diseases",
-        "Women's Imaging",
-        "Wound Care",
-    ];
-
-    const title = [
-        "Any",
-        "Physician",
-        "Assistant",
-        "CCP",
-        "CNM",
-        "CNS",
-        "CRNA",
-        "DNAP",
-        "DNP",
-        "DPM",
-        "LCSW",
-        "NP",
-        "Other",
-        "PA",
-        "PhD",
-        "PsyD",
-        "SFA",
-        "Student",
-    ];
-
-    const location = [
-        "Mumbai",
-        "Delhi",
-        "Bengaluru",
-        "Kolkata",
-        "Chennai",
-        "Hyderabad",
-        "Pune",
-        "Ahmedabad",
-        "Jaipur",
-        "Lucknow",
-        "Kanpur",
-        "Nagpur",
-        "Indore",
-        "Thane",
-    ];
+ 
 
     const NameFormatter = ({ row }) => {
         return (
@@ -177,6 +114,7 @@ const SearchTable = () => {
             </div>
         );
     };
+    
 
     // const columns = [
     //     columnHelper.accessor("name", {
@@ -299,10 +237,12 @@ const SearchTable = () => {
 
     const { getHeaderGroups, getRowModel } = tableInstance;
 
+ 
+
     return (
         <>
             <div className="explore-search-main-parent-table">
-                <div className="search-box">
+                {/* <div className="search-box">
                     <div className="quick">Quick Locum search</div>
                     <div className="drop-search">
                         <div>
@@ -320,6 +260,15 @@ const SearchTable = () => {
                                 options={specialties}
                                 placeholder="Speciality..."
                             />
+                             <MultiSelect
+                className="login-input-Speciality"
+                name="availability"
+                value={availability}
+                options={specialties}
+                onChange={handleAvailabilityChange}
+                placeholder="Speciality..."
+              />
+                            
                         </div>
                         <div>
                             <Dropdown
@@ -331,7 +280,7 @@ const SearchTable = () => {
                         </div>
                         <div className="search-fil">Search</div>
                     </div>
-                </div>
+                </div> */}
             </div>
             <div className="d-flex justify-content-center">
                 <div className="search-exp-table">
@@ -405,7 +354,9 @@ const SearchTable = () => {
                         </p>
                         <button
                             className="signup-btn"
-                            onClick={() => (window.location.href = "/register")}
+                            // onClick={() => (window.location.href = "/register")
+                                
+                            // }
                         >
                             {" "}
                             Sign In

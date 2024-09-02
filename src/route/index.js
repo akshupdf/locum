@@ -8,7 +8,7 @@ import Privacy from "../components/privacy/Privacy";
 import { ProfileEdit } from "../components/Profile/ProfileEdit";
 import { Register } from "../components/signin/up/Register";
 import { Signup } from "../components/signin/up/Signinpage";
-import SearchTable from "../components/search-table/SearchTable";
+import {MainSearch} from "../components/search-table/MainSearch";
 
 
 export const router = [
@@ -55,98 +55,98 @@ export const router = [
   },
   {
     path: '/search-page',
-    element: <SearchTable />
+    element: <MainSearch />
   },
   {
     path: '/anesthesiology',
-    element: <SearchTable />
+    element: <MainSearch />
   },
   {
     path: '/cardiology',
-    element: <SearchTable />
+    element: <MainSearch />
   },
   {
     path: '/clinical-social-work',
-    element: <SearchTable />
+    element: <MainSearch />
   },
   {
     path: '/dermatology',
-    element: <SearchTable />
+    element: <MainSearch />
   },
   {
     path: '/emergency-medicine',
-    element: <SearchTable />
+    element: <MainSearch />
   },
   {
     path: '/endocrinology',
-    element: <SearchTable />
+    element: <MainSearch />
   },
   {
     path: '/gastroenterology',
-    element: <SearchTable />
+    element: <MainSearch />
   },
   {
     path: '/hospital-medicine',
-    element: <SearchTable />
+    element: <MainSearch />
   },
   {
     path: '/medical-oncology',
-    element: <SearchTable />
+    element: <MainSearch />
   },
   {
     path: '/nephrology',
-    element: <SearchTable />
+    element: <MainSearch />
   },
   {
     path: '/neurology',
-    element: <SearchTable />
+    element: <MainSearch />
   },
   {
     path: '/womens-health',
-    element: <SearchTable />
+    element: <MainSearch />
   },
   {
     path: '/ophthalmology',
-    element: <SearchTable />
+    element: <MainSearch />
   },
   {
     path: '/otolaryngology-ent',
-    element: <SearchTable />
+    element: <MainSearch />
   },
   {
     path: '/primary-care',
-    element: <SearchTable />
+    element: <MainSearch />
   },
   {
     path: '/physiatry',
-    element: <SearchTable />
+    element: <MainSearch />
   },
   {
     path: '/behavioral-health',
-    element: <SearchTable />
+    element: <MainSearch />
   },
   {
     path: '/psychology',
-    element: <SearchTable />
+    element: <MainSearch />
   },
   {
     path: '/radiology',
-    element: <SearchTable />
+    element: <MainSearch />
   },
   {
     path: '/radiation-oncology',
-    element: <SearchTable />
+    element: <MainSearch />
   },
   {
     path: '/rheumatology',
-    element: <SearchTable />
+    element: <MainSearch />
   },
   {
     path: '/surgery',
-    element: <SearchTable />
+    element: <MainSearch />
   },
   {
     path: '/urology',
-    element: <SearchTable />
+    element: <MainSearch />
   },
 ]  

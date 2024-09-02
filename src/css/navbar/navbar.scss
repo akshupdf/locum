@@ -124,6 +124,10 @@
     .logo-box {
         width: 50%;
         margin-left: 10px;
+
+        svg{
+            width: 60%;
+        }
     }
 
     .list-box {
@@ -159,12 +163,16 @@
 
     .nav-btn-box {
         display: none !important; 
-        width: 100%;
+        width: 50%;
         position: absolute;
-        margin-top: 32vh;
+        margin-top: 4vh;
         background: white;
         justify-content: space-evenly;
         box-shadow: 0px 1px 1px 0px #0000001F;  
+    }
+
+    .nav-btn1{
+        padding-left: 48px;
     }
 
     .hamburger {
@@ -178,7 +186,11 @@
 
     .active  {
         display: flex !important; 
-    } }
+        flex-direction: column;
+    }
+
+
+}
 }
 
 @media only screen and (max-width: 1024px) and (min-width: 768px){
