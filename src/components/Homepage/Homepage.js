@@ -144,28 +144,30 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="btn-box">
-              <button
-                className="start-btn"
-                onClick={() => (window.location.href = "/register")}
-              >
-                Register now
-              </button>
-            </div>
-            <div className="search-arrow">
-              <p onClick={() => (window.location.href = "/search-page")}>Search for Locum</p>
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M12 4L10.59 5.41L16.17 11H4V13H16.17L10.59 18.59L12 20L20 12L12 4Z"
-                  fill="#033B61"
-                />
-              </svg>
+            <div className="res-btn">
+              <div className="btn-box">
+                <button
+                  className="start-btn"
+                  onClick={() => (window.location.href = "/register")}
+                >
+                  Register now
+                </button>
+              </div>
+              <div className="search-arrow">
+                <p onClick={() => (window.location.href = "/search-page")}>Search for Locum</p>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 4L10.59 5.41L16.17 11H4V13H16.17L10.59 18.59L12 20L20 12L12 4Z"
+                    fill="#033B61"
+                  />
+                </svg>
+              </div>
             </div>
           </div>
           <div className="landing-box-right">
@@ -197,9 +199,9 @@ export default function HomePage() {
                 id={`box-${specialty.id}`}
                 className="specialty-box"
               >
-              <Link to={`/${specialty.url}`} className="specialty-link">
-      <div className="specialty-icon">{specialty.icon}</div>
-    </Link>
+                <Link to={`/${specialty.url}`} className="specialty-link">
+                  <div className="specialty-icon">{specialty.icon}</div>
+                </Link>
                 <div className="specialty-name">{specialty.name}</div>
               </div>
             ))}
