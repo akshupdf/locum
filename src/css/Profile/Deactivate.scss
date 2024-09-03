@@ -25,7 +25,7 @@
   }
   
   h2 {
-    font-size: 31px !important;
+    font-size: 31px ;
     color: #326295 !important;
     margin-bottom: 1.5rem !important;
     font-family: "Montserrat";
@@ -81,7 +81,7 @@
     cursor: pointer;
     border-radius: 15px;
     margin-top: 10px;
-    width: 443px !important;
+    width: 443px;
   }
   
   .delete-btn:hover {
@@ -141,4 +141,30 @@
         width: 70%;
     }
 }
+}
+
+@media only screen and (max-width: 468px){
+
+  .deactivate {
+
+    h2{
+      font-size: 16px !important;
+    }
+
+  .delete-btn{
+    width: 300px !important;
+  }
+
+  .close-btn{
+    margin-left: 17rem !important;
+  }
+
+  .input-text-box{
+    width: 100% !important;
+  }
+
+  .p-inputgroup-addon{
+    font-size: 12px !important;
+  }
+  }
 }

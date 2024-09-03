@@ -172,7 +172,6 @@
 
   .detail-main-box{
     display: flex;
-    justify-items: auto;
   }
 
   .dwn-btn{
@@ -432,7 +431,9 @@ margin-right: 10px;
     text-align: center;
   }
 
-
+.wd{
+  width: 400px;
+}
 
   .login-input-Speciality {
     height: 40px;
@@ -450,6 +451,10 @@ margin-right: 10px;
     }
 
    
+  }
+
+  .profile-form{
+    display: flex;
   }
 
 }
@@ -526,4 +531,63 @@ margin-right: 10px;
   }
 
   
+}
+
+@media only screen and (max-width: 480px) and (min-width: 390px){
+
+  .profile{ 
+
+
+    .tab-box {
+      flex-direction: column ;
+    }
+
+    .profile-form{
+     flex-direction: column;
+    }
+
+  .detail-box2{
+    top: 106rem !important;
+  }
+
+  .available-box{
+
+    p{
+      width: 100% !important;
+    }
+
+    h1{
+      font-size: 14px !important;
+      text-wrap: nowrap;
+    }
+  }
+
+  .top-p{
+    text-wrap: wrap;
+    font-size: 12px !important;
+  }
+  
+  .text-box{
+    padding: 20px !important;
+
+    p{
+      font-size: 12px !important;
+      line-height: 20px !important;
+    }
+  }
+  
+  .feedbox-small{
+    width: 90% !important;
+    height: fit-content !important;
+
+    h1{
+      bottom: -10px !important;
+      margin: 6px !important;
+    }
+  }
+
+  .feedbox{
+    flex-direction: column !important;
+  }
+ }
 }

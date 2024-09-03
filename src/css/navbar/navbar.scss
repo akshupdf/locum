@@ -8,11 +8,14 @@
         width: 75%;
         cursor: pointer;
         
-        
         svg{
             margin: 0;
             width: 20%;
         }
+    }
+
+    .ham-svg{
+        display: none;
     }
 
     .list-box{
@@ -117,17 +120,26 @@
    
 }
 
-@media (max-width: 468px) {
+@media only screen and (max-width: 480px) and (min-width: 390px) {
 
     .navbarMain {
 
     .logo-box {
-        width: 50%;
-        margin-left: 10px;
+        width: 90%;
+        display: flex;
 
         svg{
-            width: 60%;
+            width: 70%;
         }
+    }
+
+    .ham-svg{
+        display: block !important;
+        z-index: 10;
+        position: absolute;
+        top: 0.8vh;
+        right: -70px;
+        width: 70%;
     }
 
     .list-box {
@@ -163,7 +175,7 @@
 
     .nav-btn-box {
         display: none !important; 
-        width: 50%;
+        width: 65%;
         position: absolute;
         margin-top: 4vh;
         background: white;
@@ -172,7 +184,7 @@
     }
 
     .nav-btn1{
-        padding-left: 48px;
+        padding-left: 68px;
     }
 
     .hamburger {
@@ -187,6 +199,7 @@
     .active  {
         display: flex !important; 
         flex-direction: column;
+        margin-top: 10vh;
     }
 
 
@@ -195,13 +208,22 @@
 
 @media only screen and (max-width: 1024px) and (min-width: 768px){
     .navbarMain{
-        align-items: center;
+     
         .list li span{
             display: none;
         }
 
                 .nav-btn-box{
                     width: 32%;
+                }
+
+
+                .logo-box{
+                    width: 65% !important;
+
+                    svg{
+                        width: 40% !important;
+                    }
                 }
     }
 }

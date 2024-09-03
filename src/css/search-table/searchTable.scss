@@ -283,3 +283,50 @@
     }
 
   }
+
+  @media only screen and (max-width: 468px){  
+
+    .search-exp-table {
+      .medical{
+        display: none !important;
+      }
+
+      .location{
+        display: none !important;
+      }
+
+      .shift2{
+        display: none !important;
+      }
+
+      .shift{
+        display: none !important;
+      }
+
+      .clinicShift{
+        display: none !important;
+      }
+
+      .medical2{
+        display: none !important;
+      }
+      
+      .location2{
+        display: none !important;
+      }
+      
+      .clinicShift2{
+        display: none !important;
+      }
+
+      .list-btn-search{
+        display: none;
+      }
+
+      .list-name{
+        font-size: 20px !important;
+      }
+    }
+
+
+  }

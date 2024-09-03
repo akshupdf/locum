@@ -86,7 +86,7 @@ const SearchTable = () => {
 
     const ShiftFormatter = ({ row }) => {
         return (
-            <div style={{ overflow: "hidden", textOverflow: "ellipsis" }}>
+            <div style={{ overflow: "hidden", textOverflow: "ellipsis" }} className="shift2">
                 {row?.original?.shift
                     ? row?.original?.shift.join(", ").length > 20
                         ? row?.original?.shift.join(", ").slice(0, 20) + "..."
@@ -111,6 +111,42 @@ const SearchTable = () => {
                     <path d="M15.4204 20.3429C15.0999 20.6634 15.0999 21.1829 15.4204 21.5033C15.7408 21.8238 16.2603 21.8238 16.5807 21.5033L21.5038 16.5803C21.8144 16.2696 21.8253 15.7695 21.5285 15.4456L17.0157 10.5225C16.7094 10.1885 16.1904 10.1659 15.8564 10.4721C15.5223 10.7784 15.4998 11.2974 15.806 11.6314L19.7879 15.9754L15.4204 20.3429Z" fill="#0866C6" />
                 </svg>
 
+            </div>
+        );
+    };
+
+    const MedicalIdFormatter = ({ row }) => {
+        return (
+            <div style={{ overflow: "hidden", textOverflow: "ellipsis" }} className="medical2">
+                {row?.original?.medical
+                    ? row?.original?.medical.length > 20
+                        ? row?.original?.medical.slice(0, 20) + "..."
+                        : row?.original?.medical
+                    : "Not Available"}
+            </div>
+        );
+    };
+
+    const LocationFormatter = ({ row }) => {
+        return (
+            <div style={{ overflow: "hidden", textOverflow: "ellipsis" }} className="location2">
+                {row?.original?.location
+                    ? row?.original?.location.length > 20
+                        ? row?.original?.location.slice(0, 20) + "..."
+                        : row?.original?.location
+                    : "Not Available"}
+            </div>
+        );
+    };
+
+    const HospitalNameFormatter = ({ row }) => {
+        return (
+            <div style={{ overflow: "hidden", textOverflow: "ellipsis" }} className="clinicShift2">
+                {row?.original?.clinicShift
+                    ? row?.original?.clinicShift.length > 20
+                        ? row?.original?.clinicShift.slice(0, 20) + "..."
+                        : row?.original?.clinicShift
+                    : "Not Available"}
             </div>
         );
     };
@@ -193,19 +229,19 @@ const SearchTable = () => {
         }),
         columnHelper.accessor("medical", {
             id: "medical",
-            cell: (info) => info.getValue(),
+            cell: ({ row }) => <MedicalIdFormatter row={row} />,
             header: () => "Medical Id",
             enableSorting: false,
         }),
         columnHelper.accessor("location", {
             id: "location",
-            cell: (info) => info.getValue(),
+            cell: ({ row }) => <LocationFormatter row={row} />,
             header: () => "Location",
             enableSorting: false,
         }),
         columnHelper.accessor("clinicShift", {
             id: "clinicShift",
-            cell: (info) => info.getValue(),
+            cell: ({ row }) => <HospitalNameFormatter row={row} />,
             header: () => "Hospital Name",
             enableSorting: false,
         }),
@@ -313,7 +349,7 @@ const SearchTable = () => {
                                             {header.column.getCanSort() ? (
                                                 <span>
                                                     {header.column.getIsSorted()
-                                                        ? header.column.getIsSortedDesc()
+                                                        ? header.column.getIsSorted()
                                                             ? " 🔽"
                                                             : " 🔼"
                                                         : ""}

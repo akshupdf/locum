@@ -349,3 +349,16 @@
     background: #0866c6;
   }
 }
+
+@media only screen and (max-width: 468px){ 
+  .explore-search-main-parent-table{
+
+
+    .search-box { 
+      display: none !important;
+    }
+
+
+ }
+
+}

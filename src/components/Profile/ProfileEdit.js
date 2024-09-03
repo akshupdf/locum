@@ -261,7 +261,7 @@ export const ProfileEdit = () => {
   
         <div className="profile-box">
   
-    <form onSubmit={formik.handleSubmit} className="d-flex">
+    <form onSubmit={formik.handleSubmit} className="profile-form">
           <div className="profile-left">
             <div className="tab-box">
             <div className="logo-box">
@@ -567,7 +567,7 @@ formik.values.ownClinic === true &&    <div className="row mt-4">
     </div>
   
           
-              <div className=" mt-4 d-flex">
+              <div className=" mt-4 profile-form">
                 <div className="col-md-6 ">
                   <h1>Do you Visit Any Hospital?</h1>
                   <div className="d-flex">
@@ -604,7 +604,7 @@ formik.values.ownClinic === true &&    <div className="row mt-4">
 
 formik.values.ownHospital === true &&  <div className="col-md-6">
 <div className="d-flex ">
-  <h1>If you have clinic</h1> <span className="top-p">(Clinic time slot)</span>
+  <h1>If you have hospital</h1> <span className="top-p">(hospital time slot)</span>
 </div>
 <div className="">
 <MultiSelect

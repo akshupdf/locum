@@ -314,7 +314,7 @@ data?.email_id &&
                 </div>
                 <div className="col-md-6">
                   <h1>Clinic Location </h1>
-                  <p className="" style={{width : "400px"}}>{data?.clinic_location}</p> 
+                  <p className="wd" >{data?.clinic_location}</p> 
                 </div>
               </div>
                 <div className="row mt-4">
@@ -337,7 +337,7 @@ data?.email_id &&
                 </div>
                 <div className="col-md-4">
                   <h1>Hospital Location </h1>
-                  <p className="" style={{width : "400px"}}>{data?.hospital_location}</p> 
+                  <p className="wd" >{data?.hospital_location}</p> 
                 </div>
               </div>
   

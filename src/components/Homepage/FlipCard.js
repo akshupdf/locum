@@ -122,7 +122,7 @@ export const Flipcard = () => {
                     clickable: true
                 }}
                 breakpoints={{
-                    // when window width is >= 640px
+                  
                     390: {
                         slidesPerView: 1,
                         spaceBetween: 100,
@@ -131,6 +131,10 @@ export const Flipcard = () => {
                         slidesPerView: 3,
                         spaceBetween: 30,
                     },
+                    1600: {
+                        slidesPerView: 3,
+                        spaceBetween: 40,
+                    }
 
                 }}
                 navigation={true}

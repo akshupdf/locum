@@ -220,7 +220,7 @@ color: #0866C6 !important;
     }
 
     .otp-box2{
-    width: 80% ;
+    width: 100% ;
     }
     
     .p-inputgroup-addon svg {
@@ -249,11 +249,10 @@ color: #292731;
     }
 
     .btn-box2{
-     
-
-        button{
-            margin-left: 8rem;
-        }
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
 
         p{
 font-size: 20px ;
@@ -373,7 +372,7 @@ color: #326295 !important;
     .reg{
         justify-content: flex-start;
         display: flex;
-        margin-left: 5rem !important;
+        margin-left: 5rem ;
         margin-top: 1rem !important;
     }
 
@@ -416,7 +415,7 @@ color: #326295 !important;
     .signup{
         flex-direction: column;
         height: auto !important;
-    }
+    
 
     .signleft{
         width: 100% !important;
@@ -445,15 +444,17 @@ color: #326295 !important;
 
     .login-input{
         width: 100% !important;
-    }
+    } }
 }
 
-@media (max-width: 468px){
+@media only screen and (max-width: 490px) and (min-width: 390px){
+
+    .signup{
     .btn-box2{
      
 
         button{
-            margin-left: 0 !important;
+            margin-left: 5vh !important;
         }
 
         p{
@@ -461,12 +462,38 @@ color: #326295 !important;
         }
     }
 
+    .back-btn2{
+        display: none;
+    }
+
     .signup{
 
         .reg{
             margin-left: 0 !important;
         }
+
+   
     }
+
+    .login-input2{
+        width: 70% !important;
+    }
+
+ 
+
+    .input-box{
+        flex-direction: column;
+        gap: 0px !important;
+    }
+
+    .input-text-box{
+        width: 100% !important;
+    }
+
+    .eye{
+        margin-left: 4.5rem !important;
+    }
+
 
     .otp-box2{
         width: 100% !important;
@@ -474,6 +501,8 @@ color: #326295 !important;
 
         .signright{
             width: 90% !important;
+            margin-top: -30px !important;
+            height: fit-content !important;
         }
 
          .signleft{
@@ -481,16 +510,36 @@ color: #326295 !important;
          } 
 
          .img1{
-            margin-left: 7vh !important;
+            margin-left: 1vh !important;
+            width: 45% !important;
+            position: fixed !important;
+            top: 8% !important;
          }
+
+         .img2{
+            width: 55% !important;
+            left: 72% !important;
+            position: fixed !important;
+            top: 32% !important;
+        }
 
        .svg-box{
             bottom: 90% !important;
             left: 30% !important ;
             width: 50% !important;
+            position: fixed !important;
 
-            .p-inputgroup-addon{
-                font-size: 12px !important;
-            }
+        
          }
+         .p-inputgroup-addon2{
+            margin-right: 20px ;
+        }
+
+        .p-inputgroup-addon{
+            font-size: 12px !important;
+            text-wrap: nowrap;
+        }
+
+        
+        }
 }

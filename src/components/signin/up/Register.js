@@ -277,7 +277,7 @@ export const Register = () => {
                 placeholder="Enter mobile number"
               />
 
-                  <span className="p-inputgroup-addon" onClick={() => sendOtp(formik.values.mobileNo)}>
+                  <span className="p-inputgroup-addon p-inputgroup-addon2" onClick={() => sendOtp(formik.values.mobileNo)}>
 
 {isResendVisible ? "Resend OTP" : otpSent ? ` (${timer}s)` : "Send OTP"}
 
@@ -308,7 +308,7 @@ export const Register = () => {
                 type='password'
 
               />
-              <span className="p-inputgroup-addon"  onClick={() => verifyOtp2(formik.values.mobileNo)}>
+              <span className="p-inputgroup-addon p-inputgroup-addon2"  onClick={() => verifyOtp2(formik.values.mobileNo)}>
                   Verify OTP
                   </span>
               </div>

@@ -51,7 +51,7 @@ export const Signup = () => {
         "otpType" : 1
     }
 
-    toast( "OTP Has been sent on your Mobile Number !");
+    toast( "OTP Has been sent on Mobile Number !");
 
     try {
       await dispatch(generateOtp(values)).unwrap();
@@ -113,7 +113,7 @@ export const Signup = () => {
       }
   
       return () => clearInterval(interval);
-    }, [timer]);
+    }, [timer,otp]);
 
   return(
     <div className='signup'>
@@ -152,7 +152,7 @@ export const Signup = () => {
                   setMobileNo(e.target.value);
                   setError(validateMobileOrEmail(e.target.value));
                 }}
-                placeholder="Enter Your mobile number"
+                placeholder="Enter mobile number"
               /> 
                    <span className="p-inputgroup-addon" onClick={() => sendOtp(mobileNo)}>
 
@@ -180,7 +180,7 @@ export const Signup = () => {
                 placeholder="Enter OTP"
                 type={showOtp ? 'text' : 'password'}
               />
-                 <span className="p-inputgroup-addon" onClick={() => setShowOtp(!showOtp)}>
+                 <span className="p-inputgroup-addon eye" onClick={() => setShowOtp(!showOtp)}>
                      {showOtp ? <ClosedEye /> : <ClosedEye />}
                   </span>
               </div>
