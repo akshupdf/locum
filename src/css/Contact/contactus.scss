@@ -297,4 +297,161 @@
         }
   }
 }
+
+@media only screen and (max-width: 480px) and (min-width: 390px) {
+  .contactus{
+
+    .aboutbox{
+      flex-direction: column;
+    }
+
+    .aboutleft{
+      order: 0;
+      width: 100%;
+      padding: 11px 20px;
+
+      h1{
+        height: 40px;
+        font-size: 24px;
+        margin-bottom: 13px;
+      }
+
+      .p-para{
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 20px;
+          text-align: left;
+      }
+
+      .p-para-txt{
+          font-size: 12px;
+            font-weight: 400;
+            line-height: 20px;
+            text-align: left;
+            margin-bottom: 12px;
+      }
+    }
+
+    .aboutright{
+      order: -1;
+      width: 100%;
+
+      img{
+        width: 390px;
+          height: 291px;
+      }
+    }
+
+    .regbtn{
+          padding: 10px 20px 12px 20px;
+          height: 40px;
+          font-size: 14px;
+    }
+
+    .form-box-main{
+      padding: 50px 20px;
+    }
+
+    .form-box{
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+         .contact-infooo{
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 28.8px;
+            letter-spacing: -0.03em;
+            text-align: center;
+         }
+
+         .contact-box{
+          justify-content: center;
+          flex-direction: column;
+          gap: 20px;
+         }
+
+         .contact-box-small{
+                width: 245px;
+                  margin: auto;
+
+                  h1{
+                    font-size: 20px;
+                    margin: 0;
+                  }
+
+                  p{
+                    font-size: 14px;
+                  }
+         }
+
+         .login-input{
+          width: 309px !important;
+            height: 49px;
+            border-radius: 12px;
+         }
+
+         .msg-btn{
+          width: 227px;
+          height: 49px;
+          padding: 14px 28px 20px 28px;
+            border-radius: 11px;
+         }
+
+    .join-box-main {
+        width: 100%;
+        padding: 0;
+        padding-top: 72px;
+        padding-bottom: 72px;
+        display: block;
+      }
+    
+      .join-box {
+        flex-direction: column;
+        text-align: center;
+        // padding: 20px;
+        width: 100%;
+    
+        h2 {
+          font-size: 24px !important;
+          height: 30px;
+        }
+    
+        p {
+          font-size: 12px !important;
+          line-height: 20px;
+        }
+      }
+    
+      .join-box-left {
+        text-align: left;
+        order: 0;
+      }
+    
+      .join-box-right {
+        order: -1;
+        width: 100%;
+        // padding: 20px;
+    
+        img {
+          width: 307px;
+          height: 236px;
+        }
+      }
+    
+      .circle {
+        display: none;
+        // width: 20%;
+        // margin-left: -8vh;
+      }
+
+             .signup-btn {
+               // width: 100%;
+               text-align: center;
+               padding: 15px;
+               margin-top: 1rem;
+             }
+  }
+}
  
