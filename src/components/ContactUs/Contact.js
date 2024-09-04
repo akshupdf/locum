@@ -1,11 +1,32 @@
 import { InputText } from 'primereact/inputtext'
-import React from 'react'
+import React, { useState } from 'react'
 import about from '../../assets/about.png'
 import hand from '../../assets/hand.png'
 import { ExitIcon, Geo, Mail, Phone } from '../../reusable/Icons'
 
 
+const generateMailtoLink = (name, lastName, email, phone, message) => {
+  const subject = encodeURIComponent("Contact Form Submission");
+  const body = encodeURIComponent(`First Name: ${name}\nLast Name: ${lastName}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`);
+  return `mailto:${email}?subject=${subject}&body=${body}`;
+};
+
+
 export const ContactUs = () => {
+
+
+  const [name, setName] = useState('');
+  const [lastName, setlastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const mailtoLink = generateMailtoLink(name, lastName, email, phone, message);
+    window.location.href = mailtoLink; 
+};
+
   return (
     <div className='contactus'>
 
@@ -36,23 +57,23 @@ export const ContactUs = () => {
       </div>
 
       <div className='form-box-main'>
-        <div className='form-box'>
+        <form className='form-box' onSubmit={handleSubmit}>
           <div className='d-flex justify-content-center contact-infooo'>Contact information</div>
           <div className='contact-box '>
             <div className='contact-box-small'>
               <Phone />
               <h1>Phone Number</h1>
-              <p>+91 8879881815 / +91 7738311925</p>
+              <p>+91 9117569519</p>
             </div>
             <div className='contact-box-small'>
               <Geo />
               <h1>Our Location</h1>
-              <p>Shop No 2, Vishwakarma Opposite Om Surya apartment Sawarkar Nagar Thane West, Maharashtra ,400606</p>
+              <p>Thane West, Maharashtra ,400606</p>
             </div>
             <div className='contact-box-small'>
               <Mail />
               <h1>Our Email</h1>
-              <p>info@coder.com</p>
+              <p>info@locum.com</p>
             </div>
           </div>
 
@@ -63,10 +84,14 @@ export const ContactUs = () => {
               <InputText
                 className=" login-input col-5"
                 placeholder="First Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
               <InputText
                 className=" login-input col-5"
                 placeholder="Last Name"
+                value={lastName}
+                onChange={(e) => setlastName(e.target.value)}
               />
 
             </div>
@@ -75,10 +100,14 @@ export const ContactUs = () => {
               <InputText
                 className=" login-input col-5"
                 placeholder="Phone Number"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
               />
               <InputText
                 className=" login-input col-5"
                 placeholder="Your Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
 
             </div>
@@ -87,16 +116,18 @@ export const ContactUs = () => {
               <InputText
                 className=" login-input col-11"
                 placeholder="Your Message"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
               />
 
 
             </div>
             <div className='row'>
-              <button className='msg-btn'>Send Message </button>
+              <button className='msg-btn' >Send Message </button>
             </div>
           </div>
 
-        </div>
+        </form>
       </div>
 
       <div className='join-box-main'>
