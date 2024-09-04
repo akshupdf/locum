@@ -350,10 +350,10 @@
   }
 }
 
-@media only screen and (max-width: 468px){ 
+@media only screen and (max-width: 480px) and (min-width: 390px){ 
+
+  .explore-main{
   .explore-search-main-parent-table{
-
-
     .search-box { 
       display: none !important;
     }
@@ -361,4 +361,119 @@
 
  }
 
+ .head-2{
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 30px;
+    text-align: center;
+ }
+
+ .head-3,
+ .head-4{
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: center;
+ }
+
+ .head-4{
+  width: 350px;
+ }
+
+ .all-doc{
+  margin-bottom: 42px;
+ }
+
+ .all-head-1{
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29px;
+    letter-spacing: 1.100000023841858px;
+    text-align: center;
+ }
+
+ .all-head-2{
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    text-align: center;
+    margin-bottom: 31px;
+ }
+
+ .all-opportunities{
+  padding: 20px 0;
+ }
+
+ .specialty-box{
+  width: 140px;
+    height: 160px;
+    // padding: 17px 35.3px 16.59px 37px;
+    border-radius: 8px;
+ }
+
+ .specialty-name{
+  font-size: 10px;
+  line-height: 11.2px;
+ }
+
+ .specialty-icon {
+  svg{
+    width: 85px !important;
+  }
+ }
+
+ .join-box-main {
+   width: 100%;
+   padding: 0;
+   padding-top: 72px;
+   padding-bottom: 72px;
+   display: block;
+ }
+
+ .join-box {
+   flex-direction: column;
+   text-align: center;
+   // padding: 20px;
+   width: 100%;
+
+   h2 {
+     font-size: 24px !important;
+     height: 30px;
+   }
+
+   p {
+     font-size: 12px !important;
+     line-height: 20px;
+   }
+ }
+
+ .join-box-left {
+   text-align: left;
+   order: 0;
+ }
+
+ .join-box-right {
+   order: -1;
+   width: 100%;
+   // padding: 20px;
+
+   img {
+     width: 307px;
+     height: 236px;
+   }
+ }
+
+ .circle {
+   display: none;
+   // width: 20%;
+   // margin-left: -8vh;
+ }
+
+ .signup-btn {
+   // width: 100%;
+   text-align: center;
+   padding: 15px;
+   margin-top: 1rem;
+ }
+  }
 }

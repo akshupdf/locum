@@ -271,3 +271,73 @@
         }
     }
 }
+
+@media only screen and (max-width: 480px) and (min-width: 390px) {
+    .ContactUsImg{
+        flex-direction: column;
+        padding: 20px;
+        .first-order{
+            order: 0;
+
+            .heading-color {
+                    font-size: 24px;
+                    font-weight: 900;
+                    line-height: 30px;
+                    letter-spacing: -0.6800000071525574px;
+                    text-align: left;
+                    margin-bottom: 29px;
+                    color: rgba(8, 102, 198, 1);
+                }
+        }
+
+        .second-order{
+            order: -1;
+
+            img{
+                width: 283px;
+                    height: 251px;
+                    object-fit: cover;
+            }
+        }
+
+        .para{
+            width: 347px;
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 20px;
+                text-align: left;
+        }
+    }
+
+    .company-policy{
+        padding: 20px;
+
+        h1{
+                font-size: 22px;
+                font-weight: 600;
+                line-height: 26.82px;
+                text-align: left;
+                color: rgba(50, 98, 149, 1);
+                margin-bottom: 26px;
+        }
+
+
+        .para{
+
+            font-size: 12px;
+                font-weight: 400;
+                line-height: 14.4px;
+                text-align: left;
+                color: rgba(121, 128, 153, 1);
+
+                h2 {
+                        font-size: 12px;
+                        font-weight: 400;
+                        line-height: 14.4px;
+                        text-align: left;
+                        color: rgba(121, 128, 153, 1);
+                    }
+        }
+
+    }
+}
