@@ -171,7 +171,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="landing-box-right">
-            <img src="https://s3-alpha-sig.figma.com/img/13c6/7f52/869baa5921ef48a59238692e1684a96c?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=biFSwMpczv1qRJskOoL3ta2oBJ1ulKh~wlAE3kiK4tIonetHo-w~3oSf4eYwnlUukpJM8UmbpWU0mPoml1r~5emk9V6Z3QBCJYaatTkJyE9lE1UzXB-xl6t8D3JiKudT~AUhTOIzejy6OUkxfiUPEOJHimS1mlBSMusTFKQrPGmJu6XREeBign49C0PRx5M9e0Vv0hcSDdSIshxz8g4-IZX9n-JqAIZ3Nge-Gf9I~l1USnEF0TTCWUQlHumvHFX77UUAnr6sRBi4wCB-mNj~oPJqblHIR0enRsl42CKFJ7ewQ3frIWv7If9LYiC5BhVBY18-zlt7r5l20hvAhvlOkA__" alt="lady" />
+            <img src={lady} alt="lady" />
           </div>
         </div>
       </div>
@@ -378,7 +378,7 @@ export default function HomePage() {
             </h4>
             <div className="wave-box">
               <div className="wave-left">
-                <img src="https://s3-alpha-sig.figma.com/img/7201/d52d/32ed8663ce8f40257694597627e0c20c?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=e-apU4smoGv0p8hfuAJrOQirVwURpQNnYcZtlvEM6nxeCkROGFSRhlXASK4csIRi-Nm3JROD5GU3ePsXHHsejD~W44SRcEKwhHik8RrXVwkMy~GoGUae~zPFjUFmr70BiCnW2BL2Qu-SYVLGwvy1gA0HrwLXbQbLIiCRgopz~Fx37LZPgAuTKw3gXtLkxPeqpONgUcg5bKDAsFxweLuy7Huwk0q-yf5ZAbUlr4toARZjXAyrAWztMb2Ju8fUxhlU0~LMjYMWCpXqKbM5bxqtLAr4ggFrXAjvcOFdFB0JKsaMDMST21w3wD1juGbelHrdCs6BPXME0dgy~dGpZAM3Yw__" alt="locum"></img>
+                <img src={wave} alt="locum"></img>
               </div>
               <div className="wave-right">
                 <p className="para1 step-1">Step 1</p>
@@ -506,14 +506,14 @@ export default function HomePage() {
             </div>
           </div>
           <div className="match-right">
-            <img src="https://s3-alpha-sig.figma.com/img/22b6/aa00/02338219482ae77c3d60e38545724659?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=pfBBKTvT42kgIKDYAmfgK2tnBkT0y91slNzqT9tew~4B0~9uAlqus2BZcyck3ePru73U8I8vF6UFih8JMplg6ANnoPJwfBuczFj-QpOgxdgqwDGKT275seT1MzgFQfVtv48GO6jFBA7UFWU0X65S~DSQmxfGoQJZvwnMt~rwYBgbbDnJ9J4OupZjMPgtANgwzzq-kTkeCdGuZIg-TwOtKg0aLURu~ZLfWU9ZRM7AhExNKRle~VKgy18nLS34sk151CgF6nty4OlhD1~9UwQRaoDGGVWe5WwWUdOc7KyttUsfnH1tE~h5TeyQ0HxzS7Yxe--8aJX-ue9uDjSP6qprrQ__" alt="locum"></img>
+            <img src={map} alt="locum"></img>
           </div>
         </div>
 
         <div className="reg-box-main">
           <div className="reg-box">
             <div className="reg-left">
-              <img src="https://s3-alpha-sig.figma.com/img/a936/9673/abd62e9c39f55a741caac2b8bedaf574?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=TO3fs1rXKoJdh-irpCybX19MyTXPuTY-5AP5dIxKBMtgsT9ZKWbM2UMsmXostBpv3xeFGYQQZq8fDg9HZKwZP~0miBzQeGizaiaFRA28~ZaKUt72HTrDTzEt0yctFOT5hOJpofAM4yW4wGy8aFaVeWYiI3FqyeNzPOk5NVX3Ncd~R6yG6MhNS6YJ8J62jlELa5EnnGeg9IInTi67kYTzHRjxr2cEOsxI0h0xMqNr7KFwUxXq33zlZGMBFqVX8DF9bT7U5nwOq3ZkVAI6Y1RDUV0acroNEopIGA-HiG0nM8Jl8E6mZBcnvqW~BL91qtDP8OQXe2LxfAtmFGFmlx99qA__" alt="locum"></img>
+              <img src={reg} alt="locum"></img>
             </div>
             <div className="reg-right">
               <p className=" para1 step-2">Step 3</p>
