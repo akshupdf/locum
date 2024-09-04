@@ -56,7 +56,7 @@ export const Signup = () => {
     try {
       await dispatch(generateOtp(values)).unwrap();
       setOtpSent(true);
-      setIsResendVisible(false);
+      setIsResendVisible(false); 
       setTimer(30);
       
     } catch (error) {
@@ -104,16 +104,17 @@ export const Signup = () => {
 
     useEffect(() => {
       let interval = null;
-      if (timer > 0) {
+      if (timer !== null && timer > 0 ) {
         interval = setInterval(() => {
           setTimer((prevTimer) => prevTimer - 1);
         }, 1000);
-      } else {
-        setIsResendVisible(true);
+      }else if (timer === 0) {
+        setIsResendVisible(true);  
+        clearInterval(interval);
       }
   
       return () => clearInterval(interval);
-    }, [timer,otp]);
+    }, [timer]);
 
   return(
     <div className='signup'>

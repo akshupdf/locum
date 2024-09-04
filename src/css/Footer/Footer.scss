@@ -47,6 +47,10 @@
       padding: 64px 100px  20px 100px;
     }
 
+    svg{
+      
+      cursor: pointer;
+    }
 
   .foot1{
     width: 30%;
@@ -173,6 +177,7 @@
 
     svg{
       width: 30vh !important;
+      cursor: pointer;
     }
 
     p{
@@ -209,6 +214,7 @@
     display: flex;
     justify-content: end !important;
   }
+
 
   .ul-box{
     display: inline !important;

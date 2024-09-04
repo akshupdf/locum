@@ -390,9 +390,8 @@ const SearchTable = () => {
                         </p>
                         <button
                             className="signup-btn"
-                            // onClick={() => (window.location.href = "/register")
-                                
-                            // }
+                            onClick={() => (window.location.href = "/signin")                                
+                            }
                         >
                             {" "}
                             Sign In

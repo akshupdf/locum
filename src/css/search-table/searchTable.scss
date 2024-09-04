@@ -328,5 +328,64 @@
       }
     }
 
+    .join-box-main-table{
+      justify-content: center !important;
+    }
+
+    .join-box-main {
+      width: 100%;
+      padding: 0;
+      padding-top: 72px;
+      padding-bottom: 72px;
+      display: block;
+    }
+  
+    .join-box {
+      flex-direction: column;
+      text-align: center;
+      // padding: 20px;
+      width: 100% !important;
+  
+      h2 {
+        font-size: 24px !important;
+        height: 30px;
+      }
+  
+      p {
+        font-size: 12px !important;
+        line-height: 20px;
+      }
+    }
+  
+    .join-box-left {
+      text-align: left;
+      order: 0;
+    }
+  
+    .join-box-right {
+      order: -1;
+      width: 100%;
+      // padding: 20px;
+  
+      img {
+        width: 307px;
+        height: 236px;
+        margin-left: 3.5rem;
+      }
+    }
+  
+    .circle {
+      display: none;
+      // width: 20%;
+      // margin-left: -8vh;
+    }
+
+           .signup-btn {
+             // width: 100%;
+             text-align: center;
+             padding: 15px;
+             margin-top: 1rem;
+           }
+
 
   }

@@ -37,7 +37,8 @@ window.location.href = '/'
   }, []);
 
   const toggleMenu = () => {
-    setIsMenuOpen(prevState => !prevState); }
+    setIsMenuOpen(prevState => !prevState); 
+  }
 
   const handleClick = () => {
     if (isMobile) {
@@ -52,7 +53,7 @@ window.location.href = '/'
     <div className='navbarMain'>
   
       <div className='logo-box'   >
-      <svg viewBox="0 0 345 87" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={handleClick}>
+      <svg viewBox="0 0 345 87" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={() => window.location.href = '/' }>
       <rect
         width="344.667"
         height="88"
@@ -89,21 +90,22 @@ window.location.href = '/'
       />
     </svg>
 
-  
+      <button onClick={handleClick} className='ham'>Menu</button>
       </div>
 
   
 
-      {/* <div className={`list-box ${isMenuOpen ? 'active' : ''}`} >
+      <div className={`list-box ${isMenuOpen ? 'active' : ''}`} >
       <ul className='list' >
       <li onClick={() => window.location.href = '/aboutus' }>About Us</li>
       <li onClick={() => window.location.href = '/contactus' }>Contact Us</li>
-      <li>Blogs</li>
+      <li onClick={() => window.location.href = '/signin' }>Sign In</li>
+      <li onClick={() => window.location.href = '/register' }>Register</li>
       <li><span> <Calling /> <p>+91 84545 84545  </p>     Customer care </span></li>
       </ul>
-      </div> */}
+      </div>
 
-      <div className={`nav-btn-box ${isMenuOpen ? 'active' : ''} `} > 
+      <div className={`nav-btn-box `} > 
         {
 
           id ? <button className='nav-btn1' onClick={Logout}> <p> Logout</p> </button> : <button className='nav-btn1' onClick={() => window.location.href = '/signin' }>  <p> Sign In</p> </button>

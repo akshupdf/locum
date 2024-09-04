@@ -630,6 +630,7 @@ export const Locume = () => {
       viewBox="0 0 331 49"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      onClick={() => window.location.href = '/'}
     >
       <path
         d="M39.7193 33.6876L39.8125 49.0001H9.1875V47.2987L39.7193 33.6876Z"

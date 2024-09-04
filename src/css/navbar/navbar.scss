@@ -19,10 +19,7 @@
     }
 
     .list-box{
-     
-        text-align: center;
-        display: flex;
-        justify-content: center;
+        display: none !important;
     }
 
     // .logo{
@@ -117,6 +114,10 @@
         display: none !important;
     }
 
+    .ham{
+        display: none !important;
+    }
+
    
 }
 
@@ -125,11 +126,11 @@
     .navbarMain {
 
     .logo-box {
-        width: 90%;
+        width: 100%;
         display: flex;
 
         svg{
-            width: 70%;
+            width: 60%;
         }
     }
 
@@ -140,6 +141,13 @@
         top: 0.8vh;
         right: -70px;
         width: 70%;
+    }
+
+    .ham{
+        border: none;
+        margin-left: 5.4rem;
+        background: none;
+        display: block !important;
     }
 
     .list-box {
@@ -199,7 +207,7 @@
     .active  {
         display: flex !important; 
         flex-direction: column;
-        margin-top: 10vh;
+        margin-top: 3.5vh;
     }
 
 
