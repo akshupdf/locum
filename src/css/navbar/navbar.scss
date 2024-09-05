@@ -145,7 +145,7 @@
 
     .ham{
         border: none;
-        margin-left: 5.4rem;
+        margin-left: 6.4rem;
         background: none;
         display: block !important;
     }
@@ -154,12 +154,13 @@
         display: none; 
         width: 100%;
         flex-direction: column;
-        background-color: #fff;
+        background-color:#0866C6;
+        color: white;
         position: absolute;
-        top: 40px; 
+        top: 34px; 
         right: 0;
         z-index: 1000;
-        border: 1px solid #ddd;
+       
         
     }
 
@@ -167,13 +168,15 @@
         flex-direction: column;
         margin: 0;
         padding: 0;
-        align-items: start;
-        margin-left: 4.5vh;
+        align-items: center;
+        height: 50vh;
+        padding-top: 10vh;
     }
 
     .list li {
         margin: 0;
         padding: 10px;
+        color: white;
 
 
         span{
