@@ -1090,6 +1090,8 @@
       order: 0;
       width: 100%;
       padding-top: 23px;
+      align-items: flex-start;
+        padding-left: 20px;
     }
 
     .soft {
@@ -1172,11 +1174,20 @@
     }
 
     .explore-box-main h1 {
-      font-size: 24px;
+      font-size: 20px;
+      margin-bottom: 0;
+    }
+
+    .explore-box-main {
+      .para{
+        margin-top: 0;
+      }
     }
 
     .specialties-container {
       margin-bottom: 25px;
+      padding: 0;
+      justify-content: center;
     }
 
     .specialty-box {
