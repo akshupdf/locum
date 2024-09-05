@@ -247,8 +247,9 @@
     display: flex;
     flex-wrap: wrap;
     gap: 24px;
-    // justify-content: center;
-    padding-left: 50px;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
     margin-bottom: 48px;
   }
 

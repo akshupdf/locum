@@ -127,13 +127,21 @@ export const Flipcard = () => {
                         slidesPerView: 1,
                         spaceBetween: 100,
                     },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 40,
+                      },
+                      1024: {
+                        slidesPerView: 2,
+                        spaceBetween: 50,
+                      },
                     1440: {
                         slidesPerView: 3,
-                        spaceBetween: 30,
+                        spaceBetween: 55,
                     },
                     1600: {
                         slidesPerView: 3,
-                        spaceBetween: 40,
+                        spaceBetween: 50,
                     }
 
                 }}
