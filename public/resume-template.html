@@ -1,0 +1,104 @@
+<!-- resume-template.html -->
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      h1 {
+        text-align: center;
+      }
+      .section {
+        margin-bottom: 20px;
+      }
+      .section-title {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #000;
+      }
+      .details {
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Resume</h1>
+
+    <div class="section">
+      <div class="section-title">Personal Information</div>
+      <div class="details">
+        First Name: {{first_name}} <br>
+        Last Name: {{last_name}} <br>
+        Email: {{email_id}} <br>
+        Phone Number: {{mobile_number}} <br>
+        Location: {{location}} <br>
+        Medical ID: {{medical_id}}
+      </div>
+    </div>
+
+    {{#if about}}
+    <div class="section">
+      <div class="section-title">About Me</div>
+      <div class="details">{{about}}</div>
+    </div>
+    {{/if}}
+
+    {{#if availability}}
+    <div class="section">
+      <div class="section-title">Availability</div>
+      <div class="details">
+        {{#each availability}}
+          <div>- {{this}}</div>
+        {{/each}}
+      </div>
+    </div>
+    {{/if}}
+
+    <div class="section">
+      <div class="section-title">Professional Information</div>
+      <div class="details">
+        Rate/Hourly: {{hourly_rate}} <br>
+        Total Experience: {{otp_verification_id}}
+      </div>
+    </div>
+
+    {{#if clinic}}
+    <div class="section">
+      <div class="section-title">Clinic Details</div>
+      <div class="details">
+        Do you have your own clinic: {{clinic}} <br>
+        Clinic Name: {{clinic_name}} <br>
+        Clinic Location: {{clinic_location}} <br>
+        {{#if timeSlot}}
+        Clinic Time Slots:
+        {{#each timeSlot}}
+          <div>- {{this}}</div>
+        {{/each}}
+        {{/if}}
+      </div>
+    </div>
+    {{/if}}
+
+    {{#if specialties}}
+    <div class="section">
+      <div class="section-title">Specialties</div>
+      <div class="details">
+        {{#each specialties}}
+          <div>- {{this}}</div>
+        {{/each}}
+      </div>
+    </div>
+    {{/if}}
+
+    {{#if hospital_name}}
+    <div class="section">
+      <div class="section-title">Hospital Details</div>
+      <div class="details">
+        Hospital Name: {{hospital_name}} <br>
+        Hospital Location: {{hospital_location}}
+      </div>
+    </div>
+    {{/if}}
+  </body>
+</html>

@@ -7,9 +7,51 @@ import { useDispatch, useSelector } from "react-redux";
 import {  fetchUserWithToken } from "../../redux/apiSlice";
 import { useParams } from "react-router-dom";
 import SkeletonLoader from "../../reusable/Skeleton";
-import jsPDF from 'jspdf';
+import Handlebars from 'handlebars';
+import html2pdf from 'html2pdf.js';
 
 const selectUserInfov2 = (state) => state.user.userInfov2;
+
+const GeneratePDFv2 = async (data) => {
+
+    const response = await fetch('/resume-template.html');
+    let template = await response.text();
+    const compiledTemplate = Handlebars.compile(template);
+
+    template = template.replace('{{first_name}}', data.first_name || '')
+                       .replace('{{last_name}}', data.last_name || '')
+                       .replace('{{email_id}}', data.email_id || '')
+                       .replace('{{mobile_number}}', data.mobile_number || '')
+                       .replace('{{location}}', data.location || '')
+                       .replace('{{medical_id}}', data.medical_id || '')
+                       .replace('{{about}}', data.about || '');
+  
+  
+    if (data.availability) {
+      const availabilityHTML = data.availability.map(slot => `<div>- ${slot}</div>`).join('');
+      template = template.replace('{{availability}}', availabilityHTML);
+    }
+  
+    if (data.specialties) {
+      const specialtiesHTML = data.specialties.map(specialty => `<div>- ${specialty}</div>`).join('');
+      template = template.replace('{{specialties}}', specialtiesHTML);
+    }
+
+    const htmlContent = compiledTemplate(data);
+  
+    const element = document.createElement('div');
+    element.innerHTML = htmlContent;
+  
+    html2pdf()
+      .from(element)
+      .set({
+        margin: 1,
+        filename: 'custom_resume.pdf',
+        html2canvas: { scale: 2 },
+        jsPDF: { orientation: 'portrait' }
+      })
+      .save();
+  };
 
 export const Profile = () => {
 
@@ -47,70 +89,11 @@ export const Profile = () => {
 
   const data = user[0]
 
-  const generatePDF = () => {
-    const doc = new jsPDF();
-    doc.text('Resume', 14, 16);
-
-    doc.text(`First Name: ${data?.first_name}`, 14, 24);
-    doc.text(`Last Name: ${data?.last_name}`, 14, 32);
-    doc.text(`Email: ${data?.email_id}`, 14, 40);
-    doc.text(`Phone Number: ${data?.mobile_number}`, 14, 48);
-    doc.text(`Location: ${data?.location}`, 14, 56);
-    doc.text(`Medical ID: ${data?.medical_id}`, 14, 64);
-    
-    if (data?.about) {
-      doc.text(`About ${data?.first_name}: ${data?.about}`, 14, 72);
-    }
-
-    if (data?.availability) {
-      doc.text('Availability:', 14, 80);
-      data.availability.forEach((slot, index) => {
-        doc.text(`- ${slot}`, 14, 88 + (index * 8));
-      });
-    }
-
-    doc.text(`Rate/Hourly: ${data?.hourly_rate}`, 14, 100);
-    doc.text(`Total Experience: ${data?.otp_verification_id}`, 14, 108);
-    
-    if (data?.clinic) {
-      doc.text(`Do you have your own clinic: ${data?.clinic}`, 14, 116);
-    }
-
-    if (data?.timeSlot) {
-      doc.text('Clinic Time Slot:', 14, 124);
-      data.timeSlot.forEach((timeSlot, index) => {
-        doc.text(`- ${timeSlot}`, 14, 132 + (index * 8));
-      });
-    }
-
-    if (data?.clinic_name) {
-      doc.text(`Clinic Name: ${data?.clinic_name}`, 14, 140);
-    }
-
-    if (data?.clinic_location) {
-      doc.text(`Clinic Location: ${data?.clinic_location}`, 14, 148);
-    }
-
-    if (data.specialties) {
-      doc.text('Specialties:', 14, 156);
-      data.specialties.forEach((specialty, index) => {
-        doc.text(`- ${specialty}`, 14, 164 + (index * 8));
-      });
-    }
-
-    if (data?.hospital_name) {
-      doc.text(`Hospital Name: ${data?.hospital_name}`, 14, 180);
-    }
-
-    if (data?.hospital_location) {
-      doc.text(`Hospital Location: ${data?.hospital_location}`, 14, 188);
-    }
-
-    doc.save('resume.pdf');
+  const generatePDF = () => { 
+    GeneratePDFv2(data);
   };
-
-
-
+  
+  
   return (
     <div className="profile">
     {
