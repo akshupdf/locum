@@ -466,6 +466,10 @@ color: #326295 !important;
     //     display: none;
     // }
 
+    .back-btn2{
+        top : 0 !important;
+        left: -13vh !important;
+    }
  
   .reg{
             margin-left: 0 !important;
@@ -516,25 +520,30 @@ color: #326295 !important;
          } 
 
          .img1{
-            margin-left: 1vh !important;
+            margin-left: 2vh !important;
             width: 45% !important;
             position: fixed !important;
             top: 11% !important;
+            transform: translateY(0);
+            will-change: transform;
          }
 
          .img2{
             width: 55% !important;
-            left: 72% !important;
+            left: 42% !important;
             position: fixed !important;
-            top: 36% !important;
+            top: 10% !important;
+            transform: translateY(0);
+            will-change: transform;
         }
 
        .svg-box{
-            bottom: 90% !important;
-            left: 30% !important ;
-            width: 50% !important;
-            position: fixed !important;
-
+        bottom: 90% !important;
+        left: 30% !important;
+        width: 50% !important;
+        position: fixed !important;
+            transform: translateY(0);
+            will-change: transform;
         
          }
          .p-inputgroup-addon2{
