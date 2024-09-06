@@ -462,18 +462,22 @@ color: #326295 !important;
         }
     }
 
-    .back-btn2{
-        display: none;
-    }
+    // .back-btn2{
+    //     display: none;
+    // }
 
-    .signup{
-
-        .reg{
+ 
+  .reg{
             margin-left: 0 !important;
-        }
+            
+   }
+
+   .signright h1 { 
+    font-size: 25px !important;
+   }
 
    
-    }
+    
 
     .login-input2{
         width: 70% !important;
@@ -501,26 +505,28 @@ color: #326295 !important;
 
         .signright{
             width: 90% !important;
-            margin-top: -30px !important;
             height: fit-content !important;
+            position: absolute;
+            top: 55%;
+            left: 5%;
         }
 
          .signleft{
-            height: 40vh !important;
+            position: fixed;
          } 
 
          .img1{
             margin-left: 1vh !important;
             width: 45% !important;
             position: fixed !important;
-            top: 8% !important;
+            top: 11% !important;
          }
 
          .img2{
             width: 55% !important;
             left: 72% !important;
             position: fixed !important;
-            top: 32% !important;
+            top: 36% !important;
         }
 
        .svg-box{

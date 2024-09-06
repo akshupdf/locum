@@ -287,6 +287,10 @@
   @media only screen and (max-width: 468px){  
 
     .search-exp-table {
+      box-shadow: 0px 4px 6px 0px #00000026;
+      width: 90%;
+
+
       .medical{
         display: none !important;
       }
