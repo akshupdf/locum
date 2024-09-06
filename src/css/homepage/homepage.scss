@@ -86,8 +86,9 @@
     height: 110px;
 
     img {
+    object-fit: cover;
       width: 100px;
-      height: 100px;
+      height: 56px;
     }
   }
 
@@ -1196,7 +1197,7 @@
     }
 
     .specialty-name {
-      font-size: 10.25px;
+      font-size: 8.25px;
       line-height: 11.2px;
     }
 
