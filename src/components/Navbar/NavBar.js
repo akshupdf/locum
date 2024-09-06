@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Calling, Hand, LocumeLogo, LogIn, Reg } from '../../reusable/Icons'
+import { Calling, Close, HamBurger, Hand, LocumeLogo, LogIn, Reg } from '../../reusable/Icons'
 import { useDispatch } from 'react-redux';
 import { userLogout } from '../../redux/apiSlice';
 
@@ -90,18 +90,23 @@ window.location.href = '/'
       />
     </svg>
 
-      <button onClick={handleClick} className='ham'>Menu</button>
+     {
+
+ <button onClick={handleClick} className='ham'>  {  isMenuOpen ? <Close /> : <HamBurger /> }</button>
+     } 
+
       </div>
 
   
 
       <div className={`list-box ${isMenuOpen ? 'active' : ''}`} >
       <ul className='list' >
+      <li onClick={() => window.location.href = '/signin' }>Sign In</li>
+      <li onClick={() => window.location.href = '/register' }>Register Now</li>
       <li onClick={() => window.location.href = '/aboutus' }>About Us</li>
       <li onClick={() => window.location.href = '/contactus' }>Contact Us</li>
-      <li onClick={() => window.location.href = '/signin' }>Sign In</li>
-      <li onClick={() => window.location.href = '/register' }>Register</li>
-      <li><span> <Calling /> <p>+91 84545 84545  </p>     Customer care </span></li>
+      <li onClick={() => window.location.href = '/privacy' }>Testimonials</li>
+      {/* <li><span> <Calling /> <p>+91 84545 84545  </p>     Customer care </span></li> */}
       </ul>
       </div>
 

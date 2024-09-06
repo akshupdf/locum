@@ -3492,3 +3492,22 @@ export const ExitIcon = () => {
 
   )
 }
+
+export const HamBurger = () => {
+
+  return (
+<svg width="80" height="60" viewBox="0 0 40 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M10 19H30" stroke="#326295" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M10 11H30" stroke="#326295" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M18 27L30 27" stroke="#326295" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg> )
+}
+
+export const Close = () => {
+
+  return (
+    <svg width="25" height="25" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M21 1L1 21M1 1L21 21" stroke="#326295" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+   )}
