@@ -1,4 +1,5 @@
 import React from 'react'
+import privacynew from "../../assets/privacynew.png"
 
 const Privacy = () => {
     return (
@@ -9,7 +10,7 @@ const Privacy = () => {
                     <div className="para">We, at SOV Technologies (OPC) PVT Limited , are committed to respecting your online privacy and recognize the need for appropriate protection and management of any personally identifiable information you share with us. This Privacy Policy ("Policy") describes how SOV collects, uses, discloses and transfers personal information of users through its websites and applications, including through www.sovtechnologies.com, mobile applications and online services (collectively, the "Platform"). This policy applies to those who visit the Platform, or whose information SOV otherwise receives in connection with its services (such as contact information of individuals associated with SOV including partners) (hereinafter collectively referred to as "Users"). For the purposes of the Privacy Policy, "You" or "Your" shall mean the person who is accessing the Platform.                  </div>
                 </div>
                 <div className='second-order'>
-                    <img src="https://s3-alpha-sig.figma.com/img/d4b9/4c28/c66e13e5e4430ef3dbab68ad810f21b3?Expires=1725840000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=mrN0D5z3kGK41xWA1XFdSLMTNzPHhTRrDA34ZRKSelt7zzGckwgziJJWkTxzq5diXw6kPj-1~wgHvS0V0Pt5UOfZcDEejnAdBgAGgVVB73yHwq2f-s5b2rtwzvEj15dNnOjynq-upntx07xbLo~Clj0f3sQ1YbyKiYzu2yxgxO0fKzhehcoSSt3j0RnLp22GbWXUKy3m8NZ2Tat3g6Sx3jN4~hArYjL8aDMNcX9tSJz8uYId4PUf6y1bCAXF3EmzjTtSsLsMbhL4uQhNd9DFXF8nWa6~VFL4mgDb6wMNkRv6koBUL0flRtdTtuzZt8N~DeDXtnDhLSkLd9I3vwrMnQ__" alt="privacyimg" className='contactusimg' />
+                    <img src={privacynew} className='contactusimg' />
                 </div>
             </div>
             <div className='company-policy'>
