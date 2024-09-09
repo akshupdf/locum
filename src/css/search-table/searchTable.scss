@@ -66,6 +66,16 @@
       background: rgba(243, 246, 249, 1);
   }
 
+  .boy-search{
+    width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+  }
+
   .name-data{
     font-family: "Fira Sans";
       font-size: 14px;

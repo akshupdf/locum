@@ -19,10 +19,11 @@ const SearchTable = () => {
     const columnHelper = createColumnHelper();
     const dispatch = useDispatch();
     const navigate = useNavigate();
- 
+
 
 
     const { allUsers } = useSelector((state) => state?.user);
+    console.log(allUsers, "allUsers")
 
     const data =
         allUsers?.map((user) => ({
@@ -35,13 +36,14 @@ const SearchTable = () => {
             location: user.location || user.location,
             clinicShift: user.hospital_name,
             preferred_specialities: user.preferred_specialities,
+            profile_image: user.profile_image
         })) || [];
 
-        useEffect(() => {
-            if (!allUsers?.length) {
-                dispatch(getAllDoctors());
-            }
-        }, [dispatch, allUsers]);
+    useEffect(() => {
+        if (!allUsers?.length) {
+            dispatch(getAllDoctors());
+        }
+    }, [dispatch, allUsers]);
 
     const path = window.location.pathname;
 
@@ -53,13 +55,13 @@ const SearchTable = () => {
         window.scrollTo(0, 0);
     }, [location2]);
 
- 
+
 
     const NameFormatter = ({ row }) => {
         return (
             <div className="name-main">
                 <div className="img-border">
-                    <img src={boy} alt="boy" />
+                    <img src={row?.original?.profile_image || boy} alt="boy" className="boy-search" />
                 </div>
                 <div
                     className="name-data"
@@ -150,7 +152,7 @@ const SearchTable = () => {
             </div>
         );
     };
-    
+
 
     // const columns = [
     //     columnHelper.accessor("name", {
@@ -273,7 +275,7 @@ const SearchTable = () => {
 
     const { getHeaderGroups, getRowModel } = tableInstance;
 
- 
+
 
     return (
         <>
@@ -390,7 +392,7 @@ const SearchTable = () => {
                         </p>
                         <button
                             className="signup-btn"
-                            onClick={() => (window.location.href = "/signin")                                
+                            onClick={() => (window.location.href = "/signin")
                             }
                         >
                             {" "}
