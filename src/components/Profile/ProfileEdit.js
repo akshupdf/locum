@@ -106,6 +106,7 @@ export const ProfileEdit = () => {
       hourlyRate: backendData?.hourly_rate || "",
       totalExp: backendData?.total_exp || "",
       ownClinic: backendData?.own_clinic !== undefined ? backendData?.own_clinic : true,
+      ownHospital: backendData?.own_hospital !== undefined ? backendData?.own_hospital : true,
       clinicTimeSlot: backendData?.clinic_time_slot || [],
       clinicLocation: backendData?.clinic_location || "",
       idealNumber: backendData?.ideal_number || "",

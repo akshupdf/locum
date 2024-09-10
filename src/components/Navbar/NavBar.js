@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Calling, Close, HamBurger, Hand, LocumeLogo, LogIn, Reg } from '../../reusable/Icons'
 import { useDispatch } from 'react-redux';
 import { userLogout } from '../../redux/apiSlice';
+import logo from "../../assets/logo2.png"
 
 
 
@@ -53,7 +54,7 @@ window.location.href = '/'
     <div className='navbarMain'>
   
       <div className='logo-box'   >
-      <svg viewBox="0 0 345 87" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={() => window.location.href = '/' }>
+      {/* <svg viewBox="0 0 345 87" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={() => window.location.href = '/' }>
       <rect
         width="344.667"
         height="88"
@@ -88,7 +89,8 @@ window.location.href = '/'
         d="M316.711 63.6228H290.16V21H316.711V29.6398H290.16V37.9915H316.799V46.1705H290.16V54.9831H316.711V63.6228Z"
         fill="white" 
       />
-    </svg>
+    </svg> */}
+    <img src={logo} alt="logo" onClick={() => window.location.href = '/' } />
 
      {
 

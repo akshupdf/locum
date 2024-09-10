@@ -4,7 +4,7 @@ import html2pdf from 'html2pdf.js';
 
 const GeneratePDFv2 = async (data) => {
 
-console.log(data)
+// console.log(data)
   const response = await fetch('./resume-template.html');
   let template = await response.text();
 

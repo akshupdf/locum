@@ -1,5 +1,5 @@
 import { Locume, LocumeLogo } from "../../reusable/Icons"
-
+import logo from "../../assets/logo2.png"
 
 
 export const Footer = () => {
@@ -97,7 +97,8 @@ export const Footer = () => {
             <div className="footer2">
                 <div className="foot1">
 
-                    <Locume />
+                    {/* <Locume /> */}
+                    <img src={logo} alt="logo" onClick={() => window.location.href = '/' } />
 
                     <p>Terms & Conditions  </p>
                 </div>

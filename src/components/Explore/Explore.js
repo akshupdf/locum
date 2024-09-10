@@ -3,6 +3,7 @@ import team from "../../assets/team.png";
 import { Dropdown } from "primereact/dropdown";
 import { Ambulancev2, Behavioral, Emergency, ExitIcon, ExpBehaviour, ExpDog, ExpNephrology, ExpPhysiatry, ExpPsychology, ExpRheumatology, Gastroenterology, HandNBrain, HeartBeat, Nephrology, Neurology, Nurse, Oncology, Ophthalmology, Otolaryngology, Physiatry, Primary, Psychology, Radiationv2, Radiology, Radiologyv2, Rheumatology, Saline, Surgeryv2, Urology } from "../../reusable/Icons";
 import { Link } from "react-router-dom";
+import hand from '../../assets/hand.png'
 
 export const Explore = () => {
   const specialties = [
@@ -205,7 +206,7 @@ export const Explore = () => {
             </button>
           </div>
           <div className="join-box-right">
-            <img src="https://s3-alpha-sig.figma.com/img/e03b/1f57/be017111c9382d74d73ac1d1b55afa0c?Expires=1725840000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=LqkNy64DZprRoQW~Tw7fpA2s5~-fNegwfY508CBcZ6LHc4DRKbx8Bj0evpQs-s4u~jRTmeIspYgvIoQsddX3ZNtN8EhGXOmwjNwidGmH56SiK5q3AaH1avdG1foOvECiS7Rg~oTLgyMKukmJtut1y3vjMkafXvPJUy0cdoor9s0yj6rQYeolMTpnoS4t1uBGy1ZuPUuQh62-QeNQkY5QI2qgKfwTsqxTNjHck3RWD0nrj4pV3MQ8BGAkmcYzF7BBj7Nq0YgDzZwKwj1oKd~GYW576yVCg7WHtPBZlZ2qg0TVkyS4WRab3QhKkCkpA6K6WJccZqOcJsuKhEjFxLreFQ__" alt="hand"></img>
+            <img src={hand} alt="hand"></img>
           </div>
         </div>
       </div>

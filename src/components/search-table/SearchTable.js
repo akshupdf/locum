@@ -13,7 +13,7 @@ import boy from "../../assets/boy.png";
 import { ExitIcon } from "../../reusable/Icons";
 import { useLocation, useNavigate } from "react-router-dom";
 import { MultiSelect } from "primereact/multiselect";
-
+import hand from '../../assets/hand.png'
 
 const SearchTable = () => {
     const columnHelper = createColumnHelper();
@@ -23,7 +23,7 @@ const SearchTable = () => {
 
 
     const { allUsers } = useSelector((state) => state?.user);
-    console.log(allUsers, "allUsers")
+
 
     const data =
         allUsers?.map((user) => ({
@@ -398,10 +398,10 @@ const SearchTable = () => {
                             {" "}
                             Sign In
                         </button>
-                    </div>
+                    </div> 
                     <div className="join-box-right">
                         <img
-                            src="https://s3-alpha-sig.figma.com/img/e03b/1f57/be017111c9382d74d73ac1d1b55afa0c?Expires=1725840000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=LqkNy64DZprRoQW~Tw7fpA2s5~-fNegwfY508CBcZ6LHc4DRKbx8Bj0evpQs-s4u~jRTmeIspYgvIoQsddX3ZNtN8EhGXOmwjNwidGmH56SiK5q3AaH1avdG1foOvECiS7Rg~oTLgyMKukmJtut1y3vjMkafXvPJUy0cdoor9s0yj6rQYeolMTpnoS4t1uBGy1ZuPUuQh62-QeNQkY5QI2qgKfwTsqxTNjHck3RWD0nrj4pV3MQ8BGAkmcYzF7BBj7Nq0YgDzZwKwj1oKd~GYW576yVCg7WHtPBZlZ2qg0TVkyS4WRab3QhKkCkpA6K6WJccZqOcJsuKhEjFxLreFQ__"
+                            src={hand}
                             alt="hand"
                         ></img>
                     </div>

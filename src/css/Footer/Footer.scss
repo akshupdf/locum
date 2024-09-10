@@ -44,7 +44,7 @@
       width: 100%;
       display: flex; 
       justify-content: space-between;
-      padding: 64px 40px  20px 40px;
+      padding: 34px 40px  20px 40px;
     }
 
     svg{
@@ -65,6 +65,11 @@
 
     span{
         margin-left: 2rem;
+    }
+
+    img{
+      width: 40%;
+      background: white;
     }
   }
   
@@ -120,7 +125,7 @@
         font-size: 16px ;
         font-weight: 500;
         line-height: 20.05px;
-        margin-top: 2rem;
+        margin-top: 3rem;
         color: white !important;
         text-align: end;
         text-wrap: nowrap;
@@ -187,6 +192,10 @@
       font-weight: 400 !important;
       position: absolute;
     }
+
+    // img{
+    //   width: 30%;
+    // }
   }
 
   .foot2{
