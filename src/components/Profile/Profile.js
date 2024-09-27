@@ -4,7 +4,7 @@ import { Leafimg, Stars } from "../../reusable/Icons";
 import { RadioButton } from "primereact/radiobutton";
 import { InputText } from "primereact/inputtext";
 import { useDispatch, useSelector } from "react-redux";
-import {  fetchUserWithToken } from "../../redux/apiSlice";
+import {  fetchUserWithToken, getCategory, getSpecialties } from "../../redux/apiSlice";
 import { useParams } from "react-router-dom";
 import SkeletonLoader from "../../reusable/Skeleton";
 import Handlebars from 'handlebars';
@@ -61,17 +61,18 @@ export const Profile = () => {
   const dispatch = useDispatch();
 
 
-  const [timeSlot, setTimeSlot] = useState("");
 
   const [isLoading, setLoading] = useState(true);
-  const [isEditing, setIsEditing] = useState(false);
   const user = useSelector(selectUserInfov2);
+  const { specialties , category } = useSelector((state) => state.user);
   const [selectedSpecialties, setSelectedSpecialties] = useState([]);
 
   useEffect(() => {
  
     if (id) {
       dispatch(fetchUserWithToken(id));
+      dispatch(getSpecialties());
+      dispatch(getCategory());
       const timer = setTimeout(() => {
         setLoading(false);
       }, 1000);      
@@ -110,7 +111,7 @@ export const Profile = () => {
             <div className="tab-box">
             <div className="logo-box">
               {
-                data.profile_image ?  <img src={data.profile_image} alt="profile"></img> :  <img src={Profile} alt="profile"></img>
+                data?.profile_image ?  <img src={data?.profile_image} alt="profile"></img> :  <img src={profile} alt="profile"></img>
               }
               
               {
@@ -220,14 +221,19 @@ data?.email_id &&
               </div>
   
               <div className="row mt-4">
-          
-                <div className="col-md-4 ">
-                  <h1>Rate/Hourly </h1>
+          {
 
-                  <p className="">{data?.hourly_rate}</p>
-               
-                </div>
-                <div className="col-md-6">
+data?.hourly_rate && <div className="col-md-4 ">
+<h1>Rate/Hourly </h1>
+
+<p className="">{data?.hourly_rate}</p>
+
+</div>
+          }
+                
+
+                {
+                  data?.total_exp &&  <div className="col-md-6">
                   <h1>Total Experience  <span className="top-p">(In Years)</span></h1>
                   <div className="d-flex">
                   <p className="">{data?.total_exp}</p>
@@ -255,6 +261,8 @@ data?.email_id &&
                     </span> */}
                   </div>
                 </div>
+                }
+               
               </div>
   
               {/* <div className=" mt-4 d-flex">
@@ -293,39 +301,68 @@ data?.email_id &&
 
 
               </div> */}
-              <div className="row ">
-                <div className="col-md-4">
-                  <h1>Clinic Name</h1>
-                  <p className="">{data?.clinic_name}</p> 
-                </div>
-                <div className="col-md-6">
-                  <h1>Clinic Location </h1>
-                  <p className="wd" >{data?.clinic_location}</p> 
-                </div>
-              </div>
-                <div className="row mt-4">
-                  <h1>Preferred Specialities</h1>
-              <div className="tuple-box">
-      {data.preferred_specialities?.map((specialty, index) => (
-        <button
-          key={index}
-          className={` tuple ${selectedSpecialties.includes(specialty) ? 'selected' : ''}`}
-        >
-          <span> {specialty} </span> 
-        </button>
-      ))}
-    </div> </div>
+
+              {
+
+data?.clinic_name &&   <div className="row ">
+<div className="col-md-4">
+  <h1>Clinic Name</h1>
+  <p className="">{data?.clinic_name}</p> 
+</div>
+<div className="col-md-6">
+  <h1>Clinic Location </h1>
+  <p className="wd" >{data?.clinic_location}</p> 
+</div>
+</div>
+              }
+
+              {
+
+data.preferred_specialities &&   <div className="row mt-4">
+<h1>Preferred Specialities</h1>
+<div className="tuple-box">
+{
+specialties &&
+specialties
+  .filter(spec => data?.preferred_specialities?.includes(spec.id))
+  .map(spec => (
+    <button
+    key={spec?.id}
+    className={` tuple ${selectedSpecialties.includes(spec) ? 'selected' : ''}`}
+    >
+    <span> {spec?.specialties_name} </span> 
+    </button>
+  ))
+
+
+// data.preferred_specialities?.map((specialty, index) => (
+// <button
+// key={index}
+// className={` tuple ${selectedSpecialties.includes(specialty) ? 'selected' : ''}`}
+// >
+// <span> {specialty} </span> 
+// </button>
+// )
+// )
+
+}
+</div> </div>
+              }
+            
+         {
+          data?.hospital_name &&     <div className="row mt-4">
+          <div className="col-md-4">
+            <h1>Hospital Name</h1>
+            <p className="" >{data?.hospital_name}</p> 
+          </div>
+          <div className="col-md-4">
+            <h1>Hospital Location </h1>
+            <p className="wd" >{data?.hospital_location}</p> 
+          </div>
+        </div>
+         }     
   
-              <div className="row mt-4">
-                <div className="col-md-4">
-                  <h1>Hospital Name</h1>
-                  <p className="" >{data?.hospital_name}</p> 
-                </div>
-                <div className="col-md-4">
-                  <h1>Hospital Location </h1>
-                  <p className="wd" >{data?.hospital_location}</p> 
-                </div>
-              </div>
+          
   
            
   

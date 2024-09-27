@@ -7,7 +7,7 @@ import { InputTextarea } from 'primereact/inputtextarea';
 import { Checkbox } from "primereact/checkbox";
 import { Button } from "primereact/button";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser, fetchUserWithToken, updateUser } from "../../redux/apiSlice";
+import { addUser, fetchUserWithToken, getCategory, getSpecialties, updateUser } from "../../redux/apiSlice";
 import { useParams } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import SkeletonLoader from "../../reusable/Skeleton";
@@ -26,7 +26,7 @@ export const ProfileEdit = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  const { userData, otp, loading, error, mobileVerficationId ,verifyOtpError } = useSelector(
+  const { userData, otp, loading,specialties,category, error, mobileVerficationId ,verifyOtpError } = useSelector(
     (state) => state.user
   );
 
@@ -54,17 +54,17 @@ export const ProfileEdit = () => {
     );
   };
 
-  const specialties = [
-    "Abdominal Radiology", "Abdominal Surgery", "Addiction Medicine", 
-    "Addiction Psychiatry", "Adolescent Medicine", "Adult Congenital Heart Disease",
-    "Adult Reconstructive Orthopedics", "Advanced Heart Failure ",
-    "Aerospace Medicine", "Allergy", "Allergy/Immunology", "Anatomic Pathology",
-    "Anatomic/Clinical Pathology", "Anesthesiology", "Anesthesiology Critical Care Medicine",
-    "Behavioral and Cognitive Psychology", "Bloodbanking/Transfusion Medicine", 
-    "Brain Injury Medicine", "Burn Surgery", "Cardiac Electrophysiology", 
-    "Cardiothoracic Radiology", "Cardiothoracic Surgery", "Cardiovascular Diseases",
-    "Women's Imaging", "Wound Care"
-  ];
+  // const specialties = [
+  //   "Abdominal Radiology", "Abdominal Surgery", "Addiction Medicine", 
+  //   "Addiction Psychiatry", "Adolescent Medicine", "Adult Congenital Heart Disease",
+  //   "Adult Reconstructive Orthopedics", "Advanced Heart Failure ",
+  //   "Aerospace Medicine", "Allergy", "Allergy/Immunology", "Anatomic Pathology",
+  //   "Anatomic/Clinical Pathology", "Anesthesiology", "Anesthesiology Critical Care Medicine",
+  //   "Behavioral and Cognitive Psychology", "Bloodbanking/Transfusion Medicine", 
+  //   "Brain Injury Medicine", "Burn Surgery", "Cardiac Electrophysiology", 
+  //   "Cardiothoracic Radiology", "Cardiothoracic Surgery", "Cardiovascular Diseases",
+  //   "Women's Imaging", "Wound Care"
+  // ];
 
   const defaultValues = {
     firstName: "",
@@ -88,7 +88,8 @@ export const ProfileEdit = () => {
     aboutMe: "",
     hospitalName :  "",
     clinicName :  "",
-    emailId :  ""
+    emailId :  "",
+    category_name: []
   };
 
   const [initialValues, setInitialValues] = useState(defaultValues);
@@ -110,7 +111,9 @@ export const ProfileEdit = () => {
       clinicTimeSlot: backendData?.clinic_time_slot || [],
       clinicLocation: backendData?.clinic_location || "",
       idealNumber: backendData?.ideal_number || "",
-      preferredSpecialities: backendData?.preferred_specialities || [],
+      preferredSpecialities: specialties && specialties
+      .filter(spec => backendData?.preferred_specialities?.includes(spec.id))
+      .map(spec => ( spec?.specialties_name || [] )) ,
       visitHospital: backendData?.visit_hospital !== undefined ? backendData?.visit_hospital : true,
       visitHospitalSlot: backendData?.visit_hospital_slot || [],
       hospitalLocation: backendData?.hospital_location || "",
@@ -118,7 +121,10 @@ export const ProfileEdit = () => {
       image: backendData?.profile_image || "",
       hospitalName :  backendData?.hospital_name || "",
       clinicName : backendData?.clinic_name || "",
-      emailId :  backendData?.email_id || ""
+      emailId :  backendData?.email_id || "",
+      category_name: category && category
+      .filter(spec => backendData?.category_name?.includes(spec.id))
+      .map(spec => ( spec?.category_name || [] ))
     };
   };
 
@@ -162,10 +168,10 @@ export const ProfileEdit = () => {
           toast(addUserResult.error || "User Registration Failed");
         } else {
           toast("User Info Has been Updated");
-          window.location.href = `/profile/${id}`;
+          // window.location.href = `/profile/${id}`;
         }
       } catch (error) {
-        toast("An error occurred");
+        toast("Session expired . Please Logout and Sign In again");
       }
     },
   });
@@ -206,6 +212,11 @@ export const ProfileEdit = () => {
     "SFA",
     "Student",
   ];
+
+  useEffect(() => {
+    dispatch(getSpecialties());
+    dispatch(getCategory());
+}, []);
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -547,8 +558,11 @@ formik.values.ownClinic === true &&    <div className="row mt-4">
         <MultiSelect
         className="login-input-Speciality"
         name="preferredSpecialities"
-        value={formik.values?.preferredSpecialities}
-        options={specialties}
+        value={formik.values.preferredSpecialities} 
+        options={specialties?.map((spec) => ({
+          label: spec.specialties_name,
+          value: spec.id,
+        }))}
         onChange={(e) => formik.setFieldValue("preferredSpecialities", e.value)}
         placeholder="Select specialties"
       />
@@ -557,10 +571,13 @@ formik.values.ownClinic === true &&    <div className="row mt-4">
               <h1> Specified category</h1>
         <MultiSelect
         className="login-input-Speciality"
-        name="preferredSpecialities"
-        value={formik.values?.title}
-        options={title}
-        onChange={(e) => formik.setFieldValue("title", e.value)}
+        name="category_name"
+        value={formik.values?.category_name}
+        options={category?.map((spec) => ({
+          label: spec.category_name,
+          value: spec.id,
+        }))}
+        onChange={(e) => formik.setFieldValue("category_name", e.value)}
         placeholder="Select Title"
       />
       </div>

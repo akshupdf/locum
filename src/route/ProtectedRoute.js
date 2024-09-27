@@ -1,16 +1,8 @@
-import React from 'react';
-import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
-import { Profile } from '../components/Profile/Profile';
+import { Navigate } from 'react-router-dom';
 
-const ProtectedRoute = ({ element,  }) => {
-  const userId = localStorage.getItem('userId');
-  const location = useLocation();
-
-  if (!userId) {
-    return <Navigate to="/signin" state={{ from: location }} />;
-  }
-
-  return <Profile />
+const PrivateRoute = ({ element, ...rest }) => {
+    const token = localStorage.getItem('jwtToken'); 
+    return token ? element : <Navigate to="/signin" />;
 };
 
-export default ProtectedRoute;
+export default PrivateRoute;

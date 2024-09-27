@@ -10,40 +10,28 @@ import { Dropdown } from "primereact/dropdown";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllDoctors } from "../../redux/apiSlice";
 import boy from "../../assets/boy.png";
-import { ExitIcon } from "../../reusable/Icons";
+import { ExitIcon, ProfileArrow } from "../../reusable/Icons";
 import { useLocation, useNavigate } from "react-router-dom";
 import { MultiSelect } from "primereact/multiselect";
 import hand from '../../assets/hand.png'
 
-const SearchTable = () => {
+const SearchTable = ({ data: filteredData  , allUsers}) => {
     const columnHelper = createColumnHelper();
-    const dispatch = useDispatch();
     const navigate = useNavigate();
 
 
 
-    const { allUsers } = useSelector((state) => state?.user);
+    const data = (filteredData?.length ? filteredData : allUsers)?.map((user) => ({
+        name: `${user.first_name} ${user.last_name}`,
+        id: user.custom_id,
+        medical: user.medical_id,
+        shift: user.availability,
+        location: user.location,
+        clinicShift: user.hospital_name,
+        preferred_specialities: user.preferred_specialities,
+        profile_image: user.profile_image
+      })) || [];
 
-
-    const data =
-        allUsers?.map((user) => ({
-            name: `${user.first_name} ${user.last_name}`,
-            // mobile: user.mobile_number,
-            // rate: user.hourly_rate,
-            id: user.custom_id,
-            medical: user.medical_id,
-            shift: user.availability,
-            location: user.location || user.location,
-            clinicShift: user.hospital_name,
-            preferred_specialities: user.preferred_specialities,
-            profile_image: user.profile_image
-        })) || [];
-
-    useEffect(() => {
-        if (!allUsers?.length) {
-            dispatch(getAllDoctors());
-        }
-    }, [dispatch, allUsers]);
 
     const path = window.location.pathname;
 
@@ -55,165 +43,86 @@ const SearchTable = () => {
         window.scrollTo(0, 0);
     }, [location2]);
 
+    const truncateText = (text, maxLength) => {
+        if (!text) return "Not Available";
+        return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
+    };
+    
+    const joinAndTruncate = (array, maxLength) => {
+        if (!array || !array.length) return "Not Available";
+        const joinedText = array.join(", ");
+        return truncateText(joinedText, maxLength);
+    };
 
-
-    const NameFormatter = ({ row }) => {
+    const NameFormatter = React.memo(({ row }) => {
+        const { profile_image, name, preferred_specialities } = row?.original || {};
+    
         return (
             <div className="name-main">
                 <div className="img-border">
-                    <img src={row?.original?.profile_image || boy} alt="boy" className="boy-search" />
+                    <img src={profile_image || boy} alt="profile" className="boy-search" />
                 </div>
-                <div
-                    className="name-data"
-                    style={{ overflow: "hidden", textOverflow: "ellipsis" }}
-                >
-                    {row?.original?.name
-                        ? row?.original?.name?.length > 20
-                            ? row?.original?.name?.slice(0, 20) + "..."
-                            : row?.original?.name
-                        : "Not Available"}
+                <div className="name-data" style={{ overflow: "hidden", textOverflow: "ellipsis" }}>
+                    {truncateText(name, 20)}
                     <div className="sm-data-name" style={{ overflow: "hidden", textOverflow: "ellipsis" }}>
-                        {row?.original?.preferred_specialities
-                            ? row?.original?.preferred_specialities.join(", ").length > 15
-                                ? row?.original?.preferred_specialities
-                                    .join(", ")
-                                    .slice(0, 15) + "..."
-                                : row?.original?.preferred_specialities.join(", ")
-                            : "Not Available"}
+                        {joinAndTruncate(preferred_specialities, 15)}
                     </div>
                 </div>
             </div>
         );
-    };
+    });
 
-    const ShiftFormatter = ({ row }) => {
+    const ShiftFormatter =  React.memo(({ row }) => {
+        const { shift } = row?.original || {};
         return (
             <div style={{ overflow: "hidden", textOverflow: "ellipsis" }} className="shift2">
-                {row?.original?.shift
-                    ? row?.original?.shift.join(", ").length > 20
-                        ? row?.original?.shift.join(", ").slice(0, 20) + "..."
-                        : row?.original?.shift.join(", ")
-                    : "Not Available"}
+                {joinAndTruncate(shift, 20)}
             </div>
         );
-    };
+    });
 
-    const ActionFormatter = ({ row }) => {
+    const ActionFormatter =  React.memo(({ row }) => {
 
         const userId = row.original?.id;
 
-        // console.log("Row data:", row.original); 
+
         return (
             <div style={{ cursor: "pointer" }}
                 onClick={() => navigate(`/profile/${userId}`)} >
 
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" >
-                    <rect x="0.5" y="0.5" width="31" height="31" rx="5.5" fill="#FAFAFA" stroke="#0866C6" />
-                    <rect opacity="0.3" x="9.43555" y="16.8206" width="1.64102" height="7.38461" rx="0.820512" transform="rotate(-90 9.43555 16.8206)" fill="#0866C6" />
-                    <path d="M15.4204 20.3429C15.0999 20.6634 15.0999 21.1829 15.4204 21.5033C15.7408 21.8238 16.2603 21.8238 16.5807 21.5033L21.5038 16.5803C21.8144 16.2696 21.8253 15.7695 21.5285 15.4456L17.0157 10.5225C16.7094 10.1885 16.1904 10.1659 15.8564 10.4721C15.5223 10.7784 15.4998 11.2974 15.806 11.6314L19.7879 15.9754L15.4204 20.3429Z" fill="#0866C6" />
-                </svg>
+             <ProfileArrow />
 
             </div>
         );
-    };
+    });
 
-    const MedicalIdFormatter = ({ row }) => {
+    const MedicalIdFormatter =  React.memo(({ row }) => {
+        const { medical } = row?.original || {};
         return (
             <div style={{ overflow: "hidden", textOverflow: "ellipsis" }} className="medical2">
-                {row?.original?.medical
-                    ? row?.original?.medical.length > 20
-                        ? row?.original?.medical.slice(0, 20) + "..."
-                        : row?.original?.medical
-                    : "Not Available"}
+                {truncateText(medical, 20)}
             </div>
         );
-    };
+    });
 
-    const LocationFormatter = ({ row }) => {
+    const LocationFormatter =  React.memo(({ row }) => {
+        const { location } = row?.original || {};
         return (
             <div style={{ overflow: "hidden", textOverflow: "ellipsis" }} className="location2">
-                {row?.original?.location
-                    ? row?.original?.location.length > 20
-                        ? row?.original?.location.slice(0, 20) + "..."
-                        : row?.original?.location
-                    : "Not Available"}
+                {truncateText(location, 20)}
             </div>
         );
-    };
+    });
 
-    const HospitalNameFormatter = ({ row }) => {
+    const HospitalNameFormatter =  React.memo(({ row }) => {
+        const { clinicShift } = row?.original || {};
         return (
             <div style={{ overflow: "hidden", textOverflow: "ellipsis" }} className="clinicShift2">
-                {row?.original?.clinicShift
-                    ? row?.original?.clinicShift.length > 20
-                        ? row?.original?.clinicShift.slice(0, 20) + "..."
-                        : row?.original?.clinicShift
-                    : "Not Available"}
+                {truncateText(clinicShift, 20)}
             </div>
         );
-    };
+    });
 
-
-    // const columns = [
-    //     columnHelper.accessor("name", {
-    //         id: "name",
-    //         // cell: (info) => info.getValue(),
-    //         cell: ({ row }) => {
-    //             return <NameFormatter row={row} />;
-    //         },
-    //         header: () => "Name",
-    //         minWidth: 300,
-    //         enableSorting: false,
-    //     }),
-    //     // columnHelper.accessor("mobile", {
-    //     //     id: "mobile",
-    //     //     cell: (info) => info.getValue(),
-    //     //     header: () => "Mobile No.",
-    //     //     enableSorting: false,
-    //     // }),
-    //     // columnHelper.accessor("rate", {
-    //     //     id: "rate",
-    //     //     cell: (info) => info.getValue(),
-    //     //     header: () => "Rate/Hrs",
-    //     //     enableSorting: false,
-    //     // }),
-    //     columnHelper.accessor("shift", {
-    //         id: "shift",
-    //         // cell: (info) => info.getValue(),
-    //         cell: ({ row }) => {
-    //             return <ShiftFormatter row={row} />;
-    //         },
-    //         header: () => "Shift",
-    //         enableSorting: false,
-    //     }),
-    //     columnHelper.accessor("medical", {
-    //         id: "medical",
-    //         cell: (info) => info.getValue(),
-    //         header: () => "Medical Id",
-    //         enableSorting: false,
-    //     }),
-    //     columnHelper.accessor("location", {
-    //         id: "location",
-    //         cell: (info) => info.getValue(),
-    //         header: () => "Location",
-    //         enableSorting: false,
-    //     }),
-    //     columnHelper.accessor("clinicShift", {
-    //         id: "clinicShift",
-    //         cell: (info) => info.getValue(),
-    //         header: () => "Hospital Name",
-    //         enableSorting: false,
-    //     }),
-    //     columnHelper.accessor("actions", {
-    //         id: "actions",
-    //         // cell: (info) => info.getValue(),
-    //         cell: ({ row }) => {
-    //             return <ActionFormatter row={row} />;
-    //         },
-    //         header: () => "",
-    //         enableSorting: false,
-    //     }),
-    // ];
 
     const columns = useMemo(() => [
         columnHelper.accessor("name", {
@@ -256,16 +165,8 @@ const SearchTable = () => {
     ], []);
 
 
-    // const tableInstance = useReactTable({
-    //     columns,
-    //     data,
-    //     getCoreRowModel: getCoreRowModel(),
-    //     getSortedRowModel: getSortedRowModel(),
-    // });
-
     const memoizedData = useMemo(() => data, [data]);
 
-    // Now call useReactTable directly
     const tableInstance = useReactTable({
         columns,
         data: memoizedData,
@@ -275,50 +176,48 @@ const SearchTable = () => {
 
     const { getHeaderGroups, getRowModel } = tableInstance;
 
+    const TableHeader = React.memo(({ getHeaderGroups }) => (
+        <thead>
+          {getHeaderGroups().map((headerGroup) => (
+            <tr key={headerGroup.id}>
+              {headerGroup.headers.map((header) => (
+                <th key={header.id} className={header?.id}>
+                  {flexRender(header.column.columnDef.header, header.getContext())}
+                  {header.column.getCanSort() ? (
+                    <span>
+                      {header.column.getIsSorted()
+                        ? header.column.getIsSorted() === "desc"
+                          ? " 🔽"
+                          : " 🔼"
+                        : ""}
+                    </span>
+                  ) : null}
+                </th>
+              ))}
+            </tr>
+          ))}
+        </thead>
+      ));
+      
+      const TableBody = React.memo(({ getRowModel }) => (
+        <tbody>
+          {getRowModel().rows.map((row) => (
+            <tr key={row.id}>
+              {row.getVisibleCells().map((cell) => (
+                <td key={cell.id}>
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      ));
+
 
 
     return (
         <>
             <div className="explore-search-main-parent-table">
-                {/* <div className="search-box">
-                    <div className="quick">Quick Locum search</div>
-                    <div className="drop-search">
-                        <div>
-                            <Dropdown
-                                className="login-input"
-                                name="title"
-                                options={title}
-                                placeholder="Category"
-                            />
-                        </div>
-                        <div>
-                            <Dropdown
-                                className="login-input-Speciality"
-                                name="speciality"
-                                options={specialties}
-                                placeholder="Speciality..."
-                            />
-                             <MultiSelect
-                className="login-input-Speciality"
-                name="availability"
-                value={availability}
-                options={specialties}
-                onChange={handleAvailabilityChange}
-                placeholder="Speciality..."
-              />
-                            
-                        </div>
-                        <div>
-                            <Dropdown
-                                className="login-input-Speciality"
-                                name="speciality"
-                                options={location}
-                                placeholder="Location..."
-                            />
-                        </div>
-                        <div className="search-fil">Search</div>
-                    </div>
-                </div> */}
             </div>
             <div className="d-flex justify-content-center">
                 <div className="search-exp-table">
@@ -339,43 +238,8 @@ const SearchTable = () => {
                         </div>
                     </div>
                     <table>
-                        <thead>
-                            {getHeaderGroups().map((headerGroup) => (
-                                <tr key={headerGroup.id}>
-                                    {headerGroup.headers.map((header) => (
-                                        <th key={header.id} className={header?.id}>
-                                            {flexRender(
-                                                header.column.columnDef.header,
-                                                header.getContext()
-                                            )}
-                                            {header.column.getCanSort() ? (
-                                                <span>
-                                                    {header.column.getIsSorted()
-                                                        ? header.column.getIsSorted()
-                                                            ? " 🔽"
-                                                            : " 🔼"
-                                                        : ""}
-                                                </span>
-                                            ) : null}
-                                        </th>
-                                    ))}
-                                </tr>
-                            ))}
-                        </thead>
-                        <tbody>
-                            {getRowModel().rows.map((row) => (
-                                <tr key={row.id}>
-                                    {row.getVisibleCells().map((cell) => (
-                                        <td key={cell.id}>
-                                            {flexRender(
-                                                cell.column.columnDef.cell,
-                                                cell.getContext()
-                                            )}
-                                        </td>
-                                    ))}
-                                </tr>
-                            ))}
-                        </tbody>
+                    <TableHeader getHeaderGroups={getHeaderGroups} />
+                    <TableBody getRowModel={getRowModel} />
                     </table>
                 </div>
             </div>

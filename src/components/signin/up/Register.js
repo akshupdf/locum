@@ -11,30 +11,30 @@ import axios from "axios";
 import { MultiSelect } from "primereact/multiselect";
 import { Dropdown } from "primereact/dropdown";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser, generateOtp, verifyOtp } from "../../../redux/apiSlice";
+import { addUser, generateOtp, getSpecialties, verifyOtp } from "../../../redux/apiSlice";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import logo from "../../../assets/logo-footer.png"
 
-const validateMobileOrEmail = (value) => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const mobileRegex = /^[0-9]{10}$/;
+// const validateMobileOrEmail = (value) => {
+//   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//   const mobileRegex = /^[0-9]{10}$/;
 
-  if (!value) {
-    return "Required";
-  }
+//   if (!value) {
+//     return "Required";
+//   }
 
-  if (!emailRegex.test(value) && !mobileRegex.test(value)) {
-    return "Invalid email or mobile number";
-  }
+//   if (!emailRegex.test(value) && !mobileRegex.test(value)) {
+//     return "Invalid email or mobile number";
+//   }
 
-  return null;
-};
+//   return null;
+// };
 
 export const Register = () => {
   const dispatch = useDispatch();
 
-  const { userData, loading, error, mobileVerficationId, verifyOtpError } = useSelector(
+  const { specialties , loading, error, mobileVerficationId, verifyOtpError } = useSelector(
     (state) => state.user
   );
 
@@ -45,13 +45,43 @@ export const Register = () => {
       .string()
       .required("mobile No is required")
       .min(10, "Mobile number must contain 10 digits")
-      .max(10, "Mobile number must contain 10 digits"),
-    medicalId: yup.string().required("medical Id is required"),
+      .max(10, "Mobile number must contain 10 digits")
   });
 
   const [otpSent, setOtpSent] = useState(false);
-  const [timer, setTimer] = useState(30);
   const [isResendVisible, setIsResendVisible] = useState(false);
+  const [timer, setTimer] = useState(null);
+  const [seconds, setSeconds] = useState(0);
+
+  const startTimer = () => {
+    const duration = 30; 
+    setSeconds(duration);
+    setOtpSent(true);
+    setTimer(
+      setInterval(() => {
+        setSeconds((prevSeconds) => {
+          if (prevSeconds <= 1) {
+            clearInterval(timer);
+            setIsResendVisible(true);
+            return 0;
+          }
+          return prevSeconds - 1;
+        });
+      }, 1000)
+    );
+  };
+
+  const stopTimer = () => {
+    clearInterval(timer);
+    setTimer(null);
+    setSeconds(0);
+  };
+
+  useEffect(() => {
+    if (seconds === 0 && timer !== null) {
+      stopTimer();
+    }
+  }, [seconds, timer]);
 
   let verifyId
 
@@ -121,9 +151,7 @@ export const Register = () => {
           toast("Mobile number already verified");
         } else {
           dispatch(generateOtp(values));
-          setOtpSent(true);
-          setIsResendVisible(false);
-          setTimer(30);
+          startTimer()
           toast("Otp Sent Successfully");
         }
       } catch (error) {
@@ -148,44 +176,35 @@ export const Register = () => {
 
   };
 
-  const specialties = [
-    "Anesthesiology",
-    "Cardiology",
-    "Clinical Social Work",
-    "Dermatology",
-    "Emergency medicine",
-    "Endocrinology",
-    "Gastroenterology",
-    "Hospital medicine",
-    "Medical oncology",
-    "Nephrology",
-    "Neurology",
-    "Women's Health",
-    "Ophthalmology",
-    "Otolaryngology/ENT",
-    "Primary care",
-    "Physiatry",
-    "Behavioral Health",
-    "Psychology",
-    "Radiology",
-    "Radiation oncology",
-    "Rheumatology",
-    "Surgery",
-    "Urology"
-  ];
+  // const specialties = [
+  //   "Anesthesiology",
+  //   "Cardiology",
+  //   "Clinical Social Work",
+  //   "Dermatology",
+  //   "Emergency medicine",
+  //   "Endocrinology",
+  //   "Gastroenterology",
+  //   "Hospital medicine",
+  //   "Medical oncology",
+  //   "Nephrology",
+  //   "Neurology",
+  //   "Women's Health",
+  //   "Ophthalmology",
+  //   "Otolaryngology/ENT",
+  //   "Primary care",
+  //   "Physiatry",
+  //   "Behavioral Health",
+  //   "Psychology",
+  //   "Radiology",
+  //   "Radiation oncology",
+  //   "Rheumatology",
+  //   "Surgery",
+  //   "Urology"
+  // ];
 
   useEffect(() => {
-    let interval = null;
-    if (timer > 0) {
-      interval = setInterval(() => {
-        setTimer((prevTimer) => prevTimer - 1);
-      }, 1000);
-    } else {
-      setIsResendVisible(true);
-    }
-
-    return () => clearInterval(interval);
-  }, [timer]);
+      dispatch(getSpecialties());
+  }, []);
 
 
 
@@ -391,8 +410,12 @@ export const Register = () => {
               <MultiSelect
                 className="login-input-Speciality"
                 name="preferredSpecialities"
-                value={formik.values.preferredSpecialities}
-                options={specialties}
+                // value={formik.values.preferredSpecialities}
+                value={formik.values.preferredSpecialities} 
+                options={specialties?.map((spec) => ({
+                  label: spec.specialties_name,
+                  value: spec.id,
+                }))}
                 onChange={(e) => formik.setFieldValue("preferredSpecialities", e.value)}
                 placeholder="Select Specialities"
               />{" "}
