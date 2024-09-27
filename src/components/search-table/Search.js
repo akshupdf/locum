@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect ,useState } from "react";
 import { MultiSelect } from "primereact/multiselect";
 import { Formik } from "formik";
 import { filteredUser } from "../../redux/apiSlice";
@@ -28,6 +28,7 @@ export const Search = ({
   const dispatch = useDispatch();
 
   const path = window.location.pathname;
+  const [search, setSearch] = useState(false);
 
   const specialty = path.split("/").pop();
 
@@ -67,7 +68,7 @@ export const Search = ({
       <form onSubmit={handleSubmit}>
         <div className="explore-search-main-parent-table">
           <div className="search-box">
-            <div className="quick">Quick Locum search</div>
+            <div className="quick"></div>
             <div className="drop-search">
               <div>
                 <MultiSelect

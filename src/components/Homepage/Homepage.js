@@ -242,7 +242,7 @@ export default function HomePage() {
 
           <Flipcard />
         </div>
-        <button className="btn" onClick={() => (window.location.href = "/explore")}>Explore More</button>
+        <button className="btn" onClick={() => (window.location.href = "/search-page")}>Explore More</button>
       </div>
 
       <div className="compare-box-main">

@@ -162,19 +162,24 @@ export const Flipcard = () => {
                                     <div className="tool-small-box-text">
                                         <h4>{data?.first_name}{" "} {data?.last_name}</h4>
 
-                                        {  specialties &&
+                                        {specialties && (
   specialties
-    .filter(spec => data?.preferred_specialities?.includes(spec.id))
-    .map(spec => (
-      <h3 key={spec.id}>{spec.specialties_name}</h3>
-    ))
-}
+    .find(spec => data?.preferred_specialities?.includes(spec.id)) 
+    ? (
+      <h3 key={specialties.find(spec => data?.preferred_specialities?.includes(spec.id)).id}>
+        {specialties.find(spec => data?.preferred_specialities?.includes(spec.id))?.specialties_name || "N/A"}
+      </h3>
+    )
+    : "N/A" 
+)}
                                     </div>
                                 </div>
                                 <div className="back">
                                     <div className="tool-small-box-text">
                                         <p><span>📍</span>{data.location || "N/A"}</p>
-                                        <p className='tuple-boxv2'><span>✅</span>{data.availability ? data.availability?.join(' , ') : "N/A"}</p>
+                                        <p className='tuple-boxv2'><span>✅</span> {data.availability && data.availability.length > 0 
+    ? data.availability[0] 
+    : "N/A"}</p>
                                         <p><span>🕓</span>{data.shift || "N/A"}</p>
                                         <p><span>💰</span>{data.hourly_rate && data.hourly_rate > 0 ? `₹${data.hourly_rate}` : "N/A"}</p>
                                     </div>

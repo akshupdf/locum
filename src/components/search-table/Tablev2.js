@@ -8,7 +8,7 @@ const SearchTablev2 = ({ data: filteredData  , allUsers ,specialties}) => {
 
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
-  const usersPerPage = 5; // Change this to show more users per page
+  const usersPerPage = 10; 
 
   const data = (filteredData?.length ? filteredData : allUsers)?.map((user) => ({
     name: `${user.first_name} ${user.last_name}`,
@@ -56,8 +56,8 @@ const SearchTablev2 = ({ data: filteredData  , allUsers ,specialties}) => {
                             <div className="list-white">    {filteredData?.length === 0
     ? `0 available doctors`
     : filteredData?.length 
-      ? `${filteredData.length} available doctors`
-      : `${allUsers.length} available doctors`}</div>
+      ? `${filteredData?.length} available doctors`
+      : `${allUsers?.length} available doctors`}</div>
                         </div>
                         <div
                             className="list-btn-search"
@@ -67,7 +67,7 @@ const SearchTablev2 = ({ data: filteredData  , allUsers ,specialties}) => {
                         </div>
                     </div>
 
-                    {filteredData && filteredData.length === 0 ? (
+                    {filteredData && filteredData?.length === 0 ? (
       <p className="locume-p" style={{marginLeft : "70px"}}>No data found</p>
     ) : (
       <table className="user-table">

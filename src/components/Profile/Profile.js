@@ -304,7 +304,7 @@ data?.hourly_rate && <div className="col-md-4 ">
 
               {
 
-data?.clinic_name &&   <div className="row ">
+data?.clinic_name ?    <div className="row ">
 <div className="col-md-4">
   <h1>Clinic Name</h1>
   <p className="">{data?.clinic_name}</p> 
@@ -313,7 +313,10 @@ data?.clinic_name &&   <div className="row ">
   <h1>Clinic Location </h1>
   <p className="wd" >{data?.clinic_location}</p> 
 </div>
-</div>
+</div> :  <div className="row ">
+<div className="col-md-6" style={{marginTop: "10px"}}>
+  This Doctor Does not Have any clinic </div>
+  </div>
               }
 
               {
@@ -350,7 +353,7 @@ specialties
               }
             
          {
-          data?.hospital_name &&     <div className="row mt-4">
+          data?.hospital_name ?     <div className="row mt-4" >
           <div className="col-md-4">
             <h1>Hospital Name</h1>
             <p className="" >{data?.hospital_name}</p> 
@@ -359,7 +362,10 @@ specialties
             <h1>Hospital Location </h1>
             <p className="wd" >{data?.hospital_location}</p> 
           </div>
-        </div>
+        </div> : <div className="row ">
+<div className="col-md-6" style={{marginTop: "10px"}}>
+  This Doctor Does not Have any Hospital </div>
+  </div>
          }     
   
           

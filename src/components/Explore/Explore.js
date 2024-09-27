@@ -160,9 +160,9 @@ export const Explore = () => {
           competition, join the team that works for you.
         </div>
         <div className="head-4">
-          LocumeTenens.com specializes in recruiting physicians, advanced
+          Locume.com specializes in recruiting physicians, advanced
           practitioners, psychologists, and social workers to work temporary and
-          temp-to-perm assignments at healthcare organizations across the U.S.
+          temp-to-perm assignments at healthcare organizations across the world.
           We offer both onsite and virtual approaches to mitigating physician
           shortages.
         </div>

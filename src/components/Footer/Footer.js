@@ -1,5 +1,6 @@
 import { Locume, LocumeLogo } from "../../reusable/Icons"
 import logo from "../../assets/logo-footer.png"
+import { Link } from "react-router-dom"
 
 
 export const Footer = () => {
@@ -101,7 +102,7 @@ export const Footer = () => {
                     <img src={logo} alt="logo" onClick={() => window.location.href = '/'} />
 
 
-                    <p>Terms & Conditions  </p>
+                    <p ><a href="https://www.sovtechnologies.com/terms" target="_blank"  style={{ color: 'white', textDecoration: 'none' }}> Terms & Conditions </a> </p>
                 </div>
 
                 <div className="foot2">
@@ -163,7 +164,7 @@ export const Footer = () => {
 
                     </div>
 
-                    <p>Copyright © 2024, SOV Technolgies. All rights reserved.</p>
+                    <p ><a href="https://www.sovtechnologies.com" target="_blank"  style={{ color: 'white', textDecoration: 'none' }}> Copyright © 2024, SOV Technolgies. All rights reserved.</a> </p>
                 </div>
             </div>
         </div>

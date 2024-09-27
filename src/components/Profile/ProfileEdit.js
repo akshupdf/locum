@@ -147,10 +147,18 @@ export const ProfileEdit = () => {
       const formData = new FormData();
 
       for (const key in values) {
-
         if (Array.isArray(values[key])) {
           values[key].forEach(value => {
-            formData.append(key, value || "NA");
+            if (key === "preferredSpecialities") {
+              const specialty = specialties.find(spec => spec.id === value);
+              if (specialty) {
+                formData.append(`${key}`, specialty.id);
+              } else {
+                formData.append(`${key}`, value || "NA");
+              }
+            } else {
+              formData.append(key, value || "NA");
+            }
           });
         } else {
           const value = values[key] || "NA";
@@ -168,7 +176,7 @@ export const ProfileEdit = () => {
           toast(addUserResult.error || "User Registration Failed");
         } else {
           toast("User Info Has been Updated");
-          // window.location.href = `/profile/${id}`;
+          window.location.href = `/profile/${id}`;
         }
       } catch (error) {
         toast("Session expired . Please Logout and Sign In again");
@@ -233,6 +241,7 @@ export const ProfileEdit = () => {
   };
 
   const handleEdit = () => {
+    window.location.href = `/profilev2/${id}`
     setIsEditing(!isEditing);
   };
 
@@ -279,10 +288,14 @@ export const ProfileEdit = () => {
             <div className="logo-box">
               <img src={image ? image : formik.values?.image} alt="profile"></img>
           <div className="logo-btn">
+{
 
-          <button className="btn" onClick={() => window.location.href = `/profilev2/${id}`}>
-      Edit
-    </button>
+  isEditing &&  <button className="btn" onClick={() => handleEdit()}>
+
+  Edit
+</button>
+}
+         
 <input
   type="file"
   name="profileImage"
@@ -392,7 +405,7 @@ export const ProfileEdit = () => {
     </div>
             <div className="about-box">
               <div className="head">
-                <h1>About Sid</h1>
+                <h1>About {formik.values?.firstName}</h1>
                 <InputTextarea 
           className={`login-input`}
           value={formik.values?.aboutMe}
@@ -641,7 +654,7 @@ placeholder="Select Hospital Timing"
 
               </div>
 {
-  formik.values.ownHospital === true && <div className="row">
+  formik.values.ownHospital === true && <div className="row mt-4">
   <div className="col-md-6">
     <h1>Hospital Location</h1>
     <InputText
