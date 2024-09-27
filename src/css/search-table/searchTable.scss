@@ -7,6 +7,68 @@
   padding: 31px 46px 32px 50px;
   margin-bottom: 50px;
 
+  .user-table {
+    width: 90%;
+    margin: auto;
+    border-collapse: collapse;
+    margin-top: 40px;
+  }
+  
+  .user-table th, .user-table td {
+
+    padding: 12px;
+    text-align: left;
+    color: #464E5F;
+    font-weight: normal;
+    font-size: 14px;
+  }
+  
+  .user-table th {
+    background-color: #f4f4f4;
+  }
+  
+  .name-column {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .specialities {
+    font-size: 0.85rem ;
+    color: #666;
+    overflow: hidden;
+    height: 20px;
+
+    h3{
+      font-size: 13px !important;
+      color: #B5B5C3;
+    }
+  }
+  
+  .action-btn {
+    background-color: #fafafa;
+    border: 1px solid #0866c6;
+    color: #0866c6;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 32px;
+    height: 32px;
+  }
+  
+  .action-btn:hover {
+    background-color: #0866c6;
+    color: #fff;
+  }
+  
+  
+
   .name {
     width: 206px;
     font-family: "Montserrat";
@@ -120,7 +182,8 @@
   }
 
   .list-head{
-    margin-bottom: 72px;
+    margin: auto;
+    width: 90%;
   }
 
   .list-btn-search{
@@ -215,6 +278,12 @@
     border: 1px solid rgba(255, 255, 255, 1);
     color: white;
     cursor: pointer;
+
+    button{
+      border: none;
+      background: none;
+      color: white;
+    }
   }
 }
 
@@ -291,6 +360,11 @@
       z-index: -1;
       background: #0866c6;
     }
+
+
+    
+
+    
 
   }
 

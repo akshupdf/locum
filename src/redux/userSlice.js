@@ -1,6 +1,6 @@
 // userSlice.js
 import { createSlice } from '@reduxjs/toolkit';
-import { addUser, generateOtp, verifyOtp , getUserLogin, fetchUserWithToken, getAllDoctors, updateUser } from './apiSlice';
+import { addUser, generateOtp, verifyOtp , getUserLogin, fetchUserWithToken, getAllDoctors, updateUser, filteredUser, getCategory, getSpecialties } from './apiSlice';
 
 const userSlice = createSlice({
   name: 'user',
@@ -13,7 +13,10 @@ const userSlice = createSlice({
     mobileVerficationId: null,
     userInfo: null,
     userInfov2: null,
-    allUsers: null
+    allUsers: null,
+    specialties:null,
+    category:null,
+    UserFiltered:null
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -99,6 +102,42 @@ const userSlice = createSlice({
         state.allUsers = action.payload;
       })
       .addCase(updateUser.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(filteredUser.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(filteredUser.fulfilled, (state,action) => {
+        state.loading = false;
+        state.UserFiltered = action.payload;
+      })
+      .addCase(filteredUser.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(getCategory.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getCategory.fulfilled, (state,action) => {
+        state.loading = false;
+        state.category = action.payload;
+      })
+      .addCase(getCategory.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(getSpecialties.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getSpecialties.fulfilled, (state,action) => {
+        state.loading = false;
+        state.specialties = action.payload;
+      })
+      .addCase(getSpecialties.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })

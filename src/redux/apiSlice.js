@@ -130,3 +130,43 @@ export const getAllDoctors = createAsyncThunk(
     }
   }
 )
+
+export const getSpecialties = createAsyncThunk(
+  'user/specialties',
+  async ( thunkAPI) => {
+    try {
+      const response = await axios.get('https://19u1szcoq1.execute-api.ap-south-1.amazonaws.com/api/list/specialties');
+      return response.data.result;
+      
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+)
+
+export const getCategory = createAsyncThunk(
+  'user/category',
+  async ( thunkAPI) => {
+    try {
+      const response = await axios.get('https://19u1szcoq1.execute-api.ap-south-1.amazonaws.com/api/list/category');
+      return response.data.result;
+      
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+)
+
+export const filteredUser = createAsyncThunk(
+  'user/userFilter',
+  async (values, thunkAPI) => {
+    try {
+      const response = await axios.post('https://19u1szcoq1.execute-api.ap-south-1.amazonaws.com/api/filter/userFilter', values);
+      return response.data.result;
+  
+      
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

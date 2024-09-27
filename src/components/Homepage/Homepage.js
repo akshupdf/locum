@@ -45,13 +45,12 @@ import {
 } from "../../reusable/Icons";
 import { InputText } from "primereact/inputtext";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllDoctors } from "../../redux/apiSlice";
+import { getAllDoctors, getCategory, getSpecialties } from "../../redux/apiSlice";
 import { Flipcard } from "./FlipCard";
 import { Link } from "react-router-dom";
 
 export default function HomePage() {
   const dispatch = useDispatch();
-  const { allUsers } = useSelector((state) => state.user);
 
   const imageData = [
     {
@@ -113,6 +112,8 @@ export default function HomePage() {
 
   useEffect(() => {
     dispatch(getAllDoctors());
+    dispatch(getSpecialties());
+    dispatch(getCategory());
   }, []);
 
   const specialtiesData = [

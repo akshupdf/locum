@@ -13,7 +13,7 @@ import { useSelector } from 'react-redux';
 
 export const Flipcard = () => {
 
-    const { allUsers } = useSelector((state) => state.user);
+    const { allUsers , specialties , category } = useSelector((state) => state.user);
 
     const drData = [
         {
@@ -78,6 +78,7 @@ export const Flipcard = () => {
         },
     ];
 
+  
 
 
     return (
@@ -152,7 +153,7 @@ export const Flipcard = () => {
 
                     {allUsers?.map((data, index) => (
 
-
+                        
 
                         <SwiperSlide key={index} className='swiper-slide'>
                             <div className="tool-small-box">
@@ -160,7 +161,14 @@ export const Flipcard = () => {
                                     <img src={data?.profile_image ? data?.profile_image : two} alt="logo" />
                                     <div className="tool-small-box-text">
                                         <h4>{data?.first_name}{" "} {data?.last_name}</h4>
-                                        <h3>{data?.preferred_specialities?.join(' , ')}</h3>
+
+                                        {  specialties &&
+  specialties
+    .filter(spec => data?.preferred_specialities?.includes(spec.id))
+    .map(spec => (
+      <h3 key={spec.id}>{spec.specialties_name}</h3>
+    ))
+}
                                     </div>
                                 </div>
                                 <div className="back">
