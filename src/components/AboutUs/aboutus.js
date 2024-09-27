@@ -31,10 +31,10 @@ export const About = () => {
       name: "Deenu...",
       name2: "Deenu Patel",
       title: "CEO",
-      intro: "Deenu Patel is Locum Chief Executive Officer and…",
+      intro: "Deenu Patel is Locume Chief Executive Officer and…",
       founder: "CEO",
       description:
-        "Deenu Patel is Locum Chief Executive Officer and has been leading the company with a focus on strategic growth and innovation. Under his leadership, Locum has expanded its market presence and developed new service offerings, ensuring the company remains competitive and forward-thinking.",
+        "Deenu Patel is Locume Chief Executive Officer and has been leading the company with a focus on strategic growth and innovation. Under his leadership, Locume has expanded its market presence and developed new service offerings, ensuring the company remains competitive and forward-thinking.",
     },
     {
       id: 2,
@@ -43,9 +43,9 @@ export const About = () => {
       name2: "David Newton",
       title: "COO",
       founder: "Managing Director",
-      intro: "David Newton joined Locum some 15 years ago,…",
+      intro: "David Newton joined Locume some 15 years ago,…",
       description:
-        "David Newton joined Locum some 15 years ago, bringing with him a wealth of experience in operations and management. His keen insights and strategic initiatives have significantly improved operational efficiency and client satisfaction.",
+        "David Newton joined Locume some 15 years ago, bringing with him a wealth of experience in operations and management. His keen insights and strategic initiatives have significantly improved operational efficiency and client satisfaction.",
     },
     {
       id: 3,
@@ -54,9 +54,9 @@ export const About = () => {
       name2: "Jon Doe",
       title: "Finance Director",
       founder: "Finance Director",
-      intro: "Jon joined Locum as Finance Director in 2019. His…",
+      intro: "Jon joined Locume as Finance Director in 2019. His…",
       description:
-        "Jon joined Locum as Finance Director in 2019. His financial acumen and dedication have been instrumental in steering the company towards sustainable growth and profitability.",
+        "Jon joined Locume as Finance Director in 2019. His financial acumen and dedication have been instrumental in steering the company towards sustainable growth and profitability.",
     },
   ];
 
@@ -132,7 +132,7 @@ export const About = () => {
           <h1>About us</h1>
           <h3>Connecting care</h3>
           <p>
-            Make the best locum agencies compete to find your perfect locum
+            Make the best Locume agencies compete to find your perfect Locume
             jobs. Get offered real shifts, matched exactly to your needs, before
             you’ve shared your contact details 🎉
           </p>
@@ -211,7 +211,7 @@ export const About = () => {
               <Choice />
               <h1>Choice of jobs</h1>
               <p>
-                Twenty of the best locum agencies compete for you on Messly. You
+                Twenty of the best Locume agencies compete for you on Messly. You
                 see what shifts they have upfront. More choice means higher
                 rates, less travel and better rotas.
               </p>
@@ -240,7 +240,7 @@ export const About = () => {
               <StarProfile />
               <h1>Personalised to you</h1>
               <p>
-                Set your locum wishlist on Messly, and only see jobs matched
+                Set your Locume wishlist on Messly, and only see jobs matched
                 exactly to your needs. No spam, no time- wasting and a
                 personalised service for you.
               </p>

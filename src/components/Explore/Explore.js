@@ -102,7 +102,7 @@ export const Explore = () => {
     <div className="explore-main">
       {/* <div className="explore-search-main-parent">
         <div className="search-box">
-          <div className="quick">Quick Locum search</div>
+          <div className="quick">Quick Locume search</div>
           <div className="drop-search">
             <div>
               <Dropdown
@@ -135,12 +135,12 @@ export const Explore = () => {
           <div>
             <div className="find-head">
               {" "}
-              Find Locum <span>and</span> Permanent Jobs
+              Find Locume <span>and</span> Permanent Jobs
             </div>
             <div className="para-exp">
               Connecting qualified clinicians with top healthcare facilities. In
               addition to running this industry-wide, self-service job board,
-              LocumTenens.com is a full-service recruitment agency for
+              LocumeTenens.com is a full-service recruitment agency for
               physicians, advanced practitioners, psychologists, and social
               workers.
             </div>
@@ -154,13 +154,13 @@ export const Explore = () => {
       </div> */}
       <div className="all-doc">
         <div className="head-1">More than a job board</div>
-        <div className="head-2">We are a full-service locum’s agency</div>
+        <div className="head-2">We are a full-service Locume’s agency</div>
         <div className="head-3">
           In a complex healthcare market, in an era of increased choice and
           competition, join the team that works for you.
         </div>
         <div className="head-4">
-          LocumTenens.com specializes in recruiting physicians, advanced
+          LocumeTenens.com specializes in recruiting physicians, advanced
           practitioners, psychologists, and social workers to work temporary and
           temp-to-perm assignments at healthcare organizations across the U.S.
           We offer both onsite and virtual approaches to mitigating physician
@@ -172,7 +172,7 @@ export const Explore = () => {
         </div>
       </div>
       <div className="all-opportunities">
-        <div className="all-head-1">Explore Locum opportunities</div>
+        <div className="all-head-1">Explore Locume opportunities</div>
         <div className="all-head-2">
           Provide qualified recruitment especially across India
         </div>

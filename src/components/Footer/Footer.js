@@ -28,7 +28,7 @@ export const Footer = () => {
                         <h1>CONTACT US</h1>
                         <ul>
                             <li>Mobile No. : +91 9117569519 </li>
-                            <li>Email Id : info@locum.com</li>
+                            <li>Email Id : info@Locume.com</li>
 
                         </ul>
                     </div>

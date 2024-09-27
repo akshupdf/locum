@@ -43,6 +43,8 @@ const SearchTablev2 = ({ data: filteredData  , allUsers ,specialties}) => {
   const specialty = path.split("/").pop();
 
   return (
+  
+ 
     <div className="search-exp-table">
           <div className="list-head d-flex justify-content-between">
                         <div>
@@ -51,7 +53,11 @@ const SearchTablev2 = ({ data: filteredData  , allUsers ,specialties}) => {
                                 {specialty?.charAt(0).toUpperCase() + specialty?.slice(1)}{" "}
                                 doctors
                             </div>
-                            <div className="list-white">{data.length} available doctors</div>
+                            <div className="list-white">    {filteredData?.length === 0
+    ? `0 available doctors`
+    : filteredData?.length 
+      ? `${filteredData.length} available doctors`
+      : `${allUsers.length} available doctors`}</div>
                         </div>
                         <div
                             className="list-btn-search"
@@ -60,6 +66,10 @@ const SearchTablev2 = ({ data: filteredData  , allUsers ,specialties}) => {
                             Register now
                         </div>
                     </div>
+
+                    {filteredData && filteredData.length === 0 ? (
+      <p className="locume-p" style={{marginLeft : "70px"}}>No data found</p>
+    ) : (
       <table className="user-table">
         <thead>
           <tr>
@@ -109,7 +119,7 @@ const SearchTablev2 = ({ data: filteredData  , allUsers ,specialties}) => {
           ))}
         </tbody>
       </table>
-
+    )}
       <Pagination
         usersPerPage={usersPerPage}
         totalUsers={data.length}
@@ -144,7 +154,8 @@ const SearchTablev2 = ({ data: filteredData  , allUsers ,specialties}) => {
                     </div>
                 </div>
             </div>
-    </div>
+    </div> 
+   
   );
 };
 

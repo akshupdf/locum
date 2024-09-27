@@ -73,7 +73,7 @@ export const ContactUs = () => {
             <div className='contact-box-small'>
               <Mail />
               <h1>Our Email</h1>
-              <p>info@locum.com</p>
+              <p>info@locume.com</p>
             </div>
           </div>
 

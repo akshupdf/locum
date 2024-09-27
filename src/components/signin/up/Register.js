@@ -231,7 +231,7 @@ export const Register = () => {
         </div>
       </div>
       <div className="signright signright2">
-        <h1 className="reg-head">Register As Locum</h1>
+        <h1 className="reg-head">Register As Locume</h1>
 
         <form onSubmit={formik.handleSubmit}>
           <div className="input-box">

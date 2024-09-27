@@ -726,7 +726,7 @@ placeholder="Select Hospital Timing"
           <div className="feedbox-small mt-4">
             <Leafimg />
             <p>
-              I found a job! Thanks to locum.com , a recruiter, who actually read
+              I found a job! Thanks to locume.com , a recruiter, who actually read
               my background, put me in touch with a client looking for someone
               with my qualifications. Given that I work in a very small health
               care niche the chances of my finding this employer on my own would

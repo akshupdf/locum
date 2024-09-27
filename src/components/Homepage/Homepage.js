@@ -134,12 +134,12 @@ export default function HomePage() {
             <div className="text-box">
               <span className="soft">
                 {" "}
-                Making Locum Recruiting And Locum Job Search
+                Making Locume Recruiting And Locume Job Search
               </span>
               <span className="built"> Hassel-Free, Easy and Fast </span>
 
               <p className="para">
-                Make the best locum agencies compete to find your perfect locum
+                Make the best Locume agencies compete to find your perfect Locume
                 jobs. Get offered real shifts, matched exactly to your needs,
                 before you’ve shared your contact details 🎉
               </p>
@@ -155,7 +155,7 @@ export default function HomePage() {
                 </button>
               </div>
               <div className="search-arrow">
-                <p onClick={() => (window.location.href = "/search-page")}>Search for Locum</p>
+                <p onClick={() => (window.location.href = "/search-page")}>Search for Locume</p>
                 <svg
                   width="24"
                   height="24"
@@ -181,14 +181,14 @@ export default function HomePage() {
         <div className="landing-bar-logo">
           {imageData.map((data) => (
             <div key={data.id} className="landing-bar-img">
-              <img src={data.img} alt="locum"></img>
+              <img src={data.img} alt="Locume"></img>
             </div>
           ))}
         </div>
       </div>
 
       <div className="explore-box-main">
-        <h1>Explore Locum opportunities</h1>
+        <h1>Explore Locume opportunities</h1>
         <p className="para Provide">
           Provide qualified recruitment especially across India
         </p>
@@ -212,12 +212,12 @@ export default function HomePage() {
       </div>
 
       <div className="tool-box-main">
-        <p className="para1 ">OUR Locum’s</p>
+        <p className="para1 ">OUR Locume’s</p>
         <h1>Your best sourcing tool for doctors.</h1>
         <p className="para Provide">
           We've hand-picked the best doctors from our network who are actively{" "}
         </p>
-        <p className="para Provide"> looking for locum work.</p>
+        <p className="para Provide"> looking for Locume work.</p>
         <div className="tool-box">
           {/* {allUsers?.map((data) => (
             <div key={data.id} className="tool-small-box">
@@ -250,10 +250,10 @@ export default function HomePage() {
         <h1>
           The <span>new and better way </span> to
         </h1>
-        <h1> find locums</h1>
+        <h1> find Locumes</h1>
         <div className="compare-box">
           <div className="compare-box-left">
-            <h2>Without Locum</h2>
+            <h2>Without Locume</h2>
             <p className="para">
               Take a chance on one or two agencies. Can be slow, inefficient and
               with variable success
@@ -261,11 +261,11 @@ export default function HomePage() {
             {/* <hr></hr> */}
             <ul>
               <li>
-                <WrongTick /> No visibility on locum jobs and rates before
+                <WrongTick /> No visibility on Locume jobs and rates before
                 joining
               </li>
               <li>
-                <WrongTick /> Limited access to locums depending on your agency
+                <WrongTick /> Limited access to Locumes depending on your agency
               </li>
               <li>
                 <WrongTick /> Unknown quality of recruiters and agencies
@@ -279,20 +279,20 @@ export default function HomePage() {
             </ul>
           </div>
           <div className="compare-box-right">
-            <h2>Using Locum to find locums</h2>
+            <h2>Using Locume to find Locumes</h2>
             <p className="para">
-              Access the whole locum market from one place, with control
+              Access the whole Locume market from one place, with control
               throughout
             </p>
 
             {/* <hr></hr> */}
             <ul>
               <li>
-                <RightTick /> See all locum jobs and rates upfront before
+                <RightTick /> See all Locume jobs and rates upfront before
                 registering
               </li>
               <li>
-                <RightTick /> Access to the whole locum agency market, in one
+                <RightTick /> Access to the whole Locume agency market, in one
                 place
               </li>
               <li>
@@ -317,7 +317,7 @@ export default function HomePage() {
           <Choice />
           <h1>Choice of jobs</h1>
           <p>
-            Twenty of the best locum agencies compete for you on Messly. You see
+            Twenty of the best Locume agencies compete for you on Messly. You see
             what shifts they have upfront. More choice means higher rates, less
             travel and better rotas.
           </p>
@@ -336,7 +336,7 @@ export default function HomePage() {
           <StarProfile />
           <h1>Personalised to you</h1>
           <p>
-            Set your locum wishlist on Messly, and only see jobs matched exactly
+            Set your Locume wishlist on Messly, and only see jobs matched exactly
             to your needs. No spam, no time- wasting and a personalised service
             for you.
           </p>
@@ -371,26 +371,26 @@ export default function HomePage() {
             <h1 className="head">
               How we <span className="span">find you </span> the perfect
             </h1>
-            <h1 className="head">locum</h1>
+            <h1 className="head">Locume</h1>
 
             <h4 className="para">
-              We make finding locum work faster and simpler and give you more
+              We make finding Locume work faster and simpler and give you more
               control.
             </h4>
             <div className="wave-box">
               <div className="wave-left">
-                <img src={wave} alt="locum"></img>
+                <img src={wave} alt="Locume"></img>
               </div>
               <div className="wave-right">
                 <p className="para1 step-1">Step 1</p>
 
                 <h2>
-                  Tell us what locums you <span>want</span>
+                  Tell us what Locumes you <span>want</span>
                 </h2>
 
                 <p className="para-text">
-                  Set your locum wishlist on your Messly profile, which states
-                  exactly what locums you want. Then only see locum jobs matched
+                  Set your Locume wishlist on your Messly profile, which states
+                  exactly what Locumes you want. Then only see Locume jobs matched
                   exactly to those needs. No spam, no time-wasting and a
                   personalised service for you.
                 </p>
@@ -450,12 +450,12 @@ export default function HomePage() {
             <p className=" para1 step-2" >Step 2</p>
 
             <h2>
-              Get matched with locums <span>near you</span>
+              Get matched with Locumes <span>near you</span>
             </h2>
 
             <p className="para-text">
-              Agencies contact you through Messly, offering specific locum jobs
-              upfront which are tailored to your locum wishlist. You manage all
+              Agencies contact you through Messly, offering specific Locume jobs
+              upfront which are tailored to your Locume wishlist. You manage all
               your conversation from your Messly Inbox, and don't share your
               personal details until you're sure that you want to go ahead. You
               can turn off your Messly profile any time, and nobody can contact
@@ -481,7 +481,7 @@ export default function HomePage() {
                 <Eye />
               </div>
               <div>
-                <h3>See Available Locums, Up Front</h3>
+                <h3>See Available Locumes, Up Front</h3>
                 <hr></hr>
                 <p>
                   Agencies have to mention specific vacancies they have when
@@ -507,14 +507,14 @@ export default function HomePage() {
             </div>
           </div>
           <div className="match-right">
-            <img src={map} alt="locum"></img>
+            <img src={map} alt="Locume"></img>
           </div>
         </div>
 
         <div className="reg-box-main">
           <div className="reg-box">
             <div className="reg-left">
-              <img src={reg} alt="locum"></img>
+              <img src={reg} alt="Locume"></img>
             </div>
             <div className="reg-right">
               <p className=" para1 step-2">Step 3</p>
@@ -525,12 +525,12 @@ export default function HomePage() {
               </h2>
 
               <p className="para-text">
-                Our Docs service helps you save time registering with locum
+                Our Docs service helps you save time registering with Locume
                 agencies, so you can start working quickly and without hassle.
                 Learn what registration documents you need to provide, store
                 them in one place, complete your references just once and share
-                everything with locum agencies in one click. Doctors who used
-                Docs registered 70% faster with locum agencies.
+                everything with Locume agencies in one click. Doctors who used
+                Docs registered 70% faster with Locume agencies.
               </p>
 
               <div className="svg-box">
@@ -544,7 +544,7 @@ export default function HomePage() {
                     Docs gives you a central hub for your registration documents
                     and references. You can learn about what you need, upload
                     your documents to one place, complete your references just
-                    once and share them instantly with locum agencies with
+                    once and share them instantly with Locume agencies with
                     one-click. References all happen through our
                   </p>
                 </div>
@@ -559,10 +559,10 @@ export default function HomePage() {
 
                   <p>
                     We've designed Docs to help you quickly register quickly
-                    with several locum agencies and avoid you having to repeat
+                    with several Locume agencies and avoid you having to repeat
                     the same processes. Once you've added your documents, just
                     hit the share button and they will be instantly sent over to
-                    your preferred locum agencies.
+                    your preferred Locume agencies.
                   </p>
                 </div>
               </div>
@@ -600,7 +600,7 @@ export default function HomePage() {
 
         {/* <div className='job-alert-box'>
   <div className='job-alert-text-box'>
-  <h1>Locume Job Alert</h1>
+  <h1>Locumee Job Alert</h1>
     <p>Get latest Job Alerts directly to your inbox </p>
   </div>
 
