@@ -28,6 +28,14 @@
         display: flex;
         width: 32%;
         cursor: pointer;
+
+        .footer-img{
+            width: 300px;
+        }
+
+        .mmore-logo-footer{
+        width: 300px;
+        }
     }
 
     .img-box{
@@ -470,6 +478,7 @@ color: #326295 !important;
     .back-btn2{
         top : 0 !important;
         left: -13vh !important;
+
     }
  
   .reg{
@@ -545,8 +554,18 @@ color: #326295 !important;
         position: fixed !important;
             transform: translateY(0);
             will-change: transform;
+
+            .footer-img {
+                    width: 200px;
+                }
         
          }
+
+         .box-svg-svg{
+             bottom: 87% !important;
+         }
+
+
          .p-inputgroup-addon2{
             margin-right: 20px ;
         }
