@@ -374,12 +374,23 @@
 
     .search-exp-table {
       box-shadow: 0px 4px 6px 0px #00000026;
-      width: 90%;
-
+      padding: 0px;     
+      margin: auto;
 
       .medical{
         display: none !important;
       }
+    
+      .user-table th:nth-child(2),
+.user-table th:nth-child(3),
+.user-table th:nth-child(4),
+.user-table th:nth-child(5),
+.user-table td:nth-child(2),
+.user-table td:nth-child(3),
+.user-table td:nth-child(4),
+.user-table td:nth-child(5) {
+    display: none;
+}
 
       .location{
         display: none !important;
@@ -388,6 +399,11 @@
       .shift2{
         display: none !important;
       }
+
+      .user-table{
+        overflow-x: auto;
+      }
+      
 
       .shift{
         display: none !important;
